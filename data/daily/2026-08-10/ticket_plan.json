@@ -6,12 +6,12 @@
       "sel": "hcap_away",
       "odds": 1.94,
       "stake": 150.0,
-      "prob": 0.597
+      "prob": 0.598
     }
   ],
   "lottery": [],
   "total_stake": 150.0,
-  "expected_roi": 0.1572,
+  "expected_roi": 0.1595,
   "bankroll": 4836.390600000001,
   "breaker_multiplier": 1.0,
   "parlay": [
@@ -37,25 +37,25 @@
           "away": "佐加顿斯",
           "league": "瑞超",
           "sel": "away",
-          "odds": 1.56,
-          "prob": 0.447,
+          "odds": 1.58,
+          "prob": 0.445,
           "cal_prob": 0.485,
-          "market_prob": 0.568,
+          "market_prob": 0.56,
           "source": "market",
           "hit_prob": 0.471
         }
       ],
-      "total_odds": 1.87,
-      "model_ev": -0.98,
-      "cal_ev": -1.12,
-      "cal_roi": -0.5591,
+      "total_odds": 1.9,
+      "model_ev": -0.97,
+      "cal_ev": -1.11,
+      "cal_roi": -0.5535,
       "market_ev": -0.43,
-      "market_roi": -0.2161,
+      "market_roi": -0.2159,
       "hit_prob_cal": 0.235,
       "recommended": false,
       "stake": 2.0,
       "n_bets": 1,
-      "potential": 3.74,
+      "potential": 3.79,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "market"
@@ -71,7 +71,7 @@
           "away": "布鲁马波",
           "league": "瑞超",
           "score": "1-0",
-          "prob": 0.253,
+          "prob": 0.248,
           "odds": 7.0
         },
         {
@@ -80,18 +80,18 @@
           "away": "葡国民",
           "league": "葡超",
           "score": "1-0",
-          "prob": 0.195,
+          "prob": 0.196,
           "odds": 7.0
         }
       ],
       "total_odds": 49.0,
-      "hit_prob": 0.0492,
+      "hit_prob": 0.0485,
       "stake": 2.0,
       "potential": 98.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "simulated",
-      "note": "两场比分都中才赢（单场命中率约 25% × 19%）"
+      "note": "两场比分都中才赢（单场命中率约 25% × 20%）"
     },
     {
       "type": "比分2串1",
@@ -102,7 +102,7 @@
           "away": "布鲁马波",
           "league": "瑞超",
           "score": "1-0",
-          "prob": 0.253,
+          "prob": 0.248,
           "odds": 7.0
         },
         {
@@ -116,7 +116,7 @@
         }
       ],
       "total_odds": 66.5,
-      "hit_prob": 0.0439,
+      "hit_prob": 0.043,
       "stake": 2.0,
       "potential": 133.0,
       "worst_win": 0.0,
@@ -133,7 +133,7 @@
           "away": "葡国民",
           "league": "葡超",
           "score": "1-0",
-          "prob": 0.195,
+          "prob": 0.196,
           "odds": 7.0
         },
         {
@@ -147,13 +147,13 @@
         }
       ],
       "total_odds": 66.5,
-      "hit_prob": 0.0338,
+      "hit_prob": 0.0339,
       "stake": 2.0,
       "potential": 133.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "simulated",
-      "note": "两场比分都中才赢（单场命中率约 19% × 17%）"
+      "note": "两场比分都中才赢（单场命中率约 20% × 17%）"
     },
     {
       "type": "比分3串1",
@@ -164,7 +164,7 @@
           "away": "布鲁马波",
           "league": "瑞超",
           "score": "1-0",
-          "prob": 0.253,
+          "prob": 0.248,
           "odds": 7.0
         },
         {
@@ -173,7 +173,7 @@
           "away": "葡国民",
           "league": "葡超",
           "score": "1-0",
-          "prob": 0.195,
+          "prob": 0.196,
           "odds": 7.0
         },
         {
@@ -187,7 +187,7 @@
         }
       ],
       "total_odds": 465.5,
-      "hit_prob": 0.0085,
+      "hit_prob": 0.0084,
       "stake": 2.0,
       "potential": 931.0,
       "worst_win": 0.0,
@@ -204,7 +204,7 @@
           "away": "布鲁马波",
           "league": "瑞超",
           "score": "1-0",
-          "prob": 0.253,
+          "prob": 0.248,
           "odds": 7.0
         },
         {
@@ -213,7 +213,7 @@
           "away": "葡国民",
           "league": "葡超",
           "score": "1-0",
-          "prob": 0.195,
+          "prob": 0.196,
           "odds": 7.0
         },
         {
@@ -227,7 +227,7 @@
         }
       ],
       "total_odds": 465.5,
-      "hit_prob": 0.0085,
+      "hit_prob": 0.0084,
       "stake": 8.0,
       "potential": 1295.0,
       "worst_win": 133.0,
