@@ -1,8 +1,8 @@
 {
-  "n_matches": 67,
-  "hits": 25,
-  "hit_rate": 0.3731,
-  "roi": -0.234,
+  "n_matches": 68,
+  "hits": 26,
+  "hit_rate": 0.3824,
+  "roi": -0.1949,
   "rows": [
     {
       "date": "2026-08-05",
@@ -807,6 +807,18 @@
       "hit": false,
       "odds": 2.08,
       "pnl": -1.0
+    },
+    {
+      "date": "2026-08-10",
+      "match_id": "2026-08-10_周一001",
+      "league": "瑞超",
+      "handicap": -1.0,
+      "best_sel": "away",
+      "best_edge": -0.077,
+      "actual": "away",
+      "hit": true,
+      "odds": 3.43,
+      "pnl": 2.43
     }
   ]
 }

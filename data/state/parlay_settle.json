@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T18:35:00.909084+00:00",
+  "generated_at": "2026-08-10T19:42:56.736669+00:00",
   "parlay": {
     "n_tickets": 7,
     "n_settled": 6,
@@ -43,8 +43,8 @@
         "roi": -1.0
       }
     },
-    "leg_hit_rate": 0.1447,
-    "n_legs_settled": 152
+    "leg_hit_rate": 0.141,
+    "n_legs_settled": 156
   },
   "tickets": {
     "parlay": [
@@ -275,7 +275,7 @@
         "won": false,
         "pending": true,
         "leg_results": [
-          null,
+          false,
           null
         ],
         "return": 0.0,
@@ -287,7 +287,7 @@
             "sel": "home",
             "score": null,
             "odds": 1.2,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-10_周一002",
@@ -2857,7 +2857,7 @@
         "won": false,
         "pending": true,
         "leg_results": [
-          null,
+          false,
           null
         ],
         "return": 0.0,
@@ -2869,7 +2869,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 7.0,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-10_周一003",
@@ -2893,7 +2893,7 @@
         "won": false,
         "pending": true,
         "leg_results": [
-          null,
+          false,
           null
         ],
         "return": 0.0,
@@ -2905,7 +2905,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 7.0,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-10_周一002",
@@ -2965,7 +2965,7 @@
         "won": false,
         "pending": true,
         "leg_results": [
-          null,
+          false,
           null,
           null
         ],
@@ -2978,7 +2978,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 7.0,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-10_周一003",
@@ -3011,7 +3011,7 @@
         "won": false,
         "pending": true,
         "leg_results": [
-          null,
+          false,
           null,
           null
         ],
@@ -3024,7 +3024,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 7.0,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-10_周一003",
@@ -6486,7 +6486,7 @@
             "won": false,
             "pending": true,
             "leg_results": [
-              null,
+              false,
               null
             ],
             "return": 0.0,
@@ -6498,7 +6498,7 @@
                 "sel": "home",
                 "score": null,
                 "odds": 1.2,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-10_周一002",
@@ -6524,8 +6524,8 @@
           "roi": null,
           "avg_odds": null,
           "by_type": {},
-          "leg_hit_rate": null,
-          "n_legs_settled": 0
+          "leg_hit_rate": 0.0,
+          "n_legs_settled": 4
         },
         "tickets": [
           {
@@ -6539,7 +6539,7 @@
             "won": false,
             "pending": true,
             "leg_results": [
-              null,
+              false,
               null
             ],
             "return": 0.0,
@@ -6551,7 +6551,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 7.0,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-10_周一003",
@@ -6575,7 +6575,7 @@
             "won": false,
             "pending": true,
             "leg_results": [
-              null,
+              false,
               null
             ],
             "return": 0.0,
@@ -6587,7 +6587,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 7.0,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-10_周一002",
@@ -6647,7 +6647,7 @@
             "won": false,
             "pending": true,
             "leg_results": [
-              null,
+              false,
               null,
               null
             ],
@@ -6660,7 +6660,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 7.0,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-10_周一003",
@@ -6693,7 +6693,7 @@
             "won": false,
             "pending": true,
             "leg_results": [
-              null,
+              false,
               null,
               null
             ],
@@ -6706,7 +6706,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 7.0,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-10_周一003",
