@@ -1361,13 +1361,13 @@ body {{
 
     <!-- SCORE PARLAY (2026-08-08) -->
     {score_parlay_html}
+
+    <!-- PARLAY SETTLE (2026-08-10) — 当天出票的结算结果，决策页直接可见 -->
+    {parlay_settle_html}
   </div>
 
   <!-- TAB: 复盘与数据 -->
   <div class="page-tab-panel" id="tab-review">
-    <!-- PARLAY SETTLE (2026-08-10) -->
-    {parlay_settle_html}
-
     <!-- RESULTS REVIEW -->
     {results_html}
 

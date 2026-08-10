@@ -107,6 +107,12 @@ jobs:
             python -m engine.main --settle --date "$D" || { echo "::error::结算失败: $D（系统 bug，必须修复）"; exit 1; }
           done
 
+      - name: Settle parlays (真实串票逐腿结算)
+        # 2026-08-10：串关/波胆复盘闭环进 Actions。ticket_plan 真实出票
+        # 用 results.json 逐腿结算 → data/state/parlay_settle.json（幂等，
+        # pending 票等赛果出来后下次运行自动补结算）。
+        run: |
+          python -m engine.review.settle_parlays || echo "⚠ 串票结算失败（继续，build 用旧数据）"
 
       - name: Build site
         run: python engine/build_site.py
