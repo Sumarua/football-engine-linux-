@@ -38,7 +38,7 @@ class ParlayConfig:
     max_legs: int = 3               # 最高串数（受 strategy.json max_parlay_legs 约束）
     max_parlay_stake: float = 30.0  # 串关日总投入上限（strategy.json）
     kelly_discount: float = 0.5     # 串关波动大，Kelly 再打 5 折
-    max_tickets: int = 3            # 最多展示几张串票
+    max_tickets: int = 5            # 最多展示几张串票（2026-08-10：3×2串1+1×3串1+1×3串4）
     cal_min_samples: int = 8        # 校准段最小样本（不足回退整体）
     cal_overall: float = 0.433      # 整体方向命中率（账本 120 场实测）
     cal_table: dict | None = None   # {下限: 命中率} 由账本自动计算
@@ -407,19 +407,34 @@ class ParlayBuilder:
         pool = pool[:n]
 
         tickets: list[ParlayTicket] = []
-        for l1, l2 in combinations(pool, 2):
-            tickets.append(self._make_2in1(l1, l2))
+        # 2串1：top6 场两两组合，按实际口径 ROI 取 top3
+        # （2026-08-10 用户："胜负也像比分串一样：3个2串1+1个3串1+1个3串4"；
+        #  与比分串结构对齐，不再被 max_tickets 截断只留推荐票）
+        top6 = pool[:6]
+        two_in_one = [self._make_2in1(l1, l2) for l1, l2 in combinations(top6, 2)]
+        two_in_one.sort(
+            key=lambda t: (t.cal_roi if t.cal_roi is not None else -9.0),
+            reverse=True,
+        )
+        tickets.extend(two_in_one[:3])
+
         if n >= 3 and self.cfg.max_legs >= 3:
-            for legs3 in combinations(pool, 3):
-                tickets.append(self._make_3in1(list(legs3)))
             top3 = pool[:3]
-            tickets.append(self._make_3in4(top3))
+            tickets.append(self._make_3in1(list(top3)))
+            tickets.append(self._make_3in4(list(top3)))
 
         if not tickets:
             return []
 
-        # 排序：推荐优先，其次校准EV，最多 max_tickets
-        tickets.sort(key=lambda t: (t.recommended, t.cal_ev), reverse=True)
+        # 固定结构排序：2串1 → 3串1 → 3串4(容错)，同组按实际 ROI 降序
+        # （与比分串展示一致，用户按玩法分组看）
+        order = {"2串1": 0, "3串1": 1, "3串4": 2}
+        tickets.sort(
+            key=lambda t: (
+                order.get(t.parlay_type, 9),
+                -(t.cal_roi if t.cal_roi is not None else -9.0),
+            )
+        )
         tickets = tickets[: self.cfg.max_tickets]
 
         # 注额：推荐串分配串关池（min(0.006×bankroll, max_parlay_stake)）
@@ -428,8 +443,11 @@ class ParlayBuilder:
         for t in tickets:
             if not t.recommended:
                 # 娱乐串：1 注小注（2026-08-08：用户要看到实际可打的串；
-                # 期望为负但小注参与，页面明确标注）
-                t.stake = STAKE_UNIT
+                # 期望为负但小注参与，页面明确标注）。
+                # 2026-08-10 修复：容错票（3串4=4注）保持 n_bets×2 元，
+                # 不能被覆盖成 1 注 2 元（此前 3串4 被 max_tickets 截断
+                # 从不展示，注额 bug 被掩盖）。
+                t.stake = STAKE_UNIT * max(t.n_bets, 1)
                 t.potential = round(t.total_odds * t.stake, 2)
                 t.cal_ev = round(t.stake * t.cal_roi, 2)
         if recs:
