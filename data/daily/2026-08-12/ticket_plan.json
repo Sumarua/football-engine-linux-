@@ -1,0 +1,199 @@
+{
+  "stable": [],
+  "value": [],
+  "lottery": [],
+  "total_stake": 0,
+  "expected_roi": 0.0,
+  "bankroll": 4686.390600000001,
+  "breaker_multiplier": 1.0,
+  "parlay": [],
+  "score_parlay": [
+    {
+      "type": "比分2串1",
+      "legs": [
+        {
+          "match": "2026-08-12_周三003",
+          "home": "帕尔梅拉斯",
+          "away": "波特诺",
+          "league": "解放者杯",
+          "score": "2-0",
+          "prob": 0.227,
+          "odds": 10.0
+        },
+        {
+          "match": "2026-08-12_周三002",
+          "home": "普拉滕斯",
+          "away": "科金博联",
+          "league": "解放者杯",
+          "score": "1-0",
+          "prob": 0.182,
+          "odds": 7.0
+        }
+      ],
+      "total_odds": 70.0,
+      "hit_prob": 0.0414,
+      "stake": 2.0,
+      "potential": 140.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "simulated",
+      "note": "两场比分都中才赢（单场命中率约 23% × 18%）"
+    },
+    {
+      "type": "比分2串1",
+      "legs": [
+        {
+          "match": "2026-08-12_周三003",
+          "home": "帕尔梅拉斯",
+          "away": "波特诺",
+          "league": "解放者杯",
+          "score": "2-0",
+          "prob": 0.227,
+          "odds": 10.0
+        },
+        {
+          "match": "2026-08-12_周三001",
+          "home": "巴黎圣曼",
+          "away": "维拉",
+          "league": "欧超杯",
+          "score": "1-0",
+          "prob": 0.172,
+          "odds": 7.0
+        }
+      ],
+      "total_odds": 70.0,
+      "hit_prob": 0.039,
+      "stake": 2.0,
+      "potential": 140.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "simulated",
+      "note": "两场比分都中才赢（单场命中率约 23% × 17%）"
+    },
+    {
+      "type": "比分2串1",
+      "legs": [
+        {
+          "match": "2026-08-12_周三002",
+          "home": "普拉滕斯",
+          "away": "科金博联",
+          "league": "解放者杯",
+          "score": "1-0",
+          "prob": 0.182,
+          "odds": 7.0
+        },
+        {
+          "match": "2026-08-12_周三001",
+          "home": "巴黎圣曼",
+          "away": "维拉",
+          "league": "欧超杯",
+          "score": "1-0",
+          "prob": 0.172,
+          "odds": 7.0
+        }
+      ],
+      "total_odds": 49.0,
+      "hit_prob": 0.0313,
+      "stake": 2.0,
+      "potential": 98.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "simulated",
+      "note": "两场比分都中才赢（单场命中率约 18% × 17%）"
+    },
+    {
+      "type": "比分3串1",
+      "legs": [
+        {
+          "match": "2026-08-12_周三003",
+          "home": "帕尔梅拉斯",
+          "away": "波特诺",
+          "league": "解放者杯",
+          "score": "2-0",
+          "prob": 0.227,
+          "odds": 10.0
+        },
+        {
+          "match": "2026-08-12_周三002",
+          "home": "普拉滕斯",
+          "away": "科金博联",
+          "league": "解放者杯",
+          "score": "1-0",
+          "prob": 0.182,
+          "odds": 7.0
+        },
+        {
+          "match": "2026-08-12_周三001",
+          "home": "巴黎圣曼",
+          "away": "维拉",
+          "league": "欧超杯",
+          "score": "1-0",
+          "prob": 0.172,
+          "odds": 7.0
+        }
+      ],
+      "total_odds": 490.0,
+      "hit_prob": 0.0071,
+      "stake": 2.0,
+      "potential": 980.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "simulated",
+      "note": "三场比分全中才赢（赔率 490 倍）"
+    },
+    {
+      "type": "比分3串4(容错)",
+      "legs": [
+        {
+          "match": "2026-08-12_周三003",
+          "home": "帕尔梅拉斯",
+          "away": "波特诺",
+          "league": "解放者杯",
+          "score": "2-0",
+          "prob": 0.227,
+          "odds": 10.0
+        },
+        {
+          "match": "2026-08-12_周三002",
+          "home": "普拉滕斯",
+          "away": "科金博联",
+          "league": "解放者杯",
+          "score": "1-0",
+          "prob": 0.182,
+          "odds": 7.0
+        },
+        {
+          "match": "2026-08-12_周三001",
+          "home": "巴黎圣曼",
+          "away": "维拉",
+          "league": "欧超杯",
+          "score": "1-0",
+          "prob": 0.172,
+          "odds": 7.0
+        }
+      ],
+      "total_odds": 490.0,
+      "hit_prob": 0.0071,
+      "stake": 8.0,
+      "potential": 1358.0,
+      "worst_win": 140.0,
+      "n_bets": 4,
+      "odds_source": "simulated",
+      "note": "3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥140，全中≈¥1358"
+    }
+  ],
+  "parlay_calibration": {
+    "overall": 0.4317,
+    "n": 183,
+    "table": {
+      "0.35": 0.3462,
+      "0.4": 0.4571,
+      "0.45": 0.5588,
+      "0.5": 0.4444,
+      "0.55": 0.3158,
+      "0.6": 0.4545,
+      "0.7": 0.5
+    },
+    "note": "串关 EV 用账本校准命中率（模型概率高估，0.55-0.60 段仅 31.6% 命中）；推荐=校准EV>0"
+  }
+}
