@@ -26,21 +26,45 @@ from pathlib import Path
 
 
 def _load_results(day_dir: Path) -> dict:
-    """读当日 results.json → {match_id: {home_score, away_score}}"""
+    """读当日赛果 → {match_id: {home_score, away_score}}
+
+    2026-08-11 修复：8/10 起 results.json（引擎格式）的 match_id 变成
+    数字 ID（如 2026-08-10_19629606），串票 legs 存的是竞彩编号
+    （如 2026-08-10_周一001）→ 匹配断裂全 pending。
+    results_sina.json 保留 match_no（竞彩编号），需用日期+编号重建索引。
+    """
+    rows: list[dict] = []
+    # 优先 results_sina.json（含 match_no 竞彩编号）
+    sp = day_dir / "results_sina.json"
+    if sp.exists():
+        try:
+            data = json.loads(sp.read_text(encoding="utf-8"))
+            rows.extend(data if isinstance(data, list) else [])
+        except Exception:
+            pass
+    # 补充 results.json（可能含 sina 没有的场次/字段）
     rp = day_dir / "results.json"
-    if not rp.exists():
-        return {}
-    try:
-        rows = json.loads(rp.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
-    if isinstance(rows, dict):
-        rows = rows.get("results", rows.get("matches", []))
-    out = {}
-    for r in rows if isinstance(rows, list) else []:
+    if rp.exists():
+        try:
+            data = json.loads(rp.read_text(encoding="utf-8"))
+            if isinstance(data, dict):
+                data = data.get("results", data.get("matches", []))
+            rows.extend(data if isinstance(data, list) else [])
+        except Exception:
+            pass
+
+    out: dict[str, dict] = {}
+    day = day_dir.name
+    for r in rows:
+        if r.get("home_score") is None:
+            continue
         mid = r.get("match_id")
-        if mid and r.get("home_score") is not None:
+        if mid:
             out[mid] = r
+        # 竞彩编号索引：日期 + match_no（如 2026-08-10_周一001）
+        mno = r.get("match_no")
+        if mno:
+            out[f"{day}_{mno}"] = r
     return out
 
 
