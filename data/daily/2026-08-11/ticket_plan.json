@@ -3,18 +3,108 @@
     {
       "match": "2026-08-11_周二001",
       "sel": "hcap_away",
-      "odds": 1.41,
+      "odds": 1.38,
       "stake": 200,
-      "prob": 0.834
+      "prob": 0.832
     }
   ],
   "value": [],
   "lottery": [],
   "total_stake": 200,
-  "expected_roi": 0.1757,
+  "expected_roi": 0.1486,
   "bankroll": 4686.390600000001,
   "breaker_multiplier": 1.0,
   "parlay": [
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-11_周二009",
+          "home": "里昂",
+          "away": "布拉格斯巴达",
+          "league": "欧冠",
+          "sel": "home",
+          "odds": 1.35,
+          "prob": 0.451,
+          "cal_prob": 0.559,
+          "market_prob": 0.656,
+          "source": "market",
+          "hit_prob": 0.615
+        },
+        {
+          "match": "2026-08-11_周二010",
+          "home": "弗鲁米嫩塞",
+          "away": "里独立",
+          "league": "解放者杯",
+          "sel": "home",
+          "odds": 1.51,
+          "prob": 0.437,
+          "cal_prob": 0.457,
+          "market_prob": 0.587,
+          "source": "market",
+          "hit_prob": 0.471
+        }
+      ],
+      "total_odds": 2.04,
+      "model_ev": -1.2,
+      "cal_ev": -0.82,
+      "cal_roi": -0.4095,
+      "market_ev": -0.43,
+      "market_roi": -0.2156,
+      "hit_prob_cal": 0.29,
+      "recommended": false,
+      "stake": 2.0,
+      "n_bets": 1,
+      "potential": 4.08,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "market"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-11_周二009",
+          "home": "里昂",
+          "away": "布拉格斯巴达",
+          "league": "欧冠",
+          "sel": "home",
+          "odds": 1.35,
+          "prob": 0.451,
+          "cal_prob": 0.559,
+          "market_prob": 0.656,
+          "source": "market",
+          "hit_prob": 0.615
+        },
+        {
+          "match": "2026-08-11_周二006",
+          "home": "采列",
+          "away": "亚拉腊",
+          "league": "欧冠",
+          "sel": "home",
+          "odds": 1.37,
+          "prob": 0.427,
+          "cal_prob": 0.457,
+          "market_prob": 0.646,
+          "source": "market",
+          "hit_prob": 0.471
+        }
+      ],
+      "total_odds": 1.85,
+      "model_ev": -1.29,
+      "cal_ev": -0.93,
+      "cal_roi": -0.4643,
+      "market_ev": -0.43,
+      "market_roi": -0.2158,
+      "hit_prob_cal": 0.29,
+      "recommended": false,
+      "stake": 2.0,
+      "n_bets": 1,
+      "potential": 3.7,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "market"
+    },
     {
       "type": "2串1",
       "legs": [
@@ -61,99 +151,22 @@
       "source": "market"
     },
     {
-      "type": "2串1",
-      "legs": [
-        {
-          "match": "2026-08-11_周二009",
-          "home": "里昂",
-          "away": "布拉格斯巴达",
-          "league": "欧冠",
-          "sel": "home",
-          "odds": 1.37,
-          "prob": 0.448,
-          "cal_prob": 0.457,
-          "market_prob": 0.646,
-          "source": "market",
-          "hit_prob": 0.471
-        },
-        {
-          "match": "2026-08-11_周二010",
-          "home": "弗鲁米嫩塞",
-          "away": "里独立",
-          "league": "解放者杯",
-          "sel": "home",
-          "odds": 1.51,
-          "prob": 0.437,
-          "cal_prob": 0.457,
-          "market_prob": 0.587,
-          "source": "market",
-          "hit_prob": 0.471
-        }
-      ],
-      "total_odds": 2.07,
-      "model_ev": -1.19,
-      "cal_ev": -1.08,
-      "cal_roi": -0.5411,
-      "market_ev": -0.43,
-      "market_roi": -0.2157,
-      "hit_prob_cal": 0.222,
-      "recommended": false,
-      "stake": 2.0,
-      "n_bets": 1,
-      "potential": 4.14,
-      "worst_win": 0.0,
-      "note": "两场全中才赢",
-      "source": "market"
-    },
-    {
-      "type": "2串1",
-      "legs": [
-        {
-          "match": "2026-08-11_周二006",
-          "home": "采列",
-          "away": "亚拉腊",
-          "league": "欧冠",
-          "sel": "home",
-          "odds": 1.37,
-          "prob": 0.427,
-          "cal_prob": 0.457,
-          "market_prob": 0.646,
-          "source": "market",
-          "hit_prob": 0.471
-        },
-        {
-          "match": "2026-08-11_周二009",
-          "home": "里昂",
-          "away": "布拉格斯巴达",
-          "league": "欧冠",
-          "sel": "home",
-          "odds": 1.37,
-          "prob": 0.448,
-          "cal_prob": 0.457,
-          "market_prob": 0.646,
-          "source": "market",
-          "hit_prob": 0.471
-        }
-      ],
-      "total_odds": 1.88,
-      "model_ev": -1.28,
-      "cal_ev": -1.17,
-      "cal_roi": -0.5836,
-      "market_ev": -0.43,
-      "market_roi": -0.216,
-      "hit_prob_cal": 0.222,
-      "recommended": false,
-      "stake": 2.0,
-      "n_bets": 1,
-      "potential": 3.75,
-      "worst_win": 0.0,
-      "note": "两场全中才赢",
-      "source": "market"
-    },
-    {
       "type": "3串1",
       "legs": [
         {
+          "match": "2026-08-11_周二009",
+          "home": "里昂",
+          "away": "布拉格斯巴达",
+          "league": "欧冠",
+          "sel": "home",
+          "odds": 1.35,
+          "prob": 0.451,
+          "cal_prob": 0.559,
+          "market_prob": 0.656,
+          "source": "market",
+          "hit_prob": 0.615
+        },
+        {
           "match": "2026-08-11_周二006",
           "home": "采列",
           "away": "亚拉腊",
@@ -161,19 +174,6 @@
           "sel": "home",
           "odds": 1.37,
           "prob": 0.427,
-          "cal_prob": 0.457,
-          "market_prob": 0.646,
-          "source": "market",
-          "hit_prob": 0.471
-        },
-        {
-          "match": "2026-08-11_周二009",
-          "home": "里昂",
-          "away": "布拉格斯巴达",
-          "league": "欧冠",
-          "sel": "home",
-          "odds": 1.37,
-          "prob": 0.448,
           "cal_prob": 0.457,
           "market_prob": 0.646,
           "source": "market",
@@ -193,17 +193,17 @@
           "hit_prob": 0.471
         }
       ],
-      "total_odds": 2.83,
+      "total_odds": 2.79,
       "model_ev": -1.53,
-      "cal_ev": -1.41,
-      "cal_roi": -0.7039,
+      "cal_ev": -1.24,
+      "cal_roi": -0.619,
       "market_ev": -0.61,
-      "market_roi": -0.3054,
-      "hit_prob_cal": 0.104,
+      "market_roi": -0.3053,
+      "hit_prob_cal": 0.136,
       "recommended": false,
       "stake": 2.0,
       "n_bets": 1,
-      "potential": 5.67,
+      "potential": 5.59,
       "worst_win": 0.0,
       "note": "三场全中才赢",
       "source": "market"
@@ -212,6 +212,19 @@
       "type": "3串4",
       "legs": [
         {
+          "match": "2026-08-11_周二009",
+          "home": "里昂",
+          "away": "布拉格斯巴达",
+          "league": "欧冠",
+          "sel": "home",
+          "odds": 1.35,
+          "prob": 0.451,
+          "cal_prob": 0.559,
+          "market_prob": 0.656,
+          "source": "market",
+          "hit_prob": 0.615
+        },
+        {
           "match": "2026-08-11_周二006",
           "home": "采列",
           "away": "亚拉腊",
@@ -219,19 +232,6 @@
           "sel": "home",
           "odds": 1.37,
           "prob": 0.427,
-          "cal_prob": 0.457,
-          "market_prob": 0.646,
-          "source": "market",
-          "hit_prob": 0.471
-        },
-        {
-          "match": "2026-08-11_周二009",
-          "home": "里昂",
-          "away": "布拉格斯巴达",
-          "league": "欧冠",
-          "sel": "home",
-          "odds": 1.37,
-          "prob": 0.448,
           "cal_prob": 0.457,
           "market_prob": 0.646,
           "source": "market",
@@ -251,19 +251,19 @@
           "hit_prob": 0.471
         }
       ],
-      "total_odds": 2.21,
+      "total_odds": 2.19,
       "model_ev": null,
-      "cal_ev": -4.74,
-      "cal_roi": -0.5924,
-      "market_ev": -1.91,
-      "market_roi": -0.2382,
-      "hit_prob_cal": 0.104,
+      "cal_ev": -4.07,
+      "cal_roi": -0.5085,
+      "market_ev": -1.9,
+      "market_roi": -0.238,
+      "hit_prob_cal": 0.136,
       "recommended": false,
       "stake": 8.0,
       "n_bets": 4,
-      "potential": 17.7,
-      "worst_win": 3.75,
-      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥4），全中 ¥18",
+      "potential": 17.5,
+      "worst_win": 3.7,
+      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥4），全中 ¥17",
       "source": "market"
     }
   ],
@@ -277,7 +277,7 @@
           "away": "大阪钢巴",
           "league": "亚冠精英",
           "score": "0-1",
-          "prob": 0.318,
+          "prob": 0.322,
           "odds": 7.0
         },
         {
@@ -286,12 +286,12 @@
           "away": "费内巴切",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.295,
+          "prob": 0.293,
           "odds": 7.0
         }
       ],
       "total_odds": 49.0,
-      "hit_prob": 0.0937,
+      "hit_prob": 0.0946,
       "stake": 2.0,
       "potential": 98.0,
       "worst_win": 0.0,
@@ -308,7 +308,7 @@
           "away": "大阪钢巴",
           "league": "亚冠精英",
           "score": "0-1",
-          "prob": 0.318,
+          "prob": 0.322,
           "odds": 7.0
         },
         {
@@ -317,18 +317,18 @@
           "away": "索列夫",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.244,
+          "prob": 0.25,
           "odds": 7.0
         }
       ],
       "total_odds": 49.0,
-      "hit_prob": 0.0778,
+      "hit_prob": 0.0805,
       "stake": 2.0,
       "potential": 98.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "simulated",
-      "note": "两场比分都中才赢（单场命中率约 32% × 24%）"
+      "note": "两场比分都中才赢（单场命中率约 32% × 25%）"
     },
     {
       "type": "比分2串1",
@@ -339,7 +339,7 @@
           "away": "大阪钢巴",
           "league": "亚冠精英",
           "score": "0-1",
-          "prob": 0.318,
+          "prob": 0.322,
           "odds": 7.0
         },
         {
@@ -348,12 +348,12 @@
           "away": "里独立",
           "league": "解放者杯",
           "score": "1-0",
-          "prob": 0.243,
+          "prob": 0.244,
           "odds": 7.0
         }
       ],
       "total_odds": 49.0,
-      "hit_prob": 0.0773,
+      "hit_prob": 0.0787,
       "stake": 2.0,
       "potential": 98.0,
       "worst_win": 0.0,
@@ -370,7 +370,7 @@
           "away": "大阪钢巴",
           "league": "亚冠精英",
           "score": "0-1",
-          "prob": 0.318,
+          "prob": 0.322,
           "odds": 7.0
         },
         {
@@ -379,7 +379,7 @@
           "away": "费内巴切",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.295,
+          "prob": 0.293,
           "odds": 7.0
         },
         {
@@ -388,12 +388,12 @@
           "away": "索列夫",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.244,
+          "prob": 0.25,
           "odds": 7.0
         }
       ],
       "total_odds": 343.0,
-      "hit_prob": 0.0229,
+      "hit_prob": 0.0236,
       "stake": 2.0,
       "potential": 686.0,
       "worst_win": 0.0,
@@ -410,7 +410,7 @@
           "away": "大阪钢巴",
           "league": "亚冠精英",
           "score": "0-1",
-          "prob": 0.318,
+          "prob": 0.322,
           "odds": 7.0
         },
         {
@@ -419,7 +419,7 @@
           "away": "费内巴切",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.295,
+          "prob": 0.293,
           "odds": 7.0
         },
         {
@@ -428,12 +428,12 @@
           "away": "索列夫",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.244,
+          "prob": 0.25,
           "odds": 7.0
         }
       ],
       "total_odds": 343.0,
-      "hit_prob": 0.0229,
+      "hit_prob": 0.0236,
       "stake": 8.0,
       "potential": 980.0,
       "worst_win": 98.0,
