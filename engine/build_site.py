@@ -514,12 +514,13 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
                     _parts.append(f"{_side}{'↓' if _v < 0 else '↑'}{abs(_v):.1f}%")
             if not _parts:
                 continue
+            _span_min = _ser.get("span_min", "") or 0
             _os_rows.append(
                 f'<tr><td>{_p.get("match_id", "").split("_")[-1]}</td>'
                 f'<td>{_p.get("home_team", "")} vs {_p.get("away_team", "")}</td>'
                 f'<td>{_ser.get("points", 0)}次</td>'
                 f'<td>{" ".join(_parts)}</td>'
-                f'<td style="color:var(--dim)">{_ser.get("span_min", "") and f"跨{_ser.get("span_min"):.0f}min" or ""}</td></tr>'
+                f'<td style="color:var(--dim)">{("跨%.0fmin" % _span_min) if _span_min else ""}</td></tr>'
             )
         if _os_rows:
             odds_series_html = f'''
@@ -1509,7 +1510,8 @@ def _divergence_chip(p):
         md_chips.append(f'{sel[0].upper()}+EV <b>{info["ev"]:.0%}</b>')
     md_html = ""
     if md_chips:
-        md_html = f'<span class="info-chip" style="color:var(--amber)">市场分歧 {' '.join(md_chips)}（纪律拦下）</span>'
+        _chips = " ".join(md_chips)
+        md_html = f'<span class="info-chip" style="color:var(--amber)">市场分歧 {_chips}（纪律拦下）</span>'
     if not model or not market or len(market) < 3:
         return md_html
     _probs = [model.get("home", 0), model.get("draw", 0), model.get("away", 0)]
