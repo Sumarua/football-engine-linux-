@@ -1,8 +1,8 @@
 {
   "source": "djyylive.com API v2",
-  "extracted_at": "2026-08-12T11:33:30.955128+00:00",
+  "extracted_at": "2026-08-12T12:33:14.015518+00:00",
   "total": 62,
-  "with_odds": 61,
+  "with_odds": 62,
   "matches": [
     {
       "fs_match_id": 19766298,
@@ -215,19 +215,91 @@
       "home_goals": "2",
       "away_goals": "1",
       "has_odds": true,
-      "home_odds_djyy": null,
-      "draw_odds_djyy": null,
-      "away_odds_djyy": null,
-      "djyy_model_prob": null,
-      "odds_source": null,
+      "home_odds_djyy": 1.69,
+      "draw_odds_djyy": 3.5199999999999996,
+      "away_odds_djyy": 5.25,
+      "djyy_model_prob": {
+        "home": 0.4483,
+        "draw": 0.2491,
+        "away": 0.3025
+      },
+      "odds_source": "DJYY/Pinnacle",
       "home_prematch_xg": null,
       "away_prematch_xg": null,
-      "btts_yes_odds": null,
-      "btts_no_odds": null,
+      "btts_yes_odds": 2.1,
+      "btts_no_odds": 1.66,
       "over_25_odds": null,
       "under_25_odds": null,
-      "top_scores": null,
-      "totals": null
+      "top_scores": [
+        [
+          1,
+          1,
+          0.11230000000000001
+        ],
+        [
+          1,
+          0,
+          0.1036
+        ],
+        [
+          2,
+          1,
+          0.08929999999999999
+        ],
+        [
+          0,
+          1,
+          0.08650000000000001
+        ],
+        [
+          0,
+          0,
+          0.076
+        ],
+        [
+          2,
+          0,
+          0.0729
+        ],
+        [
+          1,
+          2,
+          0.0712
+        ],
+        [
+          2,
+          2,
+          0.0496
+        ],
+        [
+          0,
+          2,
+          0.0454
+        ],
+        [
+          3,
+          1,
+          0.044199999999999996
+        ]
+      ],
+      "totals": {
+        "1.5": [
+          0.266,
+          0.7340000000000001
+        ],
+        "2.5": [
+          0.4964,
+          0.5033
+        ],
+        "3.5": [
+          0.7199,
+          0.2801
+        ],
+        "4.5": [
+          0.8412999999999999,
+          0.15869999999999998
+        ]
+      }
     },
     {
       "fs_match_id": 19766305,
@@ -1232,9 +1304,9 @@
       "home_goals": "",
       "away_goals": "",
       "has_odds": true,
-      "home_odds_djyy": 1.9299999999999997,
-      "draw_odds_djyy": 3.34,
-      "away_odds_djyy": 3.53,
+      "home_odds_djyy": 2.01,
+      "draw_odds_djyy": 3.25,
+      "away_odds_djyy": 3.4100000000000006,
       "djyy_model_prob": {
         "home": 0.3682,
         "draw": 0.2646,
@@ -1331,9 +1403,9 @@
       "home_goals": "",
       "away_goals": "",
       "has_odds": true,
-      "home_odds_djyy": 1.22,
-      "draw_odds_djyy": 5.87,
-      "away_odds_djyy": 9.4,
+      "home_odds_djyy": 1.28,
+      "draw_odds_djyy": 4.98,
+      "away_odds_djyy": 7.17,
       "djyy_model_prob": {
         "home": 0.5735,
         "draw": 0.231,
@@ -1431,8 +1503,8 @@
       "away_goals": "",
       "has_odds": true,
       "home_odds_djyy": 1.08,
-      "draw_odds_djyy": 9.93,
-      "away_odds_djyy": 19.11,
+      "draw_odds_djyy": 10.08,
+      "away_odds_djyy": 19.37,
       "djyy_model_prob": {
         "home": 0.544,
         "draw": 0.2311,
@@ -1529,9 +1601,9 @@
       "home_goals": "",
       "away_goals": "",
       "has_odds": true,
-      "home_odds_djyy": 1.7400000000000002,
-      "draw_odds_djyy": 4.02,
-      "away_odds_djyy": 4.72,
+      "home_odds_djyy": 1.72,
+      "draw_odds_djyy": 4.03,
+      "away_odds_djyy": 4.8,
       "djyy_model_prob": {
         "home": 0.503,
         "draw": 0.22,
@@ -2717,9 +2789,9 @@
       "home_goals": "",
       "away_goals": "",
       "has_odds": true,
-      "home_odds_djyy": 1.68,
-      "draw_odds_djyy": 3.5199999999999996,
-      "away_odds_djyy": 4.89,
+      "home_odds_djyy": 1.69,
+      "draw_odds_djyy": 3.5599999999999996,
+      "away_odds_djyy": 4.7,
       "djyy_model_prob": {
         "home": 0.593,
         "draw": 0.217,
@@ -3113,9 +3185,9 @@
       "home_goals": "",
       "away_goals": "",
       "has_odds": true,
-      "home_odds_djyy": 2.26,
-      "draw_odds_djyy": 3.49,
-      "away_odds_djyy": 2.81,
+      "home_odds_djyy": 2.3,
+      "draw_odds_djyy": 3.4200000000000004,
+      "away_odds_djyy": 2.8,
       "djyy_model_prob": {
         "home": 0.3632,
         "draw": 0.2608,
@@ -3212,9 +3284,9 @@
       "home_goals": "",
       "away_goals": "",
       "has_odds": true,
-      "home_odds_djyy": 2.8,
-      "draw_odds_djyy": 3.6199999999999997,
-      "away_odds_djyy": 2.22,
+      "home_odds_djyy": 2.82,
+      "draw_odds_djyy": 3.55,
+      "away_odds_djyy": 2.23,
       "djyy_model_prob": {
         "home": 0.30510000000000004,
         "draw": 0.2544,
@@ -4301,9 +4373,9 @@
       "home_goals": "",
       "away_goals": "",
       "has_odds": true,
-      "home_odds_djyy": 5.23,
-      "draw_odds_djyy": 4.77,
-      "away_odds_djyy": 1.5099999999999998,
+      "home_odds_djyy": 5.14,
+      "draw_odds_djyy": 4.73,
+      "away_odds_djyy": 1.5199999999999998,
       "djyy_model_prob": {
         "home": 0.3042,
         "draw": 0.22699999999999998,
@@ -4895,9 +4967,9 @@
       "home_goals": "",
       "away_goals": "",
       "has_odds": true,
-      "home_odds_djyy": 3.1300000000000003,
-      "draw_odds_djyy": 3.5,
-      "away_odds_djyy": 2.17,
+      "home_odds_djyy": 3.0899999999999994,
+      "draw_odds_djyy": 3.4800000000000004,
+      "away_odds_djyy": 2.19,
       "djyy_model_prob": {
         "home": 0.40840000000000004,
         "draw": 0.25129999999999997,
@@ -5985,17 +6057,17 @@
       "away_goals": "",
       "has_odds": true,
       "home_odds_djyy": 2.07,
-      "draw_odds_djyy": 3.27,
-      "away_odds_djyy": 3.5999999999999996,
+      "draw_odds_djyy": 3.1500000000000004,
+      "away_odds_djyy": 3.55,
       "djyy_model_prob": {
         "home": 0.4905,
         "draw": 0.27440000000000003,
         "away": 0.235
       },
-      "odds_source": "DJYY/book35",
+      "odds_source": "DJYY/book14",
       "home_prematch_xg": null,
       "away_prematch_xg": null,
-      "btts_yes_odds": 2.01,
+      "btts_yes_odds": 1.9299999999999997,
       "btts_no_odds": 1.7999999999999998,
       "over_25_odds": null,
       "under_25_odds": null,
