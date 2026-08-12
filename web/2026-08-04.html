@@ -694,6 +694,7 @@ body {
       <div class="sub">2026-08-04 &middot; DC+MC &rarr; Shin去水 &rarr; 逆向赔率 &rarr; 四源融合 &rarr; LGBM &rarr; Isotonic校准 &rarr; Wilson信任</div>
     </div>
     <div class="header-right">
+      <a href="track-record.html" style="color:var(--dim);text-decoration:none;font-size:0.75rem;padding:5px 10px;border:1px solid var(--border);border-radius:6px;transition:all .2s">📈 Track Record</a>
       <span class="badge ok">系统正常</span>
     </div>
   </div>
@@ -1838,6 +1839,31 @@ body {
   </div>
     
 
+    <!-- BACKTEST: 时点分桶 + shrinkage_dc 对比 (2026-08-12) -->
+    
+  <div class="section-title">预测时点分桶（提前多久预测最准）</div>
+  <div style="padding:6px 2px;font-size:0.68rem;color:var(--dim)">
+    按预测截点距开赛时长分桶评估。历史账本无 as_of 字段，样本从新预测起累积
+    （约 2-4 周出有效样本）。最佳时点: <b>待积累</b>。
+  </div>
+  <div style="overflow-x:auto"><table class="edge-table">
+    <tr><th>时点</th><th>场次</th><th>Brier</th><th>命中率</th><th>总EV</th></tr>
+    <tr><td>开赛前24小时</td><td>0</td><td>0.0000</td><td>0.0%</td><td style="color:var(--dim);font-weight:700">+0.00u</td></tr><tr><td>开赛前6小时</td><td>0</td><td>0.0000</td><td>0.0%</td><td style="color:var(--dim);font-weight:700">+0.00u</td></tr><tr><td>开赛前90分钟</td><td>0</td><td>0.0000</td><td>0.0%</td><td style="color:var(--dim);font-weight:700">+0.00u</td></tr><tr><td>收盘市场</td><td>0</td><td>0.0000</td><td>0.0%</td><td style="color:var(--dim);font-weight:700">+0.00u</td></tr>
+  </table></div>
+
+  <div class="section-title">Dixon-Coles 分层收缩挑战者（vs 生产模型）</div>
+  <div style="padding:6px 2px;font-size:0.68rem;color:var(--dim)">
+    滚动拟合（只用评估日之前历史，防泄漏）对比 Brier，n=144 场。
+    Verdict: <b style="color:var(--amber)">hold</b> —— 只做 challenger 跟踪，不上位。
+  </div>
+  <div style="overflow-x:auto"><table class="edge-table">
+    <tr><th>模型</th><th>Brier</th></tr>
+    <tr><td>shrinkage_dc（挑战者）</td><td style="font-weight:700">0.7408</td></tr>
+    <tr><td>生产 final（现役）</td><td style="font-weight:700">0.6521</td></tr>
+    <tr><td>模型原始（未融合）</td><td style="font-weight:700">0.6845</td></tr>
+    <tr><td>市场基准（去水）</td><td style="font-weight:700">0.6330</td></tr>
+  </table></div>
+
     <!-- SYSTEM STATUS -->
     
   <div class="section-title">系统状态</div>
@@ -1867,11 +1893,11 @@ body {
       <div class="sys-row"><span class="k">信任区间</span><span class="v">Wilson</span></div>
     </div>
   </div>
-  </div>
+    </div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="chain">DC(60%) + MC-50K(40%) &rarr; Shin去水 &rarr; 逆向赔率 &rarr; 同赔历史 &rarr; 融合(模型60% + 市场25% + DJYY15%) &rarr; LGBM(10%) &rarr; Isotonic校准 &rarr; Wilson信任</div>
+    <!-- FOOTER -->
+    <div class="footer">
+    <div class="chain">DC(60%) + MC-50K(40%) &rarr; Shin去水 &rarr; 逆向赔率 &rarr; 同赔历史 &rarr; 融合(模型10% + 市场60% + DJYY30%) &rarr; LGBM(10%) &rarr; Isotonic校准 &rarr; Wilson信任</div>
     <p>数据源: 体彩 / 新浪 / 500万 / DJYY &middot; 零服务器 GitHub Actions &middot; <a href="https://github.com/wlrwx/football-engine">源代码</a></p>
     <p class="disclaimer">仅供研究学习，不构成任何投注建议。模型输出为概率估计，不保证准确性。</p>
   </div>

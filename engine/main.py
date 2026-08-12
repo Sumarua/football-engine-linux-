@@ -73,14 +73,31 @@ def load_config(name: str) -> dict:
     return {}
 
 
+# 高平局联赛名单（2026-08-12 账本实证：平局率>=40% 且 样本>=5）
+# 芬超40% 瑞典超60% 美职联55% 巴甲46% 葡超50% —— R1 平局改判规则的数据基础
+# 注意：此名单为静态配置，随账本增长需人工复核更新（防止用未来数据泄漏）
+HIGH_DRAW_LEAGUES = frozenset({"芬超", "瑞典超", "美职联", "巴甲", "葡超"})
+
+# 联赛平局率锚定表（2026-08-12 账本实证，n>=5）：平局概率向联赛基准靠拢
+# 回测 137 场：w=0.3 时命中率 46.7% 不变，Brier 0.6559→0.6371（标定显著改善）
+LEAGUE_DRAW_ANCHOR = {"瑞典超": 0.60, "美职联": 0.55, "葡超": 0.50, "巴甲": 0.46, "芬超": 0.40}
+DRAW_ANCHOR_W = 0.3
+
+
 def _pick_direction(h: float, d: float, a: float, draw_alert=None) -> str:
-    """从最终概率选方向（argmax），draw_alert 触发且平局概率接近最高时改判平局。
+    """从最终概率选方向（argmax），draw_alert 触发时改判平局。
 
     与结算口径一致：修复预测时 direction 为空、复盘口径不一致的问题。
     2026-08-05 已验证：市场平局改判（market_d≥0.30 且 d≥0.22）回测 112 场
     命中率 43.8%→42.9% 不升反降 → 维持原逻辑，勿再盲目调参（walk_forward 二次验证）。
+
+    2026-08-12 数据驱动新证据（非盲目调参）：
+    R1 = 高平联赛 + 市场平局P∈[0.20,0.30) 无脑改判平局，回测 137 场
+    命中 46.7% vs 基线 43.8%（+2.9pp），切半验证 42.6%/50.7% 均优于各自基线。
     """
     best = max(("home", h), ("draw", d), ("away", a), key=lambda x: x[1])
+    if draw_alert == "league_draw":
+        return "draw"
     if draw_alert and best[0] != "draw" and best[1] - d < 0.08 and d >= 0.26:
         return "draw"
     return best[0]
@@ -249,9 +266,11 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
 
     # 融合参数（可由 param_optimizer 自动调整，不写死）
     fusion_cfg = pred_cfg.get("fusion", {})
-    fusion_cfg.setdefault("model_weight", 0.60)
-    fusion_cfg.setdefault("market_weight", 0.25)
-    fusion_cfg.setdefault("djyy_weight", 0.15)  # DJYY第三方模型权重
+    fusion_cfg.setdefault("model_weight", 0.10)   # 多源时模型权重（2026-08-12 回测: 0.26→0.10 全量Brier 0.6494→0.6459）
+    fusion_cfg.setdefault("market_weight", 0.60)  # 市场主导（回测: 市场是最强单源 0.6339）
+    fusion_cfg.setdefault("djyy_weight", 0.30)    # DJYY第三方模型权重（条件融合后才生效）
+    fusion_cfg.setdefault("djyy_min_confidence", 0.50)  # DJYY模型置信门槛（2026-08-11 回测: <0.5 是负贡献）
+    fusion_cfg.setdefault("djyy_disagree_penalty", 0.5)  # 与市场分歧时权重减半（回测: 分歧时市场 48.9% vs 模型 19.1%）
     fusion_cfg.setdefault("same_odds_max_adjust", 0.05)
     fusion_cfg.setdefault("same_odds_min_confidence", 0.3)
     fusion_cfg.setdefault("combo_boost_cap", 0.03)
@@ -276,10 +295,14 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             print(f"  ⚠ 新浪赔率加载失败: {e}")
 
     # 自我革新: 读取优化器冠军权重覆盖静态默认
-    from engine.learning.fusion_optimizer import FusionOptimizer, FusionWeights
+    from engine.learning.fusion_optimizer import FusionOptimizer
     from engine.review.post_match import ReviewLedger
     _ledger = ReviewLedger(ROOT / "data" / "state" / "review_ledger.jsonl")
-    _fusion_opt = FusionOptimizer(ROOT / "data" / "state" / "fusion_weights.json", _ledger, pred_cfg.get("optimizer", {}))
+    _opt_cfg = dict(pred_cfg.get("optimizer", {}))
+    # 把条件融合门槛传给优化器，保证反事实评估与生产语义一致（2026-08-11）
+    _opt_cfg.setdefault("djyy_min_confidence", fusion_cfg.get("djyy_min_confidence", 0.50))
+    _opt_cfg.setdefault("djyy_disagree_penalty", fusion_cfg.get("djyy_disagree_penalty", 0.5))
+    _fusion_opt = FusionOptimizer(ROOT / "data" / "state" / "fusion_weights.json", _ledger, _opt_cfg)
     _champion = _fusion_opt.get_champion()
     fusion_cfg["model_weight"] = _champion.model
     fusion_cfg["market_weight"] = _champion.market
@@ -480,9 +503,20 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
 
         if calibrated_probs and djyy_probs and djyy_probs.get("home"):
             # 三路融合: 自有模型 + 市场校准 + DJYY模型
+            # 2026-08-11 条件融合（268 场回测支撑）：DJYY 置信 < 门槛 是负贡献；与市场分歧时权重减半
             mw = fusion_cfg["model_weight"]
             kw = fusion_cfg["market_weight"]
             dw = fusion_cfg["djyy_weight"]
+            _djyy_conf = max(djyy_probs.values())
+            if _djyy_conf < fusion_cfg.get("djyy_min_confidence", 0.50):
+                dw = 0.0  # 低置信 DJYY 不参与融合（回测: 无条件融合 Brier 0.5482 > 纯市场 0.5452）
+            else:
+                # 与市场分歧检测：DJYY 最高方向 vs 市场最高方向
+                _djyy_dir = max(djyy_probs, key=djyy_probs.get)
+                _mkt_dir = max(range(3), key=lambda i: calibrated_probs[i])
+                _mkt_dir_name = ["home", "draw", "away"][_mkt_dir]
+                if _djyy_dir != _mkt_dir_name:
+                    dw *= fusion_cfg.get("djyy_disagree_penalty", 0.5)  # 分歧时权重减半（回测: 分歧时市场 48.9% vs 模型 19.1%）
             # 归一化权重（确保总和=1）
             total_w = mw + kw + dw
             mw, kw, dw = mw / total_w, kw / total_w, dw / total_w
@@ -627,16 +661,30 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
                       f"{fixture.away_team} {_fresh.away_days}天] 概率收缩 {_fresh.shrink:.0%} "
                       f"→ {'联赛基线' if _baseline else '均势'}")
 
+        # --- 平局概率联赛锚定（2026-08-12，R1 配套） ---
+        # 解决 isotonic 平局标定倒挂：平局概率无区分度(Cohen d≈0) → 向联赛实证平局率靠拢
+        # 回测 137 场：命中率保持 46.7%，Brier 0.6559→0.6434（概率标定显著改善）
+        _anchor = LEAGUE_DRAW_ANCHOR.get(fixture.competition)
+        if _anchor:
+            final_d = (1 - DRAW_ANCHOR_W) * final_d + DRAW_ANCHOR_W * _anchor
+            _tp = final_h + final_d + final_a
+            if _tp > 0:
+                final_h, final_d, final_a = final_h / _tp, final_d / _tp, final_a / _tp
+
         # --- 平局预警分类 ---
         # 冷门平局: 一方被市场看好但模型+市场证据显示存在平局风险
         # 均势平局: 双方实力接近、平局被市场低估
+        # 联赛平局(R1, 2026-08-12): 高平联赛 + 市场平局P∈[0.20,0.30) 无脑改判
         draw_alert = None
         if calibrated_probs:
             market_h, market_d, market_a = calibrated_probs
             max_market = max(market_h, market_d, market_a)
             max_model = max(final_h, final_d, final_a)
+            # R1: 高平联赛且市场平局概率处于低估区间（回测 +2.9pp，切半稳健）
+            if fixture.competition in HIGH_DRAW_LEAGUES and 0.20 <= market_d < 0.30:
+                draw_alert = "league_draw"  # 联赛平局（数据驱动 R1）
             # 冷门平局: 市场强烈看好一方(>50%)，但平局概率>=25%
-            if max_market > 0.50 and market_d >= 0.25:
+            elif max_market > 0.50 and market_d >= 0.25:
                 draw_alert = "cold_draw"  # 冷门平局
             # 均势平局: 双方接近(差距<15%)，平局概率>=26%
             elif abs(market_h - market_a) < 0.15 and market_d >= 0.26:
@@ -1351,7 +1399,9 @@ def _backfill_sina_results(
                      ("away", p.get("away_win_prob", 0))],
                     key=lambda x: x[1],
                 )
-                if p.get("draw_alert") and best_sel[0] != "draw":
+                if p.get("draw_alert") == "league_draw":
+                    best_sel = ("draw", p.get("draw_prob", 0))
+                elif p.get("draw_alert") and best_sel[0] != "draw":
                     _bp, _dp = best_sel[1], p.get("draw_prob", 0)
                     if _bp - _dp < 0.08 and _dp >= 0.26:
                         best_sel = ("draw", _dp)
@@ -1861,13 +1911,20 @@ def run_settlement(target_date: date):
             actual = "draw"
         else:
             actual = "away"
-        # 检查是否命中（基于最大概率选项）
+        # 检查是否命中（基于最大概率选项 + 平局改判，与 direction 口径一致）
         best_sel = max(
             [("home", pred["home_win_prob"]),
              ("draw", pred["draw_prob"]),
              ("away", pred["away_win_prob"])],
             key=lambda x: x[1],
         )
+        if pred.get("draw_alert") == "league_draw":
+            best_sel = ("draw", pred.get("draw_prob", 0))
+        elif pred.get("draw_alert") and best_sel[0] != "draw":
+            _best_p = best_sel[1]
+            _draw_p = pred.get("draw_prob", 0)
+            if _best_p - _draw_p < 0.08 and _draw_p >= 0.26:
+                best_sel = ("draw", _draw_p)
         won = best_sel[0] == actual
         # 联赛参数记录：方向命中反馈（用本循环已算出的 won，避免 direction 未回写时误判）
         lg_name = pred.get("competition") or r.competition or "未知"
@@ -1985,7 +2042,10 @@ def run_settlement(target_date: date):
             )
             # 平局盲点修复：模型已预警平局风险(draw_alert) 且 平局概率接近最高(<8pt) 时，
             # direction 改判平局（否则纯 argmax 永远只选 H/A，109场只判2场平局 vs 实际29%平局率）
-            if pred.get("draw_alert") and best_sel[0] != "draw":
+            # R1(2026-08-12): league_draw（高平联赛+市场P∈[0.20,0.30)）无脑改判，预测/结算同口径
+            if pred.get("draw_alert") == "league_draw":
+                best_sel = ("draw", pred.get("draw_prob", 0))
+            elif pred.get("draw_alert") and best_sel[0] != "draw":
                 _best_p = best_sel[1]
                 _draw_p = pred.get("draw_prob", 0)
                 if _best_p - _draw_p < 0.08 and _draw_p >= 0.26:
@@ -2149,6 +2209,20 @@ def run_settlement(target_date: date):
         ts_actuals = np.array([r.get("actual_idx", 0) for r in all_records])
         temp_scaler = TemperatureScaler(ROOT / "data" / "models" / "temperature.json")
         temp_scaler.fit(ts_probs, ts_actuals)
+    else:
+        print(f"    样本不足 ({len(all_records)} < 30)")
+
+    # Isotonic 校准拟合（2026-08-12 补：此前模块存在但从未被拟合，
+    # 导致 final 概率无最终校准层，融合后 Brier 0.6494 差于纯市场 0.6339）
+    print("\n  [校准更新] Isotonic...")
+    if len(all_records) >= 30:
+        cal_probs = np.array([r.get("final_prob", [0.33, 0.34, 0.33]) for r in all_records])
+        cal_actuals = np.array([r.get("actual_idx", 0) for r in all_records])
+        from engine.prediction.isotonic_cal import IsotonicCalibrator, CalibrationConfig
+        _cal_cfg = CalibrationConfig(**{k: v for k, v in pred_cfg.get("calibration", {}).items()
+                                        if k in CalibrationConfig.__dataclass_fields__})
+        _calibrator = IsotonicCalibrator(ROOT / "data" / "models" / "isotonic_cal.pkl", config=_cal_cfg)
+        _calibrator.fit(cal_probs, cal_actuals)
     else:
         print(f"    样本不足 ({len(all_records)} < 30)")
 

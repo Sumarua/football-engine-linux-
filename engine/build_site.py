@@ -163,6 +163,169 @@ def build_site():
         print(f"[build_site] ⚠ 每日简报生成跳过: {e}")
     print(f"[build_site] 仪表盘已生成: {len(all_dates)} 个日期页面")
 
+    # 公开 Track Record 页（2026-08-12 P2：历史表现透明可查，随构建自动更新）
+    try:
+        _tr = _render_track_record(ROOT / "data" / "state", web_dir)
+        print(f"[build_site] 📈 Track Record 页已生成: {_tr}")
+    except Exception as e:
+        print(f"[build_site] ⚠ Track Record 生成跳过: {e}")
+
+
+def _render_track_record(state_dir: Path, web_dir: Path) -> str:
+    """生成公开 Track Record 页（简洁大气，深色同主站风格）"""
+    ledger = []
+    lp = state_dir / "review_ledger.jsonl"
+    if lp.exists():
+        for _line in lp.read_text(encoding="utf-8").strip().split("\n"):
+            if _line.strip():
+                try:
+                    ledger.append(json.loads(_line))
+                except Exception:
+                    continue
+    at = _load_json(state_dir / "accuracy_trend.json", {})
+    wb = _load_json(state_dir / "weekly_backtest.json", {})
+
+    n = len(ledger)
+    hits = sum(1 for r in ledger if r.get("hit"))
+    hit_rate = hits / n if n else 0
+    draws_actual = sum(1 for r in ledger if r.get("actual_idx") == 1)
+    draws_hit = sum(1 for r in ledger if r.get("hit") and r.get("actual_idx") == 1)
+
+    from collections import defaultdict
+    by_day = defaultdict(lambda: [0, 0])
+    for r in ledger:
+        by_day[r.get("date", "")][1] += 1
+        if r.get("hit"):
+            by_day[r.get("date", "")][0] += 1
+    day_rows = ""
+    for d in sorted(by_day.keys())[-14:]:
+        h, t = by_day[d]
+        _r = h / t if t else 0
+        _c = "var(--green)" if _r >= 0.5 else ("var(--amber)" if _r >= 0.4 else "var(--red)")
+        day_rows += f'<tr><td>{d}</td><td>{t}</td><td>{h}</td><td style="color:{_c};font-weight:700">{_r*100:.0f}%</td></tr>'
+
+    by_league = defaultdict(lambda: [0, 0, 0])
+    for r in ledger:
+        lg = r.get("league") or "未知"
+        by_league[lg][0] += 1
+        if r.get("hit"):
+            by_league[lg][1] += 1
+        if r.get("actual_idx") == 1:
+            by_league[lg][2] += 1
+    lg_rows = ""
+    for lg, (t, h, d) in sorted(by_league.items(), key=lambda x: -x[1][0]):
+        if t < 5:
+            continue
+        _r = h / t
+        _dr = d / t
+        _c = "var(--green)" if _r >= 0.5 else ("var(--amber)" if _r >= 0.4 else "var(--red)")
+        lg_rows += (f'<tr><td>{lg}</td><td>{t}</td>'
+                    f'<td style="color:{_c};font-weight:700">{_r*100:.0f}%</td>'
+                    f'<td>{_dr*100:.0f}%</td></tr>')
+
+    _wf = wb.get("steps", {}).get("walk_forward", {})
+    _sd = wb.get("steps", {}).get("shrinkage_dc", {})
+    _ov = at.get("overall", {})
+
+    def _brier_cell(v):
+        return f'<td style="font-weight:700">{v:.4f}</td>' if v is not None else "<td>—</td>"
+
+    _ov_b = _ov.get("brier")
+    _ov_m = _ov.get("brier_market")
+    _ov_mdl = _ov.get("brier_model")
+    _sd_b = _sd.get("shrinkage_dc_brier")
+    _sd_f = _sd.get("final_brier")
+
+    html = f'''<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Track Record · 竞彩分析引擎公开战绩</title>
+<style>
+:root {{
+  --bg:#0a0e13; --surface:#111820; --surface2:#1a2332; --border:#263344;
+  --text:#e8edf4; --text-secondary:#94a8c0; --dim:#6b8299;
+  --blue:#3b82f6; --red:#ef4444; --green:#22c55e; --amber:#f59e0b; --cyan:#06b6d4;
+  --radius:12px; --radius-sm:8px;
+}}
+* {{ margin:0; padding:0; box-sizing:border-box; }}
+body {{ background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.6; }}
+.page {{ max-width:1080px; margin:0 auto; padding:28px 20px 60px; }}
+.header {{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:8px 0 20px; border-bottom:1px solid var(--border); margin-bottom:28px; }}
+.header h1 {{ font-size:1.5rem; font-weight:800; letter-spacing:0.02em; }}
+.header .sub {{ color:var(--dim); font-size:0.78rem; margin-top:4px; }}
+.nav a {{ color:var(--blue); text-decoration:none; font-size:0.8rem; }}
+.nav a:hover {{ text-decoration:underline; }}
+.kpis {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:32px; }}
+.kpi {{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px; }}
+.kpi .label {{ color:var(--dim); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; }}
+.kpi .value {{ font-size:1.6rem; font-weight:800; margin-top:6px; }}
+.kpi .value.green {{ color:var(--green); }} .kpi .value.amber {{ color:var(--amber); }} .kpi .value.red {{ color:var(--red); }} .kpi .value.blue {{ color:var(--blue); }}
+.section-title {{ font-size:0.95rem; font-weight:800; margin:28px 0 10px; color:var(--text); }}
+.card {{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:12px; }}
+table {{ width:100%; border-collapse:collapse; font-size:0.82rem; }}
+th {{ text-align:left; color:var(--dim); font-weight:600; padding:8px 10px; border-bottom:1px solid var(--border); }}
+td {{ padding:8px 10px; border-bottom:1px solid #1e2a3a; }}
+tr:last-child td {{ border-bottom:none; }}
+.note {{ color:var(--dim); font-size:0.72rem; margin-top:8px; }}
+.footer {{ margin-top:44px; padding-top:16px; border-top:1px solid var(--border); color:var(--dim); font-size:0.72rem; }}
+</style></head><body>
+<div class="page">
+  <div class="header">
+    <div>
+      <h1>竞彩分析引擎 · Track Record</h1>
+      <div class="sub">公开战绩 · 自动生成于 {at.get("generated_at", "")[:16]} · 数据截至 {at.get("date_range", "")}</div>
+    </div>
+    <div class="nav"><a href="index.html">← 返回今日分析</a> &nbsp;|&nbsp; <a href="https://github.com/wlrwx/football-engine">GitHub</a></div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">复盘场次</div><div class="value">{n}</div></div>
+    <div class="kpi"><div class="label">方向命中率</div><div class="value {'green' if hit_rate>=0.5 else ('amber' if hit_rate>=0.4 else 'red')}">{hit_rate*100:.1f}%</div></div>
+    <div class="kpi"><div class="label">近7天命中率</div><div class="value {'green' if (at.get('rolling7') or {}).get('hit_rate',0)>=0.5 else 'amber'}">{(at.get('rolling7') or {}).get('hit_rate',0)*100:.0f}%</div></div>
+    <div class="kpi"><div class="label">实际平局</div><div class="value amber">{draws_actual}</div></div>
+    <div class="kpi"><div class="label">平局预测命中</div><div class="value blue">{draws_hit}</div></div>
+  </div>
+
+  <div class="section-title">概率质量（Brier 越低越好）</div>
+  <div class="card"><table>
+    <tr><th>口径</th><th>Brier</th></tr>
+    <tr><td>融合 final（生产）</td>{_brier_cell(_ov_b or _sd_f)}</tr>
+    <tr><td>市场基准（去水）</td>{_brier_cell(_ov_m)}</tr>
+    <tr><td>模型原始</td>{_brier_cell(_ov_mdl)}</tr>
+    <tr><td>shrinkage_dc（挑战者）</td>{_brier_cell(_sd_b)}</tr>
+  </table></div>
+
+  <div class="section-title">每日命中率（近14天）</div>
+  <div class="card"><table>
+    <tr><th>日期</th><th>场次</th><th>命中</th><th>命中率</th></tr>
+    {day_rows}
+  </table></div>
+
+  <div class="section-title">联赛表现（样本≥5）</div>
+  <div class="card"><table>
+    <tr><th>联赛</th><th>场次</th><th>命中率</th><th>实际平局率</th></tr>
+    {lg_rows}
+  </table></div>
+
+  <div class="section-title">方法论</div>
+  <div class="card" style="font-size:0.8rem;color:var(--text-secondary)">
+    Dixon-Coles + Monte Carlo 双模型 &rarr; 四源赔率（体彩/新浪/500万/DJYY）Shin 去水
+    &rarr; 市场主导融合（模型10% + 市场60% + DJYY30%，条件融合：DJYY置信&lt;0.5不参与、与市场分歧减半）
+    &rarr; Isotonic + Temperature 校准 &rarr; 平局盲点修复（高平联赛改判 + 联赛平局率锚定）。
+    <div class="note">全程 GitHub Actions 自动运行（每日 11:15/17:15 预测、08:00 结算），零人工干预。
+    历史胜平负概率与结算结果全部可核查（账本 review_ledger.jsonl，{n}+ 场）。</div>
+  </div>
+
+  <div class="footer">
+    竞彩足球概率分析系统 · 数据源：体彩官方/新浪/500万/DJYY · 仅供研究，理性购彩 ·
+    <a href="https://github.com/wlrwx/football-engine" style="color:var(--blue)">源代码</a>
+  </div>
+</div>
+</body></html>'''
+    out = web_dir / "track-record.html"
+    out.write_text(html, encoding="utf-8")
+    return out.name
+
 
 def _load_all_results(daily_root: Path, all_dates: list) -> dict:
     """扫描所有日期目录，构建全局 results 索引（按队名 + match_id）"""
@@ -533,6 +696,70 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
   </div>'''
     except Exception as e:
         print(f"⚠ 水位监控区块跳过: {e}")
+
+    # 时点分桶 + shrinkage_dc 对比（2026-08-12：数据在 weekly_backtest.json，渲染进页面）
+    backtest_html = ""
+    try:
+        _wb_path = ROOT / "data" / "state" / "weekly_backtest.json"
+        _wb = json.loads(_wb_path.read_text(encoding="utf-8")) if _wb_path.exists() else {}
+        _steps = _wb.get("steps") or {}
+        _parts = []
+
+        # --- 时点分桶 ---
+        _hor = _steps.get("horizon_eval") or {}
+        _buckets = _hor.get("buckets") or []
+        if _buckets:
+            _bh = _hor.get("best_horizon") or ""
+            _rows = ""
+            for _b in _buckets:
+                _n = _b.get("n", 0)
+                _brier = _b.get("brier") or 0
+                _hit = _b.get("hit_rate") or 0
+                _ev = _b.get("total_ev") or 0
+                _ev_c = "var(--green)" if _ev > 0 else ("var(--red)" if _ev < 0 else "var(--dim)")
+                _rows += (f'<tr><td>{_b.get("label", _b.get("horizon", ""))}</td>'
+                          f'<td>{_n}</td><td>{_brier:.4f}</td><td>{_hit*100:.1f}%</td>'
+                          f'<td style="color:{_ev_c};font-weight:700">{_ev:+.2f}u</td></tr>')
+            _parts.append(f'''
+  <div class="section-title">预测时点分桶（提前多久预测最准）</div>
+  <div style="padding:6px 2px;font-size:0.68rem;color:var(--dim)">
+    按预测截点距开赛时长分桶评估。历史账本无 as_of 字段，样本从新预测起累积
+    （约 2-4 周出有效样本）。最佳时点: <b>{_bh or "待积累"}</b>。
+  </div>
+  <div style="overflow-x:auto"><table class="edge-table">
+    <tr><th>时点</th><th>场次</th><th>Brier</th><th>命中率</th><th>总EV</th></tr>
+    {_rows}
+  </table></div>''')
+
+        # --- shrinkage_dc 对比 ---
+        _sd = _steps.get("shrinkage_dc") or {}
+        _n_ev = _sd.get("n_evaluated", 0)
+        if _n_ev:
+            _verdict = _sd.get("verdict", "hold")
+            _v_color = "var(--amber)" if _verdict == "hold" else ("var(--green)" if _verdict == "promote" else "var(--red)")
+            def _brier_row(_label, _key):
+                _v = _sd.get(_key)
+                if _v is None:
+                    return ""
+                return f'<tr><td>{_label}</td><td style="font-weight:700">{_v:.4f}</td></tr>'
+            _parts.append(f'''
+  <div class="section-title">Dixon-Coles 分层收缩挑战者（vs 生产模型）</div>
+  <div style="padding:6px 2px;font-size:0.68rem;color:var(--dim)">
+    滚动拟合（只用评估日之前历史，防泄漏）对比 Brier，n={_n_ev} 场。
+    Verdict: <b style="color:{_v_color}">{_verdict}</b> —— 只做 challenger 跟踪，不上位。
+  </div>
+  <div style="overflow-x:auto"><table class="edge-table">
+    <tr><th>模型</th><th>Brier</th></tr>
+    {_brier_row("shrinkage_dc（挑战者）", "shrinkage_dc_brier")}
+    {_brier_row("生产 final（现役）", "final_brier")}
+    {_brier_row("模型原始（未融合）", "model_raw_brier")}
+    {_brier_row("市场基准（去水）", "market_brier")}
+  </table></div>''')
+
+        if _parts:
+            backtest_html = "\n".join(_parts)
+    except Exception as e:
+        print(f"⚠ 时点分桶/shrinkage_dc 区块跳过: {e}")
 
     # 渲染比赛卡片（按联赛分组）
     cards = ""
@@ -1320,6 +1547,7 @@ body {{
       <div class="sub">{today} &middot; DC+MC &rarr; Shin去水 &rarr; 逆向赔率 &rarr; 四源融合 &rarr; LGBM &rarr; Isotonic校准 &rarr; Wilson信任</div>
     </div>
     <div class="header-right">
+      <a href="track-record.html" style="color:var(--dim);text-decoration:none;font-size:0.75rem;padding:5px 10px;border:1px solid var(--border);border-radius:6px;transition:all .2s">📈 Track Record</a>
       {health_badge}
     </div>
   </div>
@@ -1386,13 +1614,16 @@ body {{
     {score_trend_html}
     {odds_series_html}
 
+    <!-- BACKTEST: 时点分桶 + shrinkage_dc 对比 (2026-08-12) -->
+    {backtest_html}
+
     <!-- SYSTEM STATUS -->
     {system_html}
-  </div>
+    </div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="chain">DC(60%) + MC-50K(40%) &rarr; Shin去水 &rarr; 逆向赔率 &rarr; 同赔历史 &rarr; 融合(模型60% + 市场25% + DJYY15%) &rarr; LGBM(10%) &rarr; Isotonic校准 &rarr; Wilson信任</div>
+    <!-- FOOTER -->
+    <div class="footer">
+    <div class="chain">DC(60%) + MC-50K(40%) &rarr; Shin去水 &rarr; 逆向赔率 &rarr; 同赔历史 &rarr; 融合(模型10% + 市场60% + DJYY30%) &rarr; LGBM(10%) &rarr; Isotonic校准 &rarr; Wilson信任</div>
     <p>数据源: 体彩 / 新浪 / 500万 / DJYY &middot; 零服务器 GitHub Actions &middot; <a href="https://github.com/wlrwx/football-engine">源代码</a></p>
     <p class="disclaimer">仅供研究学习，不构成任何投注建议。模型输出为概率估计，不保证准确性。</p>
   </div>

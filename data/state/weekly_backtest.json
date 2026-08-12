@@ -1,17 +1,82 @@
 {
-  "date": "2026-08-09",
+  "date": "2026-08-12",
   "steps": {
     "walk_forward": {
-      "total_matches": 174
+      "total_matches": 183
     },
     "fusion_optimizer": {
       "decision": "hold",
       "champion": {
-        "model": 0.26,
-        "market": 0.4,
-        "djyy": 0.34
+        "model": 0.1,
+        "market": 0.6,
+        "djyy": 0.3
       },
       "message": null
+    },
+    "horizon_eval": {
+      "best_horizon": "",
+      "best_metric": "",
+      "buckets": [
+        {
+          "horizon": "t24h",
+          "label": "开赛前24小时",
+          "n": 0,
+          "brier": 0.0,
+          "rps": 0.0,
+          "log_loss": 0.0,
+          "hit_rate": 0.0,
+          "avg_ev": 0.0,
+          "total_ev": 0.0
+        },
+        {
+          "horizon": "t6h",
+          "label": "开赛前6小时",
+          "n": 0,
+          "brier": 0.0,
+          "rps": 0.0,
+          "log_loss": 0.0,
+          "hit_rate": 0.0,
+          "avg_ev": 0.0,
+          "total_ev": 0.0
+        },
+        {
+          "horizon": "t90m",
+          "label": "开赛前90分钟",
+          "n": 0,
+          "brier": 0.0,
+          "rps": 0.0,
+          "log_loss": 0.0,
+          "hit_rate": 0.0,
+          "avg_ev": 0.0,
+          "total_ev": 0.0
+        },
+        {
+          "horizon": "closing",
+          "label": "收盘市场",
+          "n": 0,
+          "brier": 0.0,
+          "rps": 0.0,
+          "log_loss": 0.0,
+          "hit_rate": 0.0,
+          "avg_ev": 0.0,
+          "total_ev": 0.0
+        }
+      ]
+    },
+    "shrinkage_dc": {
+      "n_evaluated": 144,
+      "skipped_dates": 4,
+      "shrinkage_dc_brier": 0.7408,
+      "final_brier": 0.6521,
+      "model_raw_brier": 0.6845,
+      "market_brier": 0.633,
+      "verdict": "hold",
+      "snapshot": {
+        "n_matches": 172,
+        "teams": 207,
+        "rho": -0.2,
+        "fitted_at": "2026-08-10"
+      }
     }
   }
 }

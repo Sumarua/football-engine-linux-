@@ -9,7 +9,7 @@
     "rest_weight": 0.035,
     "home_adv_weight": 1.0,
     "market_blend_weight": 0.28,
-    "rho": -0.2037,
+    "rho": -0.0897,
     "max_goals": 10,
     "simulations": 50000,
     "time_decay_anchors": [
@@ -48,14 +48,16 @@
     "monte_carlo_weight": 0.4
   },
   "fusion": {
-    "model_weight": 0.4,
-    "market_weight": 0.35,
-    "djyy_weight": 0.25,
+    "model_weight": 0.1,
+    "market_weight": 0.6,
+    "djyy_weight": 0.3,
     "lgbm_weight": 0.1,
     "same_odds_max_adjust": 0.05,
     "same_odds_min_confidence": 0.3,
     "combo_boost_cap": 0.03,
-    "trust_shrink_enabled": true
+    "trust_shrink_enabled": true,
+    "djyy_min_confidence": 0.5,
+    "djyy_disagree_penalty": 0.5
   },
   "lgbm": {
     "n_estimators": 300,
