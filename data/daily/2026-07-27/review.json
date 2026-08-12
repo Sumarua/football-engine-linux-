@@ -51,8 +51,46 @@
       "avg_brier": 0.9161
     }
   },
+  "score_stats": {
+    "top1": 0,
+    "top3": 0,
+    "top5": 0,
+    "top8": 0,
+    "any": 1
+  },
+  "score_rank_hist": {
+    "9": 1
+  },
+  "score_source_stats": {
+    "djyy": {
+      "n": 0,
+      "hits": 0
+    },
+    "mc": {
+      "n": 0,
+      "hits": 0
+    }
+  },
+  "market_signal_stats": {
+    "n": 0,
+    "hits": 0
+  },
+  "layered": {
+    "log_loss_final": 1.0265,
+    "goal_framework": {
+      "n": 2,
+      "hits": 1
+    },
+    "prob_bands": {
+      "50-60%": {
+        "n": 2,
+        "hit_rate": 0.5
+      }
+    },
+    "freshness_groups": {}
+  },
   "biases": [],
   "total_pnl": 0,
-  "generated_at": "2026-08-05T03:34:58.093140",
-  "sha256": "b600dc2d77159e0af73e37dd197904be"
+  "generated_at": "2026-08-12T17:47:06.616023",
+  "sha256": "fcba24f42e340e0f9ab3595140f55ae6"
 }

@@ -116,6 +116,28 @@
     "n": 0,
     "hits": 0
   },
+  "layered": {
+    "log_loss_final": 1.2343,
+    "goal_framework": {
+      "n": 16,
+      "hits": 10
+    },
+    "prob_bands": {
+      "40-50%": {
+        "n": 8,
+        "hit_rate": 0.5
+      },
+      "50-60%": {
+        "n": 5,
+        "hit_rate": 0.4
+      },
+      "60%+": {
+        "n": 3,
+        "hit_rate": 0.0
+      }
+    },
+    "freshness_groups": {}
+  },
   "biases": [
     {
       "dimension": "league",
@@ -141,6 +163,6 @@
     }
   ],
   "total_pnl": 0,
-  "generated_at": "2026-08-05T15:02:42.863844",
-  "sha256": "9b98134ac0582d485ab2178d99ed7ca0"
+  "generated_at": "2026-08-12T17:47:06.630608",
+  "sha256": "62901d46f437641ac48d3c003475144d"
 }

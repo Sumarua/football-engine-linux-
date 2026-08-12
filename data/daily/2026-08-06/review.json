@@ -24,37 +24,37 @@
     }
   },
   "by_confidence_tier": {
-    "mid": {
-      "n": 2,
-      "hit_rate": 0.5,
-      "wilson_lower": 0.0945,
-      "avg_brier": 0.5577
-    },
     "low": {
       "n": 3,
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
       "avg_brier": 0.719
+    },
+    "mid": {
+      "n": 2,
+      "hit_rate": 0.5,
+      "wilson_lower": 0.0945,
+      "avg_brier": 0.5577
     }
   },
   "by_odds_band": {
+    "3.0+": {
+      "n": 2,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
+      "avg_brier": 0.7134
+    },
     "1.0-1.5": {
       "n": 2,
       "hit_rate": 0.5,
       "wilson_lower": 0.0945,
       "avg_brier": 0.5577
     },
-    "3.0+": {
+    "2.0-3.0": {
       "n": 1,
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
-      "avg_brier": 0.731
-    },
-    "2.0-3.0": {
-      "n": 2,
-      "hit_rate": 0.0,
-      "wilson_lower": 0.0,
-      "avg_brier": 0.713
+      "avg_brier": 0.7302
     }
   },
   "score_stats": {
@@ -111,6 +111,6 @@
   },
   "biases": [],
   "total_pnl": 0.0,
-  "generated_at": "2026-08-10T15:18:12.320694",
-  "sha256": "2dcf5ea10de632e7bbeea9dc4d9ad345"
+  "generated_at": "2026-08-12T17:47:06.645998",
+  "sha256": "6c65017f5418a8708dbbd737e4744e6c"
 }

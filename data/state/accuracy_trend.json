@@ -1,24 +1,36 @@
 {
   "generated_at": "2026-08-12",
-  "total_matches": 193,
+  "total_matches": 194,
   "date_range": [
-    "2026-07-20",
+    "2026-07-19",
     "2026-08-11"
   ],
   "overall": {
-    "hit_rate": 0.4404,
-    "brier_final": 0.6547,
-    "brier_model": 0.6927,
-    "brier_market": 0.4481,
-    "brier_djyy": 0.3287
+    "hit_rate": 0.4278,
+    "brier_final": 0.654,
+    "brier_model": 0.6892,
+    "brier_market": 0.4458,
+    "brier_djyy": 0.327
   },
   "daily": [
+    {
+      "date": "2026-07-19",
+      "n": 1,
+      "hits": 1,
+      "hit_rate": 1.0,
+      "cum_hit_rate": 1.0,
+      "brier_final": 0.528,
+      "brier_model": null,
+      "brier_market": null,
+      "brier_djyy": null,
+      "pnl": 0.0
+    },
     {
       "date": "2026-07-20",
       "n": 4,
       "hits": 2,
       "hit_rate": 0.5,
-      "cum_hit_rate": 0.5,
+      "cum_hit_rate": 0.6,
       "brier_final": 0.7728,
       "brier_model": 0.8815,
       "brier_market": 0.6921,
@@ -30,7 +42,7 @@
       "n": 7,
       "hits": 3,
       "hit_rate": 0.4286,
-      "cum_hit_rate": 0.4545,
+      "cum_hit_rate": 0.5,
       "brier_final": 0.5277,
       "brier_model": 0.5249,
       "brier_market": null,
@@ -42,7 +54,7 @@
       "n": 10,
       "hits": 7,
       "hit_rate": 0.7,
-      "cum_hit_rate": 0.5714,
+      "cum_hit_rate": 0.5909,
       "brier_final": 0.4523,
       "brier_model": 0.4979,
       "brier_market": 0.4229,
@@ -54,7 +66,7 @@
       "n": 7,
       "hits": 2,
       "hit_rate": 0.2857,
-      "cum_hit_rate": 0.5,
+      "cum_hit_rate": 0.5172,
       "brier_final": 0.8118,
       "brier_model": 0.9087,
       "brier_market": 0.7707,
@@ -66,7 +78,7 @@
       "n": 2,
       "hits": 2,
       "hit_rate": 1.0,
-      "cum_hit_rate": 0.5333,
+      "cum_hit_rate": 0.5484,
       "brier_final": 0.4042,
       "brier_model": 0.3542,
       "brier_market": 0.5041,
@@ -78,7 +90,7 @@
       "n": 11,
       "hits": 4,
       "hit_rate": 0.3636,
-      "cum_hit_rate": 0.4878,
+      "cum_hit_rate": 0.5,
       "brier_final": 0.7124,
       "brier_model": 0.6908,
       "brier_market": 0.7472,
@@ -90,7 +102,7 @@
       "n": 18,
       "hits": 9,
       "hit_rate": 0.5,
-      "cum_hit_rate": 0.4915,
+      "cum_hit_rate": 0.5,
       "brier_final": 0.6397,
       "brier_model": 0.6465,
       "brier_market": 0.9869,
@@ -102,7 +114,7 @@
       "n": 2,
       "hits": 1,
       "hit_rate": 0.5,
-      "cum_hit_rate": 0.4918,
+      "cum_hit_rate": 0.5,
       "brier_final": 0.6081,
       "brier_model": 0.6468,
       "brier_market": 0.5298,
@@ -114,7 +126,7 @@
       "n": 2,
       "hits": 1,
       "hit_rate": 0.5,
-      "cum_hit_rate": 0.4921,
+      "cum_hit_rate": 0.5,
       "brier_final": 0.5405,
       "brier_model": 0.5161,
       "brier_market": 0.6649,
@@ -126,7 +138,7 @@
       "n": 2,
       "hits": 0,
       "hit_rate": 0.0,
-      "cum_hit_rate": 0.4769,
+      "cum_hit_rate": 0.4848,
       "brier_final": 0.922,
       "brier_model": 1.0376,
       "brier_market": 0.7378,
@@ -138,7 +150,7 @@
       "n": 6,
       "hits": 2,
       "hit_rate": 0.3333,
-      "cum_hit_rate": 0.4648,
+      "cum_hit_rate": 0.4722,
       "brier_final": 0.6954,
       "brier_model": 0.8136,
       "brier_market": 0.5771,
@@ -150,7 +162,7 @@
       "n": 3,
       "hits": 1,
       "hit_rate": 0.3333,
-      "cum_hit_rate": 0.4595,
+      "cum_hit_rate": 0.4667,
       "brier_final": 0.7287,
       "brier_model": 0.8428,
       "brier_market": 0.7063,
@@ -162,7 +174,7 @@
       "n": 16,
       "hits": 6,
       "hit_rate": 0.375,
-      "cum_hit_rate": 0.4444,
+      "cum_hit_rate": 0.4505,
       "brier_final": 0.7569,
       "brier_model": 0.8218,
       "brier_market": 0.6537,
@@ -174,7 +186,7 @@
       "n": 14,
       "hits": 5,
       "hit_rate": 0.3571,
-      "cum_hit_rate": 0.4327,
+      "cum_hit_rate": 0.4381,
       "brier_final": 0.7392,
       "brier_model": 0.8107,
       "brier_market": 0.5802,
@@ -186,7 +198,7 @@
       "n": 4,
       "hits": 3,
       "hit_rate": 0.75,
-      "cum_hit_rate": 0.4444,
+      "cum_hit_rate": 0.4495,
       "brier_final": 0.4981,
       "brier_model": 0.5746,
       "brier_market": 0.3799,
@@ -198,7 +210,7 @@
       "n": 5,
       "hits": 1,
       "hit_rate": 0.2,
-      "cum_hit_rate": 0.4336,
+      "cum_hit_rate": 0.4386,
       "brier_final": 0.693,
       "brier_model": 0.7756,
       "brier_market": 0.8087,
@@ -210,7 +222,7 @@
       "n": 3,
       "hits": 2,
       "hit_rate": 0.6667,
-      "cum_hit_rate": 0.4397,
+      "cum_hit_rate": 0.4444,
       "brier_final": 0.6106,
       "brier_model": 0.733,
       "brier_market": 0.4555,
@@ -222,7 +234,7 @@
       "n": 5,
       "hits": 1,
       "hit_rate": 0.2,
-      "cum_hit_rate": 0.4298,
+      "cum_hit_rate": 0.4344,
       "brier_final": 0.6545,
       "brier_model": 0.6898,
       "brier_market": 0.8124,
@@ -234,7 +246,7 @@
       "n": 10,
       "hits": 5,
       "hit_rate": 0.5,
-      "cum_hit_rate": 0.4351,
+      "cum_hit_rate": 0.4394,
       "brier_final": 0.6218,
       "brier_model": 0.5784,
       "brier_market": 0.5938,
@@ -244,9 +256,9 @@
     {
       "date": "2026-08-08",
       "n": 25,
-      "hits": 14,
-      "hit_rate": 0.56,
-      "cum_hit_rate": 0.4551,
+      "hits": 12,
+      "hit_rate": 0.48,
+      "cum_hit_rate": 0.4459,
       "brier_final": 0.6175,
       "brier_model": 0.5982,
       "brier_market": 0.5707,
@@ -256,9 +268,9 @@
     {
       "date": "2026-08-09",
       "n": 24,
-      "hits": 8,
-      "hit_rate": 0.3333,
-      "cum_hit_rate": 0.4389,
+      "hits": 7,
+      "hit_rate": 0.2917,
+      "cum_hit_rate": 0.4254,
       "brier_final": 0.6405,
       "brier_model": 0.6804,
       "brier_market": 0.6057,
@@ -270,7 +282,7 @@
       "n": 3,
       "hits": 0,
       "hit_rate": 0.0,
-      "cum_hit_rate": 0.4317,
+      "cum_hit_rate": 0.4185,
       "brier_final": 0.8284,
       "brier_model": 1.0401,
       "brier_market": 1.0308,
@@ -282,7 +294,7 @@
       "n": 10,
       "hits": 6,
       "hit_rate": 0.6,
-      "cum_hit_rate": 0.4404,
+      "cum_hit_rate": 0.4278,
       "brier_final": 0.6165,
       "brier_model": 0.689,
       "brier_market": 0.5344,
@@ -292,7 +304,7 @@
   ],
   "rolling7": {
     "n": 80,
-    "hit_rate": 0.45,
+    "hit_rate": 0.4125,
     "brier_final": 0.6557,
     "pnl": -313.6
   },
@@ -302,7 +314,7 @@
     "brier_final": 0.719,
     "pnl": 0.0
   },
-  "verdict": "命中率提升 +9pt",
+  "verdict": "命中率提升 +5pt",
   "by_league": [
     {
       "layer": "挪超",
@@ -367,7 +379,7 @@
     {
       "layer": "葡超",
       "n": 9,
-      "hit_rate": 0.3333,
+      "hit_rate": 0.4444,
       "brier_final": 0.6718
     },
     {
@@ -379,7 +391,7 @@
     {
       "layer": "日职",
       "n": 5,
-      "hit_rate": 0.6,
+      "hit_rate": 0.4,
       "brier_final": 0.612
     },
     {
@@ -397,13 +409,13 @@
     {
       "layer": "韩职",
       "n": 3,
-      "hit_rate": 0.3333,
+      "hit_rate": 0.0,
       "brier_final": 0.7053
     },
     {
       "layer": "法乙",
       "n": 3,
-      "hit_rate": 0.3333,
+      "hit_rate": 0.0,
       "brier_final": 0.6963
     },
     {
@@ -415,7 +427,7 @@
     {
       "layer": "日乙",
       "n": 2,
-      "hit_rate": 1.0,
+      "hit_rate": 0.5,
       "brier_final": 0.5692
     },
     {
@@ -429,6 +441,12 @@
       "n": 1,
       "hit_rate": 0.0,
       "brier_final": 0.7675
+    },
+    {
+      "layer": "世界杯",
+      "n": 1,
+      "hit_rate": 1.0,
+      "brier_final": 0.528
     }
   ],
   "by_odds_band": [
@@ -439,35 +457,35 @@
       "brier_final": 0.693
     },
     {
-      "layer": "2.0-3.0",
-      "n": 57,
-      "hit_rate": 0.3684,
-      "brier_final": 0.6681
-    },
-    {
       "layer": "1.0-1.5",
       "n": 52,
       "hit_rate": 0.5962,
       "brier_final": 0.6045
     },
     {
+      "layer": "2.0-3.0",
+      "n": 46,
+      "hit_rate": 0.3478,
+      "brier_final": 0.6675
+    },
+    {
       "layer": "3.0+",
-      "n": 18,
-      "hit_rate": 0.3889,
-      "brier_final": 0.6166
+      "n": 30,
+      "hit_rate": 0.3333,
+      "brier_final": 0.6334
     }
   ],
   "by_conf_tier": [
     {
       "layer": "mid",
-      "n": 94,
-      "hit_rate": 0.5,
-      "brier_final": 0.6254
+      "n": 95,
+      "hit_rate": 0.5053,
+      "brier_final": 0.6244
     },
     {
       "layer": "low",
       "n": 56,
-      "hit_rate": 0.3571,
+      "hit_rate": 0.3036,
       "brier_final": 0.6582
     },
     {

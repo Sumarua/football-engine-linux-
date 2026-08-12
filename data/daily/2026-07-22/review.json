@@ -87,6 +87,61 @@
       "avg_brier": 0.6345
     }
   },
+  "score_stats": {
+    "top1": 0,
+    "top3": 3,
+    "top5": 3,
+    "top8": 7,
+    "any": 8
+  },
+  "score_rank_hist": {
+    "8": 1,
+    "2": 2,
+    "3": 1,
+    "6": 2,
+    "10": 1,
+    "7": 1
+  },
+  "score_source_stats": {
+    "djyy": {
+      "n": 0,
+      "hits": 0
+    },
+    "mc": {
+      "n": 0,
+      "hits": 0
+    }
+  },
+  "market_signal_stats": {
+    "n": 0,
+    "hits": 0
+  },
+  "layered": {
+    "log_loss_final": 0.7957,
+    "goal_framework": {
+      "n": 4,
+      "hits": 1
+    },
+    "prob_bands": {
+      "40-50%": {
+        "n": 3,
+        "hit_rate": 0.6667
+      },
+      "50-60%": {
+        "n": 2,
+        "hit_rate": 1.0
+      },
+      "60%+": {
+        "n": 2,
+        "hit_rate": 1.0
+      },
+      "<40%": {
+        "n": 3,
+        "hit_rate": 0.3333
+      }
+    },
+    "freshness_groups": {}
+  },
   "biases": [
     {
       "dimension": "outcome",
@@ -101,6 +156,6 @@
     }
   ],
   "total_pnl": 0,
-  "generated_at": "2026-08-05T11:08:21.756471",
-  "sha256": "2a0672b7f73a3868851882b3ab1436f8"
+  "generated_at": "2026-08-12T17:47:06.600841",
+  "sha256": "e98a7d2b529fafcd5e390cc740307ec3"
 }
