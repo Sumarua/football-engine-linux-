@@ -73,14 +73,33 @@ def load_config(name: str) -> dict:
     return {}
 
 
-# 高平局联赛名单（2026-08-12 账本实证：平局率>=40% 且 样本>=5）
-# 芬超40% 瑞典超60% 美职联55% 巴甲46% 葡超50% —— R1 平局改判规则的数据基础
+# 高平局联赛名单（2026-08-12 账本实证 + 2026-08-12 二次复核）
+# 入选标准：联赛整体平局率>=40% 且 R1 触发区间（市场平局P∈[0.20,0.30)）实际平局率>=40%
+# 账本实证（193场，别名已归一化）：美职联 55%(11场) / 巴甲 50%(14场) / 葡超 56%(9场) / 芬超 26%(19场，但触发区间 44%)
+# 瑞典超已移除（2026-08-12 复核）：合并瑞超后 23场仅30%，R1 触发区间仅 20%（10场2平）→ 无脑改判有害
+#   回测：含瑞典超 44.6% → 移除后 45.6%（+1.0pp），判平质量 45% → 53%
 # 注意：此名单为静态配置，随账本增长需人工复核更新（防止用未来数据泄漏）
-HIGH_DRAW_LEAGUES = frozenset({"芬超", "瑞典超", "美职联", "巴甲", "葡超"})
+HIGH_DRAW_LEAGUES = frozenset({"芬超", "美职联", "巴甲", "葡超"})
+
+# 联赛名别名归一化（2026-08-12 修复）：新浪/竞彩接口联赛名不稳定，
+# 同一联赛可能以多个名字出现（账本实证：瑞超=瑞典超 9场、韩职=K1联赛 3场）。
+# 若不做归一化：①R1 平局改判/锚定在高平联赛上静默失效（联赛名不匹配）
+# ②账本平局率统计被拆分稀释（瑞典超 14场43% 被拆成 瑞超 9场11%）。
+LEAGUE_ALIASES = {"瑞超": "瑞典超", "韩职": "K1联赛"}
+
+
+def _canon_league(lg: str | None) -> str:
+    """联赛名归一化：别名 → 标准名（用于 R1/锚定/联赛反馈/账本分桶）"""
+    if not lg:
+        return ""
+    return LEAGUE_ALIASES.get(lg, lg)
+
 
 # 联赛平局率锚定表（2026-08-12 账本实证，n>=5）：平局概率向联赛基准靠拢
 # 回测 137 场：w=0.3 时命中率 46.7% 不变，Brier 0.6559→0.6371（标定显著改善）
-LEAGUE_DRAW_ANCHOR = {"瑞典超": 0.60, "美职联": 0.55, "葡超": 0.50, "巴甲": 0.46, "芬超": 0.40}
+# 2026-08-12 二次复核（别名归一化后）：瑞典超实证仅 30% → 移除（原 0.60 无实证支撑，严重虚高）
+# 芬超 0.40 → 0.30（账本 26%，触发区间 44%，保守取中）
+LEAGUE_DRAW_ANCHOR = {"美职联": 0.55, "葡超": 0.50, "巴甲": 0.46, "芬超": 0.30}
 DRAW_ANCHOR_W = 0.3
 
 
@@ -439,7 +458,8 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             handicap=fixture.handicap,
         )
         pred.match_id = fixture.match_id
-        pred.competition = fixture.competition
+        # 联赛名归一化（2026-08-12）：瑞超→瑞典超、韩职→K1联赛，保证 R1/锚定/账本口径统一
+        pred.competition = _canon_league(fixture.competition)
 
         # --- 增强: Shin去水 + 多市场校准 ---
         calibrated_probs = None
@@ -664,7 +684,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
         # --- 平局概率联赛锚定（2026-08-12，R1 配套） ---
         # 解决 isotonic 平局标定倒挂：平局概率无区分度(Cohen d≈0) → 向联赛实证平局率靠拢
         # 回测 137 场：命中率保持 46.7%，Brier 0.6559→0.6434（概率标定显著改善）
-        _anchor = LEAGUE_DRAW_ANCHOR.get(fixture.competition)
+        _anchor = LEAGUE_DRAW_ANCHOR.get(_canon_league(fixture.competition))
         if _anchor:
             final_d = (1 - DRAW_ANCHOR_W) * final_d + DRAW_ANCHOR_W * _anchor
             _tp = final_h + final_d + final_a
@@ -681,7 +701,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             max_market = max(market_h, market_d, market_a)
             max_model = max(final_h, final_d, final_a)
             # R1: 高平联赛且市场平局概率处于低估区间（回测 +2.9pp，切半稳健）
-            if fixture.competition in HIGH_DRAW_LEAGUES and 0.20 <= market_d < 0.30:
+            if _canon_league(fixture.competition) in HIGH_DRAW_LEAGUES and 0.20 <= market_d < 0.30:
                 draw_alert = "league_draw"  # 联赛平局（数据驱动 R1）
             # 冷门平局: 市场强烈看好一方(>50%)，但平局概率>=25%
             elif max_market > 0.50 and market_d >= 0.25:
@@ -1927,7 +1947,7 @@ def run_settlement(target_date: date):
                 best_sel = ("draw", _draw_p)
         won = best_sel[0] == actual
         # 联赛参数记录：方向命中反馈（用本循环已算出的 won，避免 direction 未回写时误判）
-        lg_name = pred.get("competition") or r.competition or "未知"
+        lg_name = _canon_league(pred.get("competition") or r.competition or "未知")
         try:
             league_mgr.record_result(league=lg_name, hit=won)
             # 判平反馈（结构升级：判平强度随反馈自适应，判错自动降权而非关闭）
