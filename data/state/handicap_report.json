@@ -1,8 +1,8 @@
 {
-  "n_matches": 80,
+  "n_matches": 81,
   "hits": 32,
-  "hit_rate": 0.4,
-  "roi": -0.1714,
+  "hit_rate": 0.3951,
+  "roi": -0.1816,
   "rows": [
     {
       "date": "2026-08-05",
@@ -963,6 +963,18 @@
       "hit": true,
       "odds": 2.08,
       "pnl": 1.08
+    },
+    {
+      "date": "2026-08-12",
+      "match_id": "2026-08-12_周三001",
+      "league": "欧超杯",
+      "handicap": -1.0,
+      "best_sel": "away",
+      "best_edge": 0.3169,
+      "actual": "draw",
+      "hit": false,
+      "odds": 2.05,
+      "pnl": -1.0
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "n_leagues": 21,
-  "n_matches": 222,
+  "n_leagues": 22,
+  "n_matches": 223,
   "external_added": 29,
-  "generated_at": "2026-08-12T20:24:32.931292",
+  "generated_at": "2026-08-12T21:29:42.073620",
   "leagues": [
     {
       "league": "挪超",
@@ -250,6 +250,19 @@
       "recent_hits": 1,
       "recent_hit_rate": 0.5,
       "recent_roi": -0.26
+    },
+    {
+      "league": "欧超杯",
+      "n": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.6,
+      "roi": 0.6,
+      "avg_confidence": 0.0872,
+      "verdict": "样本不足",
+      "recent_n": 1,
+      "recent_hits": 1,
+      "recent_hit_rate": 1.0,
+      "recent_roi": 0.6
     },
     {
       "league": "亚冠精英",
