@@ -1,8 +1,8 @@
 {
-  "n_matches": 79,
-  "hits": 31,
-  "hit_rate": 0.3924,
-  "roi": -0.1872,
+  "n_matches": 80,
+  "hits": 32,
+  "hit_rate": 0.4,
+  "roi": -0.1714,
   "rows": [
     {
       "date": "2026-08-05",
@@ -951,6 +951,18 @@
       "hit": false,
       "odds": 3.08,
       "pnl": -1.0
+    },
+    {
+      "date": "2026-08-11",
+      "match_id": "2026-08-11_周二010",
+      "league": "解放者杯",
+      "handicap": -1.0,
+      "best_sel": "away",
+      "best_edge": 0.3046,
+      "actual": "away",
+      "hit": true,
+      "odds": 2.08,
+      "pnl": 1.08
     }
   ]
 }
