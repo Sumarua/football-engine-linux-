@@ -184,6 +184,7 @@ def _render_track_record(state_dir: Path, web_dir: Path) -> str:
                     continue
     at = _load_json(state_dir / "accuracy_trend.json", {})
     wb = _load_json(state_dir / "weekly_backtest.json", {})
+    ps = _load_json(state_dir / "parlay_settle.json", {})
 
     n = len(ledger)
     hits = sum(1 for r in ledger if r.get("hit"))
@@ -235,6 +236,51 @@ def _render_track_record(state_dir: Path, web_dir: Path) -> str:
     _ov_mdl = _ov.get("brier_model")
     _sd_b = _sd.get("shrinkage_dc_brier")
     _sd_f = _sd.get("final_brier")
+
+    # 串关/波胆真实复盘（2026-08-13：Track Record 页补齐串关战绩）
+    def _ps_stat_card(title, s):
+        if not s or not s.get("n_tickets"):
+            return ""
+        hr = f"{s.get('hit_rate', 0):.0%}" if s.get("hit_rate") is not None else "—"
+        roi = s.get("roi") or 0
+        roi_c = "var(--green)" if roi > 0 else "var(--red)"
+        by_type = ""
+        if s.get("by_type"):
+            by_type = " · ".join(
+                f"{k} {v.get('n',0)}张中{v.get('won',0)} ROI {(v.get('roi') or 0):+.0%}"
+                for k, v in s["by_type"].items()
+            )
+        extra_leg = ""
+        if s.get("leg_hit_rate") is not None:
+            extra_leg = f'<tr><td>单腿命中</td><td>{s["leg_hit_rate"]:.0%}（{s.get("n_legs_settled",0)} 腿）</td></tr>'
+        return f"""
+        <div class="card">
+          <div class="section-title" style="margin-top:0">{title}</div>
+          <table>
+            <tr><th>指标</th><th>值</th></tr>
+            <tr><td>出票 / 已结算</td><td>{s['n_tickets']} / {s.get('n_settled', s['n_tickets'])}</td></tr>
+            <tr><td>命中</td><td>{s.get('n_won',0)} 张（命中率 {hr}）</td></tr>
+            <tr><td>投入 / 回报</td><td>¥{s.get('stake',0):.0f} / ¥{s.get('return',0):.2f}</td></tr>
+            <tr><td>ROI</td><td style="color:{roi_c};font-weight:700">{roi:+.1%}</td></tr>
+            {extra_leg}
+          </table>
+          {f'<div class="note" style="margin-top:6px">{by_type}</div>' if by_type else ''}
+        </div>"""
+
+    _parlay_html = ""
+    if ps:
+        _pl = ps.get("parlay") or {}
+        _sp = ps.get("score_parlay") or {}
+        _cards = "".join(x for x in (_ps_stat_card("📋 胜平负串", _pl), _ps_stat_card("🎰 比分串（波胆）", _sp)) if x)
+        if _cards:
+            _verdict = ps.get("verdict", "")
+            _verdict_html = f'<div class="note" style="margin-top:8px">{_verdict}</div>' if _verdict else ""
+            _parlay_html = f'''
+  <div class="section-title">串关 / 波胆真实复盘（历史累计 · 非回测）</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+    {_cards}
+  </div>
+  {_verdict_html}'''
 
     html = f'''<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
@@ -306,6 +352,7 @@ tr:last-child td {{ border-bottom:none; }}
     <tr><th>联赛</th><th>场次</th><th>命中率</th><th>实际平局率</th></tr>
     {lg_rows}
   </table></div>
+  {_parlay_html}
 
   <div class="section-title">方法论</div>
   <div class="card" style="font-size:0.8rem;color:var(--text-secondary)">
@@ -3004,6 +3051,17 @@ def _results_section(results, predictions, review_ledger=None):
                 "pnl": rl.get("pnl", 0),
             })
 
+    # 账本盈亏索引（results.json 不含 pnl 字段，盈亏以账本为准——
+    # 2026-08-13 修复：此前页面盈亏列永远 0，总盈亏与 review.json 对不上）
+    _ledger_pnl: dict = {}
+    for _rl in review_ledger or []:
+        _mid = _rl.get("match_id", "")
+        if _mid:
+            _ledger_pnl[_mid] = _rl.get("pnl", 0)
+            _fx = _extract_fixture(_mid)
+            if _fx:
+                _ledger_pnl.setdefault(_fx, _rl.get("pnl", 0))
+
     rows = ""
     hits = 0
     total_brier = 0.0
@@ -3042,19 +3100,27 @@ def _results_section(results, predictions, review_ledger=None):
             actual = "away"
             actual_label = "客胜"
 
-        # 预测结果
+        # 预测结果：必须与 engine/main.py 的 _pick_direction / 结算口径完全一致
+        # （2026-08-13 修复：此前页面用纯 argmax，未同步 draw_alert 平局改判，
+        #  如 8/7 横滨水手——账本/预测 direction=draw 记 ✗，页面却按 argmax 显示 ✓，自相矛盾）
         ph = pred.get("home_win_prob", 0)
         pd = pred.get("draw_prob", 0)
         pa = pred.get("away_win_prob", 0)
+        _alert = pred.get("draw_alert")
         if ph >= pd and ph >= pa:
             predicted = "home"
-            pred_label = "主胜"
         elif pd >= ph and pd >= pa:
             predicted = "draw"
-            pred_label = "平局"
         else:
             predicted = "away"
-            pred_label = "客胜"
+        # draw_alert 平局改判（与 _pick_direction 同规则）
+        if _alert == "league_draw":
+            predicted = "draw"  # R1: 高平联赛 + 市场平局P∈[0.20,0.30) 无脑改判
+        elif _alert and predicted != "draw":
+            _best_p = max(ph, pd, pa)
+            if _best_p - pd < 0.08 and pd >= 0.26:
+                predicted = "draw"
+        pred_label = {"home": "主胜", "draw": "平局", "away": "客胜"}[predicted]
 
         hit = predicted == actual
         if hit:
@@ -3067,20 +3133,27 @@ def _results_section(results, predictions, review_ledger=None):
         brier = (ph - ind_h)**2 + (pd - ind_d)**2 + (pa - ind_a)**2
         total_brier += brier
 
-        # 投注盈亏（如果在三票方案中）
-        pnl = r.get("pnl", 0)
+        # 投注盈亏：results.json 无 pnl 字段 → 优先账本 pnl（含让球单票结算），
+        # 其次 results 自带（fallback 路径构造时已从账本带入）
+        pnl = _ledger_pnl.get(mid)
+        if pnl is None:
+            _fx = _extract_fixture(mid)
+            pnl = _ledger_pnl.get(_fx) if _fx else None
+        if pnl is None:
+            pnl = r.get("pnl", 0) or 0
         total_pnl += pnl
 
         hit_cls = "hit" if hit else "miss"
         hit_icon = "✓" if hit else "✗"
         pnl_color = "var(--green)" if pnl > 0 else "var(--red)" if pnl < 0 else "var(--dim)"
+        pred_prob = {"home": ph, "draw": pd, "away": pa}[predicted]
 
         rows += f"""
         <tr class="{hit_cls}">
           <td>{pred.get('home_team', '')} vs {pred.get('away_team', '')}</td>
           <td style="font-weight:800;text-align:center;">{home_score}-{away_score}</td>
           <td>{actual_label}</td>
-          <td>{pred_label} ({max(ph, pd, pa):.0%})</td>
+          <td>{pred_label} ({pred_prob:.0%})</td>
           <td style="text-align:center;"><span class="result-icon {hit_cls}">{hit_icon}</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">{brier:.3f}</td>
           <td style="color:{pnl_color};font-weight:600;">{'+' if pnl > 0 else ''}{pnl:.0f}</td>
