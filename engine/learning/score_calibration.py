@@ -8,7 +8,7 @@
 收缩。经验先验由 results.json 全量赛果统计（810 场），是可靠的无偏基准。
 calibrated = (1-shrink) * model + shrink * prior，再归一化。
 
-shrink 取 0.5（模型与历史各半），可通过 backtest 调。经验先验在 build_site
+shrink 取 0.4（2026-08-14 离线回测：151 场时间切分，logloss 最优，模型与历史 6:4）。经验先验在 build_site
 结算后重建（滞后一天，天然无未来泄漏）。
 """
 from __future__ import annotations
@@ -86,7 +86,7 @@ def load_score_prior(path: Path | None = None) -> dict:
     return build_score_prior(out_path=path)
 
 
-def calibrate_score_probs(top_scores: list, prior: dict, shrink: float = 0.5) -> list:
+def calibrate_score_probs(top_scores: list, prior: dict, shrink: float = 0.4) -> list:
     """把模型 top_scores [[h,a,p],...] 向经验比分分布收缩，返回同格式列表（归一化）。"""
     score_prior = (prior or {}).get("score") or {}
     if not top_scores or not score_prior:
@@ -111,7 +111,7 @@ def calibrate_score_probs(top_scores: list, prior: dict, shrink: float = 0.5) ->
     return calibrated
 
 
-def calibrate_total_goals(total_goals: list, prior: dict, shrink: float = 0.5) -> list:
+def calibrate_total_goals(total_goals: list, prior: dict, shrink: float = 0.4) -> list:
     """把模型 total_goals [[g,p],...] 向经验总进球分布收缩，返回同格式列表。"""
     tg_prior = (prior or {}).get("total_goals") or {}
     if not total_goals or not tg_prior:

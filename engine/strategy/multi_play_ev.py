@@ -254,31 +254,60 @@ def evaluate_crs(pred: dict, min_edge: float = 0.03) -> PlayEV | None:
 
 
 def evaluate_hafu(pred: dict, min_edge: float = 0.03) -> PlayEV | None:
-    """半全场玩法：模型 htft vs 官方 hafu 赔率。"""
+    """半全场玩法：模型 htft（市场主导融合后） vs 官方 hafu 赔率。
+
+    htft 是启发式模型（硬编码动量参数），未经验证，概率常与市场严重背离
+    （edge 动辄 +35%~+220%，全被 >30% 闸拦下）。与让球同口径：市场主导融合
+    fused = (1-w)×模型 + w×市场去水，w=0.882，不再赌"模型 htft 比市场懂"。
+    """
     raw_odds = parse_hafu_odds(pred.get("hafu_odds"))
     if not raw_odds:
         return None
     htft = pred.get("htft") or {}
-    probs = {}
+    model_probs = {}
     total = 0.0
     for k, p in htft.items():
         ks = str(k).strip().upper()
         if len(ks) == 2 and ks[0] in "HDA" and ks[1] in "HDA":
-            probs[ks] = float(p)
+            model_probs[ks] = float(p)
             total += float(p)
     if total <= 0:
         return None
-    probs = {k: v / total for k, v in probs.items()}
-    odds = {k: o for k, o in raw_odds.items() if o > 1.0}
-    if not odds:
+    model_probs = {k: v / total for k, v in model_probs.items()}
+
+    # 市场去水半全场概率
+    odds_all = {k: o for k, o in raw_odds.items() if o > 1.0}
+    if not odds_all:
         return None
-    return _finish(PlayEV(
+    _implied = {k: 1.0 / o for k, o in odds_all.items()}
+    _implied_total = sum(_implied.values())
+    if _implied_total > 0:
+        market_probs = {k: v / _implied_total for k, v in _implied.items()}
+        # 市场主导融合（与让球同口径 w=0.882）
+        _w = 0.882
+        probs = {}
+        for k in market_probs:
+            probs[k] = (1 - _w) * model_probs.get(k, 0.0) + _w * market_probs[k]
+        _t = sum(probs.values())
+        probs = {k: v / _t for k, v in probs.items()} if _t > 0 else model_probs
+    else:
+        probs = model_probs
+
+    ev = _finish(PlayEV(
         match_id=pred.get("match_id", ""),
         home_team=pred.get("home_team", ""),
         away_team=pred.get("away_team", ""),
         play="hafu", label="半全场",
-        probs=probs, odds=odds,
+        probs=probs, odds=odds_all,
     ), min_edge)
+    # 方向一致性闸：模型 htft argmax 必须与市场去水 argmax 同向才推荐
+    # （htft 是硬编码启发式，常与市场反着押，edge 再高也是赌"模型比市场懂"）
+    if ev.recommended:
+        _model_best = max(model_probs, key=model_probs.get) if model_probs else ""
+        _mkt_best = max(market_probs, key=market_probs.get) if market_probs else ""
+        if _model_best and _mkt_best and _model_best != _mkt_best:
+            ev.recommended = False
+    return ev
 
 
 def evaluate_all_plays(pred: dict, min_edge: float = 0.03) -> list[PlayEV]:
