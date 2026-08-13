@@ -169,14 +169,15 @@ class ScoreParlayBuilder:
             if odds is None:
                 # 无官方赔率 → 淘汰（无法验证 EV，模拟赔率是纸面财富）
                 continue
-            # 校准：用账本实测 DJYY top1 比分精确命中率（12.2%，24/197），
-            # 不用 DJYY 高估概率（0-0 曾高估到 42% vs 实际 8-10%，系统性
-            # 高估 2-3 倍）。实测校准比 prob^1.5 更诚实：单腿 12.2% × 官方
-            # 赔率 7 倍 = EV -15%，×12 倍 = EV +46%——只有高赔率官方波胆
-            # 才有正 EV，这正是比分串"小注搏高赔"的正确打开方式。
-            # （2026-08-13 用户："选的都是1.5sp以下肯定亏钱"——比分串同理，
-            #  低赔率波胆 = 送钱，宁可空仓）
-            cal_prob = SCORE_CAL_PROB  # 0.122 账本实测 top1 命中率
+            # 校准：用该具体比分的经验频率（全量赛果），比全局 top1 12.2% 更细。
+            # 1-0≈13.2%、0-0≈6.7%、3-2≈2.0%——低赔率波胆 = 送钱，宁可空仓。
+            _cal_prob = SCORE_CAL_PROB
+            try:
+                from engine.learning.score_calibration import load_score_prior, empirical_score_prob
+                _cal_prob = empirical_score_prob(h, a, load_score_prior())
+            except Exception:
+                pass
+            cal_prob = _cal_prob
             # 单腿价值门槛：校准概率 × 官方赔率 ≥ 1.05（EV>5%）才入池
             if cal_prob * odds < 1.05:
                 continue

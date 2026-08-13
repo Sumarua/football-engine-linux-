@@ -90,6 +90,10 @@ class FusionOptimizer:
             "djyy": [0.00, 0.40],
         })
         self.val_matches = self.cfg.get("val_matches", 20)
+        # 显著性阈值：晋升要求 improvement ≥ max(min_improvement, min_z × SE)
+        # 2026-08-14：n=20 时 SE≈0.015，0.002-0.005 的阈值比噪声小一个量级，
+        # 157 次决策 126 hold/16 promote 与随机游走无法区分。
+        self.min_z = self.cfg.get("min_z", 1.96)
         # 日志
         self.log_path = state_path.parent / "optimizer_log.jsonl"
 
@@ -157,7 +161,7 @@ class FusionOptimizer:
         # 4. 归一化
         candidate = candidate.normalized()
 
-        # 5. 反事实验证
+        # 5. 反事实验证（配对显著性：improvement 必须超过 z × SE 才算显著）
         champ_brier = self._counterfactual_brier(val, champion)
         cand_brier = self._counterfactual_brier(val, candidate)
         improvement = champ_brier - cand_brier  # >0 = candidate更好
@@ -170,14 +174,23 @@ class FusionOptimizer:
             "n_val": len(val),
         }
 
-        # 6. 晋升判定
-        if improvement >= self.min_improvement:
+        # 6. 晋升判定：必须显著（2026-08-14 起）
+        _imp, _se, _nval = self._paired_improvement(val, champion, candidate)
+        metrics["improvement_se"] = round(_se, 5)
+        metrics["n_val_paired"] = _nval
+        _threshold = self.min_improvement
+        if _se > 0:
+            _threshold = max(self.min_improvement, self.min_z * _se)
+        metrics["significance_threshold"] = round(_threshold, 5)
+        if improvement >= _threshold:
             action = "promote"
-            reason = f"candidate Brier {cand_brier:.4f} < champion {champ_brier:.4f} (Δ={improvement:.4f})"
+            reason = (f"candidate Brier {cand_brier:.4f} < champion {champ_brier:.4f} "
+                      f"(Δ={improvement:.4f} ≥ {_threshold:.4f}, z={self.min_z}, SE={_se:.4f})")
             new_champion = candidate
         else:
             action = "hold"
-            reason = f"improvement {improvement:.4f} < threshold {self.min_improvement}"
+            reason = (f"improvement {improvement:.4f} < threshold {_threshold:.4f} "
+                      f"(SE={_se:.4f}，未达 {self.min_z}σ 显著性)")
             new_champion = champion
 
         # 7. 回滚检查: champion 近期是否退化
@@ -262,42 +275,66 @@ class FusionOptimizer:
         """
         if not reviews:
             return 1.0
+        total_brier, n = self._sum_brier(reviews, w)
+        return total_brier / max(1, n)
 
+    def _sum_brier(self, reviews: list[MatchReview], w: FusionWeights) -> tuple[float, int]:
+        """返回 (总Brier, 有效场次数)。"""
         total_brier = 0.0
         n = 0
         for r in reviews:
-            # 确定可用源和权重
-            sources = []
-            weights = []
-            if r.model_raw and len(r.model_raw) >= 3:
-                sources.append(r.model_raw)
-                weights.append(w.model)
-            if r.market_fair and len(r.market_fair) >= 3:
-                sources.append(r.market_fair)
-                weights.append(w.market)
-            if r.djyy_prob and len(r.djyy_prob) >= 3:
-                sources.append(r.djyy_prob)
-                weights.append(w.djyy)
-
-            if not sources:
+            fused = self._fused_probs(r, w)
+            if fused is None:
                 continue
-
-            # 归一化权重
-            total_w = sum(weights)
-            if total_w <= 0:
-                continue
-
-            # 加权融合
-            fused = [0.0, 0.0, 0.0]
-            for src_probs, src_w in zip(sources, weights):
-                norm_w = src_w / total_w
-                for i in range(3):
-                    fused[i] += src_probs[i] * norm_w
-
             total_brier += brier_score(fused, r.actual_idx)
             n += 1
+        return total_brier, n
 
-        return total_brier / max(1, n)
+    def _fused_probs(self, r: MatchReview, w: FusionWeights) -> list[float] | None:
+        """用权重 w 对单场三路概率反事实融合，返回 [h,d,a] 或 None。"""
+        sources = []
+        weights = []
+        if r.model_raw and len(r.model_raw) >= 3:
+            sources.append(r.model_raw)
+            weights.append(w.model)
+        if r.market_fair and len(r.market_fair) >= 3:
+            sources.append(r.market_fair)
+            weights.append(w.market)
+        if r.djyy_prob and len(r.djyy_prob) >= 3:
+            sources.append(r.djyy_prob)
+            weights.append(w.djyy)
+        if not sources:
+            return None
+        total_w = sum(weights)
+        if total_w <= 0:
+            return None
+        fused = [0.0, 0.0, 0.0]
+        for src_probs, src_w in zip(sources, weights):
+            norm_w = src_w / total_w
+            for i in range(3):
+                fused[i] += src_probs[i] * norm_w
+        return fused
+
+    def _paired_improvement(self, reviews: list[MatchReview], champ: FusionWeights, cand: FusionWeights):
+        """配对显著性：返回 (mean improvement, SE, n)。
+
+        improvement_i = champ_brier_i - cand_brier_i（>0 = cand 更好）。
+        只有 improvement > z × SE 才视为显著（否则是噪声）。
+        """
+        diffs = []
+        for r in reviews:
+            fc = self._fused_probs(r, champ)
+            fd = self._fused_probs(r, cand)
+            if fc is None or fd is None:
+                continue
+            diffs.append(brier_score(fc, r.actual_idx) - brier_score(fd, r.actual_idx))
+        n = len(diffs)
+        if n == 0:
+            return 0.0, 0.0, 0
+        mean = sum(diffs) / n
+        var = sum((d - mean) ** 2 for d in diffs) / max(1, n - 1)
+        se = math.sqrt(var / n) if var > 0 else 0.0
+        return mean, se, n
 
     def _clip_shift(self, champion: FusionWeights, candidate: FusionWeights,
                     guard_rails: list) -> FusionWeights:

@@ -24,6 +24,21 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 
+# 比分/总进球经验先验（懒加载，缓存）：校准模型比分矩阵的低比分系统性偏差
+_prior_cache: dict | None = None
+
+
+def _score_prior() -> dict:
+    global _prior_cache
+    if _prior_cache is None:
+        try:
+            from engine.learning.score_calibration import load_score_prior
+            _prior_cache = load_score_prior()
+        except Exception:
+            _prior_cache = {}
+    return _prior_cache
+
+
 @dataclass
 class PlayEV:
     """一场比赛的一个玩法 EV 评估"""
@@ -182,11 +197,18 @@ def _finish(ev: PlayEV, min_edge: float, cap: float = 0.30) -> PlayEV:
 
 
 def evaluate_ttg(pred: dict, min_edge: float = 0.03) -> PlayEV | None:
-    """总进球玩法：模型 total_goals vs 官方 ttg 赔率。"""
+    """总进球玩法：模型 total_goals（校准后） vs 官方 ttg 赔率。"""
     raw_odds = parse_ttg_odds(pred.get("ttg_odds"))
     if not raw_odds:
         return None
-    probs = merge_over7(norm_total_goals(pred.get("total_goals")))
+    # 校准：把模型总进球分布向历史真实分布收缩（修正 3+ 球被系统性低估）
+    _tg = pred.get("total_goals")
+    try:
+        from engine.learning.score_calibration import calibrate_total_goals
+        _tg = calibrate_total_goals(_tg, _score_prior())
+    except Exception:
+        pass
+    probs = merge_over7(norm_total_goals(_tg))
     if not probs:
         return None
     odds = {n: o for n, o in raw_odds.items() if o > 1.0}
@@ -202,11 +224,18 @@ def evaluate_ttg(pred: dict, min_edge: float = 0.03) -> PlayEV | None:
 
 
 def evaluate_crs(pred: dict, min_edge: float = 0.03) -> PlayEV | None:
-    """波胆玩法：模型比分分布 vs 官方 crs 赔率。"""
+    """波胆玩法：模型比分分布（校准后） vs 官方 crs 赔率。"""
     raw_odds = parse_crs_odds(pred.get("crs_odds"))
     if not raw_odds:
         return None
-    probs = norm_scores(pred.get("top_scores"))
+    # 校准：把模型比分分布向历史真实比分分布收缩（修正低比分系统性偏差）
+    _ts = pred.get("top_scores")
+    try:
+        from engine.learning.score_calibration import calibrate_score_probs
+        _ts = calibrate_score_probs(_ts, _score_prior())
+    except Exception:
+        pass
+    probs = norm_scores(_ts)
     if not probs:
         return None
     odds = {}

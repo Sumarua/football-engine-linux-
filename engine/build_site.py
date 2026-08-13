@@ -120,6 +120,14 @@ def build_site():
         build_report(daily_root, ROOT / "data" / "state" / "ev_report.json")
     except Exception as e:
         print(f"[build_site] ⚠ EV 报告生成跳过: {e}")
+    # 比分/总进球经验先验（2026-08-14：校准模型比分矩阵的低比分偏差，
+    # 供 multi_play_ev / score_parlay 的波胆/总进球 EV 使用）
+    try:
+        from engine.learning.score_calibration import build_score_prior
+        _sp = build_score_prior(daily_root, ROOT / "data" / "state" / "score_prior.json")
+        print(f"[build_site] 📊 比分经验先验已重建: {_sp.get('n_matches', 0)} 场")
+    except Exception as e:
+        print(f"[build_site] ⚠ 比分经验先验重建跳过: {e}")
     # 让球玩法回测报告（验证让球 EV 历史表现，从有让球赔率的场次积累）
     try:
         from engine.strategy.handicap_ev import build_handicap_report

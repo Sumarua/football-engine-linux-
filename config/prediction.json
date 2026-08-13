@@ -91,7 +91,7 @@
     "rollback_degradation": 0.03,
     "temperature": 1.5,
     "decay_factor": 0.95,
-    "val_matches": 20,
+    "val_matches": 80,
     "weight_bounds": {
       "model": [
         0.05,
@@ -105,7 +105,8 @@
         0.05,
         0.4
       ]
-    }
+    },
+    "min_z": 1.96
   },
   "review": {
     "bias_min_samples": 5,
