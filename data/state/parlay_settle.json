@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-13T18:12:29.472487+00:00",
+  "generated_at": "2026-08-13T19:24:01.885704+00:00",
   "parlay": {
-    "n_tickets": 13,
+    "n_tickets": 17,
     "n_settled": 12,
     "n_won": 3,
     "hit_rate": 0.25,
@@ -513,8 +513,80 @@
       {
         "date": "2026-08-14",
         "type": "2串1",
-        "stake": 16.33,
-        "potential": 81.5,
+        "stake": 7.16,
+        "potential": 62.58,
+        "total_odds": 8.74,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-14_周五003",
+            "home": "基尔",
+            "away": "圣保利",
+            "sel": "home",
+            "score": null,
+            "odds": 2.3,
+            "hit": null
+          },
+          {
+            "match": "2026-08-14_周五002",
+            "home": "瓦萨",
+            "away": "TPS图尔库",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.8,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-14",
+        "type": "2串1",
+        "stake": 6.78,
+        "potential": 55.91,
+        "total_odds": 8.25,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-14_周五010",
+            "home": "特尔斯达",
+            "away": "鹿斯巴达",
+            "sel": "home",
+            "score": null,
+            "odds": 2.17,
+            "hit": null
+          },
+          {
+            "match": "2026-08-14_周五002",
+            "home": "瓦萨",
+            "away": "TPS图尔库",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.8,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-14",
+        "type": "2串1",
+        "stake": 4.37,
+        "potential": 21.81,
         "total_odds": 4.99,
         "odds_source": null,
         "note": "待赛",
@@ -542,6 +614,98 @@
             "sel": "home",
             "score": null,
             "odds": 2.3,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-14",
+        "type": "3串1",
+        "stake": 3.78,
+        "potential": 71.69,
+        "total_odds": 18.97,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-14_周五010",
+            "home": "特尔斯达",
+            "away": "鹿斯巴达",
+            "sel": "home",
+            "score": null,
+            "odds": 2.17,
+            "hit": null
+          },
+          {
+            "match": "2026-08-14_周五003",
+            "home": "基尔",
+            "away": "圣保利",
+            "sel": "home",
+            "score": null,
+            "odds": 2.3,
+            "hit": null
+          },
+          {
+            "match": "2026-08-14_周五002",
+            "home": "瓦萨",
+            "away": "TPS图尔库",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.8,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-14",
+        "type": "3串4",
+        "stake": 5.14,
+        "potential": 52.61,
+        "total_odds": 10.24,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-14_周五010",
+            "home": "特尔斯达",
+            "away": "鹿斯巴达",
+            "sel": "home",
+            "score": null,
+            "odds": 2.17,
+            "hit": null
+          },
+          {
+            "match": "2026-08-14_周五003",
+            "home": "基尔",
+            "away": "圣保利",
+            "sel": "home",
+            "score": null,
+            "odds": 2.3,
+            "hit": null
+          },
+          {
+            "match": "2026-08-14_周五002",
+            "home": "瓦萨",
+            "away": "TPS图尔库",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.8,
             "hit": null
           }
         ]
@@ -8307,7 +8471,7 @@
     "2026-08-14": {
       "parlay": {
         "stats": {
-          "n_tickets": 1,
+          "n_tickets": 5,
           "n_settled": 0,
           "n_won": 0,
           "hit_rate": null,
@@ -8321,8 +8485,80 @@
           {
             "date": "2026-08-14",
             "type": "2串1",
-            "stake": 16.33,
-            "potential": 81.5,
+            "stake": 7.16,
+            "potential": 62.58,
+            "total_odds": 8.74,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-14_周五003",
+                "home": "基尔",
+                "away": "圣保利",
+                "sel": "home",
+                "score": null,
+                "odds": 2.3,
+                "hit": null
+              },
+              {
+                "match": "2026-08-14_周五002",
+                "home": "瓦萨",
+                "away": "TPS图尔库",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.8,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-14",
+            "type": "2串1",
+            "stake": 6.78,
+            "potential": 55.91,
+            "total_odds": 8.25,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-14_周五010",
+                "home": "特尔斯达",
+                "away": "鹿斯巴达",
+                "sel": "home",
+                "score": null,
+                "odds": 2.17,
+                "hit": null
+              },
+              {
+                "match": "2026-08-14_周五002",
+                "home": "瓦萨",
+                "away": "TPS图尔库",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.8,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-14",
+            "type": "2串1",
+            "stake": 4.37,
+            "potential": 21.81,
             "total_odds": 4.99,
             "odds_source": null,
             "note": "待赛",
@@ -8350,6 +8586,98 @@
                 "sel": "home",
                 "score": null,
                 "odds": 2.3,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-14",
+            "type": "3串1",
+            "stake": 3.78,
+            "potential": 71.69,
+            "total_odds": 18.97,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-14_周五010",
+                "home": "特尔斯达",
+                "away": "鹿斯巴达",
+                "sel": "home",
+                "score": null,
+                "odds": 2.17,
+                "hit": null
+              },
+              {
+                "match": "2026-08-14_周五003",
+                "home": "基尔",
+                "away": "圣保利",
+                "sel": "home",
+                "score": null,
+                "odds": 2.3,
+                "hit": null
+              },
+              {
+                "match": "2026-08-14_周五002",
+                "home": "瓦萨",
+                "away": "TPS图尔库",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.8,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-14",
+            "type": "3串4",
+            "stake": 5.14,
+            "potential": 52.61,
+            "total_odds": 10.24,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-14_周五010",
+                "home": "特尔斯达",
+                "away": "鹿斯巴达",
+                "sel": "home",
+                "score": null,
+                "odds": 2.17,
+                "hit": null
+              },
+              {
+                "match": "2026-08-14_周五003",
+                "home": "基尔",
+                "away": "圣保利",
+                "sel": "home",
+                "score": null,
+                "odds": 2.3,
+                "hit": null
+              },
+              {
+                "match": "2026-08-14_周五002",
+                "home": "瓦萨",
+                "away": "TPS图尔库",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.8,
                 "hit": null
               }
             ]
