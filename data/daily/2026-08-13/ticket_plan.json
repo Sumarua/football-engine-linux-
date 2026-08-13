@@ -5,21 +5,21 @@
       "match": "2026-08-13_周四005",
       "sel": "hcap_home",
       "odds": 2.25,
-      "stake": 78.85,
-      "prob": 0.518
+      "stake": 77.94,
+      "prob": 0.517
     },
     {
       "match": "2026-08-13_周四009",
       "sel": "hcap_away",
       "odds": 2.27,
-      "stake": 71.15,
-      "prob": 0.507
+      "stake": 72.06,
+      "prob": 0.508
     }
   ],
   "lottery": [],
   "total_stake": 150.0,
-  "expected_roi": 0.1583,
-  "bankroll": 4686.390600000001,
+  "expected_roi": 0.1578,
+  "bankroll": 4536.390600000001,
   "breaker_multiplier": 1.0,
   "parlay": [],
   "score_parlay": [
@@ -41,12 +41,12 @@
           "away": "基多体大",
           "league": "解放者杯",
           "score": "1-0",
-          "prob": 0.229,
+          "prob": 0.228,
           "odds": 7.0
         }
       ],
       "total_odds": 49.0,
-      "hit_prob": 0.0675,
+      "hit_prob": 0.0669,
       "stake": 2.0,
       "potential": 98.0,
       "worst_win": 0.0,
@@ -72,18 +72,18 @@
           "away": "胡巴卡德",
           "league": "沙职",
           "score": "0-1",
-          "prob": 0.196,
+          "prob": 0.195,
           "odds": 7.0
         }
       ],
       "total_odds": 49.0,
-      "hit_prob": 0.0578,
+      "hit_prob": 0.0571,
       "stake": 2.0,
       "potential": 98.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "simulated",
-      "note": "两场比分都中才赢（单场命中率约 29% × 20%）"
+      "note": "两场比分都中才赢（单场命中率约 29% × 19%）"
     },
     {
       "type": "比分2串1",
@@ -103,18 +103,18 @@
           "away": "拉斯决心",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.174,
+          "prob": 0.175,
           "odds": 7.0
         }
       ],
       "total_odds": 49.0,
-      "hit_prob": 0.0511,
+      "hit_prob": 0.0515,
       "stake": 2.0,
       "potential": 98.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "simulated",
-      "note": "两场比分都中才赢（单场命中率约 29% × 17%）"
+      "note": "两场比分都中才赢（单场命中率约 29% × 18%）"
     },
     {
       "type": "比分3串1",
@@ -134,7 +134,7 @@
           "away": "基多体大",
           "league": "解放者杯",
           "score": "1-0",
-          "prob": 0.229,
+          "prob": 0.228,
           "odds": 7.0
         },
         {
@@ -143,12 +143,12 @@
           "away": "胡巴卡德",
           "league": "沙职",
           "score": "0-1",
-          "prob": 0.196,
+          "prob": 0.195,
           "odds": 7.0
         }
       ],
       "total_odds": 343.0,
-      "hit_prob": 0.0133,
+      "hit_prob": 0.013,
       "stake": 2.0,
       "potential": 686.0,
       "worst_win": 0.0,
@@ -174,7 +174,7 @@
           "away": "基多体大",
           "league": "解放者杯",
           "score": "1-0",
-          "prob": 0.229,
+          "prob": 0.228,
           "odds": 7.0
         },
         {
@@ -183,12 +183,12 @@
           "away": "胡巴卡德",
           "league": "沙职",
           "score": "0-1",
-          "prob": 0.196,
+          "prob": 0.195,
           "odds": 7.0
         }
       ],
       "total_odds": 343.0,
-      "hit_prob": 0.0133,
+      "hit_prob": 0.013,
       "stake": 8.0,
       "potential": 980.0,
       "worst_win": 98.0,
@@ -198,14 +198,14 @@
     }
   ],
   "parlay_calibration": {
-    "overall": 0.4308,
-    "n": 195,
+    "overall": 0.4264,
+    "n": 197,
     "table": {
-      "0.35": 0.3171,
+      "0.35": 0.3095,
       "0.4": 0.5116,
       "0.45": 0.5714,
       "0.5": 0.4211,
-      "0.55": 0.3158,
+      "0.55": 0.3,
       "0.6": 0.4545,
       "0.7": 0.5
     },
