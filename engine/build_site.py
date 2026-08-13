@@ -37,9 +37,19 @@ def build_site():
     # 构建全局结果索引（扫描所有日期目录的 results.json，按队名索引）
     all_results = _load_all_results(daily_root, all_dates)
 
-    # 缓存 league_matrix 到本地（从 DJYY 获取）
+    # 缓存 league_matrix 到本地（从 DJYY 获取）。加 TTL：超过 48 小时强制刷新，
+    # 避免页面长期显示旧数据（曾出现 8/9 的数据挂在 8/14 页面上）。
     league_matrix_path = ROOT / "data" / "league_matrix.json"
-    if not league_matrix_path.exists():
+    _need_refresh = not league_matrix_path.exists()
+    if not _need_refresh:
+        try:
+            from datetime import datetime as _dtm
+            _age_hours = (_dtm.now() - _dtm.fromtimestamp(league_matrix_path.stat().st_mtime)).total_seconds() / 3600
+            if _age_hours > 48:
+                _need_refresh = True
+        except Exception:
+            pass
+    if _need_refresh:
         try:
             import urllib.request
             req = urllib.request.Request(
@@ -64,12 +74,19 @@ def build_site():
         breaker = _load_json(ROOT / "data" / "state" / "circuit_breaker.json", {})
         health = _load_json(web_dir / "health-status.json", {"healthy": True})
         results = _load_json(daily_dir / "results.json", [])
-        # 如果当日 results.json 为空，用全局索引匹配（仅对历史日期）
-        from datetime import date as dt_date
+        # 如果当日 results.json 为空，用全局索引匹配（仅对"已过去"的日期）。
+        # 未来/当天未结算的日期绝不 fallback，否则会拿历史赛果伪造"实际比分"
+        # （2026-08-14 页面事故根因）。用北京时间判断"过去"。
         if not results and predictions:
-            is_today = (target_date == dt_date.today().isoformat())
-            if not is_today:
-                results = _match_results_to_predictions(predictions, all_results)
+            from datetime import date as _d
+            from datetime import datetime as _dt
+            from datetime import timedelta as _td
+            try:
+                _beijing_today = (_dt.utcnow() + _td(hours=8)).strftime("%Y-%m-%d")
+                if target_date < _beijing_today:
+                    results = _match_results_to_predictions(predictions, all_results)
+            except Exception:
+                pass
         review_ledger = _load_ledger(ROOT / "data" / "state" / "review_ledger.jsonl", target_date)
         results_html_preds = predictions
 
@@ -416,23 +433,21 @@ def _load_all_results(daily_root: Path, all_dates: list) -> dict:
                 # 不覆盖已有的精确 match_id 索引
                 if key not in index:
                     index[key] = r
-            # 场次号索引
-            fixture = _extract_fixture(mid)
-            if fixture and fixture not in index:
-                index[fixture] = r
+            # 注意：绝不按裸场次号（"001"/"周五001"）索引。
+            # 2026-08-14 事故：周五001 被匹配成 7/28 周二001 的赛果 0-2，
+            # 未开赛比赛在页面上显示伪造"实际比分"。
     return index
 
 
 def _match_results_to_predictions(predictions: list, all_results: dict) -> list:
-    """用全局索引为预测匹配赛果，返回匹配的 results 列表"""
+    """用全局索引为预测匹配赛果，返回匹配的 results 列表。
+
+    只允许精确 match_id 或队名匹配；绝不用裸场次号（会跨日期/跨星期伪造赛果）。
+    """
     matched = []
     for p in predictions:
         mid = p.get("match_id", "")
         r = all_results.get(mid)
-        if not r:
-            fixture = _extract_fixture(mid)
-            if fixture:
-                r = all_results.get(fixture)
         if not r:
             hm = p.get("home_team", "")
             aw = p.get("away_team", "")
@@ -639,8 +654,15 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
             _n = len(_ledger_recs)
             def _rate(cond):
                 return sum(1 for r in _ledger_recs if cond(r)) / _n
-            # 近7天
-            _recent = [r for r in _ledger_recs if r.get("date", "") >= "2026-07-30"]
+            # 近7天（滚动窗口：从页面目标日期往前推7天，不再硬编码日期）
+            _cutoff = ""
+            try:
+                from datetime import datetime as _dtm
+                from datetime import timedelta as _td
+                _cutoff = (_dtm.strptime(today, "%Y-%m-%d") - _td(days=7)).strftime("%Y-%m-%d")
+            except Exception:
+                _cutoff = today
+            _recent = [r for r in _ledger_recs if r.get("date", "") >= _cutoff]
             _rn = len(_recent)
             def _rate7(cond):
                 return sum(1 for r in _recent if cond(r)) / _rn if _rn else 0
@@ -900,7 +922,7 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
     parlay_settle_html = _parlay_settle_section(_ps, today)
 
     # 赛果复盘（优先用 results.json，fallback review_ledger）
-    results_html = _results_section(results, results_preds or predictions, review_ledger)
+    results_html = _results_section(results, results_preds or predictions, review_ledger, today)
 
     # 系统面板
     system_html = _system_panel(breaker, bundle, tier, breaker_mult, tier_reason)
@@ -1619,7 +1641,7 @@ body {{
     <div class="stat"><div class="label">价值注</div><div class="value green">{len(value_bets)}</div></div>
     <div class="stat"><div class="label">平均置信</div><div class="value blue">{avg_conf:.0%}</div></div>
     <div class="stat"><div class="label">总投入</div><div class="value amber">&yen;{total_stake:.0f}</div></div>
-    <div class="stat"><div class="label">预期回报</div><div class="value {'green' if exp_roi > 1 else 'red'}">{exp_roi:.2f}x</div></div>
+    <div class="stat"><div class="label">预期回报</div><div class="value {'green' if exp_roi > 0 else 'red'}">{exp_roi*100:+.1f}%</div></div>
     <div class="stat"><div class="label">熔断器</div><div class="value {'green' if tier == 0 else 'red'}">T{tier} &middot; x{breaker_mult:.1f}</div></div>
   </div>
 
@@ -1809,7 +1831,17 @@ def _divergence_chip(p):
 
 
 def _pred_pick(p):
-    """生成明确的预测结论"""
+    """生成明确的预测结论。
+
+    优先用 direction 字段（含 R1 平局改判），与结算/串关口径一致；
+    否则回退 argmax。避免卡片显示"主胜"而数据里 direction=draw 的矛盾。
+    """
+    d = p.get("direction") or ""
+    if d in ("home", "draw", "away"):
+        prob = p.get(f"{'home_win_prob' if d == 'home' else ('draw_prob' if d == 'draw' else 'away_win_prob')}") or 0
+        cls = "home" if d == "home" else ("draw" if d == "draw" else "away")
+        label = {"home": "主胜", "draw": "平局", "away": "客胜"}[d]
+        return f'<span class="pick-label">预测</span> <span class="pick-val {cls}">{label} {prob:.0%}</span>'
     ph = p.get("home_win_prob") or 0
     pd = p.get("draw_prob") or 0
     pa = p.get("away_win_prob") or 0
@@ -2102,21 +2134,13 @@ def _match_card(p, value_matches, idx, results_map=None):
     if results_map:
         r = results_map.get(match_id)
         if not r:
-            # 用场次号匹配（跨日期）
-            fixture = _extract_fixture(match_id)
-            if fixture:
-                r = results_map.get(fixture)
-            if not r:
-                # fallback: 旧格式匹配
-                fixture2 = match_id.split("_", 1)[-1] if "_" in match_id else match_id
-                r = results_map.get(fixture2)
-            if not r:
-                # fallback: 队名匹配（最可靠）
-                home_team = p.get("home_team", "")
-                away_team = p.get("away_team", "")
-                if home_team and away_team:
-                    team_key = f"{home_team}_vs_{away_team}"
-                    r = results_map.get(team_key)
+            # 队名匹配（最可靠，跨数据源通用；绝不用裸场次号"001"跨日期匹配——
+            # 那会把未开赛比赛匹配成历史赛果，伪造"实际比分"）
+            home_team = p.get("home_team", "")
+            away_team = p.get("away_team", "")
+            if home_team and away_team:
+                team_key = f"{home_team}_vs_{away_team}"
+                r = results_map.get(team_key)
         if r and r.get("home_score") is not None:
             hs, as_ = r["home_score"], r["away_score"]
             if hs > as_:
@@ -2201,7 +2225,7 @@ def _match_card(p, value_matches, idx, results_map=None):
       </div>
       <div class="pred-pick">{_pred_pick(p)}{_pred_score(p)}{_handicap_pick(p)}</div>
       {result_html}
-      {'<div class="draw-alert-info" style="background:rgba(147,51,234,0.1);border:1px solid var(--purple);border-radius:6px;padding:8px 12px;margin:8px 0;font-size:0.72rem"><b>⚠ 平局预警</b> — ' + ('冷门平局：一方被看好但平局风险偏高' if p.get('draw_alert') == 'cold_draw' else '均势平局：双方接近，平局被低估') + '</div>' if p.get('draw_alert') else ''}
+      {'<div class="draw-alert-info" style="background:rgba(147,51,234,0.1);border:1px solid var(--purple);border-radius:6px;padding:8px 12px;margin:8px 0;font-size:0.72rem"><b>⚠ 平局预警</b> — ' + ({'cold_draw': '冷门平局：一方被看好但平局风险偏高', 'league_draw': '联赛平局：高平联赛 + 市场平局被低估（R1 改判）', 'balanced_draw': '均势平局：双方接近，平局被低估'}.get(p.get('draw_alert'), '均势平局：双方接近，平局被低估')) + '</div>' if p.get('draw_alert') else ''}
       <div class="match-info-row">
         <span class="conf-meter"><span class="conf-dot {conf_cls}"></span><b>{conf:.0%}</b></span>
         <span class="info-chip">xG <b>{xg_h:.2f} - {xg_a:.2f}</b></span>
@@ -2637,7 +2661,7 @@ def _ticket_section(ticket, predictions):
   </div>
   <div class="ticket-summary">
     <div class="ts-chip"><div class="ts-label">总投入</div><div class="ts-val" style="color:var(--amber)">&yen;{total_stake:.0f}</div></div>
-    <div class="ts-chip"><div class="ts-label">预期回报</div><div class="ts-val" style="color:{'var(--green)' if exp_roi > 1 else 'var(--red)'}">{exp_roi:.2f}x</div></div>
+    <div class="ts-chip"><div class="ts-label">预期回报</div><div class="ts-val" style="color:{'var(--green)' if exp_roi > 0 else 'var(--red)'}">{exp_roi*100:+.1f}%</div></div>
     <div class="ts-chip"><div class="ts-label">资金池</div><div class="ts-val">&yen;{bankroll:.0f}</div></div>
     <div class="ts-chip"><div class="ts-label">熔断系数</div><div class="ts-val" style="color:{'var(--green)' if breaker_mult >= 1 else 'var(--red)'}">x{breaker_mult:.2f}</div></div>
   </div>"""
@@ -3024,7 +3048,7 @@ def _ev_section(ev_report):
 """
 
 
-def _results_section(results, predictions, review_ledger=None):
+def _results_section(results, predictions, review_ledger=None, target_date=""):
     """赛果复盘: 预测 vs 实际结果对比（优先 results.json，fallback review_ledger）"""
     if not results and not review_ledger:
         return ""
@@ -3091,10 +3115,7 @@ def _results_section(results, predictions, review_ledger=None):
 
         pred = pred_map.get(mid)
         if not pred:
-            # 模糊匹配：用场次号
-            pred = pred_fixture_map.get(_extract_fixture(mid))
-        if not pred:
-            # 队名匹配（最可靠）
+            # 队名匹配（最可靠；绝不用裸场次号跨日期匹配，避免伪造赛果）
             hm = r.get("home_team", "")
             aw = r.get("away_team", "")
             if hm and aw:
@@ -3206,11 +3227,9 @@ def _results_section(results, predictions, review_ledger=None):
 
     # 分层评价（2026-08-06 借鉴 MBS 方法论）：从 review.json 读 LogLoss/进球框架/概率分段
     _layered_html = ""
-    _rv_date = ""
-    if results and results[0].get("match_id", ""):
-        _mid0 = results[0]["match_id"]
-        # match_id 形如 "2026-08-04_周二001"，前10位是日期
-        _rv_date = _mid0[:10] if len(_mid0) >= 10 and _mid0[4] == "-" else ""
+    # review.json 的日期用页面目标日期，而不是从 results[0].match_id 反推
+    # （后者在赛果被跨日期匹配时会把别的日期的 review 数据加载进本页）。
+    _rv_date = target_date if target_date else ""
     _rv = _load_json(ROOT / "data" / "daily" / _rv_date / "review.json", None) if _rv_date else None
     if _rv and _rv.get("layered"):
         _ly = _rv["layered"]
@@ -3260,6 +3279,22 @@ def _system_panel(breaker, bundle, tier, mult, tier_reason=""):
     sha = bundle.get("bundle_sha256", "暂无")
     created = bundle.get("created_at", "")
 
+    # 融合权重从实际状态文件读取，避免页面写死过期权重（曾显示"模型60/市场25"，
+    # 生产实际是"模型10/市场75"）。
+    fusion_display = "模型? / 市场? / DJYY?"
+    try:
+        _fw_path = ROOT / "data" / "state" / "fusion_weights.json"
+        _fw = json.loads(_fw_path.read_text(encoding="utf-8")) if _fw_path.exists() else {}
+        _ch = _fw.get("champion", {})
+        if _ch:
+            fusion_display = (
+                f"模型{_ch.get('model', 0) * 100:.0f} / "
+                f"市场{_ch.get('market', 0) * 100:.0f} / "
+                f"DJYY{_ch.get('djyy', 0) * 100:.0f}"
+            )
+    except Exception:
+        pass
+
     tier_cls = "safe" if tier <= 1 else "caution" if tier <= 2 else "danger"
     tier_label = f"T{tier}" + (" · " + tier_reason if tier_reason else "")
 
@@ -3284,7 +3319,7 @@ def _system_panel(breaker, bundle, tier, mult, tier_reason=""):
     <div class="sys-card">
       <h4>模型配置</h4>
       <div class="sys-row"><span class="k">集成</span><span class="v">DC 60% + MC 40%</span></div>
-      <div class="sys-row"><span class="k">融合</span><span class="v">模型60 / 市场25 / DJYY15</span></div>
+      <div class="sys-row"><span class="k">融合</span><span class="v">{fusion_display}</span></div>
       <div class="sys-row"><span class="k">元学习器</span><span class="v">LGBM (10%)</span></div>
       <div class="sys-row"><span class="k">校准</span><span class="v">Isotonic</span></div>
       <div class="sys-row"><span class="k">MC模拟</span><span class="v">50,000次</span></div>

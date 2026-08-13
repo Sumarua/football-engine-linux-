@@ -117,10 +117,17 @@ jobs:
       - name: Data integrity selfcheck (防静默数据断裂)
         # 2026-08-13 新增：盘口字段 207 场 0% 抓取率三周无人发现（字段名不匹配
         # 静默死亡）→ 每次预测/结算后自动检查。告警写 selfcheck_report.json
-        # 并随 Commit 提交，历史留痕；严重断裂（盘口全缺）直接红色失败。
+        # 并随 Commit 提交，历史留痕。
+        # 2026-08-14 起：目标日关键字段全缺时用 --fail-on-critical 阻断（退出码 2），
+        # 不再被 || true 吞掉；历史全量扫描仍保留为非阻塞报告。
         run: |
           python engine/selfcheck.py --all || true
-          # 若存在盘口全缺的严重告警，标记为 workflow annotation 但不阻塞
+          DATE="${{ github.event.inputs.date || '' }}"
+          if [ -z "$DATE" ]; then
+            DATE=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+          fi
+          python engine/selfcheck.py --date "$DATE" --fail-on-critical
+          # 若存在盘口全缺的严重告警，标记为 workflow annotation
           python - <<'EOF'
           import json
           try:

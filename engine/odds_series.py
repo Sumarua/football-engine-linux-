@@ -22,10 +22,47 @@ SERIES_DIR = Path(__file__).resolve().parent.parent / "data" / "state" / "odds_s
 
 
 def load_series(match_id: str) -> list[dict]:
-    """读取某场比赛的水位时间序列（按时间正序）"""
+    """读取某场比赛的水位时间序列（按时间正序）。
+
+    match_id 形如 "2026-08-14_周五001"。写入侧（fetch_sina_odds）用新浪数字
+    matchId 作为文件名（如 3632615.jsonl），与竞彩 match_id 不匹配 —— 2026-08-14
+    之前导致水位监控永远 points=0。这里做两层查找：
+    1) 精确 match_id.jsonl；
+    2) 兜底：按文件内容里的 match_no（"周五001"）+ 开赛日期反查。
+    """
     if not match_id:
         return []
     path = SERIES_DIR / f"{match_id}.jsonl"
+    if not path.exists():
+        _no = match_id.split("_", 1)[-1] if "_" in match_id else ""
+        _date = match_id[:10] if len(match_id) >= 10 and match_id[4] == "-" else ""
+        if _no and SERIES_DIR.exists():
+            _best = None
+            _best_score = -1
+            for cand in sorted(SERIES_DIR.glob("*.jsonl")):
+                try:
+                    _first = json.loads(cand.read_text(encoding="utf-8").splitlines()[0])
+                except Exception:
+                    continue
+                if _first.get("match_no") != _no:
+                    continue
+                _mt = str(_first.get("match_time", ""))[:10]
+                if not _date or not _mt:
+                    continue
+                # 必须同一天（或差 1 天，凌晨场）；否则是跨周的"周五001"，拒绝。
+                try:
+                    from datetime import datetime
+                    _gap = abs((datetime.strptime(_mt, "%Y-%m-%d") - datetime.strptime(_date, "%Y-%m-%d")).days)
+                except Exception:
+                    continue
+                if _gap > 1:
+                    continue
+                _score = 2 if _gap == 0 else 1
+                if _score > _best_score:
+                    _best_score = _score
+                    _best = cand
+            if _best is not None:
+                path = _best
     if not path.exists():
         return []
     out = []

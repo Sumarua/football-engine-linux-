@@ -4,7 +4,8 @@
 
 cd "$(dirname "$0")"
 
-LOG_FILE="/tmp/football-engine.log"
+LOG_FILE="$HOME/logs/football-engine.log"
+mkdir -p "$(dirname "$LOG_FILE")"
 MAX_RETRIES=5
 RETRY_DELAY=30
 
@@ -14,9 +15,16 @@ log() {
 
 log "========== 开始执行预测流水线 =========="
 
+# 虚拟环境探测（不再硬编码 /Users/dykily/... 路径）
+PY=python3
+for _cand in ".venv/bin/python3" "venv/bin/python3" "$HOME/.hermes/hermes-agent/venv/bin/python3"; do
+    if [ -x "$_cand" ]; then PY="$_cand"; break; fi
+done
+log "使用解释器: $PY"
+
 # Step 1: 运行预测
 log "Step 1/3: 运行预测..."
-/Users/dykily/.hermes/hermes-agent/venv/bin/python3 -m engine.main --date today 2>&1 | tee -a "$LOG_FILE"
+"$PY" -m engine.main --date today 2>&1 | tee -a "$LOG_FILE"
 if [ ${PIPESTATUS[0]} -ne 0 ]; then
     log "❌ 预测执行失败"
     exit 1
@@ -24,18 +32,24 @@ fi
 
 # Step 2: 构建页面
 log "Step 2/3: 生成页面..."
-/Users/dykily/.hermes/hermes-agent/venv/bin/python3 -c "from engine.build_site import build_site; build_site()" 2>&1 | tee -a "$LOG_FILE"
+"$PY" -c "from engine.build_site import build_site; build_site()" 2>&1 | tee -a "$LOG_FILE"
 
-# Step 3: Git 推送（带重试）
-log "Step 3/3: Git 推送..."
-git add data/ web/ engine/
+# Step 3: Git 提交 + 推送（带重试；只提交数据/页面，不提交代码）
+log "Step 3/3: Git 提交推送..."
+git add data/ web/
+if git diff --cached --quiet; then
+    log "✅ 无变更，无需提交"
+    exit 0
+fi
 git commit -m "Auto update: $(date '+%Y-%m-%d %H:%M') 预测数据更新" 2>&1 | tee -a "$LOG_FILE"
 
-# Git push 重试机制
+# Git push 重试机制：每次重试前先 pull --rebase，否则面对 Actions 的持续推送
+# 永远是非 fast-forward，5 次重试全部失败。
+git config http.version HTTP/1.1
+git config http.postBuffer 524288000
 for i in $(seq 1 $MAX_RETRIES); do
     log "  推送尝试 $i/$MAX_RETRIES..."
-    git config http.version HTTP/1.1
-    git config http.postBuffer 524288000
+    git pull --rebase --autostash origin main 2>&1 | tee -a "$LOG_FILE"
     git push 2>&1 | tee -a "$LOG_FILE"
     if [ ${PIPESTATUS[0]} -eq 0 ]; then
         log "✅ 推送成功！"

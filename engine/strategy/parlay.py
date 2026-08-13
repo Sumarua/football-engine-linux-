@@ -182,6 +182,7 @@ class ParlayBuilder:
         limits: dict | None = None,
         config: ParlayConfig | None = None,
         calibration: dict | None = None,
+        league_forbid: set | None = None,
     ):
         self.bankroll = bankroll
         self.limits = limits or {}
@@ -196,6 +197,8 @@ class ParlayBuilder:
         self.cal = calibration or {}
         self.cal_table = self.cal.get("table") or self.cfg.cal_table or {}
         self.cal_overall = self.cal.get("overall") or self.cfg.cal_overall
+        # 送钱区联赛禁投集合（2026-08-14：串关此前绕过联赛禁投，选芬超平局腿）
+        self.league_forbid = league_forbid or set()
 
     # ---------- 校准概率 ----------
     def _cal_prob(self, p: float) -> float:
@@ -280,14 +283,17 @@ class ParlayBuilder:
             sel = c.get("selection", "")
             if sel not in ("home", "draw", "away"):
                 continue
+            match_id = c.get("match_id", "")
+            pred = pred_map.get(match_id, {})
+            # 送钱区联赛禁投：串关腿与单关同口径（2026-08-14 修复，此前绕过禁投选芬超平局）
+            if self.league_forbid and pred.get("competition") in self.league_forbid:
+                continue
             odds = c.get("odds", 0) or 0
             prob = c.get("prob", 0) or 0
             if odds > self.cfg.max_odds:
                 continue
             if odds < self.cfg.min_odds:
                 continue
-            match_id = c.get("match_id", "")
-            pred = pred_map.get(match_id, {})
             market_prob = self._market_prob(pred, sel)
             cal_prob = self._cal_prob(prob)
             # 2026-08-13 核心改动：价值选腿替代"模型高置信"选腿。
@@ -341,8 +347,11 @@ class ParlayBuilder:
         t.cal_roi = o * p_cal - 1.0
         t.market_ev = t.potential * p_mkt - t.stake
         t.market_roi = o * p_mkt - 1.0
-        # 推荐 = 实际 EV > 0；市场腿串票默认娱乐（几乎必然负 EV，标注即可）
-        t.recommended = t.cal_ev > 0
+        # 推荐 = 校准 EV > 0 且 市场 EV > 0（2026-08-14 起）。
+        # 此前仅看 cal_ev：校准表自身有噪声，且与市场方向相悖（market_ev<0）时仍标
+        # "⭐正EV"，导致推了芬超平局这类市场口径 -21.6% 的票。市场是最强单源，
+        # 市场口径为负时必须降级为"娱乐"，不得标推荐。
+        t.recommended = (t.cal_ev > 0) and (t.market_ev is None or t.market_ev > 0)
         t.source = "calibrated" if all(l.source == "fusion" for l in t.legs) else "market"
         return t
 
@@ -402,7 +411,7 @@ class ParlayBuilder:
         t.cal_roi = exp_return / stake - 1.0
         t.market_ev = market_return - stake
         t.market_roi = market_return / stake - 1.0
-        t.recommended = t.cal_ev > 0
+        t.recommended = (t.cal_ev > 0) and (t.market_ev is None or t.market_ev > 0)
         t.source = "calibrated" if all(l.source == "fusion" for l in t.legs) else "market"
         return t
 

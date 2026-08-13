@@ -111,16 +111,25 @@ def build_accuracy_trend(ledger_path: Path, out_path: Path) -> dict:
                  "brier_final": round(sum(v["brier_final"])/max(1, len(v["brier_final"])), 4) if v["brier_final"] else None}
                 for k, v in sorted(out.items(), key=lambda x: -x[1]["n"])]
 
+    # 各信号源 Brier 只对"有该信号源"的场次求均值（缺失≠0）。
+    # 2026-08-14 事故：缺失按 0 计把 market 0.629 压成 0.450、djyy 0.654 压成 0.322，
+    # 制造出"final 比市场差很多"的假象，误导了后续所有权重决策。
+    def _mean_brier(key):
+        vals = [r.get(key) for r in rows if r.get(key) is not None]
+        if not vals:
+            return None
+        return round(sum(vals) / len(vals), 4)
+
     report = {
         "generated_at": date.today().isoformat(),
         "total_matches": len(rows),
         "date_range": [dates[0], dates[-1]],
         "overall": {
             "hit_rate": round(sum(1 for r in rows if r.get("hit")) / len(rows), 4),
-            "brier_final": round(sum(r.get("brier_final") or 0 for r in rows) / len(rows), 4),
-            "brier_model": round(sum(r.get("brier_model") or 0 for r in rows) / len(rows), 4),
-            "brier_market": round(sum(r.get("brier_market") or 0 for r in rows) / len(rows), 4),
-            "brier_djyy": round(sum(r.get("brier_djyy") or 0 for r in rows) / len(rows), 4),
+            "brier_final": _mean_brier("brier_final"),
+            "brier_model": _mean_brier("brier_model"),
+            "brier_market": _mean_brier("brier_market"),
+            "brier_djyy": _mean_brier("brier_djyy"),
         },
         "daily": daily,
         "rolling7": r7,

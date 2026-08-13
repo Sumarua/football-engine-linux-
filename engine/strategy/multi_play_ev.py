@@ -49,7 +49,12 @@ def parse_ttg_odds(raw: dict) -> dict:
     if not raw:
         return out
     for k, v in raw.items():
-        m = re.search(r"\d+", str(k))
+        ks = str(k)
+        # 跳过 'f' 标志键（s0f/s1f…，值为 0/1 的解析标志，非赔率）。
+        # 2026-08-14 事故：'s0f' 的 0 会覆盖真实赔率 's0=8.00'，导致总进球 EV 全灭。
+        if ks.endswith("f"):
+            continue
+        m = re.search(r"\d+", ks)
         if m:
             try:
                 out[int(m.group())] = float(v)
@@ -65,12 +70,15 @@ def parse_crs_odds(raw: dict) -> dict:
     - 含 ':' 按冒号分割
     - 形如 s01s00 取两组数字
     - 纯数字串 len>=4 前两位主后两位客
+    - 以 'f' 结尾的键（s00s00f）是解析标志（值 0/1），跳过，否则会覆盖真实赔率。
     """
     out = {}
     if not raw:
         return out
     for k, v in raw.items():
         ks = str(k).lower()
+        if ks.endswith("f"):
+            continue
         score = None
         if ":" in ks:
             parts = ks.split(":")

@@ -94,17 +94,25 @@ class FusionOptimizer:
         self.log_path = state_path.parent / "optimizer_log.jsonl"
 
     def get_champion(self, default: FusionWeights | None = None) -> FusionWeights:
-        """预测时调用: 获取当前冠军权重"""
+        """预测时调用: 获取当前冠军权重（读盘时同样强制边界，杜绝越界状态）。"""
         default = default or FusionWeights()
         if not self.state_path.exists():
             return default
         try:
             state = json.loads(self.state_path.read_text())
             w = state.get("champion", {})
-            return FusionWeights(
+            champ = FusionWeights(
                 model=w.get("model", default.model),
                 market=w.get("market", default.market),
                 djyy=w.get("djyy", default.djyy),
+            )
+            # 读盘时也裁剪到配置边界：2026-08-13 曾出现 model=0.10(<0.15)、
+            # market=0.75(>0.6) 的越界状态静默运行，且无决策链日志背书。
+            b = self.weight_bounds
+            return FusionWeights(
+                model=max(b["model"][0], min(b["model"][1], champ.model)),
+                market=max(b["market"][0], min(b["market"][1], champ.market)),
+                djyy=max(b["djyy"][0], min(b["djyy"][1], champ.djyy)),
             )
         except Exception:
             return default

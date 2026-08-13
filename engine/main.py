@@ -913,7 +913,15 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             # 方向：预测时即写入（最终概率 argmax + 平局改判），与结算口径一致
             # （修复：预测时 direction 为空，页面/复盘拿不到方向）
             "direction": _pick_direction(final_h, final_d, final_a, draw_alert),
-            "direction_prob": max(final_h, final_d, final_a),
+            # direction_prob 必须是"所选方向自己的概率"，不能是 max(H,D,A)。
+            # 2026-08-14 事故：R1 改判平局时 direction=draw 但 direction_prob=主胜概率，
+            # 串关用这个错概率查校准表 → 平局腿概率被高估（0.33→0.47→校准0.57），
+            # 产出"⭐正EV +155%"的假推荐。
+            "direction_prob": round(
+                {"home": final_h, "draw": final_d, "away": final_a}.get(
+                    _pick_direction(final_h, final_d, final_a, draw_alert), 0.0
+                ), 4
+            ),
             # 方向置信度差（最高概率 - 次高概率）：< 0.08 视为低置信度硬选（08-04 欧冠 4 连错全在此区间），
             # 出票环节拦截、复盘统计分层（P0 止血，2026-08-05）
             "direction_margin": round(max(final_h, final_d, final_a) - sorted([final_h, final_d, final_a])[-2], 4),
@@ -978,6 +986,22 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             print(f"  ✅ 回暖解禁联赛（近5≥60% 且 近10≥50%，解除禁投）: {sorted(league_recovered)}")
     except Exception as e:
         print(f"  ⚠ 联赛分层报告加载跳过: {e}")
+
+    # 让球玩法回测 ROI 闸（2026-08-14）：让球 EV 回测 83 场 ROI -18.1%，
+    # 且今天的"价值注"全是"模型与市场反着押"（模型 51% vs 市场 40%）。
+    # 回测 ROI<0 且样本≥20 时整体停用让球出注，直到模型比分矩阵校准改善。
+    handicap_suspended = False
+    try:
+        _hr_path = ROOT / "data" / "state" / "handicap_report.json"
+        if _hr_path.exists():
+            _hr = json.loads(_hr_path.read_text(encoding="utf-8"))
+            _hr_n = _hr.get("n_matches", 0)
+            _hr_roi = _hr.get("roi", 0)
+            if _hr_n >= 20 and _hr_roi < 0:
+                handicap_suspended = True
+                print(f"  ⛔ 让球玩法停用: 回测 {_hr_n} 场 ROI {_hr_roi*100:+.1f}%（负 EV，暂停出注）")
+    except Exception as _e:
+        print(f"  ⚠ 让球回测报告加载跳过: {_e}")
 
     # 三票制重分配
     effective_mult = 1.0  # 虚拟投注不降注
@@ -1074,7 +1098,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
         try:
             from engine.strategy.handicap_ev import evaluate_handicap_ev
             _hev = evaluate_handicap_ev(p)
-            if _hev and _hev.recommended:
+            if _hev and _hev.recommended and not handicap_suspended:
                 _odds = _hev.odds[_hev.best_sel]
                 _hcap_cand = {
                     "match_id": p["match_id"],
@@ -1103,18 +1127,11 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
                 max_edge = edge
 
             if is_synthetic:
-                # 合成赔率: 用置信度推荐 (概率>50%的最优选项)
-                if prob > 0.50 and prob == max(p["home_win_prob"], p["draw_prob"], p["away_win_prob"]):
-                    candidates.append({
-                        "match_id": p["match_id"],
-                        "selection": sel,
-                        "odds": odds,
-                        "prob": prob,
-                        "kelly_fraction": 0.05,  # 保守固定仓位
-                        "prob_band_5060": p.get("prob_band_5060", False),
-                        "prob_band_60_risk": p.get("prob_band_60_risk", False),
-                        "prob_max": _final_prob,
-                    })
+                # 合成赔率：一律不出注。合成赔率 odds=1/(p×1.05) 构造，
+                # 则 edge = p×odds−1 = 1/1.05−1 = −4.76%，数学上必然为负 EV。
+                # 曾因此对 8 笔共 ¥67,353 押在模拟赔率上（基本全亏）。
+                # 只记录 edge 供复盘，绝不进 candidates。
+                continue
             elif edge > 0:  # 真实赔率: 正期望
                 kelly_f = edge / (odds - 1) * 0.25  # quarter-Kelly
                 candidates.append({
@@ -1191,6 +1208,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             bankroll=actual_bankroll,
             limits=strat_cfg.get("limits", {}),
             calibration=_cal,
+            league_forbid=league_forbid,
         )
         parlay_plan = parlay_builder.build(candidates, ticket_plan, predictions)
         _n_rec = sum(1 for t in parlay_plan if t.recommended)

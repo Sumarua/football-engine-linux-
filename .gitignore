@@ -5,6 +5,10 @@ __pycache__/
 dist/
 .venv/
 venv/
+# Cloudflare wrangler 缓存（含账号 PII，勿提交）
+.wrangler/
 cf-proxy/.wrangler/
-__pycache__/
-*.pyc
+# 备份文件
+*.bak
+*.bak*
+.DS_Store

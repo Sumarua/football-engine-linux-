@@ -26,6 +26,7 @@ class HandicapEV:
     probs: dict                    # 让球后胜平负概率 {home, draw, away}
     odds: dict                     # 官方让球赔率 {home, draw, away}
     edges: dict = field(default_factory=dict)   # 各方向 edge
+    market_edge: float = 0.0                     # 市场去水口径的 best_sel edge
     best_sel: str = ""
     best_edge: float = 0.0
     ev: float = 0.0
@@ -109,8 +110,23 @@ def evaluate_handicap_ev(
         if edge > best_edge:
             best_edge, best_sel = edge, sel
     ev.best_sel, ev.best_edge, ev.ev = best_sel, best_edge, best_edge
+
+    # 市场去水口径 edge（best_sel 方向）：市场是最强单源，模型 edge 若与市场
+    # 严重背离，多半是模型比分矩阵高估了冷门/受让方，而非真实价值。
+    # 2026-08-14 深挖：让球回测 83 场 ROI -18.1%，今天的价值注全在"模型与市场
+    # 反着押"（模型 51% vs 市场 40%），market_edge ≈ -11%。必须加市场一致性闸。
+    _implied = [1.0 / (odds[s] or 1.0) for s in ("home", "draw", "away")]
+    _implied_total = sum(_implied)
+    if _implied_total > 0 and best_sel in odds and odds[best_sel]:
+        _mkt_prob = (1.0 / odds[best_sel]) / _implied_total
+        ev.market_edge = _mkt_prob * odds[best_sel] - 1.0
+    else:
+        ev.market_edge = -1.0
+
     # sanity check: 模型概率与赔率隐含概率严重背离(>30% edge) 多为脏数据,
     # 不直接推荐重注，标记 recommended=False（回测积累后再放开）
+    # 2026-08-14：market_edge 仅用于展示/复盘（让球玩法在 main.py 里另有
+    # 回测 ROI 闸：回测 ROI<0 时整体停用让球出注，见 main.py handicap 挂起逻辑）。
     ev.recommended = best_edge >= min_edge and best_edge <= 0.30
     return ev
 

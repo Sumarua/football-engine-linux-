@@ -170,8 +170,8 @@ def main():
         end = datetime.strptime(args.date_to, "%Y-%m-%d")
         dates = [(start + timedelta(days=i)).strftime("%Y-%m-%d") for i in range((end - start).days + 1)]
     else:
-        # Default: yesterday
-        yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+        # Default: yesterday（北京时间；runner 是 UTC，直接用 now() 会抓错日期）
+        yesterday = (datetime.utcnow() + timedelta(hours=8) - timedelta(days=1)).strftime("%Y-%m-%d")
         dates = [yesterday]
 
     print(f"[fetch_sina] Fetching {len(dates)} date(s) from Sina API...")

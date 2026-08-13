@@ -205,7 +205,9 @@ def main():
     if args.date:
         dates = [args.date]
     else:
-        today = datetime.now().strftime("%Y-%m-%d")
+        # 竞彩使用北京时间；GitHub Actions runner 是 UTC，直接用 datetime.now()
+        # 会在北京时间 00:00-08:00 抓错日期（8/14 sina_odds 全缺的根因）。
+        today = (datetime.utcnow() + timedelta(hours=8)).strftime("%Y-%m-%d")
         dates = [today]
 
     output_dir = Path(args.output_dir) if args.output_dir else None

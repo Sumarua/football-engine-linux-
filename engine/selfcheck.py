@@ -115,6 +115,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="数据完整性自检")
     parser.add_argument("--date", default="", help="目标日期，默认最近 3 天")
     parser.add_argument("--all", action="store_true", help="检查全部日期")
+    parser.add_argument("--fail-on-critical", action="store_true",
+                        help="关键字段（盘口/市场）全缺时以退出码 2 失败，供 workflow 在预测前阻断")
     args = parser.parse_args()
 
     if args.date:
@@ -143,10 +145,20 @@ def main() -> int:
         "alerts": all_alerts,
     }, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    # 关键字段全缺 = 数据流断裂（波胆/总进球/半全场/让球/新浪/市场）
+    _critical_fields = ("crs_odds", "ttg_odds", "hafu_odds", "handicap", "sina_odds", "market_fair")
+    _critical = [a for a in all_alerts if "全缺" in a and any(f in a for f in _critical_fields)]
+
     if all_alerts:
         print(f"数据完整性自检: {len(all_alerts)} 条告警")
         for a in all_alerts:
             print(f"  {a}")
+
+    if args.fail_on_critical and _critical:
+        print(f"::error::关键字段全缺 {len(_critical)} 条，数据流断裂，中止（no-bet）")
+        return 2
+
+    if all_alerts:
         return 1
     print(f"数据完整性自检通过（{len(days)} 天无异常）")
     return 0
