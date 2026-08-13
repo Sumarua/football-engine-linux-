@@ -347,11 +347,10 @@ class ParlayBuilder:
         t.cal_roi = o * p_cal - 1.0
         t.market_ev = t.potential * p_mkt - t.stake
         t.market_roi = o * p_mkt - 1.0
-        # 推荐 = 校准 EV > 0 且 市场 EV > 0（2026-08-14 起）。
-        # 此前仅看 cal_ev：校准表自身有噪声，且与市场方向相悖（market_ev<0）时仍标
-        # "⭐正EV"，导致推了芬超平局这类市场口径 -21.6% 的票。市场是最强单源，
-        # 市场口径为负时必须降级为"娱乐"，不得标推荐。
-        t.recommended = (t.cal_ev > 0) and (t.market_ev is None or t.market_ev > 0)
+        # 推荐 = 校准 EV > 0（2026-08-14 起方向概率已修正，cal_ev 不再虚高）。
+        # market_ev 仍落盘展示作"市场口径"参考（几乎必然为负=双重抽水），
+        # 但不作为硬性否决——用户要串关，就诚实地把 cal/market 两种口径都摆出来。
+        t.recommended = t.cal_ev > 0
         t.source = "calibrated" if all(l.source == "fusion" for l in t.legs) else "market"
         return t
 
@@ -411,7 +410,7 @@ class ParlayBuilder:
         t.cal_roi = exp_return / stake - 1.0
         t.market_ev = market_return - stake
         t.market_roi = market_return / stake - 1.0
-        t.recommended = (t.cal_ev > 0) and (t.market_ev is None or t.market_ev > 0)
+        t.recommended = t.cal_ev > 0
         t.source = "calibrated" if all(l.source == "fusion" for l in t.legs) else "market"
         return t
 

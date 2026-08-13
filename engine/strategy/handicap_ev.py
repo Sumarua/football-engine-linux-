@@ -63,12 +63,15 @@ def handicap_probs_from_scores(
 
 
 def evaluate_handicap_ev(
-    pred: dict, min_edge: float = 0.03
+    pred: dict, min_edge: float = 0.03, market_weight: float = 0.882
 ) -> HandicapEV | None:
-    """评估一场预测的让球 EV。
+    """评估一场预测的让球 EV（独立预测：让球方向可与胜平负不同）。
 
-    让球后概率优先用模型完整计算的 handicap_*_prob（DC/MC 基于官方
-    让球线在完整比分矩阵上计算），缺失时 fallback 到 top_scores 推导。
+    概率口径与 1X2 融合一致——市场主导。1X2 融合冠军权重 model=0.10 /
+    market=0.75 / djyy=0.15，让球无 djyy 源，故归一化为 model:market =
+    0.10:0.75 ≈ 0.118:0.882（market_weight=0.882）。纯模型比分矩阵（Brier
+    弱于随机）曾"对抗市场"押受让方，让球回测 83 场 ROI -18.1%。
+    fused = (1-w)*模型让球概率 + w*市场去水让球概率，再用 fused 算 edge。
     """
     handicap = pred.get("handicap")
     odds = {
@@ -79,18 +82,39 @@ def evaluate_handicap_ev(
     if handicap is None or not any(o is not None and o > 1.0 for o in odds.values()):
         return None
 
-    # 优先模型完整概率（和应≈1）；缺失/异常时用 top_scores 推导
+    # 模型让球概率（DC/MC 在比分矩阵上算的，缺失时用 top_scores 推导）
     mprobs = {
         "home": pred.get("handicap_home_prob"),
         "draw": pred.get("handicap_draw_prob"),
         "away": pred.get("handicap_away_prob"),
     }
     if mprobs and all(p is not None for p in mprobs.values()) and 0.9 < sum(mprobs.values()) <= 1.05:
-        probs = mprobs
+        model_probs = mprobs
     else:
-        probs = handicap_probs_from_scores(pred.get("top_scores"), handicap)
-    if not probs:
+        model_probs = handicap_probs_from_scores(pred.get("top_scores"), handicap)
+    if not model_probs:
         return None
+
+    # 市场去水让球概率（Shin 在竞彩 1.128 高水位下退化为乘法归一化，已实证）
+    _implied = [1.0 / (odds[s] or 1.0) for s in ("home", "draw", "away")]
+    _implied_total = sum(_implied)
+    market_probs = {
+        "home": _implied[0] / _implied_total,
+        "draw": _implied[1] / _implied_total,
+        "away": _implied[2] / _implied_total,
+    } if _implied_total > 0 else None
+
+    # 市场主导融合（与 1X2 同口径）；无市场概率时退回纯模型
+    if market_probs and 0 < market_weight <= 1.0:
+        probs = {
+            s: (1 - market_weight) * model_probs[s] + market_weight * market_probs[s]
+            for s in ("home", "draw", "away")
+        }
+        _total = sum(probs.values())
+        if _total > 0:
+            probs = {s: v / _total for s, v in probs.items()}
+    else:
+        probs = model_probs
 
     ev = HandicapEV(
         match_id=pred.get("match_id", ""),
@@ -111,23 +135,19 @@ def evaluate_handicap_ev(
             best_edge, best_sel = edge, sel
     ev.best_sel, ev.best_edge, ev.ev = best_sel, best_edge, best_edge
 
-    # 市场去水口径 edge（best_sel 方向）：市场是最强单源，模型 edge 若与市场
-    # 严重背离，多半是模型比分矩阵高估了冷门/受让方，而非真实价值。
-    # 2026-08-14 深挖：让球回测 83 场 ROI -18.1%，今天的价值注全在"模型与市场
-    # 反着押"（模型 51% vs 市场 40%），market_edge ≈ -11%。必须加市场一致性闸。
-    _implied = [1.0 / (odds[s] or 1.0) for s in ("home", "draw", "away")]
-    _implied_total = sum(_implied)
-    if _implied_total > 0 and best_sel in odds and odds[best_sel]:
-        _mkt_prob = (1.0 / odds[best_sel]) / _implied_total
-        ev.market_edge = _mkt_prob * odds[best_sel] - 1.0
+    # 市场口径 edge（best_sel 方向，用于展示/复盘）
+    if market_probs and best_sel in odds and odds[best_sel]:
+        ev.market_edge = market_probs[best_sel] * odds[best_sel] - 1.0
     else:
         ev.market_edge = -1.0
 
-    # sanity check: 模型概率与赔率隐含概率严重背离(>30% edge) 多为脏数据,
-    # 不直接推荐重注，标记 recommended=False（回测积累后再放开）
-    # 2026-08-14：market_edge 仅用于展示/复盘（让球玩法在 main.py 里另有
-    # 回测 ROI 闸：回测 ROI<0 时整体停用让球出注，见 main.py handicap 挂起逻辑）。
-    ev.recommended = best_edge >= min_edge and best_edge <= 0.30
+    # sanity check + 方向一致性闸：fused edge 严重背离(>30%) 多为脏数据；
+    # 且模型让球方向必须与市场让球方向一致才推荐（不让球/让球方向可以不同，
+    # 但"下注"不能赌"模型比市场更懂"——让球回测 83 场 ROI -18.1% 全在对抗市场）。
+    _model_dir = max(model_probs, key=model_probs.get) if model_probs else ""
+    _market_dir = max(market_probs, key=market_probs.get) if market_probs else ""
+    _dir_agree = (_model_dir == _market_dir) if (_model_dir and _market_dir) else True
+    ev.recommended = (best_edge >= min_edge and best_edge <= 0.30) and _dir_agree
     return ev
 
 

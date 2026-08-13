@@ -646,16 +646,19 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
         if _sina_data and _sina_data.get("movement"):
             mv = _sina_data["movement"]
             comp = _sina_data.get("compression", {})
-            # 压缩比 < 0.95 表示赔率明显下降（资金涌入）
-            # 压缩比 > 1.05 表示赔率明显上升（资金撤出）
+            # 压缩比 = 初盘/即时盘（见 fetch_sina_odds.py）：
+            #   >1.05 = 赔率下降（资金涌入，市场看好该方）→ 加仓
+            #   <0.95 = 赔率上升（资金撤出，市场看衰该方）→ 减仓
+            # 2026-08-14 修复：此前注释和符号写反了——把"资金涌入"当成了"资金撤出"，
+            # 导致盘口信号被反向应用（这也是盘口信号命中率迟迟不显著的原因之一）。
             _signal_strength = 0
-            if comp.get("home", 1.0) < 0.95:
+            if comp.get("home", 1.0) > 1.05:
                 final_h += 0.02; _signal_strength += 1
-            elif comp.get("home", 1.0) > 1.05:
+            elif comp.get("home", 1.0) < 0.95:
                 final_h -= 0.02; _signal_strength += 1
-            if comp.get("away", 1.0) < 0.95:
+            if comp.get("away", 1.0) > 1.05:
                 final_a += 0.02; _signal_strength += 1
-            elif comp.get("away", 1.0) > 1.05:
+            elif comp.get("away", 1.0) < 0.95:
                 final_a -= 0.02; _signal_strength += 1
             if _signal_strength > 0:
                 total_p = final_h + final_d + final_a
@@ -987,21 +990,9 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
     except Exception as e:
         print(f"  ⚠ 联赛分层报告加载跳过: {e}")
 
-    # 让球玩法回测 ROI 闸（2026-08-14）：让球 EV 回测 83 场 ROI -18.1%，
-    # 且今天的"价值注"全是"模型与市场反着押"（模型 51% vs 市场 40%）。
-    # 回测 ROI<0 且样本≥20 时整体停用让球出注，直到模型比分矩阵校准改善。
-    handicap_suspended = False
-    try:
-        _hr_path = ROOT / "data" / "state" / "handicap_report.json"
-        if _hr_path.exists():
-            _hr = json.loads(_hr_path.read_text(encoding="utf-8"))
-            _hr_n = _hr.get("n_matches", 0)
-            _hr_roi = _hr.get("roi", 0)
-            if _hr_n >= 20 and _hr_roi < 0:
-                handicap_suspended = True
-                print(f"  ⛔ 让球玩法停用: 回测 {_hr_n} 场 ROI {_hr_roi*100:+.1f}%（负 EV，暂停出注）")
-    except Exception as _e:
-        print(f"  ⚠ 让球回测报告加载跳过: {_e}")
+    # 让球玩法：作为独立预测保留（方向可与胜平负不同），但概率用"市场主导融合"，
+    # 与 1X2 同一套口径（模型 0.25 / 市场 0.75），避免"模型比分矩阵对抗市场"
+    # 造成的 -18% ROI。融合在 evaluate_handicap_ev 内部完成，这里无需额外闸。
 
     # 三票制重分配
     effective_mult = 1.0  # 虚拟投注不降注
@@ -1098,7 +1089,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
         try:
             from engine.strategy.handicap_ev import evaluate_handicap_ev
             _hev = evaluate_handicap_ev(p)
-            if _hev and _hev.recommended and not handicap_suspended:
+            if _hev and _hev.recommended:
                 _odds = _hev.odds[_hev.best_sel]
                 _hcap_cand = {
                     "match_id": p["match_id"],

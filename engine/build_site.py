@@ -1765,20 +1765,25 @@ document.querySelectorAll('.league-btn').forEach(function(btn) {{
 
 
 def _odds_movement_chip(p):
-    """赔率变动信号标签"""
+    """赔率变动信号标签（初盘→即时盘变化对比）"""
     sina = p.get("sina_odds")
-    if not sina or not sina.get("movement"):
+    if not sina:
         return ""
-    mv = sina["movement"]
-    comp = sina.get("compression", {})
-    # 生成箭头
+    ini = sina.get("initial_odds") or {}
+    cur = sina.get("current_odds") or {}
+    mv = sina.get("movement") or {}
+    # 生成 初盘→即时盘 对比（变化超过 3% 才显示）
     arrows = []
     colors = {"down": "↓", "up": "↑", "flat": "→"}
+    _names = {"home": "主", "draw": "平", "away": "客"}
     for sel in ["home", "draw", "away"]:
-        direction = mv.get(sel, "flat")
-        cr = comp.get(sel, 1.0)
-        if abs(cr - 1.0) > 0.03:  # 变化超过3%才显示
-            arrows.append(f"{sel[0].upper()}{colors.get(direction,'→')}{cr:.2f}")
+        a, b = ini.get(sel), cur.get(sel)
+        if not a or not b or a <= 0 or b <= 0:
+            continue
+        chg = (b - a) / a
+        if abs(chg) >= 0.03:
+            direction = mv.get(sel, "up" if chg > 0 else "down")
+            arrows.append(f"{_names[sel]}{a:.2f}→{b:.2f}{colors.get(direction,'→')}")
     if not arrows:
         return ""
     return f'<span class="info-chip" style="color:var(--purple)">赔率变动 {" ".join(arrows)}</span>'
