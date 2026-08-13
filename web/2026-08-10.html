@@ -1356,7 +1356,7 @@ body {
   <div class="results-summary" style="margin-top:6px;"><div class="ts-chip"><div class="ts-label">LogLoss(final)</div><div class="ts-val" style="color:var(--amber)">1.295</div></div><div class="ts-chip"><div class="ts-label">进球框架</div><div class="ts-val" style="color:var(--amber)">33% (1/3)</div></div><div class="ts-chip"><div class="ts-label">概率分段</div><div class="ts-val" style="font-size:0.68rem;">40-50%:0% · 60%+:0%</div></div><div class="ts-chip"><div class="ts-label">新鲜度分层</div><div class="ts-val" style="font-size:0.68rem;">ok:0% · watch:0%</div></div></div>
   <div class="results-table-wrap">
     <table class="results-table">
-      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th><th>串/比分串</th></tr>
+      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th></tr>
       
         <tr class="miss">
           <td>韦斯特罗斯 vs 佐加顿斯</td>
@@ -1367,7 +1367,6 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.809</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
-          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">串 2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
         <tr class="miss">
           <td>天狼星 vs 布鲁马波</td>
@@ -1378,7 +1377,6 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.985</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
-          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">串 2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
         <tr class="miss">
           <td>圣克拉拉 vs 葡国民</td>
@@ -1389,12 +1387,11 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.691</td>
           <td style="color:var(--red);font-weight:600;">-150</td>
-          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
     </table>
   </div>
 
-    <!-- PARLAY SETTLE（2026-08-13 布局重构：串/比分串复盘紧跟比赛下方，胜负平→让球→串→比分串一目了然） -->
+    <!-- PARLAY SETTLE（2026-08-13 布局重构：串/比分串复盘紧跟赛果复盘下方；用户确认比赛行不加串列，逐票明细即可） -->
     
     <div id="parlay-settle">
       <div class="section-title">串关/波胆复盘 <span style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--dim)">当日真实出票结算</span></div>
