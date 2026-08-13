@@ -78,12 +78,16 @@ class FusionOptimizer:
         self.learning_rate = self.cfg.get("learning_rate", 0.3)
         self.min_improvement = self.cfg.get("min_brier_improvement", 0.005)
         self.rollback_degradation = self.cfg.get("rollback_degradation", 0.03)
-        self.temperature = self.cfg.get("temperature", 2.0)
+        self.temperature = self.cfg.get("temperature", 0.5)
         self.decay_factor = self.cfg.get("decay_factor", 0.95)
+        # 2026-08-13 修复：原 bounds 与数据事实相反（账本实测：模型 38.3% 最差 /
+        # 市场 50.4% 最好），却强制 model≥0.30、market≤0.50 —— 把最优信号锁死在
+        # 50% 以下，优化器 157 次全 hold 无法把权重交给市场。放开 bounds：
+        # 市场可以到 0.90，模型/DJYY 从 0 起（无下限，允许完全剔除）。
         self.weight_bounds = self.cfg.get("weight_bounds", {
-            "model": [0.30, 0.80],
-            "market": [0.10, 0.50],
-            "djyy": [0.05, 0.40],
+            "model": [0.00, 0.40],
+            "market": [0.00, 0.90],
+            "djyy": [0.00, 0.40],
         })
         self.val_matches = self.cfg.get("val_matches", 20)
         # 日志

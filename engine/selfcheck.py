@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+"""数据完整性自检（2026-08-13 新增，防静默数据断裂重演）
+
+背景：波胆/总进球/半全场赔率 207 场 0% 抓取率持续三周无人发现（字段名
+不匹配导致数据流静默死亡），直到用户质疑才挖出。本脚本在每次预测/结算
+后运行，检查关键数据完整性，异常输出 ⚠ 并写 selfcheck 报告。
+
+检查项：
+1. 盘口字段完整性：crs_odds / ttg_odds / hafu_odds / handicap
+2. 数据源覆盖率：sina_odds / DJYY 增强 / market_fair
+3. 串关选腿赔率分布：1.5 以下大热占比（价值选腿纪律）
+4. 比分串：是否用了官方赔率（模拟赔率 = 数据断裂征兆）
+5. 概率分布健康度：高置信段（≥70%）样本占比（融合稀释检测）
+
+用法：python3 engine/selfcheck.py [--date YYYY-MM-DD]
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from datetime import date, timedelta
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+STATE = ROOT / "data" / "state"
+DAILY = ROOT / "data" / "daily"
+
+# 阈值：低于此覆盖率报警（部分场次缺失可接受，全缺=数据流断裂）
+FIELD_THRESHOLD = {
+    "crs_odds": 0.80,       # 波胆赔率（串关比分串生命线）
+    "ttg_odds": 0.80,       # 总进球
+    "hafu_odds": 0.80,      # 半全场
+    "handicap": 0.80,       # 让球
+    "sina_odds": 0.60,      # 新浪（历史 65%，单日抖动可容忍）
+    "market_fair": 0.80,    # 市场公平概率
+}
+LOW_ODDS_CAP = 0.30        # 串关腿 1.5 以下占比上限（价值选腿纪律）
+
+
+def check_day(day_str: str) -> list[str]:
+    """检查单日 predictions.json，返回告警列表"""
+    alerts: list[str] = []
+    pf = DAILY / day_str / "predictions.json"
+    if not pf.exists():
+        return [f"⚠ {day_str}: predictions.json 不存在"]
+    try:
+        preds = json.loads(pf.read_text(encoding="utf-8"))
+    except Exception as e:
+        return [f"⚠ {day_str}: predictions.json 解析失败: {e}"]
+    if isinstance(preds, dict):
+        preds = preds.get("predictions", preds)
+    if not preds:
+        return [f"⚠ {day_str}: predictions 为空"]
+
+    n = len(preds)
+    # 1. 盘口字段完整性
+    for fld, thr in FIELD_THRESHOLD.items():
+        cnt = sum(1 for p in preds if p.get(fld))
+        ratio = cnt / n
+        if ratio == 0:
+            alerts.append(f"⚠ {day_str}: {fld} 全缺（0/{n}）——数据流可能断裂")
+        elif ratio < thr:
+            alerts.append(f"⚠ {day_str}: {fld} 覆盖率 {ratio:.0%} < {thr:.0%}（{cnt}/{n}）")
+
+    # 2. 比分串是否用了官方赔率
+    tp_path = DAILY / day_str / "ticket_plan.json"
+    if tp_path.exists():
+        try:
+            tp = json.loads(tp_path.read_text(encoding="utf-8"))
+            sp = tp.get("score_parlay") or []
+            for t in sp:
+                if t.get("odds_source") == "simulated":
+                    alerts.append(f"⚠ {day_str}: 比分串用了模拟赔率（{t.get('type')}）——数据断裂征兆")
+            # 3. 串关腿赔率分布（1.5 以下大热占比）
+            parlay = tp.get("parlay") or []
+            if parlay:
+                legs = [l for t in parlay for l in (t.get("legs") or [])]
+                if legs:
+                    low = [l for l in legs if (l.get("odds") or 0) < 1.5]
+                    ratio = len(low) / len(legs)
+                    if ratio > LOW_ODDS_CAP:
+                        alerts.append(
+                            f"⚠ {day_str}: 串关腿 {ratio:.0%} 在 1.5 以下大热"
+                            f"（{len(low)}/{len(legs)}）——价值选腿纪律被破坏"
+                        )
+        except Exception:
+            pass
+
+    # 4. 概率分布健康度（高置信段占比）
+    # predictions.json 存的是 home_win_prob/draw_prob/away_win_prob 三路概率
+    # （final_prob 是结算后账本才有的字段，预测当天不存在）。
+    # 2026-08-13 市场主导权重后：市场去水概率天然保守（max 均值 ~52%，极少超
+    # 70%），融合概率落在 35-55% 属正常分布。因此高置信告警改用 market_fair
+    # 判定（市场源自身高置信缺失 = 数据问题），不再用融合后概率。
+    def _mkt_max(p):
+        mf = p.get("market_fair")
+        if mf and isinstance(mf, (list, tuple)) and len(mf) == 3:
+            return max(mf)
+        return None
+
+    mkt_maxs = [_mkt_max(p) for p in preds]
+    mkt_maxs = [m for m in mkt_maxs if m is not None]
+    if mkt_maxs and len(mkt_maxs) >= max(3, n // 2):
+        hi_ratio = sum(1 for m in mkt_maxs if m >= 0.70) / len(mkt_maxs)
+        if hi_ratio > 0.60:
+            alerts.append(f"⚠ {day_str}: 市场高置信段占比 {hi_ratio:.0%}——市场概率可能过度自信")
+    else:
+        alerts.append(f"⚠ {day_str}: market_fair 覆盖率不足（{len(mkt_maxs)}/{n}）——市场源缺失")
+
+    return alerts
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="数据完整性自检")
+    parser.add_argument("--date", default="", help="目标日期，默认最近 3 天")
+    parser.add_argument("--all", action="store_true", help="检查全部日期")
+    args = parser.parse_args()
+
+    if args.date:
+        days = [args.date]
+    elif args.all:
+        days = sorted(d.name for d in DAILY.iterdir() if d.is_dir())
+    else:
+        days = []
+        for i in range(3):
+            d = (date.today() - timedelta(days=i)).isoformat()
+            if (DAILY / d).exists():
+                days.append(d)
+        if not days:
+            # fallback: 最近 3 个目录
+            days = sorted(d.name for d in DAILY.iterdir() if d.is_dir())[-3:]
+
+    all_alerts: list[str] = []
+    for d in days:
+        all_alerts.extend(check_day(d))
+
+    out = STATE / "selfcheck_report.json"
+    out.write_text(json.dumps({
+        "generated_at": date.today().isoformat(),
+        "checked_days": days,
+        "n_alerts": len(all_alerts),
+        "alerts": all_alerts,
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    if all_alerts:
+        print(f"数据完整性自检: {len(all_alerts)} 条告警")
+        for a in all_alerts:
+            print(f"  {a}")
+        return 1
+    print(f"数据完整性自检通过（{len(days)} 天无异常）")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

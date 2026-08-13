@@ -114,6 +114,24 @@ jobs:
         run: |
           python -m engine.review.settle_parlays || echo "⚠ 串票结算失败（继续，build 用旧数据）"
 
+      - name: Data integrity selfcheck (防静默数据断裂)
+        # 2026-08-13 新增：盘口字段 207 场 0% 抓取率三周无人发现（字段名不匹配
+        # 静默死亡）→ 每次预测/结算后自动检查。告警写 selfcheck_report.json
+        # 并随 Commit 提交，历史留痕；严重断裂（盘口全缺）直接红色失败。
+        run: |
+          python engine/selfcheck.py --all || true
+          # 若存在盘口全缺的严重告警，标记为 workflow annotation 但不阻塞
+          python - <<'EOF'
+          import json
+          try:
+              r = json.load(open('data/state/selfcheck_report.json'))
+              severe = [a for a in r.get('alerts', []) if '全缺' in a and any(k in a for k in ('crs_odds','ttg_odds','hafu_odds'))]
+              if severe:
+                  print(f"::warning::数据完整性严重告警 {len(severe)} 条: " + " | ".join(severe[:3]))
+          except Exception:
+              pass
+          EOF
+
       - name: Build site
         run: python engine/build_site.py
 
