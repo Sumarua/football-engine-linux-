@@ -10,7 +10,9 @@ permissions:
   contents: write
 
 concurrency:
-  group: sporttery-engine
+  # 2026-08-14：与 daily-forecast 拆分 group——此前共用 sporttery-engine，
+  # 周回测（最长 30min）会阻塞每 30 分钟一次的实时预报结算。
+  group: sporttery-backtest
   cancel-in-progress: false
 
 jobs:

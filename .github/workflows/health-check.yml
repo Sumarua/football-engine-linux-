@@ -2,8 +2,9 @@ name: Health Check
 
 on:
   schedule:
-    # 每5分钟检查一次，发现 daily-forecast 超过1小时没跑就自动触发
-    - cron: '*/5 * * * *'
+    # 2026-08-14：5min→15min（每天 288 次→96 次，省 Actions 分钟）。
+    # daily-forecast 每 30 分钟跑一次，15 分钟探测完全来得及发现"超1小时没跑"。
+    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 permissions:

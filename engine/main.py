@@ -66,12 +66,16 @@ from engine.prediction.htft_model import htft_probabilities, top_htft
 from engine.prediction.enhanced import total_goals_from_xg
 from engine.team_aliases import normalize_team, loose_normalize
 
-
-def load_config(name: str) -> dict:
-    path = ROOT / "config" / f"{name}.json"
-    if path.exists():
-        return json.loads(path.read_text())
-    return {}
+# 2026-08-14 重构：纯工具/步骤抽到 engine.pipeline（helpers/sina_odds）。
+# 保持本模块名字可用（外部 `from engine.main import load_config` 不受影响）。
+from engine.pipeline.helpers import (  # noqa: E402
+    _canon_league,
+    _extract_features,
+    _odds_band,
+    _pick_direction,
+    _prob_band,
+    load_config,
+)
 
 
 # 高平局联赛名单（2026-08-12 账本实证 + 2026-08-12 二次复核）
@@ -82,48 +86,12 @@ def load_config(name: str) -> dict:
 # 注意：此名单为静态配置，随账本增长需人工复核更新（防止用未来数据泄漏）
 HIGH_DRAW_LEAGUES = frozenset({"芬超", "美职联", "巴甲", "葡超"})
 
-# 联赛名别名归一化（2026-08-12 修复）：新浪/竞彩接口联赛名不稳定，
-# 同一联赛可能以多个名字出现（账本实证：瑞超=瑞典超 9场、韩职=K1联赛 3场）。
-# 若不做归一化：①R1 平局改判/锚定在高平联赛上静默失效（联赛名不匹配）
-# ②账本平局率统计被拆分稀释（瑞典超 14场43% 被拆成 瑞超 9场11%）。
-LEAGUE_ALIASES = {"瑞超": "瑞典超", "韩职": "K1联赛"}
-
-
-def _canon_league(lg: str | None) -> str:
-    """联赛名归一化：别名 → 标准名（用于 R1/锚定/联赛反馈/账本分桶）"""
-    if not lg:
-        return ""
-    return LEAGUE_ALIASES.get(lg, lg)
-
-
 # 联赛平局率锚定表（2026-08-12 账本实证，n>=5）：平局概率向联赛基准靠拢
 # 回测 137 场：w=0.3 时命中率 46.7% 不变，Brier 0.6559→0.6371（标定显著改善）
 # 2026-08-12 二次复核（别名归一化后）：瑞典超实证仅 30% → 移除（原 0.60 无实证支撑，严重虚高）
 # 芬超 0.40 → 0.30（账本 26%，触发区间 44%，保守取中）
 LEAGUE_DRAW_ANCHOR = {"美职联": 0.55, "葡超": 0.50, "巴甲": 0.46, "芬超": 0.30}
 DRAW_ANCHOR_W = 0.3
-
-
-def _pick_direction(h: float, d: float, a: float, draw_alert=None) -> str:
-    """从最终概率选方向（argmax），R1 触发时改判平局。
-
-    2026-08-05 已验证：市场平局改判（market_d≥0.30 且 d≥0.22）回测 112 场
-    命中率 43.8%→42.9% 不升反降 → 维持原逻辑，勿再盲目调参（walk_forward 二次验证）。
-
-    2026-08-12 数据驱动新证据（非盲目调参）：
-    R1 = 高平联赛 + 市场平局P∈[0.20,0.30) 无脑改判平局，回测 137 场
-    命中 46.7% vs 基线 43.8%（+2.9pp），切半验证 42.6%/50.7% 均优于各自基线。
-
-    2026-08-13 停用 balanced_draw/cold_draw 改判（实盘证伪）：
-    账本 197 场中已改判 13 场仅 3 场改对（23%），10 场把本来正确的
-    argmax 改错（净 -3）；改判平局概率均值 0.30 ≈ 实际平局率 29%，
-    无信息增益。纯 argmax 命中率 44.2% > 改判后 42.6%（+1.5pp）。
-    只保留 R1（league_draw，有独立回测支撑），balanced/cold 仅作
-    展示标记不再触发方向改判。
-    """
-    if draw_alert == "league_draw":
-        return "draw"
-    return max(("home", h), ("draw", d), ("away", a), key=lambda x: x[1])[0]
 
 
 def run_daily_pipeline(target_date: date, predict_only: bool = False):
@@ -299,23 +267,14 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
     fusion_cfg.setdefault("combo_boost_cap", 0.03)
     fusion_cfg.setdefault("trust_shrink_enabled", True)
 
-    # 加载新浪赔率数据（初始+即时+变化历史）
-    sina_odds_map = {}
-    sina_odds_by_no = {}  # 按竞彩编号索引（优先匹配方式）
-    sina_odds_file = ROOT / "data" / "daily" / target_date.isoformat() / "odds_sina.json"
-    if sina_odds_file.exists():
-        try:
-            sina_data = json.loads(sina_odds_file.read_text())
-            for m in sina_data:
-                # 按队名索引（fallback）
-                sina_odds_map[(m.get("home_team", ""), m.get("away_team", ""))] = m
-                # 按竞彩编号索引（优先）
-                match_no = m.get("match_no", "")
-                if match_no:
-                    sina_odds_by_no[match_no] = m
-            print(f"  ✓ 新浪赔率: {len(sina_data)} 场 (编号匹配: {len(sina_odds_by_no)})")
-        except Exception as e:
-            print(f"  ⚠ 新浪赔率加载失败: {e}")
+    # 加载新浪赔率数据（初始+即时+变化历史）——逻辑抽到
+    # engine.pipeline.sina_odds.load_sina_odds_map（2026-08-14 重构）
+    from engine.pipeline.sina_odds import load_sina_odds_map
+    sina_odds_map, sina_odds_by_no, _sina_n = load_sina_odds_map(target_date.isoformat(), ROOT)
+    if _sina_n:
+        print(f"  ✓ 新浪赔率: {_sina_n} 场 (编号匹配: {len(sina_odds_by_no)})")
+    else:
+        print(f"  - 新浪赔率: 无（缺失或解析失败，走其他源）")
 
     # 自我革新: 读取优化器冠军权重覆盖静态默认
     from engine.learning.fusion_optimizer import FusionOptimizer
@@ -798,17 +757,16 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             _score_src = None
 
         # 盘口信号（2026-08-05 结构化，替代装饰性 ±0.02）：
-        #   sina 欧赔压缩比 → 方向分: 压缩(资金流入)=+, 抬升=-
-        #   (1.0 - compression) * 2: c=0.95 → +0.10, c=1.05 → -0.10
-        #   存 predictions 供结算验证"盘口信号命中率"（累积后数据说话盘口信号是否有效）
+        #   sina 欧赔压缩比 → 方向分: 压缩(资金涌入)=+, 抬升=-
+        #   (compression - 1.0) * 2: c=1.05(资金涌入) → +0.10, c=0.95 → -0.10
+        # 2026-08-14 修复：此前落盘公式写成 (1.0-c)*2（旧的反向约定），与
+        # 应用侧（>1.05 加仓）符号相反，导致"盘口信号命中率"统计方向是反的。
+        # 统一走 engine.market_signal.compression_signals，回归测试锁定口径。
         _market_signal = None
         if _sina_data:
             _comp = _sina_data.get("compression") or {}
-            _sig = {}
-            for _k in ("home", "draw", "away"):
-                _c = _comp.get(_k, 1.0)
-                _sig[_k] = round((1.0 - _c) * 2.0, 4)
-            _market_signal = _sig
+            from engine.market_signal import compression_signals
+            _market_signal = compression_signals(_comp)
 
         predictions.append({
             "match_id": pred.match_id,
@@ -2297,43 +2255,6 @@ def run_settlement(target_date: date):
     print(f"\n{'='*60}")
     print(f"  结算完成 ✓ ({len(new_items)} 场新增)")
     print(f"{'='*60}")
-
-
-def _extract_features(fixture, pred) -> dict:
-    """从比赛和预测中提取离散特征（用于组合挖掘）"""
-    features = {
-        "league": fixture.competition or "unknown",
-        "prob_band": _prob_band(max(pred.home_win_prob, pred.draw_prob, pred.away_win_prob)),
-    }
-    if fixture.home_odds:
-        features["odds_band"] = _odds_band(fixture.home_odds)
-    if fixture.handicap is not None:
-        features["handicap"] = str(fixture.handicap)
-    return features
-
-
-def _prob_band(prob: float) -> str:
-    """概率分档"""
-    if prob >= 0.65:
-        return "high"
-    elif prob >= 0.45:
-        return "mid"
-    else:
-        return "low"
-
-
-def _odds_band(odds: float) -> str:
-    """赔率分档"""
-    if odds < 1.5:
-        return "1.0-1.5"
-    elif odds < 2.0:
-        return "1.5-2.0"
-    elif odds < 3.0:
-        return "2.0-3.0"
-    elif odds < 5.0:
-        return "3.0-5.0"
-    else:
-        return "5.0+"
 
 
 def main():

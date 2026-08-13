@@ -1,0 +1,45 @@
+name: Tests
+
+# 2026-08-14 新增：回归测试（历史静默 bug 锁定）。
+# 触发条件：engine/tests/scripts 有改动时跑 pytest。
+# 覆盖：f键解析、水位信号方向、北京时间日期、比分校准、让球 EV、联赛 verdict。
+
+on:
+  push:
+    paths:
+      - 'engine/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'requirements*.txt'
+  pull_request:
+    paths:
+      - 'engine/**'
+      - 'tests/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sporttery-tests
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements-dev.txt --quiet
+          # 测试只依赖标准库 + engine 纯函数模块；装全量依赖以防未来测试引入
+          pip install -r requirements.txt --quiet || echo "⚠ 全量依赖安装失败（测试继续，纯函数测试不需要）"
+
+      - name: Run pytest
+        run: python -m pytest tests/ -v

@@ -16,6 +16,22 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 
+# 比分/总进球经验先验（懒加载，缓存）：校准模型比分矩阵的低比分系统性偏差。
+# 与 multi_play_ev 同款实现，避免每次评估都重读 JSON。
+_prior_cache: dict | None = None
+
+
+def _score_prior() -> dict:
+    global _prior_cache
+    if _prior_cache is None:
+        try:
+            from engine.learning.score_calibration import load_score_prior
+            _prior_cache = load_score_prior()
+        except Exception:
+            _prior_cache = {}
+    return _prior_cache
+
+
 @dataclass
 class HandicapEV:
     """一场比赛的让球 EV 评估"""
@@ -82,16 +98,27 @@ def evaluate_handicap_ev(
     if handicap is None or not any(o is not None and o > 1.0 for o in odds.values()):
         return None
 
-    # 模型让球概率（DC/MC 在比分矩阵上算的，缺失时用 top_scores 推导）
-    mprobs = {
-        "home": pred.get("handicap_home_prob"),
-        "draw": pred.get("handicap_draw_prob"),
-        "away": pred.get("handicap_away_prob"),
-    }
-    if mprobs and all(p is not None for p in mprobs.values()) and 0.9 < sum(mprobs.values()) <= 1.05:
-        model_probs = mprobs
-    else:
-        model_probs = handicap_probs_from_scores(pred.get("top_scores"), handicap)
+    # 模型让球概率（2026-08-14：优先从"校准后"的比分矩阵推导——比分矩阵是
+    # 让球概率的源，先做贝叶斯收缩（score_calibration, shrink=0.4，修正低比分
+    # 系统性偏差）才算"修复"而非"压制"；handicap_home_prob 等是预测时从原始
+    # 矩阵算的，未校准，仅作 top_scores 缺失时的回退）。
+    raw_scores = pred.get("top_scores")
+    model_probs = None
+    if raw_scores:
+        try:
+            from engine.learning.score_calibration import calibrate_score_probs
+            raw_scores = calibrate_score_probs(raw_scores, _score_prior())
+        except Exception:
+            pass
+        model_probs = handicap_probs_from_scores(raw_scores, handicap)
+    if not model_probs:
+        mprobs = {
+            "home": pred.get("handicap_home_prob"),
+            "draw": pred.get("handicap_draw_prob"),
+            "away": pred.get("handicap_away_prob"),
+        }
+        if mprobs and all(p is not None for p in mprobs.values()) and 0.9 < sum(mprobs.values()) <= 1.05:
+            model_probs = mprobs
     if not model_probs:
         return None
 

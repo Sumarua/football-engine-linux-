@@ -15,6 +15,42 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
+# 送钱区/价值区定性所需最小累计样本（2026-08-14：n=10-24 时噪声主导，
+# 翻转 verdict 会误禁/漏禁；n≥50 才允许定性，否则只给温和的谨慎/观望）
+MIN_VERDICT_SAMPLES = 50
+
+
+def classify_league(
+    n: int, roi: float, hit_rate: float,
+    recent5_n: int, recent5_hit_rate: float,
+    recent10_n: int, recent10_hit_rate: float,
+) -> str:
+    """联赛 verdict 判定（2026-08-14 拆出为纯函数，供回归测试锁定 n≥50 规则）。
+
+    规则：
+    - n<3：样本不足
+    - 3≤n<50：不给"送钱区/价值区"定性（小样本噪声主导），只给谨慎/观望
+    - n≥50：按 ROI/命中率定性；送钱区且近5场≥60% 且 近10场≥50% → 回暖解禁
+    """
+    if n < 3:
+        return "样本不足"
+    if n < MIN_VERDICT_SAMPLES:
+        return "谨慎" if roi < 0 else "观望"
+    if roi > 0.05 and hit_rate >= 0.5:
+        return "价值区"
+    if roi < -0.05 or hit_rate < 0.4:
+        # 回暖解禁（2026-08-06，用户需求）：累计口径送钱区，但最近窗口命中率 ≥60%
+        # （且 ≥3 场）→ 解禁观察，不再禁投。再拉胯会自动打回送钱区（累计口径兜底）。
+        # 2026-08-13 双窗口判定：近5场 ≥60% **且** 近10场 ≥50% 才解禁——
+        # 单看5场容易误判（如 3中2=67% 但10场 4中6=40% 其实在恶化）。
+        if recent5_n >= 3 and recent5_hit_rate >= 0.6 \
+                and recent10_n >= 5 and recent10_hit_rate >= 0.5:
+            return "回暖解禁"
+        return "送钱区"
+    if roi < 0:
+        return "谨慎"
+    return "观望"
+
 
 def build_league_report(
     daily_root: Path | None = None,
@@ -101,24 +137,13 @@ def build_league_report(
         # 近5/近10/全部三窗口对照才能科学判断联赛状态。
         recent5 = _window(5)
         recent10 = _window(10)
-        # 判断：命中率 < 45% → 送钱区；命中率 > 55% 且 ROI > 0 → 价值区
-        if s["n"] < 3:
-            verdict = "样本不足"
-        elif roi > 0.05 and hit_rate >= 0.5:
-            verdict = "价值区"
-        elif roi < -0.05 or hit_rate < 0.4:
-            verdict = "送钱区"
-        elif roi < 0:
-            verdict = "谨慎"
-        else:
-            verdict = "观望"
-        # 回暖解禁（2026-08-06，用户需求）：累计口径送钱区，但最近窗口命中率 ≥60%
-        # （且 ≥3 场）→ 解禁观察，不再禁投。再拉胯会自动打回送钱区（累计口径兜底）。
-        # 2026-08-13 双窗口判定：近5场 ≥60% **且** 近10场 ≥50% 才解禁——
-        # 单看5场容易误判（如 3中2=67% 但10场 4中6=40% 其实在恶化）。
-        if verdict == "送钱区" and recent5["n"] >= 3 and recent5["hit_rate"] >= 0.6 \
-                and recent10["n"] >= 5 and recent10["hit_rate"] >= 0.5:
-            verdict = "回暖解禁"
+        # 2026-08-14：verdict 收敛到纯函数 classify_league（n≥50 规则，
+        # 小样本只给谨慎/观望，禁投/价值定性需要实打实证据）。
+        verdict = classify_league(
+            s["n"], roi, hit_rate,
+            recent5["n"], recent5["hit_rate"],
+            recent10["n"], recent10["hit_rate"],
+        )
         rows.append({
             "league": lg,
             "n": s["n"],

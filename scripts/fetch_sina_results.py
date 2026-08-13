@@ -171,7 +171,12 @@ def main():
         dates = [(start + timedelta(days=i)).strftime("%Y-%m-%d") for i in range((end - start).days + 1)]
     else:
         # Default: yesterday（北京时间；runner 是 UTC，直接用 now() 会抓错日期）
-        yesterday = (datetime.utcnow() + timedelta(hours=8) - timedelta(days=1)).strftime("%Y-%m-%d")
+        # 统一走 engine.beijing_time（导入失败时回退旧公式，不中断抓取）。
+        try:
+            from engine.beijing_time import beijing_yesterday
+            yesterday = beijing_yesterday()
+        except Exception:
+            yesterday = (datetime.utcnow() + timedelta(hours=8) - timedelta(days=1)).strftime("%Y-%m-%d")
         dates = [yesterday]
 
     print(f"[fetch_sina] Fetching {len(dates)} date(s) from Sina API...")

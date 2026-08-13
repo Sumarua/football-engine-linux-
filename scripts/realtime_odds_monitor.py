@@ -172,9 +172,10 @@ def run_prediction_pipeline() -> bool:
 def git_push_with_retry(max_retries: int = 5, retry_delay: int = 10) -> bool:
     """Git推送（极简稳定版）"""
     try:
-        # 强制添加所有变更（绕过所有Git缓存和标志）
+        # 添加变更（2026-08-14 修复：去掉 -f，之前强制添加会把 __pycache__/*.pyc
+        # 和可重抓的 odds_sina.json 一起打进 git，绕过 .gitignore 导致仓库膨胀）
         subprocess.run(
-            ["git", "add", "-f", "data/", "web/", "scripts/", "engine/"],
+            ["git", "add", "data/", "web/", "scripts/", "engine/"],
             cwd=PROJECT_ROOT,
             capture_output=True,
             timeout=30
