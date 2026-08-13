@@ -1,16 +1,16 @@
 {
-  "n_matches": 2,
+  "n_matches": 4,
   "hits": 0,
   "hit_rate": 0.0,
   "roi": -1.0,
   "by_play": {
     "ttg": {
-      "n": 1,
+      "n": 2,
       "hit_rate": 0.0,
       "roi": -1.0
     },
     "crs": {
-      "n": 1,
+      "n": 2,
       "hit_rate": 0.0,
       "roi": -1.0
     }
@@ -22,7 +22,7 @@
       "play": "ttg",
       "label": "总进球",
       "best_sel": "0",
-      "best_edge": 3.4132,
+      "best_edge": 3.416,
       "odds": 16.0,
       "hit": false,
       "pnl": -1.0
@@ -33,8 +33,30 @@
       "play": "crs",
       "label": "波胆",
       "best_sel": "(1, 0)",
-      "best_edge": 0.7936,
+      "best_edge": 0.7867,
       "odds": 12.0,
+      "hit": false,
+      "pnl": -1.0
+    },
+    {
+      "date": "2026-08-13",
+      "match_id": "2026-08-13_周四005",
+      "play": "ttg",
+      "label": "总进球",
+      "best_sel": "0",
+      "best_edge": 0.9793,
+      "odds": 25.0,
+      "hit": false,
+      "pnl": -1.0
+    },
+    {
+      "date": "2026-08-13",
+      "match_id": "2026-08-13_周四005",
+      "play": "crs",
+      "label": "波胆",
+      "best_sel": "(0, 0)",
+      "best_edge": 2.1162,
+      "odds": 25.0,
       "hit": false,
       "pnl": -1.0
     }

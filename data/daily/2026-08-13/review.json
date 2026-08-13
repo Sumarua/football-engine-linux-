@@ -1,13 +1,13 @@
 {
   "date": "2026-08-13",
-  "n_matches": 1,
-  "hit_rate": 0.0,
-  "hits": 0,
+  "n_matches": 2,
+  "hit_rate": 0.5,
+  "hits": 1,
   "source_brier": {
-    "model": 0.7802,
-    "market": 0.8193,
+    "model": 0.5685,
+    "market": 0.5258,
     "djyy": 0.8436,
-    "final": 0.7232
+    "final": 0.6355
   },
   "by_league": {
     "欧罗巴": {
@@ -15,14 +15,20 @@
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
       "avg_brier": 0.7232
+    },
+    "沙职": {
+      "n": 1,
+      "hit_rate": 1.0,
+      "wilson_lower": 0.2065,
+      "avg_brier": 0.5479
     }
   },
   "by_confidence_tier": {
     "low": {
-      "n": 1,
-      "hit_rate": 0.0,
-      "wilson_lower": 0.0,
-      "avg_brier": 0.7232
+      "n": 2,
+      "hit_rate": 0.5,
+      "wilson_lower": 0.0945,
+      "avg_brier": 0.6355
     }
   },
   "by_odds_band": {
@@ -31,51 +37,59 @@
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
       "avg_brier": 0.7232
+    },
+    "1.0-1.5": {
+      "n": 1,
+      "hit_rate": 1.0,
+      "wilson_lower": 0.2065,
+      "avg_brier": 0.5479
     }
   },
   "score_stats": {
     "top1": 0,
     "top3": 0,
     "top5": 0,
-    "top8": 0,
-    "any": 0
+    "top8": 1,
+    "any": 1
   },
-  "score_rank_hist": {},
+  "score_rank_hist": {
+    "7": 1
+  },
   "score_source_stats": {
     "djyy": {
       "n": 0,
       "hits": 0
     },
     "mc": {
-      "n": 0,
+      "n": 1,
       "hits": 0
     }
   },
   "market_signal_stats": {
-    "n": 1,
+    "n": 2,
     "hits": 0
   },
   "layered": {
-    "log_loss_final": 1.179,
+    "log_loss_final": 1.0531,
     "goal_framework": {
-      "n": 1,
+      "n": 2,
       "hits": 0
     },
     "prob_bands": {
       "<40%": {
-        "n": 1,
-        "hit_rate": 0.0
+        "n": 2,
+        "hit_rate": 0.5
       }
     },
     "freshness_groups": {
       "watch": {
-        "n": 1,
-        "hit_rate": 0.0
+        "n": 2,
+        "hit_rate": 0.5
       }
     }
   },
   "biases": [],
-  "total_pnl": 0.0,
-  "generated_at": "2026-08-13T19:23:45.214370",
-  "sha256": "3c02686a11ff315565b7ebcbafb17660"
+  "total_pnl": -87.21,
+  "generated_at": "2026-08-13T20:24:20.243470",
+  "sha256": "7bb0f91ae44609fa7bc76db6af4bdb23"
 }
