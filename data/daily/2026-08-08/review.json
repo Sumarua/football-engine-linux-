@@ -1,8 +1,8 @@
 {
   "date": "2026-08-08",
   "n_matches": 25,
-  "hit_rate": 0.48,
-  "hits": 12,
+  "hit_rate": 0.56,
+  "hits": 14,
   "source_brier": {
     "model": 0.5982,
     "market": 0.5707,
@@ -24,8 +24,8 @@
     },
     "韩职": {
       "n": 3,
-      "hit_rate": 0.0,
-      "wilson_lower": 0.0,
+      "hit_rate": 0.3333,
+      "wilson_lower": 0.0615,
       "avg_brier": 0.7053
     },
     "挪超": {
@@ -66,8 +66,8 @@
     },
     "法乙": {
       "n": 3,
-      "hit_rate": 0.0,
-      "wilson_lower": 0.0,
+      "hit_rate": 0.3333,
+      "wilson_lower": 0.0615,
       "avg_brier": 0.6963
     },
     "巴甲": {
@@ -86,8 +86,8 @@
     },
     "low": {
       "n": 14,
-      "hit_rate": 0.3571,
-      "wilson_lower": 0.1634,
+      "hit_rate": 0.5,
+      "wilson_lower": 0.268,
       "avg_brier": 0.6548
     }
   },
@@ -98,11 +98,11 @@
       "wilson_lower": 0.1682,
       "avg_brier": 0.6686
     },
-    "3.0+": {
-      "n": 5,
-      "hit_rate": 0.4,
-      "wilson_lower": 0.1176,
-      "avg_brier": 0.6106
+    "2.0-3.0": {
+      "n": 7,
+      "hit_rate": 0.5714,
+      "wilson_lower": 0.2505,
+      "avg_brier": 0.6435
     },
     "1.0-1.5": {
       "n": 7,
@@ -110,11 +110,11 @@
       "wilson_lower": 0.3589,
       "avg_brier": 0.5351
     },
-    "2.0-3.0": {
-      "n": 3,
-      "hit_rate": 0.3333,
-      "wilson_lower": 0.0615,
-      "avg_brier": 0.6515
+    "3.0+": {
+      "n": 1,
+      "hit_rate": 1.0,
+      "wilson_lower": 0.2065,
+      "avg_brier": 0.5029
     }
   },
   "score_stats": {
@@ -161,22 +161,22 @@
       },
       "<40%": {
         "n": 14,
-        "hit_rate": 0.3571
+        "hit_rate": 0.5
       }
     },
     "freshness_groups": {
       "ok": {
         "n": 10,
-        "hit_rate": 0.5
+        "hit_rate": 0.6
       },
       "watch": {
         "n": 15,
-        "hit_rate": 0.4667
+        "hit_rate": 0.5333
       }
     }
   },
   "biases": [],
   "total_pnl": -13.6,
-  "generated_at": "2026-08-12T17:47:06.653384",
-  "sha256": "c85649e8b28659dbff9b6ef9086d7116"
+  "generated_at": "2026-08-13T19:02:07.388531",
+  "sha256": "6b49d3611622bb587b1984811b650a80"
 }

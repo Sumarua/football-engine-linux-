@@ -6,7 +6,7 @@
     "2026-08-12"
   ],
   "overall": {
-    "hit_rate": 0.4264,
+    "hit_rate": 0.4416,
     "brier_final": 0.6549,
     "brier_model": 0.6927,
     "brier_market": 0.4502,
@@ -256,9 +256,9 @@
     {
       "date": "2026-08-08",
       "n": 25,
-      "hits": 12,
-      "hit_rate": 0.48,
-      "cum_hit_rate": 0.4459,
+      "hits": 14,
+      "hit_rate": 0.56,
+      "cum_hit_rate": 0.4586,
       "brier_final": 0.6175,
       "brier_model": 0.5982,
       "brier_market": 0.5707,
@@ -268,9 +268,9 @@
     {
       "date": "2026-08-09",
       "n": 24,
-      "hits": 7,
-      "hit_rate": 0.2917,
-      "cum_hit_rate": 0.4254,
+      "hits": 8,
+      "hit_rate": 0.3333,
+      "cum_hit_rate": 0.442,
       "brier_final": 0.6405,
       "brier_model": 0.6804,
       "brier_market": 0.6057,
@@ -282,7 +282,7 @@
       "n": 3,
       "hits": 0,
       "hit_rate": 0.0,
-      "cum_hit_rate": 0.4185,
+      "cum_hit_rate": 0.4348,
       "brier_final": 0.8284,
       "brier_model": 1.0401,
       "brier_market": 1.0308,
@@ -294,7 +294,7 @@
       "n": 10,
       "hits": 6,
       "hit_rate": 0.6,
-      "cum_hit_rate": 0.4278,
+      "cum_hit_rate": 0.4433,
       "brier_final": 0.6165,
       "brier_model": 0.689,
       "brier_market": 0.5344,
@@ -306,7 +306,7 @@
       "n": 3,
       "hits": 1,
       "hit_rate": 0.3333,
-      "cum_hit_rate": 0.4264,
+      "cum_hit_rate": 0.4416,
       "brier_final": 0.7114,
       "brier_model": 0.925,
       "brier_market": 0.7342,
@@ -316,7 +316,7 @@
   ],
   "rolling7": {
     "n": 80,
-    "hit_rate": 0.4,
+    "hit_rate": 0.4375,
     "brier_final": 0.6701,
     "pnl": -463.6
   },
@@ -326,7 +326,7 @@
     "brier_final": 0.6746,
     "pnl": 0.0
   },
-  "verdict": "持平（±3pt 内）",
+  "verdict": "命中率提升 +5pt",
   "by_league": [
     {
       "layer": "挪超",
@@ -391,7 +391,7 @@
     {
       "layer": "葡超",
       "n": 9,
-      "hit_rate": 0.4444,
+      "hit_rate": 0.3333,
       "brier_final": 0.6718
     },
     {
@@ -403,7 +403,7 @@
     {
       "layer": "日职",
       "n": 5,
-      "hit_rate": 0.4,
+      "hit_rate": 0.6,
       "brier_final": 0.612
     },
     {
@@ -421,13 +421,13 @@
     {
       "layer": "韩职",
       "n": 3,
-      "hit_rate": 0.0,
+      "hit_rate": 0.3333,
       "brier_final": 0.7053
     },
     {
       "layer": "法乙",
       "n": 3,
-      "hit_rate": 0.0,
+      "hit_rate": 0.3333,
       "brier_final": 0.6963
     },
     {
@@ -445,7 +445,7 @@
     {
       "layer": "日乙",
       "n": 2,
-      "hit_rate": 0.5,
+      "hit_rate": 1.0,
       "brier_final": 0.5692
     },
     {
@@ -475,22 +475,22 @@
       "brier_final": 0.6907
     },
     {
+      "layer": "2.0-3.0",
+      "n": 58,
+      "hit_rate": 0.3793,
+      "brier_final": 0.6657
+    },
+    {
       "layer": "1.0-1.5",
       "n": 53,
       "hit_rate": 0.5849,
       "brier_final": 0.6101
     },
     {
-      "layer": "2.0-3.0",
-      "n": 46,
-      "hit_rate": 0.3478,
-      "brier_final": 0.6675
-    },
-    {
       "layer": "3.0+",
-      "n": 30,
-      "hit_rate": 0.3333,
-      "brier_final": 0.6334
+      "n": 18,
+      "hit_rate": 0.3889,
+      "brier_final": 0.6166
     }
   ],
   "by_conf_tier": [
@@ -503,7 +503,7 @@
     {
       "layer": "low",
       "n": 57,
-      "hit_rate": 0.2982,
+      "hit_rate": 0.3509,
       "brier_final": 0.6592
     },
     {

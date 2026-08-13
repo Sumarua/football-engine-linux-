@@ -104,22 +104,25 @@ DRAW_ANCHOR_W = 0.3
 
 
 def _pick_direction(h: float, d: float, a: float, draw_alert=None) -> str:
-    """从最终概率选方向（argmax），draw_alert 触发时改判平局。
+    """从最终概率选方向（argmax），R1 触发时改判平局。
 
-    与结算口径一致：修复预测时 direction 为空、复盘口径不一致的问题。
     2026-08-05 已验证：市场平局改判（market_d≥0.30 且 d≥0.22）回测 112 场
     命中率 43.8%→42.9% 不升反降 → 维持原逻辑，勿再盲目调参（walk_forward 二次验证）。
 
     2026-08-12 数据驱动新证据（非盲目调参）：
     R1 = 高平联赛 + 市场平局P∈[0.20,0.30) 无脑改判平局，回测 137 场
     命中 46.7% vs 基线 43.8%（+2.9pp），切半验证 42.6%/50.7% 均优于各自基线。
+
+    2026-08-13 停用 balanced_draw/cold_draw 改判（实盘证伪）：
+    账本 197 场中已改判 13 场仅 3 场改对（23%），10 场把本来正确的
+    argmax 改错（净 -3）；改判平局概率均值 0.30 ≈ 实际平局率 29%，
+    无信息增益。纯 argmax 命中率 44.2% > 改判后 42.6%（+1.5pp）。
+    只保留 R1（league_draw，有独立回测支撑），balanced/cold 仅作
+    展示标记不再触发方向改判。
     """
-    best = max(("home", h), ("draw", d), ("away", a), key=lambda x: x[1])
     if draw_alert == "league_draw":
         return "draw"
-    if draw_alert and best[0] != "draw" and best[1] - d < 0.08 and d >= 0.26:
-        return "draw"
-    return best[0]
+    return max(("home", h), ("draw", d), ("away", a), key=lambda x: x[1])[0]
 
 
 def run_daily_pipeline(target_date: date, predict_only: bool = False):
@@ -1421,10 +1424,7 @@ def _backfill_sina_results(
                 )
                 if p.get("draw_alert") == "league_draw":
                     best_sel = ("draw", p.get("draw_prob", 0))
-                elif p.get("draw_alert") and best_sel[0] != "draw":
-                    _bp, _dp = best_sel[1], p.get("draw_prob", 0)
-                    if _bp - _dp < 0.08 and _dp >= 0.26:
-                        best_sel = ("draw", _dp)
+                # balanced/cold 改判已停用（2026-08-13 实盘证伪，见 _pick_direction）
                 p["direction"] = best_sel[0]
                 p["direction_correct"] = best_sel[0] == actual
                 print(f"  ✓ 补结算回写 {back_date}: {r.home_team} {hs}-{as_} {r.away_team} "
@@ -2060,16 +2060,11 @@ def run_settlement(target_date: date):
                  ("away", pred["away_win_prob"])],
                 key=lambda x: x[1],
             )
-            # 平局盲点修复：模型已预警平局风险(draw_alert) 且 平局概率接近最高(<8pt) 时，
-            # direction 改判平局（否则纯 argmax 永远只选 H/A，109场只判2场平局 vs 实际29%平局率）
-            # R1(2026-08-12): league_draw（高平联赛+市场P∈[0.20,0.30)）无脑改判，预测/结算同口径
+            # 平局盲点修复：R1(2026-08-12) league_draw（高平联赛+市场P∈[0.20,0.30)）
+            # 无脑改判，预测/结算同口径。balanced/cold 已停用（2026-08-13 实盘证伪：
+            # 13 场改判仅 3 场改对，纯 argmax 命中率 44.2% > 改判后 42.6%）
             if pred.get("draw_alert") == "league_draw":
                 best_sel = ("draw", pred.get("draw_prob", 0))
-            elif pred.get("draw_alert") and best_sel[0] != "draw":
-                _best_p = best_sel[1]
-                _draw_p = pred.get("draw_prob", 0)
-                if _best_p - _draw_p < 0.08 and _draw_p >= 0.26:
-                    best_sel = ("draw", _draw_p)
             if r.home_score > r.away_score:
                 actual = "home"
             elif r.home_score == r.away_score:

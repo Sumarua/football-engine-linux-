@@ -579,7 +579,7 @@
         "points": 0
       }
     },
-    "direction": "draw",
+    "direction": "away",
     "direction_prob": 0.35164156219919707,
     "direction_margin": 0.0269,
     "handicap_ev": {
@@ -608,7 +608,7 @@
     "actual_result": "0-1",
     "actual_home_score": 0,
     "actual_away_score": 1,
-    "direction_correct": false,
+    "direction_correct": true,
     "predicted_score": "0-0",
     "score_correct": false,
     "score_rank": 2,
@@ -1679,7 +1679,7 @@
         "points": 0
       }
     },
-    "direction": "draw",
+    "direction": "home",
     "direction_prob": 0.3603508100928729,
     "direction_margin": 0.0155,
     "handicap_ev": {
@@ -1708,7 +1708,7 @@
     "actual_result": "1-1",
     "actual_home_score": 1,
     "actual_away_score": 1,
-    "direction_correct": true,
+    "direction_correct": false,
     "predicted_score": "1-1",
     "score_correct": true,
     "score_rank": 1,

@@ -1,8 +1,8 @@
 {
   "date": "2026-07-30",
   "n_matches": 6,
-  "hit_rate": 0.5,
-  "hits": 3,
+  "hit_rate": 0.3333,
+  "hits": 2,
   "source_brier": {
     "model": 0.8136,
     "market": 0.5771,
@@ -18,8 +18,8 @@
     },
     "巴甲": {
       "n": 1,
-      "hit_rate": 1.0,
-      "wilson_lower": 0.2065,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
       "avg_brier": 0.714
     }
   },
@@ -32,8 +32,8 @@
     },
     "low": {
       "n": 1,
-      "hit_rate": 1.0,
-      "wilson_lower": 0.2065,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
       "avg_brier": 0.714
     }
   },
@@ -58,8 +58,8 @@
     },
     "3.0+": {
       "n": 2,
-      "hit_rate": 0.5,
-      "wilson_lower": 0.0945,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
       "avg_brier": 0.7934
     }
   },
@@ -106,7 +106,7 @@
       },
       "<40%": {
         "n": 1,
-        "hit_rate": 1.0
+        "hit_rate": 0.0
       }
     },
     "freshness_groups": {}
@@ -125,6 +125,6 @@
     }
   ],
   "total_pnl": 0,
-  "generated_at": "2026-08-12T17:47:06.624295",
-  "sha256": "2b2e48b106fa869888bb152b029c0c8b"
+  "generated_at": "2026-08-13T19:02:07.361190",
+  "sha256": "bbe6a5ae371ddde1f72096592305f37f"
 }

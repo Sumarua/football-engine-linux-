@@ -282,6 +282,11 @@ def _render_track_record(state_dir: Path, web_dir: Path) -> str:
   </div>
   {_verdict_html}'''
 
+    # EV 价值区报告（全量已结算分层 ROI）——2026-08-13 从每日页面移入总览
+    # （每日页面只留当日复盘，全量统计统一进 Track Record，避免每天重复展示同一份数据）
+    _ev_report = _load_json(state_dir / "ev_report.json", {})
+    _ev_html = _ev_section(_ev_report) if _ev_report else ""
+
     html = f'''<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -353,6 +358,8 @@ tr:last-child td {{ border-bottom:none; }}
     {lg_rows}
   </table></div>
   {_parlay_html}
+
+  {_ev_html}
 
   <div class="section-title">方法论</div>
   <div class="card" style="font-size:0.8rem;color:var(--text-secondary)">
@@ -1637,18 +1644,15 @@ body {{
 
     <!-- SCORE PARLAY (2026-08-08) -->
     {score_parlay_html}
-
-    <!-- PARLAY SETTLE (2026-08-10) — 当天出票的结算结果，决策页直接可见 -->
-    {parlay_settle_html}
   </div>
 
   <!-- TAB: 复盘与数据 -->
   <div class="page-tab-panel" id="tab-review">
-    <!-- RESULTS REVIEW -->
+    <!-- RESULTS REVIEW（比赛表格 + 让球列） -->
     {results_html}
 
-    <!-- EV VALUE REPORT -->
-    {ev_html}
+    <!-- PARLAY SETTLE（2026-08-13 布局重构：串/比分串复盘紧跟比赛下方，胜负平→让球→串→比分串一目了然） -->
+    {parlay_settle_html}
 
     <!-- LEAGUE LAYERS -->
     {league_html}
@@ -3113,13 +3117,9 @@ def _results_section(results, predictions, review_ledger=None):
             predicted = "draw"
         else:
             predicted = "away"
-        # draw_alert 平局改判（与 _pick_direction 同规则）
+        # draw_alert 平局改判（与 _pick_direction 同规则：2026-08-13 起仅 R1）
         if _alert == "league_draw":
             predicted = "draw"  # R1: 高平联赛 + 市场平局P∈[0.20,0.30) 无脑改判
-        elif _alert and predicted != "draw":
-            _best_p = max(ph, pd, pa)
-            if _best_p - pd < 0.08 and pd >= 0.26:
-                predicted = "draw"
         pred_label = {"home": "主胜", "draw": "平局", "away": "客胜"}[predicted]
 
         hit = predicted == actual
@@ -3148,11 +3148,40 @@ def _results_section(results, predictions, review_ledger=None):
         pnl_color = "var(--green)" if pnl > 0 else "var(--red)" if pnl < 0 else "var(--dim)"
         pred_prob = {"home": ph, "draw": pd, "away": pa}[predicted]
 
+        # 让球胜负平（竞彩玩法口径）：handicap 为让球数，负=主队让球
+        # 如 -1 表示主让1球 → 让球后主队进球 = home_score + handicap（-1 → 减1球）
+        hcap = pred.get("handicap")
+        hcap_label = ""
+        hcap_result = ""
+        if hcap is not None:
+            try:
+                _h = float(hcap)
+                _hh = home_score + _h  # handicap 负=主让，让球后主队净胜减去让球数
+                if _hh > away_score:
+                    hcap_result = "让球主胜"
+                elif _hh == away_score:
+                    hcap_result = "让球平"
+                else:
+                    hcap_result = "让球客胜"
+                _hcap_str = f"{_h:+.0f}" if _h == int(_h) else f"{_h:+.1f}"
+                hcap_label = f"({_hcap_str})"
+                # 颜色：让球结果
+                if "主胜" in hcap_result:
+                    hcap_color = "var(--green)"
+                elif "客胜" in hcap_result:
+                    hcap_color = "var(--red)"
+                else:
+                    hcap_color = "var(--amber)"
+                hcap_result = f'<span style="color:{hcap_color};font-size:0.72rem;">{hcap_result}</span>'
+            except (TypeError, ValueError):
+                hcap_label = hcap_result = ""
+
         rows += f"""
         <tr class="{hit_cls}">
           <td>{pred.get('home_team', '')} vs {pred.get('away_team', '')}</td>
           <td style="font-weight:800;text-align:center;">{home_score}-{away_score}</td>
           <td>{actual_label}</td>
+          <td style="font-size:0.75rem;color:var(--dim);">{hcap_label} {hcap_result}</td>
           <td>{pred_label} ({pred_prob:.0%})</td>
           <td style="text-align:center;"><span class="result-icon {hit_cls}">{hit_icon}</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">{brier:.3f}</td>
@@ -3204,7 +3233,7 @@ def _results_section(results, predictions, review_ledger=None):
   {_layered_html}
   <div class="results-table-wrap">
     <table class="results-table">
-      <tr><th>比赛</th><th>比分</th><th>实际</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th></tr>
+      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th></tr>
       {rows}
     </table>
   </div>"""
