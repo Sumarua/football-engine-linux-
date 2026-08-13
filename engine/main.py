@@ -959,6 +959,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
 
     # 联赛分层报告：送钱区联赛禁止出注（老系统实证：瑞典超 -58%/欧罗巴 -51%/欧冠 -60% 全送钱）
     # 2026-08-06 升级：回暖解禁——累计口径送钱区但最近5场命中≥60%的联赛自动解禁观察
+    # 2026-08-13 升级：双窗口判定（近5≥60% 且 近10≥50%），见 league_report.build_league_report
     league_forbid: set[str] = set()
     league_recovered: set[str] = set()
     try:
@@ -972,7 +973,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
         if league_forbid:
             print(f"  🚫 送钱区联赛禁投: {sorted(league_forbid)}")
         if league_recovered:
-            print(f"  ✅ 回暖解禁联赛（最近5场命中≥60%，解除禁投）: {sorted(league_recovered)}")
+            print(f"  ✅ 回暖解禁联赛（近5≥60% 且 近10≥50%，解除禁投）: {sorted(league_recovered)}")
     except Exception as e:
         print(f"  ⚠ 联赛分层报告加载跳过: {e}")
 

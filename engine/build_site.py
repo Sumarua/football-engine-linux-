@@ -540,8 +540,9 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
                 f'<tr><td>{r["league"]}</td><td>{r["n"]}</td>'
                 f'<td>{r["hit_rate"]*100:.0f}%</td><td>{r["avg_odds"]:.2f}</td>'
                 f'<td style="color:{"var(--green)" if r["roi"] > 0 else "var(--red)"};font-weight:700">{r["roi"]*100:+.1f}%</td>'
-                f'<td>{_verdict_cell(r)}</td>'
-                f'<td>{_recent_cell(r)}</td>'
+                f'{_verdict_cell(r)}'
+                f'{_recent_cell(r)}'
+                f'{_recent10_cell(r)}'
                 f'{_draw_cell(r["league"])}</tr>'
                 for r in _rows if r["n"] >= 3
             )
@@ -550,10 +551,10 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
   <div class="section-title">联赛分层（送钱区禁投 · 回暖自动解禁 · 判平强度自适应）</div>
   <div style="overflow-x:auto">
   <table class="edge-table">
-    <tr><th>联赛</th><th>场数</th><th>命中率</th><th>均赔</th><th>ROI</th><th>判断</th><th>近期窗口</th><th>判平(命中/次数·强度)</th></tr>
+    <tr><th>联赛</th><th>场数</th><th>命中率</th><th>均赔</th><th>ROI</th><th>判断</th><th>近5场</th><th>近10场</th><th>判平(命中/次数·强度)</th></tr>
     {_rows_html}
   </table>
-  <div style="padding:6px 2px;font-size:0.62rem;color:var(--dim)">回暖解禁 = 累计口径送钱区，但最近5场命中≥60% → 自动解除禁投观察；再拉胯自动打回送钱区。</div>
+  <div style="padding:6px 2px;font-size:0.62rem;color:var(--dim)">三窗口对照：全部=累计兜底 · 近10场=中期趋势 · 近5场=短期灵敏度。回暖解禁 = 累计口径送钱区，但近5场命中≥60% <b>且</b> 近10场≥50% → 解除禁投观察；再拉胯自动打回送钱区。</div>
   </div>'''
     except Exception as e:
         print(f"⚠ 联赛分层区块跳过: {e}")
@@ -1890,6 +1891,17 @@ def _recent_cell(r):
             f'<br><span style="font-size:0.62rem;color:var(--dim)">近ROI {r.get("recent_roi", 0)*100:+.0f}%</span></td>')
 
 
+def _recent10_cell(r):
+    """近期10场窗口列（2026-08-13 新增：三窗口对照，中期趋势）"""
+    n = r.get("recent10_n", 0)
+    if not n:
+        return '<td style="color:var(--dim)">—</td>'
+    rate = r.get("recent10_hit_rate", 0)
+    color = "var(--green)" if rate >= 0.55 else ("var(--amber)" if rate >= 0.4 else "var(--red)")
+    return (f'<td style="color:{color}">近{n}场 {r.get("recent10_hits", 0)}中 ({rate*100:.0f}%)'
+            f'<br><span style="font-size:0.62rem;color:var(--dim)">近ROI {r.get("recent10_roi", 0)*100:+.0f}%</span></td>')
+
+
 def _verdict_cell(r):
     """联赛判断列渲染（2026-08-06 增加回暖解禁态）"""
     v = r.get("verdict", "观望")
@@ -1898,7 +1910,7 @@ def _verdict_cell(r):
     if v == "送钱区":
         return '<td style="color:var(--red);font-weight:700">🚫 送钱区·禁投</td>'
     if v == "回暖解禁":
-        return ('<td style="color:#ffaa3c;font-weight:700" title="累计口径送钱区，但最近5场命中≥60%，已自动解除禁投">'
+        return ('<td style="color:#ffaa3c;font-weight:700" title="累计口径送钱区，但近5场命中≥60% 且近10场≥50%，已自动解除禁投（双窗口判定，2026-08-13）">'
                 '✅ 回暖解禁·观察</td>')
     if v == "谨慎":
         return '<td style="color:var(--amber)">⚠️ 谨慎</td>'
@@ -3419,8 +3431,12 @@ def _build_daily_brief(
         for row in league_report["leagues"]:
             if row["n"] < 5:
                 continue
-            icon = {"价值区": "✅", "送钱区": "🚫", "谨慎": "⚠️", "观望": "👀"}.get(row["verdict"], "·")
-            lines.append(f"- {icon} **{row['league']}**：{row['n']}场 命中{row['hit_rate']*100:.0f}% 均赔{row['avg_odds']:.2f} ROI {row['roi']*100:+.1f}%\n")
+            icon = {"价值区": "✅", "送钱区": "🚫", "谨慎": "⚠️", "观望": "👀", "回暖解禁": "🔥"}.get(row["verdict"], "·")
+            _r5 = f"{row['recent_hit_rate']*100:.0f}%" if row.get("recent_n") else "—"
+            _r10 = f"{row['recent10_hit_rate']*100:.0f}%" if row.get("recent10_n") else "—"
+            lines.append(f"- {icon} **{row['league']}**：{row['n']}场 命中{row['hit_rate']*100:.0f}% "
+                         f"均赔{row['avg_odds']:.2f} ROI {row['roi']*100:+.1f}% "
+                         f"（近5 {_r5} / 近10 {_r10}）\n")
 
     # 串关结论
     if parlay_report and parlay_report.get("verdict"):

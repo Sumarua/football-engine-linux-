@@ -87,13 +87,20 @@ def build_league_report(
         hit_rate = s["hits"] / s["n"]
         avg_odds = s["odds_sum"] / s["n"]
         roi = s["roi_sum"] / s["n"]
-        # 近期窗口（2026-08-06）：最近 RECENT_WINDOW 场，判定回暖解禁
-        RECENT_WINDOW = 5
-        recent = s["history"][-RECENT_WINDOW:]
-        recent_n = len(recent)
-        recent_hits = sum(1 for _d, _h, _o in recent if _h)
-        recent_roi = sum((_o - 1) if _h else -1.0 for _d, _h, _o in recent) / max(recent_n, 1)
-        recent_hit_rate = recent_hits / recent_n if recent_n else 0.0
+
+        def _window(n: int) -> dict:
+            """截取最近 n 场窗口统计（n=0 表示全部）"""
+            w = s["history"][-n:] if n > 0 else s["history"]
+            wn = len(w)
+            wh = sum(1 for _d, _h, _o in w if _h)
+            wroi = sum((_o - 1) if _h else -1.0 for _d, _h, _o in w) / max(wn, 1)
+            return {"n": wn, "hits": wh, "hit_rate": wh / wn if wn else 0.0, "roi": wroi}
+
+        # 窗口：近5场（回暖解禁灵敏度）+ 近期10场（趋势）+ 全部（累计兜底）
+        # 2026-08-13 用户反馈：不能只看近5场——样本少时单场异常主导，
+        # 近5/近10/全部三窗口对照才能科学判断联赛状态。
+        recent5 = _window(5)
+        recent10 = _window(10)
         # 判断：命中率 < 45% → 送钱区；命中率 > 55% 且 ROI > 0 → 价值区
         if s["n"] < 3:
             verdict = "样本不足"
@@ -107,7 +114,10 @@ def build_league_report(
             verdict = "观望"
         # 回暖解禁（2026-08-06，用户需求）：累计口径送钱区，但最近窗口命中率 ≥60%
         # （且 ≥3 场）→ 解禁观察，不再禁投。再拉胯会自动打回送钱区（累计口径兜底）。
-        if verdict == "送钱区" and recent_n >= 3 and recent_hit_rate >= 0.6:
+        # 2026-08-13 双窗口判定：近5场 ≥60% **且** 近10场 ≥50% 才解禁——
+        # 单看5场容易误判（如 3中2=67% 但10场 4中6=40% 其实在恶化）。
+        if verdict == "送钱区" and recent5["n"] >= 3 and recent5["hit_rate"] >= 0.6 \
+                and recent10["n"] >= 5 and recent10["hit_rate"] >= 0.5:
             verdict = "回暖解禁"
         rows.append({
             "league": lg,
@@ -118,10 +128,15 @@ def build_league_report(
             "avg_confidence": round(s["confidence_sum"] / s["n"], 4),
             "verdict": verdict,
             # 近期窗口明细（页面展示"最近5场 x/x"）
-            "recent_n": recent_n,
-            "recent_hits": recent_hits,
-            "recent_hit_rate": round(recent_hit_rate, 4),
-            "recent_roi": round(recent_roi, 4),
+            "recent_n": recent5["n"],
+            "recent_hits": recent5["hits"],
+            "recent_hit_rate": round(recent5["hit_rate"], 4),
+            "recent_roi": round(recent5["roi"], 4),
+            # 近期10场窗口（2026-08-13 新增：三窗口对照）
+            "recent10_n": recent10["n"],
+            "recent10_hits": recent10["hits"],
+            "recent10_hit_rate": round(recent10["hit_rate"], 4),
+            "recent10_roi": round(recent10["roi"], 4),
         })
 
     rows.sort(key=lambda r: (-r["n"], -r["roi"]))
