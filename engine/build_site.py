@@ -277,7 +277,7 @@ def _render_track_record(state_dir: Path, web_dir: Path) -> str:
             _verdict_html = f'<div class="note" style="margin-top:8px">{_verdict}</div>' if _verdict else ""
             _parlay_html = f'''
   <div class="section-title">串关 / 波胆真实复盘（历史累计 · 非回测）</div>
-  <div style="padding:6px 2px 10px;font-size:0.68rem;color:var(--red)">⛔ 已于 2026-08-13 停用：实盘证明长期必亏（胜平负串 -63%、比分串 -100% 连续 84 张 0 中），资金回归单关。此区块保留历史结算供复盘。</div>
+  <div style="padding:6px 2px 10px;font-size:0.68rem;color:var(--dim)">历史真实出票（非回测）：胜平负串 -63%、比分串 -100%（连续 84 张 0 中，旧选腿未校准）。2026-08-13 起比分串改为仅官方赔率正 EV 出票。</div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
     {_cards}
   </div>
@@ -2644,20 +2644,18 @@ def _ticket_section(ticket, predictions):
 
 
 def _parlay_section(ticket, predictions):
-    """串关方案 — 已停用（2026-08-13 实盘证伪）。
+    """串关方案（2026-08-08 新增；2026-08-13 用户确认保留——竞彩主流玩法）。
 
-    真实出票复盘：胜平负串 17 张中 3（ROI -63%）。数学根源：串关吃双重
-    抽水 + 模型概率高估（账本校准 0.55-0.60 段命中率仅 31.6%）。用户确认
-    "全是实际亏钱项目，没意义"→ 停发新串票，此处显示停用说明。
-    历史串票结算见"串关/波胆复盘"（复盘 tab，诚实展示亏损）。
+    数学纪律：串关吃双重抽水，模型概率高估（账本校准 0.55-0.60 段命中率仅 31.6%）。
+    串票 EV 用账本校准命中率计算，只推荐 cal_ev>0 的；负 EV 串票 ⚠ 展示不出注；
+    无腿/全负 → 空仓并展示校准表（为什么不该串）。
     """
-    return """
-  <div class="section-title">串关方案（已停用）</div>
-  <div class="card" style="font-size:0.8rem;color:var(--text-secondary);padding:12px 14px">
-    ⛔ <b>串关过关玩法已于 2026-08-13 停用</b>——实盘 17 张真实出票仅中 3
-    （ROI <b style="color:var(--red)">-63%</b>）。串关吃双重抽水，长期必亏，
-    资金已回归正 EV 单关。历史串票结算见复盘页"串关/波胆复盘"。
-  </div>"""
+    if not ticket:
+        return ""
+    # 旧格式 ticket（无 parlay key，2026-08-08 之前生成）不显示串关区，
+    # 避免把"未计算过串关"误显示成"空仓"
+    if "parlay" not in ticket:
+        return ""
     parlay = ticket.get("parlay", [])
     cal = ticket.get("parlay_calibration", {})
     if not parlay and not cal:
@@ -2772,20 +2770,19 @@ def _parlay_section(ticket, predictions):
 
 
 def _score_parlay_section(ticket):
-    """比分串（波胆过关）— 已停用（2026-08-13 实盘证伪）。
+    """比分串（波胆过关）— 2026-08-13 科学性改造后恢复。
 
-    真实出票复盘：比分串 84 张中 0（ROI -100%，投入 ¥248 回报 ¥0）。
-    根源：波胆赔率未校准（DJYY 0-0 系统性高估）+ 精确比分单腿命中率
-    ~14%，两腿相乘 ~2%，长期必亏。用户确认停用，此处显示停用说明。
+    84 张 0 中（ROI -100%）教训：DJYY top_scores 概率未校准（0-0 系统性
+    高估 2-3 倍）+ 模拟赔率表算 EV 自欺欺人。改造后只出官方真实波胆赔率
+    （crs_odds）且校准概率×赔率>1 的正 EV 组合；无官方赔率/全负 EV →
+    空仓不展示（说明原因）。
     """
-    return """
-  <div class="section-title">比分串（波胆·已停用）</div>
-  <div class="card" style="font-size:0.8rem;color:var(--text-secondary);padding:12px 14px">
-    ⛔ <b>比分串（波胆过关）已于 2026-08-13 停用</b>——实盘 84 张真实出票
-    <b style="color:var(--red)">0 中</b>（ROI -100%，投入 ¥248 回报 ¥0）。
-    波胆精确比分命中率太低（单腿 ~14%，两腿 ~2%），长期必亏，资金回归单关。
-    历史结算见复盘页"串关/波胆复盘"。
-  </div>"""
+    if not ticket:
+        return ""
+    sp = ticket.get("score_parlay", [])
+    if not sp:
+        return ""
+    sel_odds_src = {"official": "官方", "simulated": "模拟"}
 
     def _leg_short(lg):
         return (f'<span class="sp-leg">{lg.get("home", "")[:6]}'
@@ -2805,7 +2802,7 @@ def _score_parlay_section(ticket):
             f'<tr>'
             f'<td><b>{ptype}</b><br><span style="font-size:.62rem;color:var(--dim)">{n_bets}注 · {src}赔率</span></td>'
             f'<td>{legs}</td>'
-            f'<td style="text-align:right;color:var(--dim)">{hit*100:.1f}%</td>'
+            f'<td style="text-align:right;color:var(--dim)">{hit*100:.2f}%</td>'
             f'<td style="text-align:right">¥{t.get("stake", 0):.0f}</td>'
             f'<td style="text-align:right;color:var(--green);font-weight:700">¥{t.get("potential", 0):.0f}</td>'
             f'<td>{worst_cell}</td>'
@@ -2819,17 +2816,16 @@ def _score_parlay_section(ticket):
         leg_lines = "".join(
             f'<div class="ts-row"><span>{lg.get("home","")} vs {lg.get("away","")} '
             f'<span style="opacity:.6">[{lg.get("league","")}]</span></span>'
-            f'<span>比分 {lg.get("score","")} · {lg.get("prob",0)*100:.0f}% · @{lg.get("odds",0):.1f}</span></div>'
+            f'<span>比分 {lg.get("score","")} · 校准 {lg.get("cal_prob", lg.get("prob",0))*100:.1f}% · @{lg.get("odds",0):.1f}</span></div>'
             for lg in t.get("legs", [])
         )
         details.append(
-            f'<details class="sp-detail"><summary>{ptype} · {note[:36]}</summary>{leg_lines}</details>'
+            f'<details class="sp-detail"><summary>{ptype} · {note[:40]}</summary>{leg_lines}</details>'
         )
 
     n = len(sp)
     total_stake = sum(t.get("stake", 0) for t in sp)
     max_pot = max((t.get("potential", 0) for t in sp), default=0)
-    src_all = "官方" if any(t.get("odds_source") == "official" for t in sp) else "模拟"
 
     return f"""
   <div class="section-title">🎯 比分串（波胆过关）
@@ -2837,12 +2833,13 @@ def _score_parlay_section(ticket):
   </div>
   <div style="overflow-x:auto">
   <table class="edge-table">
-    <tr><th>玩法</th><th>比分组合（单腿 @赔率）</th><th style="text-align:right">模型概率</th><th style="text-align:right">投入</th><th style="text-align:right">最高奖金</th><th>容错</th></tr>
+    <tr><th>玩法</th><th>比分组合（单腿 @官方赔率）</th><th style="text-align:right">校准概率</th><th style="text-align:right">投入</th><th style="text-align:right">最高奖金</th><th>容错</th></tr>
     {''.join(rows)}
   </table>
   </div>
   <div style="font-size:.68rem;color:var(--dim);padding:4px 2px">
-    比分命中率极低（top1 约 10-13%），串票概率未校准、赔率{src_all}，定位娱乐小注，不推荐重注。
+    2026-08-13 科学性改造：仅出<b>官方真实波胆赔率</b>且<b>校准概率×赔率&gt;1 的正 EV</b>组合
+    （DJYY 概率系统性高估已压校准，模拟赔率不再使用——84 张 0 中的教训）。
     <details style="display:inline"><summary style="cursor:pointer;display:inline;color:var(--blue)"> 腿明细</summary>{''.join(details)}</details>
   </div>"""
 

@@ -33,8 +33,15 @@ STAKE_UNIT = 2.0
 
 @dataclass
 class ParlayConfig:
-    min_prob: float = 0.60          # 腿最低融合方向概率（0.55-0.60 塌陷区禁入）
-    max_odds: float = 3.00          # 单腿赔率上限（串关要低赔率腿）
+    min_prob: float = 0.60          # 腿最低融合方向概率（已弃用为硬门槛，仅作展示参考）
+    max_odds: float = 4.50          # 单腿赔率上限（2026-08-13：3.0→4.5 放行正EV高赔腿）
+    min_odds: float = 1.45          # 单腿赔率下限（2026-08-13：避开 1.0-1.5 庄家抽水最狠区，
+                                    # 账本 1.0-1.5 段 53 场命中 58.5% 仍亏 -236——大热隐含概率
+                                    # 77-83% 远高于实际，EV 必负；2.0-3.5 段校准后 +4%~+28%）
+    value_edge: float = 1.05        # 价值门槛：校准命中率×赔率 ≥ 1.05（EV>5%）才入池
+                                    # （2026-08-13 核心改动：原"模型概率≥60%"把腿全选进
+                                    # 高置信塌陷区——70-80% 段实测仅 44%，且 1.2-1.5 大热
+                                    # 校准 EV -36%~-55%，串关等于双重送钱）
     max_legs: int = 3               # 最高串数（受 strategy.json max_parlay_legs 约束）
     max_parlay_stake: float = 30.0  # 串关日总投入上限（strategy.json）
     kelly_discount: float = 0.5     # 串关波动大，Kelly 再打 5 折
@@ -277,33 +284,39 @@ class ParlayBuilder:
             prob = c.get("prob", 0) or 0
             if odds > self.cfg.max_odds:
                 continue
-            if odds < 1.10:
+            if odds < self.cfg.min_odds:
                 continue
             match_id = c.get("match_id", "")
             pred = pred_map.get(match_id, {})
             market_prob = self._market_prob(pred, sel)
-            # 融合腿（模型口径门槛）
-            if prob >= self.cfg.min_prob:
+            cal_prob = self._cal_prob(prob)
+            # 2026-08-13 核心改动：价值选腿替代"模型高置信"选腿。
+            # 旧逻辑（prob≥0.60）把腿全选进高置信塌陷区——账本 70-80% 段实测仅 44%，
+            # 1.2-1.5 大热校准 EV -36%~-55%。新逻辑要求"校准命中率×赔率≥value_edge"，
+            # 只有正 EV 价值腿才入池（2.0-3.5 段校准后 +4%~+28%）。
+            edge_ok = cal_prob * odds >= self.cfg.value_edge
+            if edge_ok:
                 leg = ParlayLeg(
                     match_id=match_id,
                     home_team=c.get("home_team") or pred.get("home_team", ""),
                     away_team=c.get("away_team") or pred.get("away_team", ""),
                     competition=c.get("competition") or pred.get("competition", ""),
                     selection=sel, odds=odds, prob=prob,
-                    cal_prob=self._cal_prob(prob),
+                    cal_prob=cal_prob,
                     market_prob=market_prob, source="fusion",
                 )
                 leg.hit_prob = leg.cal_prob
                 pool.append(leg)
-            # 市场腿（市场口径门槛；账本实证市场比模型准）
-            elif market_prob >= self.cfg.market_min_prob:
+            # 市场腿（市场口径门槛；账本实证市场比模型准）——同样要过价值门槛，
+            # 市场公平概率≥0.65 段实测 61.5%，若×赔率也够正 EV 才入池
+            elif market_prob >= self.cfg.market_min_prob and market_prob * odds >= self.cfg.value_edge:
                 leg = ParlayLeg(
                     match_id=match_id,
                     home_team=c.get("home_team") or pred.get("home_team", ""),
                     away_team=c.get("away_team") or pred.get("away_team", ""),
                     competition=c.get("competition") or pred.get("competition", ""),
                     selection=sel, odds=odds, prob=prob,
-                    cal_prob=self._cal_prob(prob),
+                    cal_prob=cal_prob,
                     market_prob=market_prob, source="market",
                 )
                 leg.hit_prob = self._leg_hit_prob(leg)  # 市场段实测命中率

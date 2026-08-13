@@ -862,9 +862,11 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
                 else (_sina_data.get("totals") if _sina_data else None)
             ),
             # 竞彩其余玩法官方赔率（sporttery 主源采集）
-            "ttg_odds": getattr(fixture, "_raw_ttg", None) or None,      # 总进球 {s0..s7}
-            "crs_odds": getattr(fixture, "_raw_crs", None) or None,      # 波胆 {s00s00:0:0...}
-            "hafu_odds": getattr(fixture, "_raw_hafu", None) or None,    # 半全场 {aa,ah,ad,ha,hh,hd,da,dh,dd}
+            # 2026-08-13 修复：manager 合并流把盘口存 _sporttery_* 前缀，直接读 _raw_* 永远 None
+            # （波胆/总进球/半全场 207 场 0% 抓取率即此 bug）
+            "ttg_odds": getattr(fixture, "_raw_ttg", None) or getattr(fixture, "_sporttery_ttg", None) or None,
+            "crs_odds": getattr(fixture, "_raw_crs", None) or getattr(fixture, "_sporttery_crs", None) or None,
+            "hafu_odds": getattr(fixture, "_raw_hafu", None) or getattr(fixture, "_sporttery_hafu", None) or None,
             # 半全场概率
             "htft": _htft,
             "htft_top3": top_htft(_htft),
@@ -1172,16 +1174,55 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
           f"彩票{len(ticket_plan.lottery_picks)}场, "
           f"总投入={ticket_plan.total_stake}元")
 
-    # 6.4 串关方案 — 已停用（2026-08-13 实盘证伪）
-    # 真实出票复盘：胜平负串 17 张中 3（ROI -63%）、比分串 84 张中 0（ROI -100%，
-    # 投入 ¥248 回报 ¥0）。数学根源：串关吃双重抽水 + 比分串未校准赔率
-    # 高估（DJYY 0-0 系统性高估）+ 波胆精确比分命中率 ~14% 两腿相乘更低。
-    # 用户确认"全是实际亏钱项目，没意义"→ 停发新串票，资金回归正 EV 单关。
-    # 历史串票保留在 parlay_settle.json 供复盘（不删除，诚实展示亏损）。
-    parlay_plan: list = []
-    score_plan: list = []
-    print("  ⛔ 串关/比分串方案已停用（2026-08-13）：历史 ROI 胜平负串 -63% / 比分串 -100%，"
-          "连续 84 张波胆 0 中——亏钱项目停发，资金回归单关")
+    # 6.4 串关方案（2026-08-08 新增；2026-08-13 用户确认保留——竞彩主流玩法）
+    # 数学纪律：串关吃双重抽水，按模型概率选腿 = 送钱（账本校准 0.55-0.60 段命中率
+    # 仅 31.6%）。因此用账本校准命中率算真实 EV，只推荐 cal_ev>0 的串票；
+    # 负 EV 串票落盘标注 ⚠（页面展示但不出注），无腿/全负则空仓。
+    # 2026-08-13 教训：比分串 84 张 0 中（ROI -100%）→ 比分串必须用官方
+    # 真实赔率算 EV，无官方赔率一律不出（详见 6.4b）。
+    try:
+        from engine.strategy.parlay import ParlayBuilder, load_calibration
+        _cal = load_calibration(
+            ROOT / "data" / "state" / "review_ledger.jsonl",
+            overall=0.433,
+            min_samples=8,
+        )
+        parlay_builder = ParlayBuilder(
+            bankroll=actual_bankroll,
+            limits=strat_cfg.get("limits", {}),
+            calibration=_cal,
+        )
+        parlay_plan = parlay_builder.build(candidates, ticket_plan, predictions)
+        _n_rec = sum(1 for t in parlay_plan if t.recommended)
+        if parlay_plan:
+            _pl_desc = "、".join(f"{t.parlay_type}{'⭐' if t.recommended else '⚠'}" for t in parlay_plan)
+            print(f"  ✓ 串关方案: {len(parlay_plan)} 张票（推荐{_n_rec}张）: {_pl_desc}")
+            if _n_rec == 0:
+                print(f"  ⚠ 校准后全部负 EV：串关吃双重抽水，模型概率高估——不推荐出串（数据纪律）")
+        else:
+            print(f"  ⚠ 串关方案: 无正 EV 串关（校准概率×赔率<{parlay_builder.cfg.value_edge}，"
+                  f"1.2-1.5 大热全被价值门槛淘汰），空仓")
+    except Exception as _e:
+        parlay_plan = []
+        _cal = {}
+        print(f"  ⚠ 串关方案生成跳过: {_e}")
+
+    # 6.4b 比分串（波胆过关）— 2026-08-13 改造：官方赔率 EV 门槛
+    # 教训（84 张 0 中 ROI -100%）：DJYY top_scores 概率未校准（0-0 系统性高估
+    # 2-3 倍），模拟赔率表算 EV 是自欺欺人。改造后只出"官方真实波胆赔率"且
+    # 校准概率×赔率>1 的正 EV 组合；无官方赔率/全负 EV → 空仓并说明。
+    try:
+        from engine.strategy.score_parlay import ScoreParlayBuilder
+        score_plan = ScoreParlayBuilder().build(predictions)
+        if score_plan:
+            _sp_desc = "、".join(t.parlay_type for t in score_plan)
+            print(f"  ✓ 比分串方案（正EV）: {len(score_plan)} 张票: {_sp_desc}")
+        else:
+            print(f"  ⚠ 比分串方案: 无官方赔率或全负 EV（校准后），空仓——"
+                  f"无真实赔率不出比分串（2026-08-13 纪律）")
+    except Exception as _e:
+        score_plan = []
+        print(f"  ⚠ 比分串方案生成跳过: {_e}")
 
     # 6.5 场次并集保护（2026-08-07 修复）：Actions 每半小时重跑当天预测，
     # 某次数据源不完整（sporttery WAF 拦截/场次停售）会用少场次覆盖多场次，

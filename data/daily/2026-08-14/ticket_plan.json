@@ -1,0 +1,307 @@
+{
+  "stable": [],
+  "value": [
+    {
+      "match": "2026-08-14_周五016",
+      "sel": "hcap_away",
+      "odds": 2.53,
+      "stake": 63.47,
+      "prob": 0.451
+    },
+    {
+      "match": "2026-08-14_周五012",
+      "sel": "hcap_away",
+      "odds": 2.2,
+      "stake": 73.55,
+      "prob": 0.513
+    },
+    {
+      "match": "2026-08-14_周五003",
+      "sel": "home",
+      "odds": 2.3,
+      "stake": 12.98,
+      "prob": 0.445
+    }
+  ],
+  "lottery": [
+    {
+      "match": "2026-08-14_周五004",
+      "sel": "hcap_home",
+      "odds": 5.57,
+      "stake": 50.0,
+      "prob": 0.22
+    }
+  ],
+  "total_stake": 200.0,
+  "expected_roi": 0.1499,
+  "bankroll": 4536.390600000001,
+  "breaker_multiplier": 1.0,
+  "parlay": [
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-14_周五003",
+          "home": "基尔",
+          "away": "圣保利",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.3,
+          "prob": 0.445,
+          "cal_prob": 0.512,
+          "market_prob": 0.385,
+          "source": "fusion",
+          "hit_prob": 0.512
+        },
+        {
+          "match": "2026-08-14_周五007",
+          "home": "罗森博格",
+          "away": "维京",
+          "league": "挪超",
+          "sel": "away",
+          "odds": 2.25,
+          "prob": 0.401,
+          "cal_prob": 0.512,
+          "market_prob": 0.393,
+          "source": "fusion",
+          "hit_prob": 0.512
+        }
+      ],
+      "total_odds": 5.17,
+      "model_ev": -0.15,
+      "cal_ev": 2.36,
+      "cal_roi": 0.3545,
+      "market_ev": -0.43,
+      "market_roi": -0.2161,
+      "hit_prob_cal": 0.262,
+      "recommended": true,
+      "stake": 6.66,
+      "n_bets": 1,
+      "potential": 34.47,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-14_周五003",
+          "home": "基尔",
+          "away": "圣保利",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.3,
+          "prob": 0.445,
+          "cal_prob": 0.512,
+          "market_prob": 0.385,
+          "source": "fusion",
+          "hit_prob": 0.512
+        },
+        {
+          "match": "2026-08-14_周五010",
+          "home": "特尔斯达",
+          "away": "鹿斯巴达",
+          "league": "荷甲",
+          "sel": "home",
+          "odds": 2.17,
+          "prob": 0.434,
+          "cal_prob": 0.512,
+          "market_prob": 0.409,
+          "source": "fusion",
+          "hit_prob": 0.512
+        }
+      ],
+      "total_odds": 4.99,
+      "model_ev": -0.07,
+      "cal_ev": 1.84,
+      "cal_roi": 0.3063,
+      "market_ev": -0.43,
+      "market_roi": -0.2148,
+      "hit_prob_cal": 0.262,
+      "recommended": true,
+      "stake": 6.02,
+      "n_bets": 1,
+      "potential": 30.05,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-14_周五010",
+          "home": "特尔斯达",
+          "away": "鹿斯巴达",
+          "league": "荷甲",
+          "sel": "home",
+          "odds": 2.17,
+          "prob": 0.434,
+          "cal_prob": 0.512,
+          "market_prob": 0.409,
+          "source": "fusion",
+          "hit_prob": 0.512
+        },
+        {
+          "match": "2026-08-14_周五007",
+          "home": "罗森博格",
+          "away": "维京",
+          "league": "挪超",
+          "sel": "away",
+          "odds": 2.25,
+          "prob": 0.401,
+          "cal_prob": 0.512,
+          "market_prob": 0.393,
+          "source": "fusion",
+          "hit_prob": 0.512
+        }
+      ],
+      "total_odds": 4.88,
+      "model_ev": -0.3,
+      "cal_ev": 1.56,
+      "cal_roi": 0.2779,
+      "market_ev": -0.43,
+      "market_roi": -0.2155,
+      "hit_prob_cal": 0.262,
+      "recommended": true,
+      "stake": 5.61,
+      "n_bets": 1,
+      "potential": 27.39,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "3串1",
+      "legs": [
+        {
+          "match": "2026-08-14_周五003",
+          "home": "基尔",
+          "away": "圣保利",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.3,
+          "prob": 0.445,
+          "cal_prob": 0.512,
+          "market_prob": 0.385,
+          "source": "fusion",
+          "hit_prob": 0.512
+        },
+        {
+          "match": "2026-08-14_周五010",
+          "home": "特尔斯达",
+          "away": "鹿斯巴达",
+          "league": "荷甲",
+          "sel": "home",
+          "odds": 2.17,
+          "prob": 0.434,
+          "cal_prob": 0.512,
+          "market_prob": 0.409,
+          "source": "fusion",
+          "hit_prob": 0.512
+        },
+        {
+          "match": "2026-08-14_周五007",
+          "home": "罗森博格",
+          "away": "维京",
+          "league": "挪超",
+          "sel": "away",
+          "odds": 2.25,
+          "prob": 0.401,
+          "cal_prob": 0.512,
+          "market_prob": 0.393,
+          "source": "fusion",
+          "hit_prob": 0.512
+        }
+      ],
+      "total_odds": 11.23,
+      "model_ev": -0.26,
+      "cal_ev": 1.94,
+      "cal_roi": 0.5037,
+      "market_ev": -0.61,
+      "market_roi": -0.3051,
+      "hit_prob_cal": 0.134,
+      "recommended": true,
+      "stake": 3.86,
+      "n_bets": 1,
+      "potential": 43.35,
+      "worst_win": 0.0,
+      "note": "三场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "3串4",
+      "legs": [
+        {
+          "match": "2026-08-14_周五003",
+          "home": "基尔",
+          "away": "圣保利",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.3,
+          "prob": 0.445,
+          "cal_prob": 0.512,
+          "market_prob": 0.385,
+          "source": "fusion",
+          "hit_prob": 0.512
+        },
+        {
+          "match": "2026-08-14_周五010",
+          "home": "特尔斯达",
+          "away": "鹿斯巴达",
+          "league": "荷甲",
+          "sel": "home",
+          "odds": 2.17,
+          "prob": 0.434,
+          "cal_prob": 0.512,
+          "market_prob": 0.409,
+          "source": "fusion",
+          "hit_prob": 0.512
+        },
+        {
+          "match": "2026-08-14_周五007",
+          "home": "罗森博格",
+          "away": "维京",
+          "league": "挪超",
+          "sel": "away",
+          "odds": 2.25,
+          "prob": 0.401,
+          "cal_prob": 0.512,
+          "market_prob": 0.393,
+          "source": "fusion",
+          "hit_prob": 0.512
+        }
+      ],
+      "total_odds": 6.57,
+      "model_ev": null,
+      "cal_ev": 1.83,
+      "cal_roi": 0.3606,
+      "market_ev": -1.9,
+      "market_roi": -0.2379,
+      "hit_prob_cal": 0.134,
+      "recommended": true,
+      "stake": 5.08,
+      "n_bets": 4,
+      "potential": 33.37,
+      "worst_win": 9.77,
+      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥10），全中 ¥53",
+      "source": "calibrated"
+    }
+  ],
+  "score_parlay": [],
+  "parlay_calibration": {
+    "overall": 0.4416,
+    "n": 197,
+    "table": {
+      "0.35": 0.3455,
+      "0.4": 0.5116,
+      "0.45": 0.5714,
+      "0.5": 0.4211,
+      "0.55": 0.3,
+      "0.6": 0.4545,
+      "0.7": 0.5
+    },
+    "note": "串关 EV 用账本校准命中率（模型概率高估，0.55-0.60 段仅 31.6% 命中）；推荐=校准EV>0"
+  }
+}

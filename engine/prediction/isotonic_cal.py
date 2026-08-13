@@ -68,8 +68,10 @@ class IsotonicCalibrator:
             self._calibrators = data.get("calibrators", {})
             self._method_used = data.get("method", "none")
             self._n_samples = data.get("n_samples", 0)
+            self._shrunk_tables = data.get("shrunk_tables", {})
         except Exception:
             self._calibrators = {}
+            self._shrunk_tables = {}
 
     def save(self):
         """持久化校准器"""
@@ -78,6 +80,7 @@ class IsotonicCalibrator:
             "calibrators": self._calibrators,
             "method": self._method_used,
             "n_samples": self._n_samples,
+            "shrunk_tables": getattr(self, "_shrunk_tables", {}),
         }
         self.save_path.write_bytes(pickle.dumps(data))
 
@@ -109,9 +112,19 @@ class IsotonicCalibrator:
         self._method_used = method
         outcome_names = ["home", "draw", "away"]
 
+        # 2026-08-13 修正：小样本过拟合（197 场拆三路每路 ~66 场，
+        # 高置信端 70%+ 仅 9 场，isotonic 台阶把噪声当信号学——实测
+        # 70-80% 段预测 75% 实际只中 44%）。改为：
+        #   1) isotonic 拟合后向整体命中率贝叶斯收缩（样本越少收缩越强）
+        #   2) 高置信端样本 < high_conf_min 时强制封顶（不许虚高）
+        high_conf_min = max(15, n // 8)     # 高置信端最少样本（约 12%）
+        high_conf_cap = 0.55                # 高置信端封顶（实测 70%+ 仅 44%）
+        self._shrunk_tables: dict[str, tuple[np.ndarray, np.ndarray]] = {}
+
         for idx, name in enumerate(outcome_names):
             y_pred = predicted_probs[:, idx]
             y_true = (actuals == idx).astype(float)
+            base_rate = y_true.mean()       # 该结果整体命中率（收缩先验）
 
             if method == "isotonic":
                 cal = IsotonicRegression(
@@ -119,6 +132,21 @@ class IsotonicCalibrator:
                     out_of_bounds="clip",
                 )
                 cal.fit(y_pred, y_true)
+                # 贝叶斯收缩：isotonic 输出向 base_rate 收缩，权重 = 样本量
+                # shrink = n / (n + K)，K=50：样本越少越向先验靠
+                shrink = n / (n + 50.0)
+                # 用 predict 在阈值点取值（兼容不同 sklearn 版本 f_ 类型）
+                xs = np.asarray(cal.X_thresholds_, dtype=float)
+                ys = np.asarray([float(cal.predict([x])[0]) for x in xs], dtype=float)
+                ys = shrink * ys + (1.0 - shrink) * base_rate
+                # 高置信端保护：预测 >=0.60 且端内样本少 → 封顶
+                hi_mask = xs >= 0.60
+                if hi_mask.sum() >= 1 and (y_pred >= 0.60).sum() < high_conf_min:
+                    ys[hi_mask] = np.minimum(ys[hi_mask], high_conf_cap)
+                # 保证单调不减（收缩后可能破坏 isotonic 单调性）
+                ys = np.maximum.accumulate(ys)
+                # 保存收缩表（calibrate 时用 np.interp 查表，避免改 sklearn 对象）
+                self._shrunk_tables[name] = (xs, ys)
             else:
                 # Platt scaling: logistic regression on predicted prob
                 cal = LogisticRegression(C=1.0, solver="lbfgs")
@@ -127,7 +155,7 @@ class IsotonicCalibrator:
             self._calibrators[name] = cal
 
         self.save()
-        print(f"  [校准] {method} 拟合完成: {n} 样本, 3个校准器")
+        print(f"  [校准] {method} 拟合完成: {n} 样本, 3个校准器, 贝叶斯收缩(shr={shrink:.2f})")
 
     def calibrate(self, probs: tuple[float, float, float]) -> tuple[float, float, float]:
         """校准单场预测概率
@@ -152,7 +180,13 @@ class IsotonicCalibrator:
 
             p = probs[idx]
             if self._method_used == "isotonic":
-                cal_p = float(cal.predict([p])[0])
+                # 收缩表优先（贝叶斯收缩后的校准曲线）
+                table = getattr(self, "_shrunk_tables", {}).get(name)
+                if table is not None:
+                    xs, ys = table
+                    cal_p = float(np.interp(p, xs, ys, left=ys[0], right=ys[-1]))
+                else:
+                    cal_p = float(cal.predict([p])[0])
             else:
                 # Platt: predict_proba
                 cal_p = float(cal.predict_proba([[p]])[0][1])

@@ -31,6 +31,10 @@ from pathlib import Path
 
 STAKE_UNIT = 2.0
 
+# DJYY top1 比分精确命中率（账本 197 场实测：24/197 = 12.2%，2026-08-13）
+# 用实测校准替代 DJYY 高估概率——比分串 EV 全靠它把关。
+SCORE_CAL_PROB = 0.122
+
 # 0-0 概率封顶（DJYY 系统性高估；实际 0-0 频率 ~8-10%）
 ZZ_CAP = 0.15
 
@@ -54,8 +58,10 @@ class ScoreLeg:
     away_team: str
     competition: str
     score: tuple[int, int]  # (主, 客)
-    prob: float             # 修正后模型概率
+    prob: float             # 修正后模型概率（DJYY 口径）
     odds: float             # 官方波胆赔率（无则模拟）
+    cal_prob: float = 0.0   # 校准后命中率（2026-08-13：DJYY 系统性高估 → prob^1.5 封顶 15%）
+    odds_source: str = "official"  # "official" / "simulated"（2026-08-13 起只出 official）
 
 
 @dataclass
@@ -79,6 +85,7 @@ class ScoreTicket:
                 "league": l.competition,
                 "score": f"{l.score[0]}-{l.score[1]}",
                 "prob": round(l.prob, 3),
+                "cal_prob": round(l.cal_prob, 4),
                 "odds": round(l.odds, 2),
             } for l in self.legs],
             "total_odds": round(self.total_odds, 2),
@@ -137,7 +144,16 @@ class ScoreParlayBuilder:
         self.max_legs = max_legs
 
     def build(self, predictions: list[dict]) -> list[ScoreTicket]:
-        """从 predictions 生成比分串。返回空列表 = 今日无比分串。"""
+        """从 predictions 生成比分串。返回空列表 = 今日无比分串（或全负 EV）。
+
+        2026-08-13 科学性改造（84 张 0 中 ROI -100% 教训）：
+        - 只用官方真实波胆赔率（crs_odds），无官方赔率 = 无法验证 EV → 淘汰
+          （模拟赔率表算 EV 是自欺欺人，之前 2串1 赔率 49-70 倍纯属纸面）
+        - DJYY top_scores 概率未校准（系统性高估 2-3 倍）→ 用账本实测比分
+          命中率回退校准（top1 ~12%，整体精确比分 ~10-14%）
+        - EV 门槛：校准概率连乘 × 官方赔率 > 1 才出票（正 EV 纪律，
+          与单关/让球同款：没边际不出注）
+        """
         pool: list[ScoreLeg] = []
         for p in predictions or []:
             ts = p.get("top_scores") or []
@@ -150,9 +166,20 @@ class ScoreParlayBuilder:
             if prob < self.min_prob:
                 continue
             odds = _official_odds(p, (h, a))
-            odds_source_any = odds is not None
             if odds is None:
-                odds = BASE_ODDS.get((h, a), 35.0)
+                # 无官方赔率 → 淘汰（无法验证 EV，模拟赔率是纸面财富）
+                continue
+            # 校准：用账本实测 DJYY top1 比分精确命中率（12.2%，24/197），
+            # 不用 DJYY 高估概率（0-0 曾高估到 42% vs 实际 8-10%，系统性
+            # 高估 2-3 倍）。实测校准比 prob^1.5 更诚实：单腿 12.2% × 官方
+            # 赔率 7 倍 = EV -15%，×12 倍 = EV +46%——只有高赔率官方波胆
+            # 才有正 EV，这正是比分串"小注搏高赔"的正确打开方式。
+            # （2026-08-13 用户："选的都是1.5sp以下肯定亏钱"——比分串同理，
+            #  低赔率波胆 = 送钱，宁可空仓）
+            cal_prob = SCORE_CAL_PROB  # 0.122 账本实测 top1 命中率
+            # 单腿价值门槛：校准概率 × 官方赔率 ≥ 1.05（EV>5%）才入池
+            if cal_prob * odds < 1.05:
+                continue
             pool.append(ScoreLeg(
                 match_id=p.get("match_id", ""),
                 home_team=p.get("home_team", ""),
@@ -160,73 +187,85 @@ class ScoreParlayBuilder:
                 competition=p.get("competition", ""),
                 score=(h, a), prob=prob, odds=odds,
             ))
-            # 记录是否有官方赔率（整张票用票级字段）
-            pool[-1].odds_source = "official" if odds_source_any else "simulated"
+            pool[-1].cal_prob = cal_prob
+            pool[-1].odds_source = "official"
 
         if not pool:
             return []
 
         tickets: list[ScoreTicket] = []
-        pool.sort(key=lambda l: l.prob, reverse=True)
+        pool.sort(key=lambda l: l.cal_prob, reverse=True)
 
-        # 2串1：概率最高的场次两两组合（只留 top3，避免 15 张挤掉三串玩法）
+        def _ev(legs: list[ScoreLeg]) -> float:
+            """校准概率连乘 × 官方赔率 - 1（>0 才出）"""
+            p = 1.0
+            for lg in legs:
+                p *= lg.cal_prob
+            odds = 1.0
+            for lg in legs:
+                odds *= lg.odds
+            return p * odds - 1.0
+
+        # 2串1：概率最高的场次两两组合（只留 top3 正 EV）
         top2 = pool[:6]
         _two_in_one = []
         for l1, l2 in combinations(top2, 2):
-            hit = l1.prob * l2.prob
+            hit = l1.cal_prob * l2.cal_prob
             odds = l1.odds * l2.odds
-            src = "official" if (l1.odds_source == "official" and l2.odds_source == "official") else "simulated"
+            if hit * odds <= 1.0:
+                continue  # 负 EV 不出
             _two_in_one.append(ScoreTicket(
                 parlay_type="比分2串1",
                 legs=[l1, l2], total_odds=round(odds, 2),
                 hit_prob=hit, stake=STAKE_UNIT, potential=round(STAKE_UNIT * odds, 2),
-                odds_source=src,
-                note=f"两场比分都中才赢（单场命中率约 {l1.prob:.0%} × {l2.prob:.0%}）",
+                odds_source="official",
+                note=f"两场比分都中才赢（校准命中 {hit:.1%} × 赔率 {odds:.0f} 倍 = EV {hit*odds-1:+.0%}）",
             ))
-        _two_in_one.sort(key=lambda t: t.hit_prob, reverse=True)
+        _two_in_one.sort(key=lambda t: t.hit_prob * t.total_odds, reverse=True)
         tickets.extend(_two_in_one[:3])
 
-        # 3串1：top3 场次全中才赢（2026-08-10 修复：此前被 2串1 概率排序挤掉永不展示）
+        # 3串1：top3 场次全中才赢（正 EV 才出）
         if len(pool) >= 3:
             l1, l2, l3 = pool[:3]
-            hit = l1.prob * l2.prob * l3.prob
+            hit = l1.cal_prob * l2.cal_prob * l3.cal_prob
             odds = l1.odds * l2.odds * l3.odds
-            src = "official" if all(l.odds_source == "official" for l in (l1, l2, l3)) else "simulated"
-            tickets.append(ScoreTicket(
-                parlay_type="比分3串1",
-                legs=[l1, l2, l3], total_odds=round(odds, 2),
-                hit_prob=hit, stake=STAKE_UNIT, potential=round(STAKE_UNIT * odds, 2),
-                odds_source=src,
-                note=f"三场比分全中才赢（赔率 {odds:.0f} 倍）",
-            ))
+            if hit * odds > 1.0:
+                tickets.append(ScoreTicket(
+                    parlay_type="比分3串1",
+                    legs=[l1, l2, l3], total_odds=round(odds, 2),
+                    hit_prob=hit, stake=STAKE_UNIT, potential=round(STAKE_UNIT * odds, 2),
+                    odds_source="official",
+                    note=f"三场比分全中才赢（赔率 {odds:.0f} 倍，校准命中 {hit:.2%}）",
+                ))
 
         # 3串4 容错：3 场出 4 注（3×2串1 + 1×3串1），错 1 场仍中 1 注 2串1
-        # （2026-08-10 用户："三串打 2串1，容错率高些"→ 竞彩 M 串 N 容错玩法）
         if len(pool) >= 3:
             l1, l2, l3 = pool[:3]
-            o2 = l1.odds * l2.odds  # 单注 2串1 赔率（三注同构取最大两腿组合展示）
             o2_list = sorted([l1.odds * l2.odds, l2.odds * l3.odds, l1.odds * l3.odds], reverse=True)
             o3 = l1.odds * l2.odds * l3.odds
             n_bets = 4
             stake = STAKE_UNIT * n_bets
-            # 最差命中：错 1 场 → 中 1 注 2串1（概率最高的两腿组合）
             worst = STAKE_UNIT * max(o2_list)
-            # 全中：3 注 2串1 + 1 注 3串1
             potential = STAKE_UNIT * (sum(o2_list) + o3)
-            hit = l1.prob * l2.prob * l3.prob
-            src = "official" if all(l.odds_source == "official" for l in (l1, l2, l3)) else "simulated"
-            tickets.append(ScoreTicket(
-                parlay_type="比分3串4(容错)",
-                legs=[l1, l2, l3], total_odds=round(o3, 2),
-                hit_prob=hit, stake=round(stake, 2),
-                potential=round(potential, 2), worst_win=round(worst, 2),
-                n_bets=n_bets, odds_source=src,
-                note=f"3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥{worst:.0f}，全中≈¥{potential:.0f}",
-            ))
+            # 容错票期望：错1场中1注2串1（3种错法）+ 全中
+            p_all = l1.cal_prob * l2.cal_prob * l3.cal_prob
+            p_one_miss = (1 - l1.cal_prob) * l2.cal_prob * l3.cal_prob \
+                + l1.cal_prob * (1 - l2.cal_prob) * l3.cal_prob \
+                + l1.cal_prob * l2.cal_prob * (1 - l3.cal_prob)
+            exp_return = p_all * potential + p_one_miss * worst
+            if exp_return > stake:
+                tickets.append(ScoreTicket(
+                    parlay_type="比分3串4(容错)",
+                    legs=[l1, l2, l3], total_odds=round(o3, 2),
+                    hit_prob=p_all, stake=round(stake, 2),
+                    potential=round(potential, 2), worst_win=round(worst, 2),
+                    n_bets=n_bets, odds_source="official",
+                    note=f"3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥{worst:.0f}，全中≈¥{potential:.0f}",
+                ))
 
-        # 排序：2串1 → 3串1 → 3串4(容错) 分组展示，同组按概率降序
+        # 排序：2串1 → 3串1 → 3串4(容错) 分组展示，同组按 EV 降序
         order = {"比分2串1": 0, "比分3串1": 1, "比分3串4(容错)": 2}
-        tickets.sort(key=lambda t: (order.get(t.parlay_type, 9), -t.hit_prob))
+        tickets.sort(key=lambda t: (order.get(t.parlay_type, 9), -(t.hit_prob * t.total_odds)))
         return tickets[: self.max_tickets]
 
 
