@@ -7,12 +7,12 @@
       "sel": "draw",
       "odds": 3.8,
       "stake": 50.0,
-      "prob": 0.325
+      "prob": 0.324
     }
   ],
   "total_stake": 50.0,
-  "expected_roi": 0.2339,
-  "bankroll": 4536.390600000001,
+  "expected_roi": 0.2323,
+  "bankroll": 4449.180600000001,
   "breaker_multiplier": 1.0,
   "parlay": [
     {
@@ -38,24 +38,24 @@
           "league": "芬超",
           "sel": "draw",
           "odds": 3.8,
-          "prob": 0.325,
-          "cal_prob": 0.439,
+          "prob": 0.324,
+          "cal_prob": 0.442,
           "market_prob": 0.233,
           "source": "fusion",
-          "hit_prob": 0.439
+          "hit_prob": 0.442
         }
       ],
       "total_odds": 8.74,
-      "model_ev": 0.31,
-      "cal_ev": 6.9,
-      "cal_roi": 0.9647,
+      "model_ev": 0.32,
+      "cal_ev": 6.87,
+      "cal_roi": 0.9772,
       "market_ev": -0.43,
       "market_roi": -0.2161,
-      "hit_prob_cal": 0.225,
+      "hit_prob_cal": 0.226,
       "recommended": true,
-      "stake": 7.15,
+      "stake": 7.03,
       "n_bets": 1,
-      "potential": 62.49,
+      "potential": 61.44,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -83,24 +83,24 @@
           "league": "芬超",
           "sel": "draw",
           "odds": 3.8,
-          "prob": 0.325,
-          "cal_prob": 0.439,
+          "prob": 0.324,
+          "cal_prob": 0.442,
           "market_prob": 0.233,
           "source": "fusion",
-          "hit_prob": 0.439
+          "hit_prob": 0.442
         }
       ],
       "total_odds": 8.25,
       "model_ev": 0.24,
-      "cal_ev": 5.77,
-      "cal_roi": 0.8537,
+      "cal_ev": 5.76,
+      "cal_roi": 0.8655,
       "market_ev": -0.43,
       "market_roi": -0.2154,
-      "hit_prob_cal": 0.225,
+      "hit_prob_cal": 0.226,
       "recommended": true,
-      "stake": 6.76,
+      "stake": 6.65,
       "n_bets": 1,
-      "potential": 55.74,
+      "potential": 54.84,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -136,16 +136,16 @@
         }
       ],
       "total_odds": 4.99,
-      "model_ev": -0.3,
-      "cal_ev": 1.35,
+      "model_ev": -0.29,
+      "cal_ev": 1.31,
       "cal_roi": 0.3063,
       "market_ev": -0.43,
       "market_roi": -0.2148,
       "hit_prob_cal": 0.262,
       "recommended": true,
-      "stake": 4.4,
+      "stake": 4.27,
       "n_bets": 1,
-      "potential": 21.96,
+      "potential": 21.31,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -186,24 +186,24 @@
           "league": "芬超",
           "sel": "draw",
           "odds": 3.8,
-          "prob": 0.325,
-          "cal_prob": 0.439,
+          "prob": 0.324,
+          "cal_prob": 0.442,
           "market_prob": 0.233,
           "source": "fusion",
-          "hit_prob": 0.439
+          "hit_prob": 0.442
         }
       ],
       "total_odds": 18.97,
       "model_ev": 0.1,
-      "cal_ev": 4.45,
-      "cal_roi": 1.1812,
+      "cal_ev": 4.42,
+      "cal_roi": 1.1951,
       "market_ev": -0.61,
       "market_roi": -0.3051,
-      "hit_prob_cal": 0.115,
+      "hit_prob_cal": 0.116,
       "recommended": true,
-      "stake": 3.77,
+      "stake": 3.7,
       "n_bets": 1,
-      "potential": 71.5,
+      "potential": 70.17,
       "worst_win": 0.0,
       "note": "三场全中才赢",
       "source": "calibrated"
@@ -244,24 +244,24 @@
           "league": "芬超",
           "sel": "draw",
           "odds": 3.8,
-          "prob": 0.325,
-          "cal_prob": 0.439,
+          "prob": 0.324,
+          "cal_prob": 0.442,
           "market_prob": 0.233,
           "source": "fusion",
-          "hit_prob": 0.439
+          "hit_prob": 0.442
         }
       ],
       "total_odds": 10.24,
       "model_ev": null,
-      "cal_ev": 4.24,
-      "cal_roi": 0.8265,
+      "cal_ev": 4.21,
+      "cal_roi": 0.836,
       "market_ev": -1.9,
       "market_roi": -0.2378,
-      "hit_prob_cal": 0.115,
+      "hit_prob_cal": 0.116,
       "recommended": true,
-      "stake": 5.13,
+      "stake": 5.04,
       "n_bets": 4,
-      "potential": 52.51,
+      "potential": 51.59,
       "worst_win": 9.98,
       "note": "容错：错 1 场仍中 1 注 2串1（回 ¥10），全中 ¥82",
       "source": "calibrated"
@@ -277,8 +277,8 @@
           "away": "鹿斯巴达",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.201,
-          "cal_prob": 0.1318,
+          "prob": 0.202,
+          "cal_prob": 0.1301,
           "odds": 10.5
         },
         {
@@ -287,19 +287,19 @@
           "away": "登博思",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.181,
-          "cal_prob": 0.1318,
+          "prob": 0.184,
+          "cal_prob": 0.1301,
           "odds": 11.0
         }
       ],
       "total_odds": 115.5,
-      "hit_prob": 0.0174,
+      "hit_prob": 0.0169,
       "stake": 2.0,
       "potential": 231.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.7% × 赔率 116 倍 = EV +101%）"
+      "note": "两场比分都中才赢（校准命中 1.7% × 赔率 116 倍 = EV +95%）"
     },
     {
       "type": "比分2串1",
@@ -310,8 +310,8 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.222,
-          "cal_prob": 0.1318,
+          "prob": 0.221,
+          "cal_prob": 0.1301,
           "odds": 10.0
         },
         {
@@ -320,19 +320,19 @@
           "away": "登博思",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.181,
-          "cal_prob": 0.1318,
+          "prob": 0.184,
+          "cal_prob": 0.1301,
           "odds": 11.0
         }
       ],
       "total_odds": 110.0,
-      "hit_prob": 0.0174,
+      "hit_prob": 0.0169,
       "stake": 2.0,
       "potential": 220.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.7% × 赔率 110 倍 = EV +91%）"
+      "note": "两场比分都中才赢（校准命中 1.7% × 赔率 110 倍 = EV +86%）"
     },
     {
       "type": "比分2串1",
@@ -343,8 +343,8 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.222,
-          "cal_prob": 0.1318,
+          "prob": 0.221,
+          "cal_prob": 0.1301,
           "odds": 10.0
         },
         {
@@ -353,19 +353,19 @@
           "away": "鹿斯巴达",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.201,
-          "cal_prob": 0.1318,
+          "prob": 0.202,
+          "cal_prob": 0.1301,
           "odds": 10.5
         }
       ],
       "total_odds": 105.0,
-      "hit_prob": 0.0174,
+      "hit_prob": 0.0169,
       "stake": 2.0,
       "potential": 210.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.7% × 赔率 105 倍 = EV +82%）"
+      "note": "两场比分都中才赢（校准命中 1.7% × 赔率 105 倍 = EV +78%）"
     },
     {
       "type": "比分3串1",
@@ -376,8 +376,8 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.222,
-          "cal_prob": 0.1318,
+          "prob": 0.221,
+          "cal_prob": 0.1301,
           "odds": 10.0
         },
         {
@@ -386,8 +386,8 @@
           "away": "波鸿",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.249,
-          "cal_prob": 0.1318,
+          "prob": 0.252,
+          "cal_prob": 0.1301,
           "odds": 9.5
         },
         {
@@ -397,18 +397,18 @@
           "league": "瑞典超",
           "score": "1-0",
           "prob": 0.303,
-          "cal_prob": 0.1318,
+          "cal_prob": 0.1301,
           "odds": 8.25
         }
       ],
       "total_odds": 783.75,
-      "hit_prob": 0.0023,
+      "hit_prob": 0.0022,
       "stake": 2.0,
       "potential": 1567.5,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "三场比分全中才赢（赔率 784 倍，校准命中 0.23%）"
+      "note": "三场比分全中才赢（赔率 784 倍，校准命中 0.22%）"
     },
     {
       "type": "比分3串4(容错)",
@@ -419,8 +419,8 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.222,
-          "cal_prob": 0.1318,
+          "prob": 0.221,
+          "cal_prob": 0.1301,
           "odds": 10.0
         },
         {
@@ -429,8 +429,8 @@
           "away": "波鸿",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.249,
-          "cal_prob": 0.1318,
+          "prob": 0.252,
+          "cal_prob": 0.1301,
           "odds": 9.5
         },
         {
@@ -440,12 +440,12 @@
           "league": "瑞典超",
           "score": "1-0",
           "prob": 0.303,
-          "cal_prob": 0.1318,
+          "cal_prob": 0.1301,
           "odds": 8.25
         }
       ],
       "total_odds": 783.75,
-      "hit_prob": 0.0023,
+      "hit_prob": 0.0022,
       "stake": 8.0,
       "potential": 2079.25,
       "worst_win": 190.0,
@@ -455,10 +455,10 @@
     }
   ],
   "parlay_calibration": {
-    "overall": 0.4394,
-    "n": 198,
+    "overall": 0.4422,
+    "n": 199,
     "table": {
-      "0.35": 0.3393,
+      "0.35": 0.3509,
       "0.4": 0.5116,
       "0.45": 0.5714,
       "0.5": 0.4211,
