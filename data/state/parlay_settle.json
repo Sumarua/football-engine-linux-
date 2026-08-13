@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T23:26:09.203228+00:00",
+  "generated_at": "2026-08-13T00:47:02.281710+00:00",
   "parlay": {
     "n_tickets": 12,
     "n_settled": 12,
@@ -29,32 +29,32 @@
   },
   "score_parlay": {
     "n_tickets": 84,
-    "n_settled": 74,
+    "n_settled": 79,
     "n_won": 0,
     "hit_rate": 0.0,
-    "stake": 232.0,
+    "stake": 248.0,
     "return": 0.0,
     "roi": -1.0,
-    "avg_odds": 188.67,
+    "avg_odds": 191.53,
     "by_type": {
       "比分2串1": {
-        "n": 46,
+        "n": 49,
         "won": 0,
         "roi": -1.0
       },
       "比分3串1": {
-        "n": 14,
+        "n": 15,
         "won": 0,
         "roi": -1.0
       },
       "比分3串4(容错)": {
-        "n": 14,
+        "n": 15,
         "won": 0,
         "roi": -1.0
       }
     },
-    "leg_hit_rate": 0.1444,
-    "n_legs_settled": 180
+    "leg_hit_rate": 0.1383,
+    "n_legs_settled": 188
   },
   "tickets": {
     "parlay": [
@@ -3463,47 +3463,11 @@
         "potential": 140.0,
         "total_odds": 70.0,
         "odds_source": "simulated",
-        "note": "待赛",
+        "note": "两场比分都中才赢（单场命中率约 23% × 18%）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-12_周三003",
-            "home": "帕尔梅拉斯",
-            "away": "波特诺",
-            "sel": null,
-            "score": "2-0",
-            "odds": 10.0,
-            "hit": null
-          },
-          {
-            "match": "2026-08-12_周三002",
-            "home": "普拉滕斯",
-            "away": "科金博联",
-            "sel": null,
-            "score": "1-0",
-            "odds": 7.0,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-12",
-        "type": "比分2串1",
-        "stake": 2.0,
-        "potential": 140.0,
-        "total_odds": 70.0,
-        "odds_source": "simulated",
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
+          false,
           false
         ],
         "return": 0.0,
@@ -3515,7 +3479,43 @@
             "sel": null,
             "score": "2-0",
             "odds": 10.0,
-            "hit": null
+            "hit": false
+          },
+          {
+            "match": "2026-08-12_周三002",
+            "home": "普拉滕斯",
+            "away": "科金博联",
+            "sel": null,
+            "score": "1-0",
+            "odds": 7.0,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "date": "2026-08-12",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 140.0,
+        "total_odds": 70.0,
+        "odds_source": "simulated",
+        "note": "两场比分都中才赢（单场命中率约 23% × 17%）",
+        "won": false,
+        "pending": false,
+        "leg_results": [
+          false,
+          false
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-12_周三003",
+            "home": "帕尔梅拉斯",
+            "away": "波特诺",
+            "sel": null,
+            "score": "2-0",
+            "odds": 10.0,
+            "hit": false
           },
           {
             "match": "2026-08-12_周三001",
@@ -3535,11 +3535,11 @@
         "potential": 98.0,
         "total_odds": 49.0,
         "odds_source": "simulated",
-        "note": "待赛",
+        "note": "两场比分都中才赢（单场命中率约 18% × 17%）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
-          null,
+          false,
           false
         ],
         "return": 0.0,
@@ -3551,7 +3551,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 7.0,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-12_周三001",
@@ -3571,12 +3571,12 @@
         "potential": 980.0,
         "total_odds": 490.0,
         "odds_source": "simulated",
-        "note": "待赛",
+        "note": "三场比分全中才赢（赔率 490 倍）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
-          null,
-          null,
+          false,
+          false,
           false
         ],
         "return": 0.0,
@@ -3588,7 +3588,7 @@
             "sel": null,
             "score": "2-0",
             "odds": 10.0,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-12_周三002",
@@ -3597,7 +3597,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 7.0,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-12_周三001",
@@ -3617,12 +3617,12 @@
         "potential": 1358.0,
         "total_odds": 490.0,
         "odds_source": "simulated",
-        "note": "待赛",
+        "note": "0/4注中（命中0场）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
-          null,
-          null,
+          false,
+          false,
           false
         ],
         "return": 0.0,
@@ -3634,7 +3634,7 @@
             "sel": null,
             "score": "2-0",
             "odds": 10.0,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-12_周三002",
@@ -3643,7 +3643,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 7.0,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-12_周三001",
@@ -8037,16 +8037,32 @@
       "score_parlay": {
         "stats": {
           "n_tickets": 5,
-          "n_settled": 0,
+          "n_settled": 5,
           "n_won": 0,
-          "hit_rate": null,
-          "stake": 0,
-          "return": 0,
-          "roi": null,
-          "avg_odds": null,
-          "by_type": {},
+          "hit_rate": 0.0,
+          "stake": 16.0,
+          "return": 0.0,
+          "roi": -1.0,
+          "avg_odds": 233.8,
+          "by_type": {
+            "比分2串1": {
+              "n": 3,
+              "won": 0,
+              "roi": -1.0
+            },
+            "比分3串1": {
+              "n": 1,
+              "won": 0,
+              "roi": -1.0
+            },
+            "比分3串4(容错)": {
+              "n": 1,
+              "won": 0,
+              "roi": -1.0
+            }
+          },
           "leg_hit_rate": 0.0,
-          "n_legs_settled": 4
+          "n_legs_settled": 12
         },
         "tickets": [
           {
@@ -8056,47 +8072,11 @@
             "potential": 140.0,
             "total_odds": 70.0,
             "odds_source": "simulated",
-            "note": "待赛",
+            "note": "两场比分都中才赢（单场命中率约 23% × 18%）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-12_周三003",
-                "home": "帕尔梅拉斯",
-                "away": "波特诺",
-                "sel": null,
-                "score": "2-0",
-                "odds": 10.0,
-                "hit": null
-              },
-              {
-                "match": "2026-08-12_周三002",
-                "home": "普拉滕斯",
-                "away": "科金博联",
-                "sel": null,
-                "score": "1-0",
-                "odds": 7.0,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-12",
-            "type": "比分2串1",
-            "stake": 2.0,
-            "potential": 140.0,
-            "total_odds": 70.0,
-            "odds_source": "simulated",
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
+              false,
               false
             ],
             "return": 0.0,
@@ -8108,7 +8088,43 @@
                 "sel": null,
                 "score": "2-0",
                 "odds": 10.0,
-                "hit": null
+                "hit": false
+              },
+              {
+                "match": "2026-08-12_周三002",
+                "home": "普拉滕斯",
+                "away": "科金博联",
+                "sel": null,
+                "score": "1-0",
+                "odds": 7.0,
+                "hit": false
+              }
+            ]
+          },
+          {
+            "date": "2026-08-12",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 140.0,
+            "total_odds": 70.0,
+            "odds_source": "simulated",
+            "note": "两场比分都中才赢（单场命中率约 23% × 17%）",
+            "won": false,
+            "pending": false,
+            "leg_results": [
+              false,
+              false
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-12_周三003",
+                "home": "帕尔梅拉斯",
+                "away": "波特诺",
+                "sel": null,
+                "score": "2-0",
+                "odds": 10.0,
+                "hit": false
               },
               {
                 "match": "2026-08-12_周三001",
@@ -8128,11 +8144,11 @@
             "potential": 98.0,
             "total_odds": 49.0,
             "odds_source": "simulated",
-            "note": "待赛",
+            "note": "两场比分都中才赢（单场命中率约 18% × 17%）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
-              null,
+              false,
               false
             ],
             "return": 0.0,
@@ -8144,7 +8160,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 7.0,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-12_周三001",
@@ -8164,12 +8180,12 @@
             "potential": 980.0,
             "total_odds": 490.0,
             "odds_source": "simulated",
-            "note": "待赛",
+            "note": "三场比分全中才赢（赔率 490 倍）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
-              null,
-              null,
+              false,
+              false,
               false
             ],
             "return": 0.0,
@@ -8181,7 +8197,7 @@
                 "sel": null,
                 "score": "2-0",
                 "odds": 10.0,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-12_周三002",
@@ -8190,7 +8206,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 7.0,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-12_周三001",
@@ -8210,12 +8226,12 @@
             "potential": 1358.0,
             "total_odds": 490.0,
             "odds_source": "simulated",
-            "note": "待赛",
+            "note": "0/4注中（命中0场）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
-              null,
-              null,
+              false,
+              false,
               false
             ],
             "return": 0.0,
@@ -8227,7 +8243,7 @@
                 "sel": null,
                 "score": "2-0",
                 "odds": 10.0,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-12_周三002",
@@ -8236,7 +8252,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 7.0,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-12_周三001",
