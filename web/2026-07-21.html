@@ -1996,7 +1996,7 @@ body {
   <div class="results-summary" style="margin-top:6px;"><div class="ts-chip"><div class="ts-label">LogLoss(final)</div><div class="ts-val" style="color:var(--amber)">0.905</div></div><div class="ts-chip"><div class="ts-label">进球框架</div><div class="ts-val" style="color:var(--amber)">25% (1/4)</div></div><div class="ts-chip"><div class="ts-label">概率分段</div><div class="ts-val" style="font-size:0.68rem;">40-50%:0% · 50-60%:100% · 60%+:100% · <40%:0%</div></div></div>
   <div class="results-table-wrap">
     <table class="results-table">
-      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th></tr>
+      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th><th>串/比分串</th></tr>
       
         <tr class="miss">
           <td>济州SK vs 江原FC</td>
@@ -2007,6 +2007,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.787</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--green);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✓</span><span style="color:var(--green);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✓</span><span style="color:var(--green);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✓</span><span style="color:var(--green);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✓</span><span style="color:var(--green);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✓</span></div></td>
         </tr>
         <tr class="miss">
           <td>全北现代 vs 大田市民</td>
@@ -2017,6 +2018,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.804</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
         <tr class="hit">
           <td>蔚山现代 vs 仁川联</td>
@@ -2027,6 +2029,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.048</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
         <tr class="hit">
           <td>萨巴赫 vs 库奥皮奥</td>
@@ -2037,6 +2040,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.222</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>奥胡斯 vs 波兹南</td>
@@ -2047,6 +2051,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.625</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>格风暴 vs 哈茨</td>
@@ -2057,6 +2062,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.363</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span></div></td>
         </tr>
         <tr class="miss">
           <td>米竞技 vs 巴伊亚</td>
@@ -2067,6 +2073,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.845</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
     </table>
   </div>

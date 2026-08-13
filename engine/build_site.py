@@ -898,7 +898,7 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
     parlay_settle_html = _parlay_settle_section(_ps, today)
 
     # 赛果复盘（优先用 results.json，fallback review_ledger）
-    results_html = _results_section(results, results_preds or predictions, review_ledger)
+    results_html = _results_section(results, results_preds or predictions, review_ledger, _ps)
 
     # 系统面板
     system_html = _system_panel(breaker, bundle, tier, breaker_mult, tier_reason)
@@ -3014,10 +3014,33 @@ def _ev_section(ev_report):
 """
 
 
-def _results_section(results, predictions, review_ledger=None):
-    """赛果复盘: 预测 vs 实际结果对比（优先 results.json，fallback review_ledger）"""
+def _results_section(results, predictions, review_ledger=None, parlay_settle=None):
+    """赛果复盘: 预测 vs 实际结果对比（优先 results.json，fallback review_ledger）
+
+    parlay_settle: 串关/比分串真实结算数据（2026-08-13：比赛行内展示
+    该场作为串腿的命中状态，让 胜负平→让球→串→比分串 一眼全览）
+    """
     if not results and not review_ledger:
         return ""
+
+    # 串/比分串腿索引：match_id → [(玩法, 票类型, 腿命中)]（供比赛行内标注）
+    # 遍历全部日期（串票按出票日归属，比赛可能跨日结算）
+    leg_map: dict = {}
+    if parlay_settle:
+        for _kind, _label in (("parlay", "串"), ("score_parlay", "比分串")):
+            for _day in (parlay_settle.get("by_date") or {}).values():
+                for _t in (_day.get(_kind) or {}).get("tickets") or []:
+                    for _l in _t.get("legs") or []:
+                        _mid = _l.get("match", "")
+                        if not _mid:
+                            continue
+                        leg_map.setdefault(_mid, []).append({
+                            "kind": _label,
+                            "type": _t.get("type", ""),
+                            "hit": bool(_l.get("hit")),
+                            "pending": bool(_t.get("pending")),
+                            "sel": _l.get("sel") or _l.get("score") or "",
+                        })
 
     # 建立 match_id → prediction 多层索引（精确 + 场次号 + 队名）
     pred_map = {p.get("match_id", ""): p for p in predictions}
@@ -3176,6 +3199,27 @@ def _results_section(results, predictions, review_ledger=None):
             except (TypeError, ValueError):
                 hcap_label = hcap_result = ""
 
+        # 串/比分串腿状态（该场比赛在串票中的命中）：如 "串2串1✓" "比分串✗"
+        _leg_html = ""
+        _legs = leg_map.get(mid) or []
+        if _legs:
+            _parts = []
+            for _lg in _legs:
+                if _lg["pending"]:
+                    _mk = "·"
+                    _cls = "var(--dim)"
+                elif _lg["hit"]:
+                    _mk = "✓"
+                    _cls = "var(--green)"
+                else:
+                    _mk = "✗"
+                    _cls = "var(--red)"
+                _parts.append(
+                    f'<span style="color:{_cls};font-size:0.72rem;white-space:nowrap;">'
+                    f'{_lg["kind"]} {_lg["type"]}{_mk}</span>'
+                )
+            _leg_html = '<div style="display:flex;flex-wrap:wrap;gap:2px 6px;">' + "".join(_parts) + "</div>"
+
         rows += f"""
         <tr class="{hit_cls}">
           <td>{pred.get('home_team', '')} vs {pred.get('away_team', '')}</td>
@@ -3186,6 +3230,7 @@ def _results_section(results, predictions, review_ledger=None):
           <td style="text-align:center;"><span class="result-icon {hit_cls}">{hit_icon}</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">{brier:.3f}</td>
           <td style="color:{pnl_color};font-weight:600;">{'+' if pnl > 0 else ''}{pnl:.0f}</td>
+          <td>{_leg_html}</td>
         </tr>"""
 
     if matched == 0:
@@ -3233,7 +3278,7 @@ def _results_section(results, predictions, review_ledger=None):
   {_layered_html}
   <div class="results-table-wrap">
     <table class="results-table">
-      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th></tr>
+      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th><th>串/比分串</th></tr>
       {rows}
     </table>
   </div>"""

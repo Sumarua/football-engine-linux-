@@ -1499,7 +1499,7 @@ body {
   <div class="results-summary" style="margin-top:6px;"><div class="ts-chip"><div class="ts-label">LogLoss(final)</div><div class="ts-val" style="color:var(--green)">0.850</div></div><div class="ts-chip"><div class="ts-label">进球框架</div><div class="ts-val" style="color:var(--green)">50% (2/4)</div></div><div class="ts-chip"><div class="ts-label">概率分段</div><div class="ts-val" style="font-size:0.68rem;">40-50%:100% · 50-60%:50% · 60%+:100%</div></div></div>
   <div class="results-table-wrap">
     <table class="results-table">
-      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th></tr>
+      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th><th>串/比分串</th></tr>
       
         <tr class="miss">
           <td>塞伊奈 vs 赫尔辛基</td>
@@ -1510,6 +1510,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.960</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
         <tr class="hit">
           <td>哈尔姆斯 vs 天狼星</td>
@@ -1520,6 +1521,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.222</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>佐加顿斯 vs 韦斯特罗</td>
@@ -1530,6 +1532,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.519</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
         <tr class="hit">
           <td>巴竞技 vs 维多利亚</td>
@@ -1540,6 +1543,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.267</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
     </table>
   </div>

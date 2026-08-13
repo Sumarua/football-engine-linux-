@@ -5229,7 +5229,7 @@ body {
   <div class="results-summary" style="margin-top:6px;"><div class="ts-chip"><div class="ts-label">LogLoss(final)</div><div class="ts-val" style="color:var(--amber)">1.057</div></div><div class="ts-chip"><div class="ts-label">进球框架</div><div class="ts-val" style="color:var(--green)">67% (16/24)</div></div><div class="ts-chip"><div class="ts-label">概率分段</div><div class="ts-val" style="font-size:0.68rem;">40-50%:42% · 50-60%:50% · <40%:20%</div></div><div class="ts-chip"><div class="ts-label">新鲜度分层</div><div class="ts-val" style="font-size:0.68rem;">ok:18% · watch:46%</div></div></div>
   <div class="results-table-wrap">
     <table class="results-table">
-      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th></tr>
+      <tr><th>比赛</th><th>比分</th><th>实际</th><th>让球</th><th>预测</th><th>命中</th><th>Brier</th><th>盈亏</th><th>串/比分串</th></tr>
       
         <tr class="miss">
           <td>东京绿茵 vs 川崎前锋</td>
@@ -5240,6 +5240,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.719</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>长崎航海 vs 京都</td>
@@ -5250,6 +5251,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.681</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>山形山神 vs 枥木城</td>
@@ -5260,6 +5262,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.586</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>鹿斯巴达 vs 费耶诺德</td>
@@ -5270,6 +5273,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.426</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>圣保利 vs 菲尔特</td>
@@ -5280,6 +5284,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.774</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>纽伦堡 vs 德累斯顿</td>
@@ -5290,6 +5295,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.559</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>哈马比 vs 赫根</td>
@@ -5300,6 +5306,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.464</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>库奥皮奥 vs TPS图尔库</td>
@@ -5310,6 +5317,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.802</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>兹沃勒 vs 阿贾克斯</td>
@@ -5320,6 +5328,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.407</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>格罗宁根 vs 乌德勒支</td>
@@ -5330,6 +5339,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.626</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>利勒斯特伦 vs 罗森博格</td>
@@ -5340,6 +5350,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.659</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>国际图尔库 vs 拉赫蒂</td>
@@ -5350,6 +5361,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.704</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
         <tr class="hit">
           <td>哈尔姆斯塔德 vs 盖斯</td>
@@ -5360,6 +5372,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.429</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
         <tr class="miss">
           <td>哥德堡 vs 卡尔马</td>
@@ -5370,6 +5383,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.633</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>海伦芬 vs 特温特</td>
@@ -5380,6 +5394,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.626</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>汉坎 vs 奥勒松</td>
@@ -5390,6 +5405,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.731</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>AC奥卢 vs 赫尔辛基</td>
@@ -5400,6 +5416,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.656</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分3串4(容错)✗</span></div></td>
         </tr>
         <tr class="hit">
           <td>波尔图 vs 阿尔维卡</td>
@@ -5410,6 +5427,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.314</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--green);font-size:0.72rem;white-space:nowrap;">串 2串1✓</span></div></td>
         </tr>
         <tr class="miss">
           <td>克里斯蒂安松 vs 莫尔德</td>
@@ -5420,6 +5438,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.831</td>
           <td style="color:var(--red);font-weight:600;">-47</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>本菲卡 vs 维塞乌</td>
@@ -5430,6 +5449,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.920</td>
           <td style="color:var(--red);font-weight:600;">-51</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>吉维森特 vs 里奥阿维</td>
@@ -5440,6 +5460,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.523</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>摩雷伦斯 vs 布拉加</td>
@@ -5450,6 +5471,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.826</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td><div style="display:flex;flex-wrap:wrap;gap:2px 6px;"><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">串 2串1✗</span><span style="color:var(--red);font-size:0.72rem;white-space:nowrap;">比分串 比分2串1✗</span></div></td>
         </tr>
         <tr class="miss">
           <td>桑托斯 vs 巴拉纳竞技</td>
@@ -5460,6 +5482,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.914</td>
           <td style="color:var(--red);font-weight:600;">-51</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>弗拉门戈 vs 维多利亚</td>
@@ -5470,6 +5493,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.560</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>长崎航海 vs 京都</td>
@@ -5480,6 +5504,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.681</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>鹿斯巴达 vs 费耶诺德</td>
@@ -5490,6 +5515,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.426</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>哈尔姆斯塔德 vs 盖斯</td>
@@ -5500,6 +5526,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.429</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>AC奥卢 vs 赫尔辛基</td>
@@ -5510,6 +5537,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.656</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="hit">
           <td>吉维森特 vs 里奥阿维</td>
@@ -5520,6 +5548,7 @@ body {
           <td style="text-align:center;"><span class="result-icon hit">✓</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.523</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
         <tr class="miss">
           <td>摩雷伦斯 vs 布拉加</td>
@@ -5530,6 +5559,7 @@ body {
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
           <td style="font-family:monospace;font-size:0.68rem;">0.826</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
+          <td></td>
         </tr>
     </table>
   </div>
