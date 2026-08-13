@@ -63,6 +63,7 @@ from engine.learning.league_params import LeagueParamsManager
 from engine.learning.fusion_optimizer import FusionOptimizer, FusionWeights
 from engine.storage.match_db import MatchDB
 from engine.prediction.htft_model import htft_probabilities, top_htft
+from engine.prediction.enhanced import total_goals_from_xg
 from engine.team_aliases import normalize_team, loose_normalize
 
 
@@ -855,10 +856,13 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             "market_signal": _market_signal,
             # 数据新鲜度护栏（2026-08-06）：无正式比赛天数 + 风险级别 + 收缩强度
             "freshness": _fresh.to_dict(),
-            # 总进球分布：只用模型真分布（top_total_goals）。
-            # DJYY totals 是大小球让球线独立概率(1.5大/2.5大/3.5大…)，不是总进球数分布，
-            # 混入会导致概率和>1的假分布（8/5 奥胡斯 total_goals 和=1.868 即此污染）。
-            "total_goals": getattr(pred, "top_total_goals", None),
+            # 总进球分布：从 xG 泊松直接算完整分布（0~7+球），与 xG 口径一致。
+            # 2026-08-14 修复：原 top_total_goals 是 MC 模拟 top-6 截断分布，
+            # 期望 ~1.84 球 vs xG ~2.74 球，系统性低估进球 → 总进球 EV 偏 0/1/2 球。
+            # DJYY totals 是大小球让球线独立概率，不是总进球数分布，勿混入。
+            "total_goals": (
+                total_goals_from_xg(getattr(pred, "home_xg", 0) or 0, getattr(pred, "away_xg", 0) or 0)
+            ),
             # DJYY/新浪 大小球让球线独立概率（供大小球/总进球辅助判断）
             "over_under_lines": (
                 djyy_data.get("totals") if djyy_data and djyy_data.get("totals")

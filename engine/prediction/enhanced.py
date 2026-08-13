@@ -162,6 +162,28 @@ def top_total_goals(
     return [(int(unique[idx]), round(float(counts[idx]) / n, 4)) for idx in top_idx]
 
 
+def total_goals_from_xg(home_xg: float, away_xg: float) -> list[tuple[int, float]]:
+    """从 xG 直接算完整总进球分布（0~7+球，泊松求和）。
+
+    2026-08-14 修复：原 total_goals 来自 MC 模拟的 top-6 截断分布，
+    期望值 ~1.84 球，与模型自己的 xG ~2.74 球严重矛盾（系统性低估进球，
+    导致总进球 EV 偏向 0/1/2 球低比分）。改为用 xG 泊松直接算完整分布，
+    与 xG 口径一致，且含 6+/7+ 尾部分布。
+    """
+    if home_xg <= 0 and away_xg <= 0:
+        return []
+    lam = max(0.1, home_xg) + max(0.1, away_xg)
+    out = []
+    for g in range(0, 8):
+        p = math.exp(-lam) * (lam ** g) / math.factorial(g)
+        out.append((g, round(float(p), 4)))
+    # 8+ 并入 7+
+    p7_plus = 1.0 - sum(p for _, p in out)
+    if p7_plus > 0:
+        out[7] = (7, round(out[7][1] + p7_plus, 4))
+    return out
+
+
 # ============================================================
 # 确定性种子（保证可复现）
 # ============================================================
