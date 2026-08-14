@@ -5,13 +5,20 @@
     {
       "match": "2026-08-14_周五002",
       "sel": "draw",
-      "odds": 3.8,
-      "stake": 50.0,
+      "odds": 3.75,
+      "stake": 20.26,
       "prob": 0.327
+    },
+    {
+      "match": "2026-08-14_周五013#ttg",
+      "sel": "ttg_1",
+      "odds": 5.0,
+      "stake": 29.74,
+      "prob": 0.209
     }
   ],
   "total_stake": 50.0,
-  "expected_roi": 0.2411,
+  "expected_roi": 0.1191,
   "bankroll": 4386.390600000001,
   "breaker_multiplier": 1.0,
   "parlay": [
@@ -37,27 +44,233 @@
           "away": "TPS图尔库",
           "league": "芬超",
           "sel": "draw",
-          "odds": 3.8,
+          "odds": 3.75,
           "prob": 0.327,
           "cal_prob": 0.435,
-          "market_prob": 0.233,
+          "market_prob": 0.236,
           "source": "fusion",
           "hit_prob": 0.435
         }
       ],
-      "total_odds": 8.89,
-      "model_ev": 0.37,
-      "cal_ev": 13.41,
-      "cal_roi": 0.8492,
+      "total_odds": 8.77,
+      "model_ev": 0.33,
+      "cal_ev": 6.08,
+      "cal_roi": 0.8249,
       "market_ev": -0.43,
       "market_roi": -0.2162,
       "hit_prob_cal": 0.208,
       "recommended": true,
-      "stake": 15.79,
+      "stake": 7.37,
       "n_bets": 1,
-      "potential": 140.4,
+      "potential": 64.67,
       "worst_win": 0.0,
       "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-14_周五004",
+          "home": "不伦瑞克",
+          "away": "波鸿",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.25,
+          "prob": 0.428,
+          "cal_prob": 0.478,
+          "market_prob": 0.394,
+          "source": "fusion",
+          "hit_prob": 0.478
+        },
+        {
+          "match": "2026-08-14_周五002",
+          "home": "瓦萨",
+          "away": "TPS图尔库",
+          "league": "芬超",
+          "sel": "draw",
+          "odds": 3.75,
+          "prob": 0.327,
+          "cal_prob": 0.435,
+          "market_prob": 0.236,
+          "source": "fusion",
+          "hit_prob": 0.435
+        }
+      ],
+      "total_odds": 8.44,
+      "model_ev": 0.36,
+      "cal_ev": 5.32,
+      "cal_roi": 0.7547,
+      "market_ev": -0.43,
+      "market_roi": -0.2163,
+      "hit_prob_cal": 0.208,
+      "recommended": true,
+      "stake": 7.05,
+      "n_bets": 1,
+      "potential": 59.48,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-14_周五004",
+          "home": "不伦瑞克",
+          "away": "波鸿",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.25,
+          "prob": 0.428,
+          "cal_prob": 0.478,
+          "market_prob": 0.394,
+          "source": "fusion",
+          "hit_prob": 0.478
+        },
+        {
+          "match": "2026-08-14_周五003",
+          "home": "基尔",
+          "away": "圣保利",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.34,
+          "prob": 0.407,
+          "cal_prob": 0.478,
+          "market_prob": 0.378,
+          "source": "fusion",
+          "hit_prob": 0.478
+        }
+      ],
+      "total_odds": 5.26,
+      "model_ev": -0.17,
+      "cal_ev": 0.68,
+      "cal_roi": 0.2045,
+      "market_ev": -0.43,
+      "market_roi": -0.2157,
+      "hit_prob_cal": 0.229,
+      "recommended": true,
+      "stake": 3.33,
+      "n_bets": 1,
+      "potential": 17.53,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "3串1",
+      "legs": [
+        {
+          "match": "2026-08-14_周五004",
+          "home": "不伦瑞克",
+          "away": "波鸿",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.25,
+          "prob": 0.428,
+          "cal_prob": 0.478,
+          "market_prob": 0.394,
+          "source": "fusion",
+          "hit_prob": 0.478
+        },
+        {
+          "match": "2026-08-14_周五003",
+          "home": "基尔",
+          "away": "圣保利",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.34,
+          "prob": 0.407,
+          "cal_prob": 0.478,
+          "market_prob": 0.378,
+          "source": "fusion",
+          "hit_prob": 0.478
+        },
+        {
+          "match": "2026-08-14_周五002",
+          "home": "瓦萨",
+          "away": "TPS图尔库",
+          "league": "芬超",
+          "sel": "draw",
+          "odds": 3.75,
+          "prob": 0.327,
+          "cal_prob": 0.435,
+          "market_prob": 0.236,
+          "source": "fusion",
+          "hit_prob": 0.435
+        }
+      ],
+      "total_odds": 19.74,
+      "model_ev": 0.25,
+      "cal_ev": 3.44,
+      "cal_roi": 0.9639,
+      "market_ev": -0.61,
+      "market_roi": -0.3059,
+      "hit_prob_cal": 0.099,
+      "recommended": true,
+      "stake": 3.57,
+      "n_bets": 1,
+      "potential": 70.49,
+      "worst_win": 0.0,
+      "note": "三场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "3串4",
+      "legs": [
+        {
+          "match": "2026-08-14_周五004",
+          "home": "不伦瑞克",
+          "away": "波鸿",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.25,
+          "prob": 0.428,
+          "cal_prob": 0.478,
+          "market_prob": 0.394,
+          "source": "fusion",
+          "hit_prob": 0.478
+        },
+        {
+          "match": "2026-08-14_周五003",
+          "home": "基尔",
+          "away": "圣保利",
+          "league": "德乙",
+          "sel": "home",
+          "odds": 2.34,
+          "prob": 0.407,
+          "cal_prob": 0.478,
+          "market_prob": 0.378,
+          "source": "fusion",
+          "hit_prob": 0.478
+        },
+        {
+          "match": "2026-08-14_周五002",
+          "home": "瓦萨",
+          "away": "TPS图尔库",
+          "league": "芬超",
+          "sel": "draw",
+          "odds": 3.75,
+          "prob": 0.327,
+          "cal_prob": 0.435,
+          "market_prob": 0.236,
+          "source": "fusion",
+          "hit_prob": 0.435
+        }
+      ],
+      "total_odds": 10.56,
+      "model_ev": null,
+      "cal_ev": 3.43,
+      "cal_roi": 0.687,
+      "market_ev": -1.91,
+      "market_roi": -0.2385,
+      "hit_prob_cal": 0.099,
+      "recommended": true,
+      "stake": 4.99,
+      "n_bets": 4,
+      "potential": 52.67,
+      "worst_win": 10.53,
+      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥11），全中 ¥84",
       "source": "calibrated"
     }
   ],
@@ -71,7 +284,7 @@
           "away": "鹿斯巴达",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.197,
+          "prob": 0.196,
           "cal_prob": 0.1281,
           "odds": 10.5
         },
@@ -81,7 +294,7 @@
           "away": "登博思",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.18,
+          "prob": 0.179,
           "cal_prob": 0.1281,
           "odds": 11.0
         }
@@ -104,7 +317,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.222,
+          "prob": 0.224,
           "cal_prob": 0.1281,
           "odds": 10.0
         },
@@ -114,7 +327,7 @@
           "away": "登博思",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.18,
+          "prob": 0.179,
           "cal_prob": 0.1281,
           "odds": 11.0
         }
@@ -137,7 +350,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.222,
+          "prob": 0.224,
           "cal_prob": 0.1281,
           "odds": 10.0
         },
@@ -147,7 +360,7 @@
           "away": "鹿斯巴达",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.197,
+          "prob": 0.196,
           "cal_prob": 0.1281,
           "odds": 10.5
         }
@@ -170,7 +383,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.222,
+          "prob": 0.224,
           "cal_prob": 0.1281,
           "odds": 10.0
         },
@@ -180,7 +393,7 @@
           "away": "波鸿",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.251,
+          "prob": 0.246,
           "cal_prob": 0.1281,
           "odds": 9.5
         },
@@ -190,7 +403,7 @@
           "away": "韦斯特罗斯",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.306,
+          "prob": 0.303,
           "cal_prob": 0.1281,
           "odds": 8.25
         }
@@ -213,7 +426,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.222,
+          "prob": 0.224,
           "cal_prob": 0.1281,
           "odds": 10.0
         },
@@ -223,7 +436,7 @@
           "away": "波鸿",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.251,
+          "prob": 0.246,
           "cal_prob": 0.1281,
           "odds": 9.5
         },
@@ -233,7 +446,7 @@
           "away": "韦斯特罗斯",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.306,
+          "prob": 0.303,
           "cal_prob": 0.1281,
           "odds": 8.25
         }
