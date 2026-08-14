@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T12:33:58.064149+00:00",
+  "generated_at": "2026-08-14T13:48:07.611387+00:00",
   "parlay": {
     "n_tickets": 12,
     "n_settled": 12,
@@ -3660,8 +3660,44 @@
         "date": "2026-08-14",
         "type": "比分2串1",
         "stake": 2.0,
-        "potential": 231.0,
-        "total_odds": 115.5,
+        "potential": 352.0,
+        "total_odds": 176.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-14_周五012",
+            "home": "赫拉克勒",
+            "away": "登博思",
+            "sel": null,
+            "score": "1-0",
+            "odds": 11.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-14_周五009",
+            "home": "利雅新月",
+            "away": "哈马费萨",
+            "sel": null,
+            "score": "1-1",
+            "odds": 16.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-14",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 336.0,
+        "total_odds": 168.0,
         "odds_source": "official",
         "note": "待赛",
         "won": false,
@@ -3682,12 +3718,12 @@
             "hit": null
           },
           {
-            "match": "2026-08-14_周五012",
-            "home": "赫拉克勒",
-            "away": "登博思",
+            "match": "2026-08-14_周五009",
+            "home": "利雅新月",
+            "away": "哈马费萨",
             "sel": null,
-            "score": "1-0",
-            "odds": 11.0,
+            "score": "1-1",
+            "odds": 16.0,
             "hit": null
           }
         ]
@@ -3696,8 +3732,8 @@
         "date": "2026-08-14",
         "type": "比分2串1",
         "stake": 2.0,
-        "potential": 231.0,
-        "total_odds": 115.5,
+        "potential": 336.0,
+        "total_odds": 168.0,
         "odds_source": "official",
         "note": "待赛",
         "won": false,
@@ -3718,48 +3754,12 @@
             "hit": null
           },
           {
-            "match": "2026-08-14_周五012",
-            "home": "赫拉克勒",
-            "away": "登博思",
+            "match": "2026-08-14_周五009",
+            "home": "利雅新月",
+            "away": "哈马费萨",
             "sel": null,
-            "score": "1-0",
-            "odds": 11.0,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-14",
-        "type": "比分2串1",
-        "stake": 2.0,
-        "potential": 220.5,
-        "total_odds": 110.25,
-        "odds_source": "official",
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-14_周五003",
-            "home": "基尔",
-            "away": "圣保利",
-            "sel": null,
-            "score": "1-0",
-            "odds": 10.5,
-            "hit": null
-          },
-          {
-            "match": "2026-08-14_周五010",
-            "home": "特尔斯达",
-            "away": "鹿斯巴达",
-            "sel": null,
-            "score": "1-0",
-            "odds": 10.5,
+            "score": "1-1",
+            "odds": 16.0,
             "hit": null
           }
         ]
@@ -3768,8 +3768,8 @@
         "date": "2026-08-14",
         "type": "比分3串1",
         "stake": 2.0,
-        "potential": 1645.88,
-        "total_odds": 822.94,
+        "potential": 1895.25,
+        "total_odds": 947.62,
         "odds_source": "official",
         "note": "待赛",
         "won": false,
@@ -3800,12 +3800,12 @@
             "hit": null
           },
           {
-            "match": "2026-08-14_周五006",
-            "home": "埃尔夫斯堡",
-            "away": "韦斯特罗斯",
+            "match": "2026-08-14_周五008",
+            "home": "达曼协定",
+            "away": "利雅得",
             "sel": null,
             "score": "1-0",
-            "odds": 8.25,
+            "odds": 9.5,
             "hit": null
           }
         ]
@@ -3814,8 +3814,8 @@
         "date": "2026-08-14",
         "type": "比分3串4(容错)",
         "stake": 8.0,
-        "potential": 2175.38,
-        "total_odds": 822.94,
+        "potential": 2474.75,
+        "total_odds": 947.62,
         "odds_source": "official",
         "note": "待赛",
         "won": false,
@@ -3846,12 +3846,12 @@
             "hit": null
           },
           {
-            "match": "2026-08-14_周五006",
-            "home": "埃尔夫斯堡",
-            "away": "韦斯特罗斯",
+            "match": "2026-08-14_周五008",
+            "home": "达曼协定",
+            "away": "利雅得",
             "sel": null,
             "score": "1-0",
-            "odds": 8.25,
+            "odds": 9.5,
             "hit": null
           }
         ]
@@ -8292,8 +8292,44 @@
             "date": "2026-08-14",
             "type": "比分2串1",
             "stake": 2.0,
-            "potential": 231.0,
-            "total_odds": 115.5,
+            "potential": 352.0,
+            "total_odds": 176.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-14_周五012",
+                "home": "赫拉克勒",
+                "away": "登博思",
+                "sel": null,
+                "score": "1-0",
+                "odds": 11.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-14_周五009",
+                "home": "利雅新月",
+                "away": "哈马费萨",
+                "sel": null,
+                "score": "1-1",
+                "odds": 16.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-14",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 336.0,
+            "total_odds": 168.0,
             "odds_source": "official",
             "note": "待赛",
             "won": false,
@@ -8314,12 +8350,12 @@
                 "hit": null
               },
               {
-                "match": "2026-08-14_周五012",
-                "home": "赫拉克勒",
-                "away": "登博思",
+                "match": "2026-08-14_周五009",
+                "home": "利雅新月",
+                "away": "哈马费萨",
                 "sel": null,
-                "score": "1-0",
-                "odds": 11.0,
+                "score": "1-1",
+                "odds": 16.0,
                 "hit": null
               }
             ]
@@ -8328,8 +8364,8 @@
             "date": "2026-08-14",
             "type": "比分2串1",
             "stake": 2.0,
-            "potential": 231.0,
-            "total_odds": 115.5,
+            "potential": 336.0,
+            "total_odds": 168.0,
             "odds_source": "official",
             "note": "待赛",
             "won": false,
@@ -8350,48 +8386,12 @@
                 "hit": null
               },
               {
-                "match": "2026-08-14_周五012",
-                "home": "赫拉克勒",
-                "away": "登博思",
+                "match": "2026-08-14_周五009",
+                "home": "利雅新月",
+                "away": "哈马费萨",
                 "sel": null,
-                "score": "1-0",
-                "odds": 11.0,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-14",
-            "type": "比分2串1",
-            "stake": 2.0,
-            "potential": 220.5,
-            "total_odds": 110.25,
-            "odds_source": "official",
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-14_周五003",
-                "home": "基尔",
-                "away": "圣保利",
-                "sel": null,
-                "score": "1-0",
-                "odds": 10.5,
-                "hit": null
-              },
-              {
-                "match": "2026-08-14_周五010",
-                "home": "特尔斯达",
-                "away": "鹿斯巴达",
-                "sel": null,
-                "score": "1-0",
-                "odds": 10.5,
+                "score": "1-1",
+                "odds": 16.0,
                 "hit": null
               }
             ]
@@ -8400,8 +8400,8 @@
             "date": "2026-08-14",
             "type": "比分3串1",
             "stake": 2.0,
-            "potential": 1645.88,
-            "total_odds": 822.94,
+            "potential": 1895.25,
+            "total_odds": 947.62,
             "odds_source": "official",
             "note": "待赛",
             "won": false,
@@ -8432,12 +8432,12 @@
                 "hit": null
               },
               {
-                "match": "2026-08-14_周五006",
-                "home": "埃尔夫斯堡",
-                "away": "韦斯特罗斯",
+                "match": "2026-08-14_周五008",
+                "home": "达曼协定",
+                "away": "利雅得",
                 "sel": null,
                 "score": "1-0",
-                "odds": 8.25,
+                "odds": 9.5,
                 "hit": null
               }
             ]
@@ -8446,8 +8446,8 @@
             "date": "2026-08-14",
             "type": "比分3串4(容错)",
             "stake": 8.0,
-            "potential": 2175.38,
-            "total_odds": 822.94,
+            "potential": 2474.75,
+            "total_odds": 947.62,
             "odds_source": "official",
             "note": "待赛",
             "won": false,
@@ -8478,12 +8478,12 @@
                 "hit": null
               },
               {
-                "match": "2026-08-14_周五006",
-                "home": "埃尔夫斯堡",
-                "away": "韦斯特罗斯",
+                "match": "2026-08-14_周五008",
+                "home": "达曼协定",
+                "away": "利雅得",
                 "sel": null,
                 "score": "1-0",
-                "odds": 8.25,
+                "odds": 9.5,
                 "hit": null
               }
             ]

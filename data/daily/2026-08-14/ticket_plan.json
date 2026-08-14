@@ -27,67 +27,34 @@
       "type": "比分2串1",
       "legs": [
         {
-          "match": "2026-08-14_周五003",
-          "home": "基尔",
-          "away": "圣保利",
-          "league": "德乙",
-          "score": "1-0",
-          "prob": 0.22,
-          "cal_prob": 0.1281,
-          "odds": 10.5
-        },
-        {
           "match": "2026-08-14_周五012",
           "home": "赫拉克勒",
           "away": "登博思",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.181,
+          "prob": 0.18,
           "cal_prob": 0.1281,
           "odds": 11.0
-        }
-      ],
-      "total_odds": 115.5,
-      "hit_prob": 0.0164,
-      "stake": 2.0,
-      "potential": 231.0,
-      "worst_win": 0.0,
-      "n_bets": 1,
-      "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.6% × 赔率 116 倍 = EV +89%）"
-    },
-    {
-      "type": "比分2串1",
-      "legs": [
-        {
-          "match": "2026-08-14_周五010",
-          "home": "特尔斯达",
-          "away": "鹿斯巴达",
-          "league": "荷甲",
-          "score": "1-0",
-          "prob": 0.198,
-          "cal_prob": 0.1281,
-          "odds": 10.5
         },
         {
-          "match": "2026-08-14_周五012",
-          "home": "赫拉克勒",
-          "away": "登博思",
-          "league": "荷乙",
-          "score": "1-0",
-          "prob": 0.181,
-          "cal_prob": 0.1281,
-          "odds": 11.0
+          "match": "2026-08-14_周五009",
+          "home": "利雅新月",
+          "away": "哈马费萨",
+          "league": "沙职",
+          "score": "1-1",
+          "prob": 0.161,
+          "cal_prob": 0.1058,
+          "odds": 16.0
         }
       ],
-      "total_odds": 115.5,
-      "hit_prob": 0.0164,
+      "total_odds": 176.0,
+      "hit_prob": 0.0135,
       "stake": 2.0,
-      "potential": 231.0,
+      "potential": 352.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.6% × 赔率 116 倍 = EV +89%）"
+      "note": "两场比分都中才赢（校准命中 1.4% × 赔率 176 倍 = EV +138%）"
     },
     {
       "type": "比分2串1",
@@ -98,29 +65,62 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.22,
+          "prob": 0.222,
           "cal_prob": 0.1281,
           "odds": 10.5
         },
+        {
+          "match": "2026-08-14_周五009",
+          "home": "利雅新月",
+          "away": "哈马费萨",
+          "league": "沙职",
+          "score": "1-1",
+          "prob": 0.161,
+          "cal_prob": 0.1058,
+          "odds": 16.0
+        }
+      ],
+      "total_odds": 168.0,
+      "hit_prob": 0.0135,
+      "stake": 2.0,
+      "potential": 336.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "official",
+      "note": "两场比分都中才赢（校准命中 1.4% × 赔率 168 倍 = EV +128%）"
+    },
+    {
+      "type": "比分2串1",
+      "legs": [
         {
           "match": "2026-08-14_周五010",
           "home": "特尔斯达",
           "away": "鹿斯巴达",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.198,
+          "prob": 0.195,
           "cal_prob": 0.1281,
           "odds": 10.5
+        },
+        {
+          "match": "2026-08-14_周五009",
+          "home": "利雅新月",
+          "away": "哈马费萨",
+          "league": "沙职",
+          "score": "1-1",
+          "prob": 0.161,
+          "cal_prob": 0.1058,
+          "odds": 16.0
         }
       ],
-      "total_odds": 110.25,
-      "hit_prob": 0.0164,
+      "total_odds": 168.0,
+      "hit_prob": 0.0135,
       "stake": 2.0,
-      "potential": 220.5,
+      "potential": 336.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.6% × 赔率 110 倍 = EV +81%）"
+      "note": "两场比分都中才赢（校准命中 1.4% × 赔率 168 倍 = EV +128%）"
     },
     {
       "type": "比分3串1",
@@ -131,7 +131,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.22,
+          "prob": 0.222,
           "cal_prob": 0.1281,
           "odds": 10.5
         },
@@ -141,29 +141,29 @@
           "away": "波鸿",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.254,
+          "prob": 0.247,
           "cal_prob": 0.1281,
           "odds": 9.5
         },
         {
-          "match": "2026-08-14_周五006",
-          "home": "埃尔夫斯堡",
-          "away": "韦斯特罗斯",
-          "league": "瑞典超",
+          "match": "2026-08-14_周五008",
+          "home": "达曼协定",
+          "away": "利雅得",
+          "league": "沙职",
           "score": "1-0",
-          "prob": 0.305,
+          "prob": 0.194,
           "cal_prob": 0.1281,
-          "odds": 8.25
+          "odds": 9.5
         }
       ],
-      "total_odds": 822.94,
+      "total_odds": 947.62,
       "hit_prob": 0.0021,
       "stake": 2.0,
-      "potential": 1645.88,
+      "potential": 1895.25,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "三场比分全中才赢（赔率 823 倍，校准命中 0.21%）"
+      "note": "三场比分全中才赢（赔率 948 倍，校准命中 0.21%）"
     },
     {
       "type": "比分3串4(容错)",
@@ -174,7 +174,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.22,
+          "prob": 0.222,
           "cal_prob": 0.1281,
           "odds": 10.5
         },
@@ -184,29 +184,29 @@
           "away": "波鸿",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.254,
+          "prob": 0.247,
           "cal_prob": 0.1281,
           "odds": 9.5
         },
         {
-          "match": "2026-08-14_周五006",
-          "home": "埃尔夫斯堡",
-          "away": "韦斯特罗斯",
-          "league": "瑞典超",
+          "match": "2026-08-14_周五008",
+          "home": "达曼协定",
+          "away": "利雅得",
+          "league": "沙职",
           "score": "1-0",
-          "prob": 0.305,
+          "prob": 0.194,
           "cal_prob": 0.1281,
-          "odds": 8.25
+          "odds": 9.5
         }
       ],
-      "total_odds": 822.94,
+      "total_odds": 947.62,
       "hit_prob": 0.0021,
       "stake": 8.0,
-      "potential": 2175.38,
+      "potential": 2474.75,
       "worst_win": 199.5,
       "n_bets": 4,
       "odds_source": "official",
-      "note": "3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥200，全中≈¥2175"
+      "note": "3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥200，全中≈¥2475"
     }
   ],
   "parlay_calibration": {
