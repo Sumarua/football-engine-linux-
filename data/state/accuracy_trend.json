@@ -1,15 +1,15 @@
 {
   "generated_at": "2026-08-14",
-  "total_matches": 206,
+  "total_matches": 207,
   "date_range": [
     "2026-07-19",
     "2026-08-13"
   ],
   "overall": {
-    "hit_rate": 0.4369,
-    "brier_final": 0.6542,
-    "brier_model": 0.6962,
-    "brier_market": 0.6326,
+    "hit_rate": 0.4348,
+    "brier_final": 0.6541,
+    "brier_model": 0.6955,
+    "brier_market": 0.6328,
     "brier_djyy": 0.6576
   },
   "daily": [
@@ -315,21 +315,21 @@
     },
     {
       "date": "2026-08-13",
-      "n": 9,
+      "n": 10,
       "hits": 3,
-      "hit_rate": 0.3333,
-      "cum_hit_rate": 0.4369,
-      "brier_final": 0.6392,
-      "brier_model": 0.6942,
-      "brier_market": 0.6893,
+      "hit_rate": 0.3,
+      "cum_hit_rate": 0.4348,
+      "brier_final": 0.6383,
+      "brier_model": 0.6801,
+      "brier_market": 0.6874,
       "brier_djyy": 0.7425,
       "pnl": -150.0
     }
   ],
   "rolling7": {
-    "n": 84,
-    "hit_rate": 0.4405,
-    "brier_final": 0.6679,
+    "n": 85,
+    "hit_rate": 0.4353,
+    "brier_final": 0.6678,
     "pnl": -613.6
   },
   "prev7": {
@@ -419,16 +419,16 @@
       "brier_final": 0.612
     },
     {
+      "layer": "解放者杯",
+      "n": 5,
+      "hit_rate": 0.0,
+      "brier_final": 0.7397
+    },
+    {
       "layer": "英联赛杯",
       "n": 4,
       "hit_rate": 0.75,
       "brier_final": 0.5657
-    },
-    {
-      "layer": "解放者杯",
-      "n": 4,
-      "hit_rate": 0.0,
-      "brier_final": 0.7672
     },
     {
       "layer": "德乙",
@@ -494,9 +494,9 @@
     },
     {
       "layer": "2.0-3.0",
-      "n": 62,
-      "hit_rate": 0.371,
-      "brier_final": 0.6653
+      "n": 63,
+      "hit_rate": 0.3651,
+      "brier_final": 0.6647
     },
     {
       "layer": "1.0-1.5",
@@ -514,9 +514,9 @@
   "by_conf_tier": [
     {
       "layer": "mid",
-      "n": 100,
-      "hit_rate": 0.5,
-      "brier_final": 0.624
+      "n": 101,
+      "hit_rate": 0.495,
+      "brier_final": 0.6241
     },
     {
       "layer": "low",
