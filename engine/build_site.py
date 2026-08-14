@@ -661,7 +661,10 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
     <tr><th>日期</th><th>场次</th><th>命中</th><th>命中率</th><th>Brier</th><th>累计命中率</th><th>盈亏</th></tr>
     {_rows_html}
   </table>
-  </div>'''
+  </div>
+  <div class="note" style="margin-top:6px">⚠ 206 场置信度分层实测：<b>置信度不预示盈亏</b>——
+  高置信段(≥20%) 全押 ROI -29.3% 反而最差（高置信 ≈ 低赔热门 ≈ 抽水最大）；
+  赚钱靠的是 <b>正EV 门槛</b>（融合+正EV 全历史 +14.3%），不是"信得越足越敢押"。</div>'''
     except Exception as e:
         print(f"⚠ 准确率趋势区块跳过: {e}")
 
