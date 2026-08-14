@@ -345,6 +345,19 @@ td {{ padding:8px 10px; border-bottom:1px solid #1e2a3a; }}
 tr:last-child td {{ border-bottom:none; }}
 .note {{ color:var(--dim); font-size:0.72rem; margin-top:8px; }}
 .footer {{ margin-top:44px; padding-top:16px; border-top:1px solid var(--border); color:var(--dim); font-size:0.72rem; }}
+/* 2026-08-14 视觉重构（与每日页同风格） */
+.nav a {{ color:var(--blue); text-decoration:none; font-size:0.8rem; padding:6px 14px; border:1px solid var(--border); border-radius:20px; transition:all .2s; }}
+.nav a:hover {{ border-color:var(--blue); text-decoration:none; transform:translateY(-1px); }}
+.deep-fold {{ border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface); margin:14px 0; overflow:hidden; }}
+.deep-fold > summary {{ list-style:none; cursor:pointer; user-select:none; display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 16px; }}
+.deep-fold > summary::-webkit-details-marker {{ display:none; }}
+.deep-fold > summary::before {{ content:'▸'; color:var(--blue); font-size:.8rem; transition:transform .2s; }}
+.deep-fold[open] > summary::before {{ transform:rotate(90deg); }}
+.deep-fold-title {{ font-weight:800; font-size:.85rem; }}
+.deep-fold-meta {{ font-size:.72rem; color:var(--dim); }}
+.deep-fold-hint {{ margin-left:auto; font-size:.66rem; color:var(--blue); opacity:.75; font-weight:600; }}
+.deep-fold[open] .deep-fold-hint {{ display:none; }}
+.deep-fold-body {{ padding:4px 16px 14px; border-top:1px dashed var(--border); }}
 </style></head><body>
 <div class="page">
   <div class="header">
@@ -378,11 +391,17 @@ tr:last-child td {{ border-bottom:none; }}
     {day_rows}
   </table></div>
 
-  <div class="section-title">联赛表现（样本≥5）</div>
-  <div class="card"><table>
-    <tr><th>联赛</th><th>场次</th><th>命中率</th><th>实际平局率</th></tr>
-    {lg_rows}
-  </table></div>
+  <details class="deep-fold" open>
+    <summary>
+      <span class="deep-fold-title">联赛表现（样本≥5）</span>
+      <span class="deep-fold-meta">按联赛分桶的命中率与平局率</span>
+      <span class="deep-fold-hint">点击折叠 ▾</span>
+    </summary>
+    <div class="deep-fold-body"><table>
+      <tr><th>联赛</th><th>场次</th><th>命中率</th><th>实际平局率</th></tr>
+      {lg_rows}
+    </table></div>
+  </details>
   {_parlay_html}
 
   {_ev_html}
@@ -1621,6 +1640,110 @@ body {{
   .scores-grid {{ grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); }}
   .match-header {{ padding: 12px 14px; }}
   .tab-content {{ padding: 12px 14px; }}
+  .topnav {{ overflow-x: auto; }}
+  .topnav-inner {{ min-width: max-content; }}
+}}
+
+/* ===== 2026-08-14 视觉重构 =====
+ * 目标：层级清晰、呼吸感、导航始终可用。改动仅叠加样式 + 结构性折叠，
+ * 不改变任何数据/语义。 */
+
+/* 吸顶导航：页面主 Tab 常驻顶部 */
+.page-tabs {{
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(10,14,19,0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  margin: 0 -8px 18px; padding: 10px 8px 0;
+  border-bottom: 1px solid var(--border);
+}}
+.page-tab-btn {{
+  padding: 9px 22px; border-radius: 10px 10px 0 0;
+  font-size: 0.85rem; font-weight: 800; letter-spacing: 0.6px;
+}}
+.page-tab-btn.active {{
+  color: var(--blue); border-bottom-color: var(--blue);
+  background: rgba(59,130,246,0.08);
+  box-shadow: 0 -2px 12px rgba(59,130,246,0.15);
+}}
+
+/* 顶部导航栏（Track Record 链接等） */
+.nav-link {{
+  color: var(--dim); text-decoration: none; font-size: 0.75rem; font-weight: 600;
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px;
+  transition: var(--transition); white-space: nowrap; display: inline-flex;
+  align-items: center; gap: 5px;
+}}
+.nav-link:hover {{ color: var(--blue); border-color: var(--blue); transform: translateY(-1px); }}
+
+/* 深度分析折叠面板（2026-08-14：复盘页的"进阶数据"默认收起，
+ * 页面打开即见核心结论，想看细节再展开） */
+.deep-fold {{
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--surface); margin: 14px 0;
+  overflow: hidden; transition: var(--transition);
+}}
+.deep-fold:hover {{ border-color: var(--border-light); }}
+.deep-fold > summary {{
+  list-style: none; cursor: pointer; user-select: none;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 12px 16px;
+}}
+.deep-fold > summary::-webkit-details-marker {{ display: none; }}
+.deep-fold > summary::before {{
+  content: '▸'; color: var(--blue); font-size: 0.8rem; flex-shrink: 0;
+  transition: transform 0.2s;
+}}
+.deep-fold[open] > summary::before {{ transform: rotate(90deg); }}
+.deep-fold > summary:hover {{ background: rgba(59,130,246,0.04); }}
+.deep-fold-title {{ font-weight: 800; font-size: 0.85rem; letter-spacing: 0.3px; }}
+.deep-fold-meta {{ font-size: 0.72rem; color: var(--dim); }}
+.deep-fold-hint {{
+  margin-left: auto; font-size: 0.66rem; color: var(--blue);
+  opacity: 0.75; font-weight: 600; white-space: nowrap;
+}}
+.deep-fold[open] .deep-fold-hint {{ display: none; }}
+.deep-fold-body {{ padding: 4px 16px 14px; border-top: 1px dashed var(--border); }}
+
+/* 字号与间距规范化：小字统一抬升，留白更足 */
+.section-title {{
+  font-size: 0.9rem; margin: 36px 0 14px;
+  padding-left: 12px; border-left: 3px solid var(--blue);
+  color: var(--text-secondary); font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1px;
+  display: flex; align-items: center; gap: 8px;
+}}
+.section-title .st-note {{
+  font-size: 0.68rem; color: var(--dim); font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+}}
+.section-title .st-badge {{
+  font-size: 0.62rem; font-weight: 800; color: var(--blue);
+  background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);
+  padding: 1px 8px; border-radius: 10px; letter-spacing: 0.3px;
+}}
+.section-title .st-badge.green {{ color: var(--green); background: rgba(34,197,94,0.12); border-color: rgba(34,197,94,0.3); }}
+.section-title .st-badge.amber {{ color: var(--amber); background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.3); }}
+
+/* 统计条更透气 */
+.stats {{ gap: 12px; margin-bottom: 32px; }}
+.stat {{ padding: 16px 18px; border-radius: var(--radius); }}
+.stat .value {{ font-size: 1.5rem; }}
+
+/* 比赛卡内边距统一 */
+.match-header {{ padding: 18px 20px; }}
+.match {{ border-radius: var(--radius); }}
+
+/* 复盘表格字号抬升 */
+.results-table {{ font-size: 0.76rem; }}
+.results-table th {{ font-size: 0.66rem; }}
+.edge-table {{ font-size: 0.76rem; }}
+.edge-table th {{ font-size: 0.66rem; }}
+
+/* 移动端页边距 */
+@media (max-width: 600px) {{
+  .deep-fold-body {{ padding: 4px 10px 12px; }}
+  .stat {{ padding: 12px 14px; }}
+  .stat .value {{ font-size: 1.3rem; }}
 }}
 </style>
 </head>
@@ -1633,7 +1756,7 @@ body {{
       <div class="sub">{today} &middot; DC+MC &rarr; Shin去水 &rarr; 逆向赔率 &rarr; 四源融合 &rarr; LGBM &rarr; Isotonic校准 &rarr; Wilson信任</div>
     </div>
     <div class="header-right">
-      <a href="track-record.html" style="color:var(--dim);text-decoration:none;font-size:0.75rem;padding:5px 10px;border:1px solid var(--border);border-radius:6px;transition:all .2s">📈 Track Record</a>
+      <a href="track-record.html" class="nav-link">📈 Track Record</a>
       {health_badge}
     </div>
   </div>
@@ -1653,10 +1776,7 @@ body {{
     <div class="stat"><div class="label">熔断器</div><div class="value {'green' if tier == 0 else 'red'}">T{tier} &middot; x{breaker_mult:.1f}</div></div>
   </div>
 
-  <!-- LEAGUE MATRIX -->
-  {league_matrix_html}
-
-  <!-- ===== TAB NAV (2026-08-10 页面重构) ===== -->
+  <!-- ===== TAB NAV (2026-08-14 吸顶重构：联赛矩阵移入复盘页，今日决策页更聚焦) ===== -->
   <div class="page-tabs">
     <button class="page-tab-btn active" data-panel="tab-decision">🎯 今日决策</button>
     <button class="page-tab-btn" data-panel="tab-review">📊 复盘与数据</button>
@@ -1665,7 +1785,7 @@ body {{
   <!-- TAB: 今日决策 -->
   <div class="page-tab-panel active" id="tab-decision">
     <!-- MATCH PREDICTIONS -->
-    <div class="section-title">比赛预测</div>
+    <div class="section-title">比赛预测<span class="st-note">点击卡片展开模型/赔率/分布详情</span></div>
     {cards if cards else '<p style="color:var(--dim);padding:48px;text-align:center;font-size:0.85rem;">等待每日流水线运行...</p>'}
 
     <!-- BETTING PLAN -->
@@ -1686,6 +1806,9 @@ body {{
     <!-- PARLAY SETTLE（2026-08-13 布局重构：串/比分串复盘紧跟赛果复盘下方；用户确认比赛行不加串列，逐票明细即可） -->
     {parlay_settle_html}
 
+    <!-- LEAGUE MATRIX（2026-08-14 从页首移入复盘页：参考数据不进"今日决策"） -->
+    {league_matrix_html}
+
     <!-- LEAGUE LAYERS -->
     {league_html}
     {hcr_html}
@@ -1693,12 +1816,39 @@ body {{
     <!-- ACCURACY TREND -->
     {trend_html}
 
-    <!-- SCORE HIT RATE (2026-08-05) -->
-    {score_trend_html}
-    {odds_series_html}
+    <!-- 深度分析（2026-08-14 默认折叠：比分命中率/水位监控/时点分桶/Dixon-Coles 属进阶数据） -->
+    <details class="deep-fold">
+      <summary>
+        <span class="deep-fold-title">比分命中率 · 候选来源 · 盘口信号</span>
+        <span class="deep-fold-meta">全量累计 vs 近7天 · DJYY/MC 双源 · 资金流向信号验证</span>
+        <span class="deep-fold-hint">点击折叠 ▾</span>
+      </summary>
+      <div class="deep-fold-body">
+        {score_trend_html}
+      </div>
+    </details>
 
-    <!-- BACKTEST: 时点分桶 + shrinkage_dc 对比 (2026-08-12) -->
-    {backtest_html}
+    <details class="deep-fold">
+      <summary>
+        <span class="deep-fold-title">水位监控</span>
+        <span class="deep-fold-meta">时间序列累积：每次抓取追加快照，赛前资金流可查</span>
+        <span class="deep-fold-hint">点击折叠 ▾</span>
+      </summary>
+      <div class="deep-fold-body">
+        {odds_series_html}
+      </div>
+    </details>
+
+    <details class="deep-fold">
+      <summary>
+        <span class="deep-fold-title">预测时点分桶 · Dixon-Coles 挑战者</span>
+        <span class="deep-fold-meta">提前多久预测最准 · 分层收缩模型 vs 生产模型</span>
+        <span class="deep-fold-hint">点击折叠 ▾</span>
+      </summary>
+      <div class="deep-fold-body">
+        {backtest_html}
+      </div>
+    </details>
 
     <!-- SYSTEM STATUS -->
     {system_html}

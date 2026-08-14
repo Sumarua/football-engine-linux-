@@ -86,6 +86,7 @@ def load_settled() -> list[dict]:
                 "league": p.get("competition", "?"),
                 "actual": actual,
                 "system_direction": p.get("direction"),
+                "conf": p.get("confidence", 0) or 0,
                 "odds": {s: _odds(p, s) for s in ("home", "draw", "away")},
                 "market": _source_probs(p, "market"),
                 "model": _source_probs(p, "model"),
@@ -99,6 +100,12 @@ def _stats_for(rows: list[dict], source_key: str) -> dict:
     roi_always = roi_edge = 0.0
     n_edge = 0
     by_layer = defaultdict(lambda: {"n": 0, "hits": 0, "pnl": 0.0})
+    # 信心分层（2026-08-14：验证"置信度是否真的预示命中/盈亏"——
+    # 若高信心段 ROI 明显更好，说明信任门槛有效；若相反则 confidence 是噪声）
+    conf_bands = [(0.0, 0.10, "C1 <10%"), (0.10, 0.15, "C2 10-15%"),
+                  (0.15, 0.20, "C3 15-20%"), (0.20, 1.01, "C4 ≥20%")]
+    by_conf = {tag: {"n": 0, "hits": 0, "pnl": 0.0, "pnl_edge": 0.0, "n_edge": 0}
+               for _, _, tag in conf_bands}
     for r in rows:
         probs = r[source_key]
         if probs is None:
@@ -121,6 +128,16 @@ def _stats_for(rows: list[dict], source_key: str) -> dict:
             by_layer[layer_of(odds)]["hits"] += won
             by_layer[layer_of(odds)]["pnl"] += pnl
             p_sel = {"home": h, "draw": d, "away": a}[sel]
+            # 信心分桶（按预测 confidence）
+            for lo, hi, tag in conf_bands:
+                if lo <= r["conf"] < hi:
+                    by_conf[tag]["n"] += 1
+                    by_conf[tag]["hits"] += won
+                    by_conf[tag]["pnl"] += pnl
+                    if p_sel > 1.0 / odds:
+                        by_conf[tag]["pnl_edge"] += pnl
+                        by_conf[tag]["n_edge"] += 1
+                    break
             if p_sel > 1.0 / odds:  # 正期望才押（Kelly 门槛近似）
                 roi_edge += pnl
                 n_edge += 1
@@ -134,6 +151,17 @@ def _stats_for(rows: list[dict], source_key: str) -> dict:
                 "hit_rate": v["hits"] / v["n"],
                 "roi": v["pnl"] / v["n"],
             }
+    conf_out = {}
+    for _, _, tag in conf_bands:
+        v = by_conf[tag]
+        if v["n"]:
+            conf_out[tag] = {
+                "n": v["n"],
+                "hit_rate": v["hits"] / v["n"],
+                "roi": v["pnl"] / v["n"],
+                "roi_edge": (v["pnl_edge"] / v["n_edge"]) if v["n_edge"] else None,
+                "n_edge": v["n_edge"],
+            }
     return {
         "n": int(n),
         "hit_rate": hit / n,
@@ -142,6 +170,7 @@ def _stats_for(rows: list[dict], source_key: str) -> dict:
         "roi_edge": (roi_edge / n_edge) if n_edge else None,
         "n_edge": n_edge,
         "by_layer": layers_out,
+        "by_confidence": conf_out,
     }
 
 
@@ -175,6 +204,17 @@ def main() -> dict:
             continue
         parts = [f"{k.split(' ')[0]}={v['roi']:+.0%}(n={v['n']})" for k, v in layers.items()]
         print(f"  {label}: {' '.join(parts)}")
+
+    # 信心分层（2026-08-14）：融合源的命中率/ROI 是否随置信度单调？
+    # 若高信心段（C4）ROI 显著为正 → 信任门槛有效；若平坦/反转 → confidence 是噪声。
+    fused = report.get("fused", {})
+    conf = fused.get("by_confidence", {})
+    if conf:
+        print("\n融合源 · 按置信度分层（验证 confidence 是否预示盈亏）：")
+        print(f"  {'段位':10s} {'n':>4s} {'命中率':>8s} {'ROI全押':>9s} {'ROI仅正EV':>10s}")
+        for tag, v in conf.items():
+            re_ = f"{v['roi_edge']:+.1%}" if v["roi_edge"] is not None else "  -"
+            print(f"  {tag:10s} {v['n']:4d} {v['hit_rate']:7.1%} {v['roi']:+8.1%} {re_:>10s}")
 
     out = ROOT / "data" / "state" / "market_baseline.json"
     out.parent.mkdir(parents=True, exist_ok=True)

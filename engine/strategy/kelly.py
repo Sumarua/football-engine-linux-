@@ -62,20 +62,35 @@ class KellyStrategy:
         self.min_edge = gates.get("min_probability_edge", 0.03)
         self.min_ev = gates.get("min_ev", 0.03)
 
-    def _load_value_zones(self, path: Path | None = None) -> dict:
-        """加载 EV 价值区报告，返回 {赔率区间: roi}（无报告返回空）。
+        # 价值区/送钱区判定门槛（2026-08-14：与 ev_report/league_report 同口径，
+        # 小样本 ROI 不驱动禁投；可通过 config/strategy.json 调）
+        vz = strategy.get("value_zone", {})
+        self.vz_min_n = vz.get("min_n", 50)
+        # 深冷层加权（2026-08-14 P1 基线：L5 深冷层是唯一稳定赚钱层——
+        # 模型源 n=45 +19%、融合源 n=18 +44%。对"样本≥min_n 且 ROI>min_roi"
+        # 的层给小额注额加成，仍受 max_single 200 封顶）
+        lb = strategy.get("layer_boost", {})
+        self.boost_min_n = lb.get("min_n", 15)
+        self.boost_min_roi = lb.get("min_roi", 0.05)
+        self.boost_mult = lb.get("multiplier", 0.15)
 
-        2026-08-14：只返回 n≥50 的层（与 ev_report/league_report 同口径）——
-        n<50 的层 ROI 是噪声，不再驱动禁投/降权（此前 L2-L4 全层 n=40-44
-        被标送钱区 → 单关长期 0 注，属于小样本规则误伤）。
+    def _load_value_zones(self, path: Path | None = None) -> dict:
+        """加载 EV 价值区报告，返回 {赔率区间: {"roi", "n"}}（无报告返回空）。
+
+        2026-08-14 两档门槛分工（与 ev_report/league_report 同口径）：
+        - 返回所有 n≥boost_min_n 的层（供注额加成判断）；
+        - 但"送钱区禁投/降权"只在调用侧按 n≥vz_min_n 生效——
+          小样本层的负 ROI 是噪声，不驱动禁投（此前 L2-L4 全层 n=40-44
+          被标送钱区 → 单关长期 0 注，属于小样本规则误伤）。
         """
         try:
             p = path or (Path(__file__).parent.parent.parent / "data" / "state" / "ev_report.json")
             if not p.exists():
                 return {}
             d = json.loads(p.read_text(encoding="utf-8"))
-            return {k: v.get("roi", 0) for k, v in d.get("layers", {}).items()
-                    if v.get("n", 0) >= 50}
+            return {k: {"roi": v.get("roi", 0), "n": v.get("n", 0)}
+                    for k, v in d.get("layers", {}).items()
+                    if v.get("n", 0) >= self.boost_min_n}
         except Exception:
             return {}
 
@@ -133,26 +148,24 @@ class KellyStrategy:
                     continue
 
                 # 价值区过滤：该赔率区间历史 ROI<-10% 直接拒绝（送钱区）
-                # 2026-08-14：仅对 n≥50 的层生效（_load_value_zones 已过滤），
-                # 小样本层返回 None → 不拒（避免噪声禁投）。
+                # 2026-08-14：禁投只在 n≥vz_min_n 的层生效（_load_value_zones
+                # 返回 n≥boost_min_n 的层，这里再按 vz_min_n 收口）——
+                # 小样本层的负 ROI 是噪声，不驱动禁投。
                 if value_zones:
                     _layer = self._layer_of(odds)
-                    _roi = value_zones.get(_layer)
-                    if _roi is not None and _roi < -0.10:
+                    _zone = value_zones.get(_layer)
+                    if _zone is not None and _zone["n"] >= self.vz_min_n and _zone["roi"] < -0.10:
                         rejected_value += 1
                         plan.rejected.append((
                             BetCandidate(
                                 match_id=pred.get("match_id", ""),
                                 selection=sel, model_prob=0, market_prob=0,
                                 odds=odds, edge=0, ev=0,
-                                risk_notes=[f"送钱区({_layer} ROI {_roi*100:.0f}%) 拒绝"],
+                                risk_notes=[f"送钱区({_layer} ROI {_zone['roi']*100:.0f}%) 拒绝"],
                             ),
-                            f"送钱区({_layer} ROI {_roi*100:.0f}%)",
+                            f"送钱区({_layer} ROI {_zone['roi']*100:.0f}%)",
                         ))
                         continue
-                    # 历史 ROI 为负但未达送钱线：降权（0.5倍注额）
-                    if _roi < 0:
-                        pass  # 由下方正常流程评估，但记录风险
 
                 market_prob = 1.0 / odds
                 edge = model_prob - market_prob
@@ -166,11 +179,17 @@ class KellyStrategy:
                 full_kelly = max(0, (b * model_prob - (1 - model_prob)) / b)
                 stake = self.bankroll * full_kelly * self.kelly_fraction
 
-                # 历史 ROI 为负的赔率区间（非送钱线）降权 50%
+                # 历史 ROI 为负的赔率区间（非送钱线）降权 50%（同样只认 n≥vz_min_n）
                 if value_zones:
-                    _roi = value_zones.get(self._layer_of(odds), 0)
-                    if -0.10 <= _roi < 0:
-                        stake *= 0.5
+                    _zone = value_zones.get(self._layer_of(odds))
+                    if _zone is not None:
+                        if _zone["n"] >= self.vz_min_n and -0.10 <= _zone["roi"] < 0:
+                            stake *= 0.5
+                        # 深冷层加权（2026-08-14 P1 基线）：样本≥min_n 且 ROI>min_roi
+                        # 的层（当前即 L5 深冷）给 (1+boost) 倍注额加成，
+                        # 仍受下方 max_single=200 封顶。
+                        elif _zone["n"] >= self.boost_min_n and _zone["roi"] > self.boost_min_roi:
+                            stake *= (1.0 + self.boost_mult)
 
                 # 取整到投注单位
                 stake = int(stake / self.stake_unit) * self.stake_unit
