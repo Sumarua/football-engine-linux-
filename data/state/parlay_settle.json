@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T20:04:16.136756+00:00",
+  "generated_at": "2026-08-14T20:51:15.821517+00:00",
   "parlay": {
     "n_tickets": 17,
     "n_settled": 12,
@@ -29,13 +29,13 @@
   },
   "score_parlay": {
     "n_tickets": 84,
-    "n_settled": 82,
+    "n_settled": 84,
     "n_won": 0,
     "hit_rate": 0.0,
-    "stake": 254.0,
+    "stake": 264.0,
     "return": 0.0,
     "roi": -1.0,
-    "avg_odds": 190.76,
+    "avg_odds": 208.78,
     "by_type": {
       "比分2串1": {
         "n": 52,
@@ -43,18 +43,18 @@
         "roi": -1.0
       },
       "比分3串1": {
-        "n": 15,
+        "n": 16,
         "won": 0,
         "roi": -1.0
       },
       "比分3串4(容错)": {
-        "n": 15,
+        "n": 16,
         "won": 0,
         "roi": -1.0
       }
     },
-    "leg_hit_rate": 0.1313,
-    "n_legs_settled": 198
+    "leg_hit_rate": 0.13,
+    "n_legs_settled": 200
   },
   "tickets": {
     "parlay": [
@@ -513,8 +513,8 @@
       {
         "date": "2026-08-15",
         "type": "2串1",
-        "stake": 6.25,
-        "potential": 43.21,
+        "stake": 6.49,
+        "potential": 44.87,
         "total_odds": 6.91,
         "odds_source": null,
         "note": "待赛",
@@ -549,8 +549,8 @@
       {
         "date": "2026-08-15",
         "type": "2串1",
-        "stake": 5.82,
-        "potential": 39.69,
+        "stake": 6.15,
+        "potential": 41.94,
         "total_odds": 6.82,
         "odds_source": null,
         "note": "待赛",
@@ -585,8 +585,8 @@
       {
         "date": "2026-08-15",
         "type": "2串1",
-        "stake": 6.01,
-        "potential": 29.49,
+        "stake": 5.35,
+        "potential": 26.25,
         "total_odds": 4.91,
         "odds_source": null,
         "note": "待赛",
@@ -599,15 +599,6 @@
         "return": 0.0,
         "legs": [
           {
-            "match": "2026-08-15_周六019",
-            "home": "阿拉维斯",
-            "away": "赫塔费",
-            "sel": "home",
-            "score": null,
-            "odds": 2.23,
-            "hit": null
-          },
-          {
             "match": "2026-08-15_周六024",
             "home": "塞维利亚",
             "away": "巴列卡诺",
@@ -615,14 +606,23 @@
             "score": null,
             "odds": 2.2,
             "hit": null
+          },
+          {
+            "match": "2026-08-15_周六019",
+            "home": "阿拉维斯",
+            "away": "赫塔费",
+            "sel": "home",
+            "score": null,
+            "odds": 2.23,
+            "hit": null
           }
         ]
       },
       {
         "date": "2026-08-15",
         "type": "3串1",
-        "stake": 3.44,
-        "potential": 52.32,
+        "stake": 3.49,
+        "potential": 53.08,
         "total_odds": 15.21,
         "odds_source": null,
         "note": "待赛",
@@ -636,21 +636,21 @@
         "return": 0.0,
         "legs": [
           {
-            "match": "2026-08-15_周六019",
-            "home": "阿拉维斯",
-            "away": "赫塔费",
-            "sel": "home",
-            "score": null,
-            "odds": 2.23,
-            "hit": null
-          },
-          {
             "match": "2026-08-15_周六024",
             "home": "塞维利亚",
             "away": "巴列卡诺",
             "sel": "home",
             "score": null,
             "odds": 2.2,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六019",
+            "home": "阿拉维斯",
+            "away": "赫塔费",
+            "sel": "home",
+            "score": null,
+            "odds": 2.23,
             "hit": null
           },
           {
@@ -667,8 +667,8 @@
       {
         "date": "2026-08-15",
         "type": "3串4",
-        "stake": 4.8,
-        "potential": 40.62,
+        "stake": 4.85,
+        "potential": 41.04,
         "total_odds": 8.46,
         "odds_source": null,
         "note": "待赛",
@@ -682,21 +682,21 @@
         "return": 0.0,
         "legs": [
           {
-            "match": "2026-08-15_周六019",
-            "home": "阿拉维斯",
-            "away": "赫塔费",
-            "sel": "home",
-            "score": null,
-            "odds": 2.23,
-            "hit": null
-          },
-          {
             "match": "2026-08-15_周六024",
             "home": "塞维利亚",
             "away": "巴列卡诺",
             "sel": "home",
             "score": null,
             "odds": 2.2,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六019",
+            "home": "阿拉维斯",
+            "away": "赫塔费",
+            "sel": "home",
+            "score": null,
+            "odds": 2.23,
             "hit": null
           },
           {
@@ -3971,13 +3971,13 @@
         "potential": 1895.25,
         "total_odds": 947.62,
         "odds_source": "official",
-        "note": "待赛",
+        "note": "三场比分全中才赢（赔率 948 倍，校准命中 0.21%）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
           false,
           false,
-          null
+          false
         ],
         "return": 0.0,
         "legs": [
@@ -4006,7 +4006,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 9.5,
-            "hit": null
+            "hit": false
           }
         ]
       },
@@ -4017,13 +4017,13 @@
         "potential": 2474.75,
         "total_odds": 947.62,
         "odds_source": "official",
-        "note": "待赛",
+        "note": "0/4注中（命中0场）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
           false,
           false,
-          null
+          false
         ],
         "return": 0.0,
         "legs": [
@@ -4052,7 +4052,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 9.5,
-            "hit": null
+            "hit": false
           }
         ]
       }
@@ -8476,22 +8476,32 @@
       "score_parlay": {
         "stats": {
           "n_tickets": 5,
-          "n_settled": 3,
+          "n_settled": 5,
           "n_won": 0,
           "hit_rate": 0.0,
-          "stake": 6.0,
+          "stake": 16.0,
           "return": 0.0,
           "roi": -1.0,
-          "avg_odds": 170.67,
+          "avg_odds": 481.45,
           "by_type": {
             "比分2串1": {
               "n": 3,
               "won": 0,
               "roi": -1.0
+            },
+            "比分3串1": {
+              "n": 1,
+              "won": 0,
+              "roi": -1.0
+            },
+            "比分3串4(容错)": {
+              "n": 1,
+              "won": 0,
+              "roi": -1.0
             }
           },
           "leg_hit_rate": 0.0,
-          "n_legs_settled": 10
+          "n_legs_settled": 12
         },
         "tickets": [
           {
@@ -8609,13 +8619,13 @@
             "potential": 1895.25,
             "total_odds": 947.62,
             "odds_source": "official",
-            "note": "待赛",
+            "note": "三场比分全中才赢（赔率 948 倍，校准命中 0.21%）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
               false,
               false,
-              null
+              false
             ],
             "return": 0.0,
             "legs": [
@@ -8644,7 +8654,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 9.5,
-                "hit": null
+                "hit": false
               }
             ]
           },
@@ -8655,13 +8665,13 @@
             "potential": 2474.75,
             "total_odds": 947.62,
             "odds_source": "official",
-            "note": "待赛",
+            "note": "0/4注中（命中0场）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
               false,
               false,
-              null
+              false
             ],
             "return": 0.0,
             "legs": [
@@ -8690,7 +8700,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 9.5,
-                "hit": null
+                "hit": false
               }
             ]
           }
@@ -8714,8 +8724,8 @@
           {
             "date": "2026-08-15",
             "type": "2串1",
-            "stake": 6.25,
-            "potential": 43.21,
+            "stake": 6.49,
+            "potential": 44.87,
             "total_odds": 6.91,
             "odds_source": null,
             "note": "待赛",
@@ -8750,8 +8760,8 @@
           {
             "date": "2026-08-15",
             "type": "2串1",
-            "stake": 5.82,
-            "potential": 39.69,
+            "stake": 6.15,
+            "potential": 41.94,
             "total_odds": 6.82,
             "odds_source": null,
             "note": "待赛",
@@ -8786,8 +8796,8 @@
           {
             "date": "2026-08-15",
             "type": "2串1",
-            "stake": 6.01,
-            "potential": 29.49,
+            "stake": 5.35,
+            "potential": 26.25,
             "total_odds": 4.91,
             "odds_source": null,
             "note": "待赛",
@@ -8800,15 +8810,6 @@
             "return": 0.0,
             "legs": [
               {
-                "match": "2026-08-15_周六019",
-                "home": "阿拉维斯",
-                "away": "赫塔费",
-                "sel": "home",
-                "score": null,
-                "odds": 2.23,
-                "hit": null
-              },
-              {
                 "match": "2026-08-15_周六024",
                 "home": "塞维利亚",
                 "away": "巴列卡诺",
@@ -8816,14 +8817,23 @@
                 "score": null,
                 "odds": 2.2,
                 "hit": null
+              },
+              {
+                "match": "2026-08-15_周六019",
+                "home": "阿拉维斯",
+                "away": "赫塔费",
+                "sel": "home",
+                "score": null,
+                "odds": 2.23,
+                "hit": null
               }
             ]
           },
           {
             "date": "2026-08-15",
             "type": "3串1",
-            "stake": 3.44,
-            "potential": 52.32,
+            "stake": 3.49,
+            "potential": 53.08,
             "total_odds": 15.21,
             "odds_source": null,
             "note": "待赛",
@@ -8837,21 +8847,21 @@
             "return": 0.0,
             "legs": [
               {
-                "match": "2026-08-15_周六019",
-                "home": "阿拉维斯",
-                "away": "赫塔费",
-                "sel": "home",
-                "score": null,
-                "odds": 2.23,
-                "hit": null
-              },
-              {
                 "match": "2026-08-15_周六024",
                 "home": "塞维利亚",
                 "away": "巴列卡诺",
                 "sel": "home",
                 "score": null,
                 "odds": 2.2,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六019",
+                "home": "阿拉维斯",
+                "away": "赫塔费",
+                "sel": "home",
+                "score": null,
+                "odds": 2.23,
                 "hit": null
               },
               {
@@ -8868,8 +8878,8 @@
           {
             "date": "2026-08-15",
             "type": "3串4",
-            "stake": 4.8,
-            "potential": 40.62,
+            "stake": 4.85,
+            "potential": 41.04,
             "total_odds": 8.46,
             "odds_source": null,
             "note": "待赛",
@@ -8883,21 +8893,21 @@
             "return": 0.0,
             "legs": [
               {
-                "match": "2026-08-15_周六019",
-                "home": "阿拉维斯",
-                "away": "赫塔费",
-                "sel": "home",
-                "score": null,
-                "odds": 2.23,
-                "hit": null
-              },
-              {
                 "match": "2026-08-15_周六024",
                 "home": "塞维利亚",
                 "away": "巴列卡诺",
                 "sel": "home",
                 "score": null,
                 "odds": 2.2,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六019",
+                "home": "阿拉维斯",
+                "away": "赫塔费",
+                "sel": "home",
+                "score": null,
+                "odds": 2.23,
                 "hit": null
               },
               {

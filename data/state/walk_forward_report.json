@@ -1,46 +1,46 @@
 {
-  "total_matches": 218,
+  "total_matches": 222,
   "date_range": [
     "2026-07-19",
     "2026-08-14"
   ],
   "metrics": {
-    "brier": 0.6541,
-    "weighted_brier": 0.6542,
-    "rps": 0.2199,
-    "weighted_rps": 0.2199,
-    "log_loss": 1.0802,
-    "hit_rate": 0.4404,
-    "ece": 0.183
+    "brier": 0.6521,
+    "weighted_brier": 0.6521,
+    "rps": 0.2191,
+    "weighted_rps": 0.2191,
+    "log_loss": 1.0771,
+    "hit_rate": 0.4459,
+    "ece": 0.1885
   },
   "draw_analysis": {
-    "actual_draws": 65,
-    "actual_draw_rate": 0.2982,
+    "actual_draws": 66,
+    "actual_draw_rate": 0.2973,
     "predicted_draws": 7,
-    "predicted_draw_rate": 0.0321,
+    "predicted_draw_rate": 0.0315,
     "max_draw_prob": 0.4592,
-    "avg_draw_prob": 0.2679,
-    "avg_market_draw": 0.2445,
-    "market_high_draw_n": 35,
+    "avg_draw_prob": 0.269,
+    "avg_market_draw": 0.2448,
+    "market_high_draw_n": 36,
     "market_high_draw_actual": 13,
-    "market_high_draw_rate": 0.3714
+    "market_high_draw_rate": 0.3611
   },
   "strategy_comparison": {
     "model": {
-      "hit_rate": 0.4404,
-      "n": 218
+      "hit_rate": 0.4459,
+      "n": 222
     },
     "market": {
-      "hit_rate": 0.4907,
-      "n": 161
+      "hit_rate": 0.497,
+      "n": 165
     },
     "hybrid_v2": {
-      "hit_rate": 0.4472,
-      "n": 161
+      "hit_rate": 0.4606,
+      "n": 165
     },
     "market_d28": {
-      "hit_rate": 0.4286,
-      "n": 161
+      "hit_rate": 0.4303,
+      "n": 165
     }
   },
   "by_league": {
@@ -122,6 +122,12 @@
       "brier": 0.6051,
       "rps": 0.2248
     },
+    "法乙": {
+      "n": 6,
+      "hit_rate": 0.5,
+      "brier": 0.6257,
+      "rps": 0.2038
+    },
     "德乙": {
       "n": 5,
       "hit_rate": 0.2,
@@ -133,6 +139,12 @@
       "hit_rate": 0.0,
       "brier": 0.7397,
       "rps": 0.1322
+    },
+    "沙职": {
+      "n": 5,
+      "hit_rate": 1.0,
+      "brier": 0.5368,
+      "rps": 0.2188
     },
     "荷乙": {
       "n": 4,
@@ -146,23 +158,11 @@
       "brier": 0.5657,
       "rps": 0.1899
     },
-    "沙职": {
-      "n": 4,
-      "hit_rate": 1.0,
-      "brier": 0.5478,
-      "rps": 0.2258
-    },
     "韩职": {
       "n": 3,
       "hit_rate": 0.3333,
       "brier": 0.7053,
       "rps": 0.2367
-    },
-    "法乙": {
-      "n": 3,
-      "hit_rate": 0.3333,
-      "brier": 0.6963,
-      "rps": 0.2385
     }
   }
 }
