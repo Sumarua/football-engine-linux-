@@ -1,13 +1,13 @@
 {
   "date": "2026-08-14",
-  "n_matches": 15,
-  "hit_rate": 0.6,
+  "n_matches": 16,
+  "hit_rate": 0.5625,
   "hits": 9,
   "source_brier": {
-    "model": 0.5971,
-    "market": 0.5606,
+    "model": 0.6206,
+    "market": 0.5927,
     "djyy": 0.5944,
-    "final": 0.6243
+    "final": 0.6315
   },
   "by_league": {
     "日职": {
@@ -63,6 +63,12 @@
       "hit_rate": 0.6667,
       "wilson_lower": 0.2077,
       "avg_brier": 0.5551
+    },
+    "英冠": {
+      "n": 1,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
+      "avg_brier": 0.7394
     }
   },
   "by_confidence_tier": {
@@ -73,10 +79,10 @@
       "avg_brier": 0.6161
     },
     "mid": {
-      "n": 11,
-      "hit_rate": 0.5455,
-      "wilson_lower": 0.2801,
-      "avg_brier": 0.6273
+      "n": 12,
+      "hit_rate": 0.5,
+      "wilson_lower": 0.2538,
+      "avg_brier": 0.6366
     }
   },
   "by_odds_band": {
@@ -99,10 +105,10 @@
       "avg_brier": 0.6519
     },
     "1.0-1.5": {
-      "n": 2,
-      "hit_rate": 1.0,
-      "wilson_lower": 0.3424,
-      "avg_brier": 0.4759
+      "n": 3,
+      "hit_rate": 0.6667,
+      "wilson_lower": 0.2077,
+      "avg_brier": 0.5638
     }
   },
   "score_stats": {
@@ -128,19 +134,19 @@
     }
   },
   "market_signal_stats": {
-    "n": 14,
+    "n": 15,
     "hits": 5
   },
   "layered": {
-    "log_loss_final": 1.0387,
+    "log_loss_final": 1.0467,
     "goal_framework": {
-      "n": 15,
-      "hits": 10
+      "n": 16,
+      "hits": 11
     },
     "prob_bands": {
       "40-50%": {
-        "n": 11,
-        "hit_rate": 0.5455
+        "n": 12,
+        "hit_rate": 0.5
       },
       "<40%": {
         "n": 4,
@@ -153,25 +159,13 @@
         "hit_rate": 0.6667
       },
       "watch": {
-        "n": 12,
-        "hit_rate": 0.5833
+        "n": 13,
+        "hit_rate": 0.5385
       }
     }
   },
-  "biases": [
-    {
-      "dimension": "outcome",
-      "key": "all",
-      "outcome": "draw",
-      "predicted_avg": 0.3183,
-      "actual_rate": 0.2,
-      "gap": 0.1183,
-      "n": 15,
-      "severity": "warn",
-      "suggested_action": "increase market_weight (trust market on draws)"
-    }
-  ],
+  "biases": [],
   "total_pnl": -50.0,
-  "generated_at": "2026-08-14T20:50:58.535236",
-  "sha256": "3f9d0de2e51166dbe369eb024987ef75"
+  "generated_at": "2026-08-14T21:06:49.309530",
+  "sha256": "11cc5af49458eab3d0427c3786ab3e61"
 }
