@@ -1,13 +1,13 @@
 {
   "date": "2026-08-14",
-  "n_matches": 1,
-  "hit_rate": 1.0,
+  "n_matches": 2,
+  "hit_rate": 0.5,
   "hits": 1,
   "source_brier": {
-    "model": 0.4995,
-    "market": 0.3845,
+    "model": 0.3878,
+    "market": 0.6885,
     "djyy": 0.419,
-    "final": 0.5707
+    "final": 0.7429
   },
   "by_league": {
     "日职": {
@@ -15,6 +15,12 @@
       "hit_rate": 1.0,
       "wilson_lower": 0.2065,
       "avg_brier": 0.5707
+    },
+    "芬超": {
+      "n": 1,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
+      "avg_brier": 0.9151
     }
   },
   "by_confidence_tier": {
@@ -23,6 +29,12 @@
       "hit_rate": 1.0,
       "wilson_lower": 0.2065,
       "avg_brier": 0.5707
+    },
+    "mid": {
+      "n": 1,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
+      "avg_brier": 0.9151
     }
   },
   "by_odds_band": {
@@ -31,6 +43,12 @@
       "hit_rate": 1.0,
       "wilson_lower": 0.2065,
       "avg_brier": 0.5707
+    },
+    "3.0+": {
+      "n": 1,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
+      "avg_brier": 0.9151
     }
   },
   "score_stats": {
@@ -52,22 +70,30 @@
     }
   },
   "market_signal_stats": {
-    "n": 1,
-    "hits": 0
+    "n": 2,
+    "hits": 1
   },
   "layered": {
-    "log_loss_final": 0.9592,
+    "log_loss_final": 1.2315,
     "goal_framework": {
-      "n": 1,
-      "hits": 1
+      "n": 2,
+      "hits": 2
     },
     "prob_bands": {
+      "40-50%": {
+        "n": 1,
+        "hit_rate": 0.0
+      },
       "<40%": {
         "n": 1,
         "hit_rate": 1.0
       }
     },
     "freshness_groups": {
+      "ok": {
+        "n": 1,
+        "hit_rate": 0.0
+      },
       "watch": {
         "n": 1,
         "hit_rate": 1.0
@@ -76,6 +102,6 @@
   },
   "biases": [],
   "total_pnl": 0.0,
-  "generated_at": "2026-08-14T16:12:38.000463",
-  "sha256": "e1290bd5465699fe739a9a76139508c0"
+  "generated_at": "2026-08-14T17:19:58.550148",
+  "sha256": "64204f747ed17e52499fdf6fbc5c581a"
 }
