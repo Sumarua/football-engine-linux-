@@ -62,14 +62,20 @@ class KellyStrategy:
         self.min_edge = gates.get("min_probability_edge", 0.03)
         self.min_ev = gates.get("min_ev", 0.03)
 
-    def _load_value_zones(self) -> dict:
-        """加载 EV 价值区报告，返回 {赔率区间: roi}（无报告返回空）"""
+    def _load_value_zones(self, path: Path | None = None) -> dict:
+        """加载 EV 价值区报告，返回 {赔率区间: roi}（无报告返回空）。
+
+        2026-08-14：只返回 n≥50 的层（与 ev_report/league_report 同口径）——
+        n<50 的层 ROI 是噪声，不再驱动禁投/降权（此前 L2-L4 全层 n=40-44
+        被标送钱区 → 单关长期 0 注，属于小样本规则误伤）。
+        """
         try:
-            p = Path(__file__).parent.parent.parent / "data" / "state" / "ev_report.json"
+            p = path or (Path(__file__).parent.parent.parent / "data" / "state" / "ev_report.json")
             if not p.exists():
                 return {}
             d = json.loads(p.read_text(encoding="utf-8"))
-            return {k: v.get("roi", 0) for k, v in d.get("layers", {}).items()}
+            return {k: v.get("roi", 0) for k, v in d.get("layers", {}).items()
+                    if v.get("n", 0) >= 50}
         except Exception:
             return {}
 
@@ -127,10 +133,12 @@ class KellyStrategy:
                     continue
 
                 # 价值区过滤：该赔率区间历史 ROI<-10% 直接拒绝（送钱区）
+                # 2026-08-14：仅对 n≥50 的层生效（_load_value_zones 已过滤），
+                # 小样本层返回 None → 不拒（避免噪声禁投）。
                 if value_zones:
                     _layer = self._layer_of(odds)
-                    _roi = value_zones.get(_layer, 0)
-                    if _roi < -0.10:
+                    _roi = value_zones.get(_layer)
+                    if _roi is not None and _roi < -0.10:
                         rejected_value += 1
                         plan.rejected.append((
                             BetCandidate(

@@ -20,6 +20,7 @@ from pathlib import Path
 def build_parlay_report(
     daily_root: Path | None = None,
     out_path: Path | None = None,
+    league_report_path: Path | None = None,
 ) -> dict:
     daily_root = daily_root or Path("data/daily")
     out_path = out_path or Path("data/state/parlay_report.json")
@@ -75,9 +76,20 @@ def build_parlay_report(
     n_parlay = len(parlay_bets)
     parlay_roi_sum = sum(b["pnl"] for b in parlay_bets)
 
-    # 变体：只串价值区联赛
-    value_leagues = {"K1联赛", "挪超", "瑞超"}
-    parlay_value = [b for b in parlay_bets if all("K1" in x or "挪" in x or "瑞" in x for x in b["matches"])]
+    # 变体：只串价值区联赛（2026-08-14 修复：原为硬编码 {"K1联赛","挪超","瑞超"}，
+    # 与数据矛盾——瑞超实盘 ROI -51% 是送钱区。改为动态读 league_report 的
+    # 价值区 verdict（n≥50 口径）；无价值区联赛时该变体为空。
+    value_leagues = set()
+    try:
+        _lr_path = league_report_path or (
+            Path(__file__).parent.parent.parent / "data" / "state" / "league_report.json")
+        _lr = json.loads(_lr_path.read_text(encoding="utf-8"))
+        value_leagues = {r["league"] for r in _lr.get("leagues", [])
+                         if r.get("verdict") == "价值区"}
+    except Exception:
+        pass
+    parlay_value = [b for b in parlay_bets
+                    if all(any(vl in x for vl in value_leagues) for x in b["matches"])]
 
     report = {
         "n_matches": n,

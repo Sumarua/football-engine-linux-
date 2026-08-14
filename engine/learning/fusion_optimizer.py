@@ -89,10 +89,11 @@ class FusionOptimizer:
             "market": [0.00, 0.90],
             "djyy": [0.00, 0.40],
         })
-        self.val_matches = self.cfg.get("val_matches", 20)
+        self.val_matches = self.cfg.get("val_matches", 100)
         # 显著性阈值：晋升要求 improvement ≥ max(min_improvement, min_z × SE)
         # 2026-08-14：n=20 时 SE≈0.015，0.002-0.005 的阈值比噪声小一个量级，
-        # 157 次决策 126 hold/16 promote 与随机游走无法区分。
+        # 157 次决策 126 hold/16 promote 与随机游走无法区分。窗口提到 100
+        # （changelog 建议 ≥100）后再叠加 min_z 显著性门槛。
         self.min_z = self.cfg.get("min_z", 1.96)
         # 日志
         self.log_path = state_path.parent / "optimizer_log.jsonl"

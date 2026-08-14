@@ -19,6 +19,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent.parent
 
+# 与 league_report.classify_league 对齐（2026-08-14）：n<50 不给价值区/送钱区
+# 定性——小样本 ROI 是噪声（changelog 2026-08-14 遗留项），禁投/推荐需实打实证据。
+MIN_VERDICT_SAMPLES = 50
+
 
 def layer_of(odds: float) -> str:
     """老系统 L1-L5 赔率分层口径（与竞彩实战一致）"""
@@ -91,8 +95,15 @@ def build_report(daily_root: Path | None = None, out_path: Path | None = None) -
     def _finalize(d: dict) -> dict:
         d["hit_rate"] = d["hits"] / d["n"] if d["n"] else 0
         d["roi"] = d["pnl"] / d["n"] if d["n"] else 0
-        d["verdict"] = ("价值区 ✅" if d["roi"] > 0
-                        else "送钱区 ❌" if d["roi"] < -0.10 else "中性")
+        # 2026-08-14：verdict 加样本门槛（与 league_report 同口径）。
+        # n<50 只给谨慎/观望，不产生"价值区/送钱区"标签 → 页面与 Kelly 不再被小样本噪声驱动。
+        if d["n"] < 3:
+            d["verdict"] = "样本不足"
+        elif d["n"] < MIN_VERDICT_SAMPLES:
+            d["verdict"] = "谨慎" if d["roi"] < 0 else "观望"
+        else:
+            d["verdict"] = ("价值区 ✅" if d["roi"] > 0
+                            else "送钱区 ❌" if d["roi"] < -0.10 else "中性")
         return d
 
     report = {
@@ -104,18 +115,18 @@ def build_report(daily_root: Path | None = None, out_path: Path | None = None) -
         "takeaways": [],
     }
 
-    # 自动生成结论
+    # 自动生成结论（2026-08-14：只引用"有实据"的 verdict——n<50 不再出现在价值/送钱结论里）
     t = report["total"]
     report["takeaways"].append(
         f"整体 {t['n']} 场命中率 {t['hit_rate']*100:.1f}%，ROI {t['roi']*100:+.1f}%"
     )
-    value_layers = [k for k, v in report["layers"].items() if v["roi"] > 0]
-    bad_layers = [k for k, v in report["layers"].items() if v["roi"] < -0.10]
+    value_layers = [k for k, v in report["layers"].items() if v["verdict"] == "价值区 ✅"]
+    bad_layers = [k for k, v in report["layers"].items() if v["verdict"] == "送钱区 ❌"]
     if value_layers:
         report["takeaways"].append(f"价值区: {', '.join(value_layers)}")
     if bad_layers:
         report["takeaways"].append(f"送钱区(回避): {', '.join(bad_layers)}")
-    bad_leagues = [k for k, v in report["leagues"].items() if v["roi"] < -0.15 and v["n"] >= 5]
+    bad_leagues = [k for k, v in report["leagues"].items() if v["verdict"] == "送钱区 ❌"]
     if bad_leagues:
         report["takeaways"].append(f"送钱联赛(回避): {', '.join(bad_leagues)}")
 
