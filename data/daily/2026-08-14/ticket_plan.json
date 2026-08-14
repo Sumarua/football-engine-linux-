@@ -5,20 +5,20 @@
     {
       "match": "2026-08-14_周五002",
       "sel": "draw",
-      "odds": 3.75,
-      "stake": 20.26,
+      "odds": 3.66,
+      "stake": 18.98,
       "prob": 0.327
     },
     {
       "match": "2026-08-14_周五013#ttg",
       "sel": "ttg_1",
       "odds": 5.0,
-      "stake": 29.74,
+      "stake": 31.02,
       "prob": 0.209
     }
   ],
   "total_stake": 50.0,
-  "expected_roi": 0.1191,
+  "expected_roi": 0.1034,
   "bankroll": 4386.390600000001,
   "breaker_multiplier": 1.0,
   "parlay": [
@@ -32,7 +32,7 @@
           "league": "德乙",
           "sel": "home",
           "odds": 2.34,
-          "prob": 0.408,
+          "prob": 0.407,
           "cal_prob": 0.478,
           "market_prob": 0.378,
           "source": "fusion",
@@ -44,25 +44,25 @@
           "away": "TPS图尔库",
           "league": "芬超",
           "sel": "draw",
-          "odds": 3.75,
+          "odds": 3.66,
           "prob": 0.327,
           "cal_prob": 0.435,
-          "market_prob": 0.236,
+          "market_prob": 0.242,
           "source": "fusion",
           "hit_prob": 0.435
         }
       ],
-      "total_odds": 8.77,
-      "model_ev": 0.34,
-      "cal_ev": 13.03,
-      "cal_roi": 0.8249,
+      "total_odds": 8.56,
+      "model_ev": 0.28,
+      "cal_ev": 12.33,
+      "cal_roi": 0.7811,
       "market_ev": -0.43,
-      "market_roi": -0.2162,
+      "market_roi": -0.2158,
       "hit_prob_cal": 0.208,
       "recommended": true,
       "stake": 15.79,
       "n_bets": 1,
-      "potential": 138.56,
+      "potential": 135.23,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -78,7 +78,7 @@
           "away": "鹿斯巴达",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.198,
+          "prob": 0.196,
           "cal_prob": 0.1281,
           "odds": 10.5
         },
@@ -88,7 +88,7 @@
           "away": "登博思",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.176,
+          "prob": 0.178,
           "cal_prob": 0.1281,
           "odds": 11.0
         }
@@ -111,7 +111,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.221,
+          "prob": 0.223,
           "cal_prob": 0.1281,
           "odds": 10.0
         },
@@ -121,7 +121,7 @@
           "away": "登博思",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.176,
+          "prob": 0.178,
           "cal_prob": 0.1281,
           "odds": 11.0
         }
@@ -144,7 +144,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.221,
+          "prob": 0.223,
           "cal_prob": 0.1281,
           "odds": 10.0
         },
@@ -154,7 +154,7 @@
           "away": "鹿斯巴达",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.198,
+          "prob": 0.196,
           "cal_prob": 0.1281,
           "odds": 10.5
         }
@@ -177,7 +177,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.221,
+          "prob": 0.223,
           "cal_prob": 0.1281,
           "odds": 10.0
         },
@@ -187,7 +187,7 @@
           "away": "波鸿",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.25,
+          "prob": 0.251,
           "cal_prob": 0.1281,
           "odds": 9.5
         },
@@ -197,7 +197,7 @@
           "away": "韦斯特罗斯",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.309,
+          "prob": 0.303,
           "cal_prob": 0.1281,
           "odds": 8.25
         }
@@ -220,7 +220,7 @@
           "away": "圣保利",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.221,
+          "prob": 0.223,
           "cal_prob": 0.1281,
           "odds": 10.0
         },
@@ -230,7 +230,7 @@
           "away": "波鸿",
           "league": "德乙",
           "score": "1-0",
-          "prob": 0.25,
+          "prob": 0.251,
           "cal_prob": 0.1281,
           "odds": 9.5
         },
@@ -240,7 +240,7 @@
           "away": "韦斯特罗斯",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.309,
+          "prob": 0.303,
           "cal_prob": 0.1281,
           "odds": 8.25
         }
