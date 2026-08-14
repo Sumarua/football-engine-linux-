@@ -1,16 +1,16 @@
 {
   "generated_at": "2026-08-14",
-  "total_matches": 207,
+  "total_matches": 208,
   "date_range": [
     "2026-07-19",
-    "2026-08-13"
+    "2026-08-14"
   ],
   "overall": {
-    "hit_rate": 0.4348,
-    "brier_final": 0.6541,
-    "brier_model": 0.6955,
-    "brier_market": 0.6328,
-    "brier_djyy": 0.6576
+    "hit_rate": 0.4375,
+    "brier_final": 0.6537,
+    "brier_model": 0.6946,
+    "brier_market": 0.6312,
+    "brier_djyy": 0.6552
   },
   "daily": [
     {
@@ -324,21 +324,33 @@
       "brier_market": 0.6874,
       "brier_djyy": 0.7425,
       "pnl": -150.0
+    },
+    {
+      "date": "2026-08-14",
+      "n": 1,
+      "hits": 1,
+      "hit_rate": 1.0,
+      "cum_hit_rate": 0.4375,
+      "brier_final": 0.5707,
+      "brier_model": 0.4995,
+      "brier_market": 0.3845,
+      "brier_djyy": 0.419,
+      "pnl": 0.0
     }
   ],
   "rolling7": {
-    "n": 85,
-    "hit_rate": 0.4353,
-    "brier_final": 0.6678,
+    "n": 76,
+    "hit_rate": 0.4342,
+    "brier_final": 0.6605,
     "pnl": -613.6
   },
   "prev7": {
-    "n": 50,
-    "hit_rate": 0.38,
-    "brier_final": 0.6687,
+    "n": 57,
+    "hit_rate": 0.4035,
+    "brier_final": 0.6534,
     "pnl": 0.0
   },
-  "verdict": "命中率提升 +6pt",
+  "verdict": "命中率提升 +3pt",
   "by_league": [
     {
       "layer": "挪超",
@@ -414,9 +426,9 @@
     },
     {
       "layer": "日职",
-      "n": 5,
-      "hit_rate": 0.6,
-      "brier_final": 0.612
+      "n": 6,
+      "hit_rate": 0.6667,
+      "brier_final": 0.6051
     },
     {
       "layer": "解放者杯",
@@ -488,9 +500,9 @@
   "by_odds_band": [
     {
       "layer": "1.5-2.0",
-      "n": 69,
-      "hit_rate": 0.3913,
-      "brier_final": 0.6906
+      "n": 70,
+      "hit_rate": 0.4,
+      "brier_final": 0.6889
     },
     {
       "layer": "2.0-3.0",
@@ -520,9 +532,9 @@
     },
     {
       "layer": "low",
-      "n": 62,
-      "hit_rate": 0.3548,
-      "brier_final": 0.6574
+      "n": 63,
+      "hit_rate": 0.3651,
+      "brier_final": 0.656
     },
     {
       "layer": "high",
