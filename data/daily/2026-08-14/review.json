@@ -1,13 +1,13 @@
 {
   "date": "2026-08-14",
-  "n_matches": 16,
-  "hit_rate": 0.5625,
-  "hits": 9,
+  "n_matches": 17,
+  "hit_rate": 0.5882,
+  "hits": 10,
   "source_brier": {
-    "model": 0.6206,
-    "market": 0.5927,
+    "model": 0.5927,
+    "market": 0.562,
     "djyy": 0.5944,
-    "final": 0.6315
+    "final": 0.6236
   },
   "by_league": {
     "日职": {
@@ -69,6 +69,12 @@
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
       "avg_brier": 0.7394
+    },
+    "葡超": {
+      "n": 1,
+      "hit_rate": 1.0,
+      "wilson_lower": 0.2065,
+      "avg_brier": 0.4964
     }
   },
   "by_confidence_tier": {
@@ -79,10 +85,10 @@
       "avg_brier": 0.6161
     },
     "mid": {
-      "n": 12,
-      "hit_rate": 0.5,
-      "wilson_lower": 0.2538,
-      "avg_brier": 0.6366
+      "n": 13,
+      "hit_rate": 0.5385,
+      "wilson_lower": 0.2914,
+      "avg_brier": 0.6259
     }
   },
   "by_odds_band": {
@@ -105,10 +111,10 @@
       "avg_brier": 0.6519
     },
     "1.0-1.5": {
-      "n": 3,
-      "hit_rate": 0.6667,
-      "wilson_lower": 0.2077,
-      "avg_brier": 0.5638
+      "n": 4,
+      "hit_rate": 0.75,
+      "wilson_lower": 0.3006,
+      "avg_brier": 0.5469
     }
   },
   "score_stats": {
@@ -134,19 +140,19 @@
     }
   },
   "market_signal_stats": {
-    "n": 15,
+    "n": 16,
     "hits": 5
   },
   "layered": {
-    "log_loss_final": 1.0467,
+    "log_loss_final": 1.0341,
     "goal_framework": {
-      "n": 16,
-      "hits": 11
+      "n": 17,
+      "hits": 12
     },
     "prob_bands": {
       "40-50%": {
-        "n": 12,
-        "hit_rate": 0.5
+        "n": 13,
+        "hit_rate": 0.5385
       },
       "<40%": {
         "n": 4,
@@ -159,13 +165,13 @@
         "hit_rate": 0.6667
       },
       "watch": {
-        "n": 13,
-        "hit_rate": 0.5385
+        "n": 14,
+        "hit_rate": 0.5714
       }
     }
   },
   "biases": [],
   "total_pnl": -50.0,
-  "generated_at": "2026-08-14T21:06:49.309530",
-  "sha256": "11cc5af49458eab3d0427c3786ab3e61"
+  "generated_at": "2026-08-14T21:45:16.589728",
+  "sha256": "ff5bea371dc729f9b56b4612cfe5c263"
 }

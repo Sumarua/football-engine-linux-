@@ -1,15 +1,15 @@
 {
   "generated_at": "2026-08-14",
-  "total_matches": 223,
+  "total_matches": 224,
   "date_range": [
     "2026-07-19",
     "2026-08-14"
   ],
   "overall": {
-    "hit_rate": 0.4439,
-    "brier_final": 0.6525,
-    "brier_model": 0.6901,
-    "brier_market": 0.6292,
+    "hit_rate": 0.4464,
+    "brier_final": 0.6518,
+    "brier_model": 0.6877,
+    "brier_market": 0.626,
     "brier_djyy": 0.6546
   },
   "daily": [
@@ -327,21 +327,21 @@
     },
     {
       "date": "2026-08-14",
-      "n": 16,
-      "hits": 9,
-      "hit_rate": 0.5625,
-      "cum_hit_rate": 0.4439,
-      "brier_final": 0.6315,
-      "brier_model": 0.6206,
-      "brier_market": 0.5927,
+      "n": 17,
+      "hits": 10,
+      "hit_rate": 0.5882,
+      "cum_hit_rate": 0.4464,
+      "brier_final": 0.6236,
+      "brier_model": 0.5927,
+      "brier_market": 0.562,
       "brier_djyy": 0.5944,
       "pnl": -50.0
     }
   ],
   "rolling7": {
-    "n": 91,
-    "hit_rate": 0.4505,
-    "brier_final": 0.6692,
+    "n": 92,
+    "hit_rate": 0.4565,
+    "brier_final": 0.668,
     "pnl": -663.6
   },
   "prev7": {
@@ -407,16 +407,16 @@
       "brier_final": 0.6021
     },
     {
+      "layer": "葡超",
+      "n": 10,
+      "hit_rate": 0.4,
+      "brier_final": 0.6542
+    },
+    {
       "layer": "瑞超",
       "n": 9,
       "hit_rate": 0.5556,
       "brier_final": 0.59
-    },
-    {
-      "layer": "葡超",
-      "n": 9,
-      "hit_rate": 0.3333,
-      "brier_final": 0.6718
     },
     {
       "layer": "巴西杯",
@@ -518,9 +518,9 @@
     },
     {
       "layer": "1.0-1.5",
-      "n": 60,
-      "hit_rate": 0.5833,
-      "brier_final": 0.6077
+      "n": 61,
+      "hit_rate": 0.5902,
+      "brier_final": 0.6058
     },
     {
       "layer": "3.0+",
@@ -532,9 +532,9 @@
   "by_conf_tier": [
     {
       "layer": "mid",
-      "n": 113,
-      "hit_rate": 0.4956,
-      "brier_final": 0.6254
+      "n": 114,
+      "hit_rate": 0.5,
+      "brier_final": 0.6243
     },
     {
       "layer": "low",
