@@ -1,13 +1,13 @@
 {
   "date": "2026-08-15",
-  "n_matches": 13,
-  "hit_rate": 0.6154,
+  "n_matches": 14,
+  "hit_rate": 0.5714,
   "hits": 8,
   "source_brier": {
-    "model": 0.628,
-    "market": 0.5853,
+    "model": 0.669,
+    "market": 0.6222,
     "djyy": 0.5389,
-    "final": 0.6165
+    "final": 0.625
   },
   "by_league": {
     "日职": {
@@ -63,6 +63,12 @@
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
       "avg_brier": 0.5966
+    },
+    "芬超": {
+      "n": 1,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
+      "avg_brier": 0.7347
     }
   },
   "by_confidence_tier": {
@@ -73,10 +79,10 @@
       "avg_brier": 0.6338
     },
     "low": {
-      "n": 8,
-      "hit_rate": 0.75,
-      "wilson_lower": 0.4093,
-      "avg_brier": 0.6058
+      "n": 9,
+      "hit_rate": 0.6667,
+      "wilson_lower": 0.3542,
+      "avg_brier": 0.6201
     }
   },
   "by_odds_band": {
@@ -91,6 +97,12 @@
       "hit_rate": 0.75,
       "wilson_lower": 0.3006,
       "avg_brier": 0.5608
+    },
+    "3.0+": {
+      "n": 1,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
+      "avg_brier": 0.7347
     }
   },
   "score_stats": {
@@ -117,13 +129,13 @@
     }
   },
   "market_signal_stats": {
-    "n": 13,
-    "hits": 2
+    "n": 14,
+    "hits": 3
   },
   "layered": {
-    "log_loss_final": 1.0257,
+    "log_loss_final": 1.0379,
     "goal_framework": {
-      "n": 13,
+      "n": 14,
       "hits": 8
     },
     "prob_bands": {
@@ -132,14 +144,14 @@
         "hit_rate": 0.4
       },
       "<40%": {
-        "n": 8,
-        "hit_rate": 0.75
+        "n": 9,
+        "hit_rate": 0.6667
       }
     },
     "freshness_groups": {
       "ok": {
-        "n": 5,
-        "hit_rate": 0.6
+        "n": 6,
+        "hit_rate": 0.5
       },
       "watch": {
         "n": 8,
@@ -148,7 +160,7 @@
     }
   },
   "biases": [],
-  "total_pnl": 0.0,
-  "generated_at": "2026-08-15T17:37:02.242126",
-  "sha256": "d9cf71706379c2931fc871d5ba2681a5"
+  "total_pnl": -50.0,
+  "generated_at": "2026-08-15T17:57:54.742514",
+  "sha256": "5c4e04c6bc64d89455e762bc6a431c11"
 }

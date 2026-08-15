@@ -1,46 +1,46 @@
 {
-  "total_matches": 237,
+  "total_matches": 238,
   "date_range": [
     "2026-07-19",
     "2026-08-15"
   ],
   "metrics": {
-    "brier": 0.6498,
-    "weighted_brier": 0.6497,
-    "rps": 0.2187,
-    "weighted_rps": 0.2186,
-    "log_loss": 1.0737,
-    "hit_rate": 0.4557,
-    "ece": 0.1783
+    "brier": 0.6502,
+    "weighted_brier": 0.6501,
+    "rps": 0.2191,
+    "weighted_rps": 0.219,
+    "log_loss": 1.0742,
+    "hit_rate": 0.4538,
+    "ece": 0.1742
   },
   "draw_analysis": {
     "actual_draws": 70,
-    "actual_draw_rate": 0.2954,
-    "predicted_draws": 7,
-    "predicted_draw_rate": 0.0295,
+    "actual_draw_rate": 0.2941,
+    "predicted_draws": 8,
+    "predicted_draw_rate": 0.0336,
     "max_draw_prob": 0.4592,
-    "avg_draw_prob": 0.272,
-    "avg_market_draw": 0.2462,
+    "avg_draw_prob": 0.2721,
+    "avg_market_draw": 0.246,
     "market_high_draw_n": 41,
     "market_high_draw_actual": 15,
     "market_high_draw_rate": 0.3659
   },
   "strategy_comparison": {
     "model": {
-      "hit_rate": 0.4557,
-      "n": 237
+      "hit_rate": 0.4538,
+      "n": 238
     },
     "market": {
-      "hit_rate": 0.5056,
-      "n": 180
+      "hit_rate": 0.5028,
+      "n": 181
     },
     "hybrid_v2": {
-      "hit_rate": 0.4667,
-      "n": 180
+      "hit_rate": 0.4641,
+      "n": 181
     },
     "market_d28": {
-      "hit_rate": 0.4389,
-      "n": 180
+      "hit_rate": 0.4365,
+      "n": 181
     }
   },
   "by_league": {
@@ -57,10 +57,10 @@
       "rps": 0.2296
     },
     "芬超": {
-      "n": 20,
-      "hit_rate": 0.35,
-      "brier": 0.7311,
-      "rps": 0.2724
+      "n": 21,
+      "hit_rate": 0.3333,
+      "brier": 0.7313,
+      "rps": 0.2748
     },
     "K1联赛": {
       "n": 20,
