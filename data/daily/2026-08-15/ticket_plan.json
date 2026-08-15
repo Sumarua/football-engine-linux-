@@ -39,15 +39,15 @@
       ],
       "total_odds": 4.8,
       "model_ev": -0.16,
-      "cal_ev": 1.42,
+      "cal_ev": 1.63,
       "cal_roi": 0.2416,
       "market_ev": -0.43,
       "market_roi": -0.2157,
       "hit_prob_cal": 0.259,
       "recommended": true,
-      "stake": 5.89,
+      "stake": 6.75,
       "n_bets": 1,
-      "potential": 28.25,
+      "potential": 32.37,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -55,6 +55,19 @@
     {
       "type": "2串1",
       "legs": [
+        {
+          "match": "2026-08-15_周六008",
+          "home": "博尔顿",
+          "away": "普雷斯顿",
+          "league": "英冠",
+          "sel": "home",
+          "odds": 2.08,
+          "prob": 0.433,
+          "cal_prob": 0.509,
+          "market_prob": 0.426,
+          "source": "fusion",
+          "hit_prob": 0.509
+        },
         {
           "match": "2026-08-15_周六024",
           "home": "塞维利亚",
@@ -67,32 +80,19 @@
           "market_prob": 0.403,
           "source": "fusion",
           "hit_prob": 0.509
-        },
-        {
-          "match": "2026-08-15_周六017",
-          "home": "乌德勒支",
-          "away": "阿尔克马",
-          "league": "荷甲",
-          "sel": "away",
-          "odds": 2.18,
-          "prob": 0.401,
-          "cal_prob": 0.509,
-          "market_prob": 0.406,
-          "source": "fusion",
-          "hit_prob": 0.509
         }
       ],
-      "total_odds": 4.8,
-      "model_ev": -0.34,
-      "cal_ev": 1.42,
-      "cal_roi": 0.2416,
+      "total_odds": 4.58,
+      "model_ev": -0.29,
+      "cal_ev": 1.01,
+      "cal_roi": 0.1846,
       "market_ev": -0.43,
-      "market_roi": -0.216,
+      "market_roi": -0.215,
       "hit_prob_cal": 0.259,
       "recommended": true,
-      "stake": 5.89,
+      "stake": 5.47,
       "n_bets": 1,
-      "potential": 28.25,
+      "potential": 25.03,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -114,30 +114,30 @@
           "hit_prob": 0.509
         },
         {
-          "match": "2026-08-15_周六017",
-          "home": "乌德勒支",
-          "away": "阿尔克马",
-          "league": "荷甲",
-          "sel": "away",
-          "odds": 2.18,
-          "prob": 0.401,
+          "match": "2026-08-15_周六008",
+          "home": "博尔顿",
+          "away": "普雷斯顿",
+          "league": "英冠",
+          "sel": "home",
+          "odds": 2.08,
+          "prob": 0.433,
           "cal_prob": 0.509,
-          "market_prob": 0.406,
+          "market_prob": 0.426,
           "source": "fusion",
           "hit_prob": 0.509
         }
       ],
-      "total_odds": 4.75,
-      "model_ev": -0.31,
-      "cal_ev": 1.31,
-      "cal_roi": 0.2303,
+      "total_odds": 4.53,
+      "model_ev": -0.26,
+      "cal_ev": 0.91,
+      "cal_roi": 0.1739,
       "market_ev": -0.43,
-      "market_roi": -0.2159,
+      "market_roi": -0.2148,
       "hit_prob_cal": 0.259,
       "recommended": true,
-      "stake": 5.68,
+      "stake": 5.22,
       "n_bets": 1,
-      "potential": 26.99,
+      "potential": 23.67,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -159,6 +159,19 @@
           "hit_prob": 0.509
         },
         {
+          "match": "2026-08-15_周六008",
+          "home": "博尔顿",
+          "away": "普雷斯顿",
+          "league": "英冠",
+          "sel": "home",
+          "odds": 2.08,
+          "prob": 0.433,
+          "cal_prob": 0.509,
+          "market_prob": 0.426,
+          "source": "fusion",
+          "hit_prob": 0.509
+        },
+        {
           "match": "2026-08-15_周六024",
           "home": "塞维利亚",
           "away": "巴列卡诺",
@@ -170,32 +183,19 @@
           "market_prob": 0.403,
           "source": "fusion",
           "hit_prob": 0.509
-        },
-        {
-          "match": "2026-08-15_周六017",
-          "home": "乌德勒支",
-          "away": "阿尔克马",
-          "league": "荷甲",
-          "sel": "away",
-          "odds": 2.18,
-          "prob": 0.401,
-          "cal_prob": 0.509,
-          "market_prob": 0.406,
-          "source": "fusion",
-          "hit_prob": 0.509
         }
       ],
-      "total_odds": 10.46,
-      "model_ev": -0.4,
-      "cal_ev": 1.39,
-      "cal_roi": 0.3771,
+      "total_odds": 9.98,
+      "model_ev": -0.35,
+      "cal_ev": 1.16,
+      "cal_roi": 0.314,
       "market_ev": -0.61,
-      "market_roi": -0.3056,
+      "market_roi": -0.3047,
       "hit_prob_cal": 0.132,
       "recommended": true,
-      "stake": 3.69,
+      "stake": 3.71,
       "n_bets": 1,
-      "potential": 38.58,
+      "potential": 37.01,
       "worst_win": 0.0,
       "note": "三场全中才赢",
       "source": "calibrated"
@@ -217,6 +217,19 @@
           "hit_prob": 0.509
         },
         {
+          "match": "2026-08-15_周六008",
+          "home": "博尔顿",
+          "away": "普雷斯顿",
+          "league": "英冠",
+          "sel": "home",
+          "odds": 2.08,
+          "prob": 0.433,
+          "cal_prob": 0.509,
+          "market_prob": 0.426,
+          "source": "fusion",
+          "hit_prob": 0.509
+        },
+        {
           "match": "2026-08-15_周六024",
           "home": "塞维利亚",
           "away": "巴列卡诺",
@@ -228,34 +241,21 @@
           "market_prob": 0.403,
           "source": "fusion",
           "hit_prob": 0.509
-        },
-        {
-          "match": "2026-08-15_周六017",
-          "home": "乌德勒支",
-          "away": "阿尔克马",
-          "league": "荷甲",
-          "sel": "away",
-          "odds": 2.18,
-          "prob": 0.401,
-          "cal_prob": 0.509,
-          "market_prob": 0.406,
-          "source": "fusion",
-          "hit_prob": 0.509
         }
       ],
-      "total_odds": 6.2,
+      "total_odds": 5.97,
       "model_ev": null,
-      "cal_ev": 1.33,
-      "cal_roi": 0.2726,
-      "market_ev": -1.91,
-      "market_roi": -0.2383,
+      "cal_ev": 1.11,
+      "cal_roi": 0.2285,
+      "market_ev": -1.9,
+      "market_roi": -0.2375,
       "hit_prob_cal": 0.132,
       "recommended": true,
-      "stake": 4.86,
+      "stake": 4.87,
       "n_bets": 4,
-      "potential": 30.13,
-      "worst_win": 9.5,
-      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥10），全中 ¥50",
+      "potential": 29.08,
+      "worst_win": 9.07,
+      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥9），全中 ¥48",
       "source": "calibrated"
     }
   ],
@@ -269,7 +269,7 @@
           "away": "利勒斯特伦",
           "league": "挪超",
           "score": "1-0",
-          "prob": 0.211,
+          "prob": 0.213,
           "cal_prob": 0.1246,
           "odds": 11.0
         },
@@ -279,7 +279,7 @@
           "away": "穆拜征服",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.181,
+          "prob": 0.185,
           "cal_prob": 0.1246,
           "odds": 12.5
         }
@@ -302,7 +302,7 @@
           "away": "赛哈海湾",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.188,
+          "prob": 0.189,
           "cal_prob": 0.1246,
           "odds": 9.5
         },
@@ -312,7 +312,7 @@
           "away": "穆拜征服",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.181,
+          "prob": 0.185,
           "cal_prob": 0.1246,
           "odds": 12.5
         }
@@ -335,7 +335,7 @@
           "away": "利勒斯特伦",
           "league": "挪超",
           "score": "1-0",
-          "prob": 0.211,
+          "prob": 0.213,
           "cal_prob": 0.1246,
           "odds": 11.0
         },
@@ -345,7 +345,7 @@
           "away": "赛哈海湾",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.188,
+          "prob": 0.189,
           "cal_prob": 0.1246,
           "odds": 9.5
         }
@@ -368,7 +368,7 @@
           "away": "利勒斯特伦",
           "league": "挪超",
           "score": "1-0",
-          "prob": 0.211,
+          "prob": 0.213,
           "cal_prob": 0.1246,
           "odds": 11.0
         },
@@ -378,7 +378,7 @@
           "away": "赛哈海湾",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.188,
+          "prob": 0.189,
           "cal_prob": 0.1246,
           "odds": 9.5
         },
@@ -388,7 +388,7 @@
           "away": "穆拜征服",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.181,
+          "prob": 0.185,
           "cal_prob": 0.1246,
           "odds": 12.5
         }
@@ -411,7 +411,7 @@
           "away": "利勒斯特伦",
           "league": "挪超",
           "score": "1-0",
-          "prob": 0.211,
+          "prob": 0.213,
           "cal_prob": 0.1246,
           "odds": 11.0
         },
@@ -421,7 +421,7 @@
           "away": "赛哈海湾",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.188,
+          "prob": 0.189,
           "cal_prob": 0.1246,
           "odds": 9.5
         },
@@ -431,7 +431,7 @@
           "away": "穆拜征服",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.181,
+          "prob": 0.185,
           "cal_prob": 0.1246,
           "odds": 12.5
         }
