@@ -17,7 +17,7 @@
           "league": "美职",
           "sel": "home",
           "odds": 2.1,
-          "prob": 0.452,
+          "prob": 0.456,
           "cal_prob": 0.538,
           "market_prob": 0.422,
           "source": "fusion",
@@ -30,7 +30,7 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.15,
-          "prob": 0.43,
+          "prob": 0.444,
           "cal_prob": 0.516,
           "market_prob": 0.412,
           "source": "fusion",
@@ -38,7 +38,7 @@
         }
       ],
       "total_odds": 4.51,
-      "model_ev": -0.24,
+      "model_ev": -0.17,
       "cal_ev": 1.61,
       "cal_roi": 0.2536,
       "market_ev": -0.43,
@@ -62,7 +62,7 @@
           "league": "美职",
           "sel": "home",
           "odds": 2.1,
-          "prob": 0.452,
+          "prob": 0.456,
           "cal_prob": 0.538,
           "market_prob": 0.422,
           "source": "fusion",
@@ -75,7 +75,7 @@
           "league": "瑞典超",
           "sel": "home",
           "odds": 2.1,
-          "prob": 0.445,
+          "prob": 0.449,
           "cal_prob": 0.516,
           "market_prob": 0.422,
           "source": "fusion",
@@ -83,7 +83,7 @@
         }
       ],
       "total_odds": 4.41,
-      "model_ev": -0.23,
+      "model_ev": -0.19,
       "cal_ev": 1.3,
       "cal_roi": 0.2244,
       "market_ev": -0.43,
@@ -107,7 +107,7 @@
           "league": "瑞典超",
           "sel": "home",
           "odds": 2.1,
-          "prob": 0.445,
+          "prob": 0.449,
           "cal_prob": 0.516,
           "market_prob": 0.422,
           "source": "fusion",
@@ -120,7 +120,7 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.15,
-          "prob": 0.43,
+          "prob": 0.444,
           "cal_prob": 0.516,
           "market_prob": 0.412,
           "source": "fusion",
@@ -128,7 +128,7 @@
         }
       ],
       "total_odds": 4.51,
-      "model_ev": -0.27,
+      "model_ev": -0.2,
       "cal_ev": 1.01,
       "cal_roi": 0.2003,
       "market_ev": -0.43,
@@ -152,7 +152,7 @@
           "league": "美职",
           "sel": "home",
           "odds": 2.1,
-          "prob": 0.452,
+          "prob": 0.456,
           "cal_prob": 0.538,
           "market_prob": 0.422,
           "source": "fusion",
@@ -165,7 +165,7 @@
           "league": "瑞典超",
           "sel": "home",
           "odds": 2.1,
-          "prob": 0.445,
+          "prob": 0.449,
           "cal_prob": 0.516,
           "market_prob": 0.422,
           "source": "fusion",
@@ -178,7 +178,7 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.15,
-          "prob": 0.43,
+          "prob": 0.444,
           "cal_prob": 0.516,
           "market_prob": 0.412,
           "source": "fusion",
@@ -186,7 +186,7 @@
         }
       ],
       "total_odds": 9.48,
-      "model_ev": -0.36,
+      "model_ev": -0.27,
       "cal_ev": 1.33,
       "cal_roi": 0.3573,
       "market_ev": -0.61,
@@ -210,7 +210,7 @@
           "league": "美职",
           "sel": "home",
           "odds": 2.1,
-          "prob": 0.452,
+          "prob": 0.456,
           "cal_prob": 0.538,
           "market_prob": 0.422,
           "source": "fusion",
@@ -223,7 +223,7 @@
           "league": "瑞典超",
           "sel": "home",
           "odds": 2.1,
-          "prob": 0.445,
+          "prob": 0.449,
           "cal_prob": 0.516,
           "market_prob": 0.422,
           "source": "fusion",
@@ -236,7 +236,7 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.15,
-          "prob": 0.43,
+          "prob": 0.444,
           "cal_prob": 0.516,
           "market_prob": 0.412,
           "source": "fusion",
@@ -269,8 +269,8 @@
           "away": "前进之鹰",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.205,
-          "cal_prob": 0.1204,
+          "prob": 0.207,
+          "cal_prob": 0.1202,
           "odds": 11.0
         },
         {
@@ -279,19 +279,19 @@
           "away": "哈马比",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.327,
-          "cal_prob": 0.1204,
+          "prob": 0.324,
+          "cal_prob": 0.1202,
           "odds": 16.0
         }
       ],
       "total_odds": 176.0,
-      "hit_prob": 0.0145,
+      "hit_prob": 0.0144,
       "stake": 2.0,
       "potential": 352.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.5% × 赔率 176 倍 = EV +155%）"
+      "note": "两场比分都中才赢（校准命中 1.4% × 赔率 176 倍 = EV +154%）"
     },
     {
       "type": "比分2串1",
@@ -302,8 +302,8 @@
           "away": "兹沃勒",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.254,
-          "cal_prob": 0.1204,
+          "prob": 0.25,
+          "cal_prob": 0.1202,
           "odds": 10.0
         },
         {
@@ -312,19 +312,19 @@
           "away": "哈马比",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.327,
-          "cal_prob": 0.1204,
+          "prob": 0.324,
+          "cal_prob": 0.1202,
           "odds": 16.0
         }
       ],
       "total_odds": 160.0,
-      "hit_prob": 0.0145,
+      "hit_prob": 0.0144,
       "stake": 2.0,
       "potential": 320.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.5% × 赔率 160 倍 = EV +132%）"
+      "note": "两场比分都中才赢（校准命中 1.4% × 赔率 160 倍 = EV +131%）"
     },
     {
       "type": "比分2串1",
@@ -335,8 +335,8 @@
           "away": "索尔纳",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.381,
-          "cal_prob": 0.1204,
+          "prob": 0.379,
+          "cal_prob": 0.1202,
           "odds": 9.5
         },
         {
@@ -345,19 +345,19 @@
           "away": "哈马比",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.327,
-          "cal_prob": 0.1204,
+          "prob": 0.324,
+          "cal_prob": 0.1202,
           "odds": 16.0
         }
       ],
       "total_odds": 152.0,
-      "hit_prob": 0.0145,
+      "hit_prob": 0.0144,
       "stake": 2.0,
       "potential": 304.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.5% × 赔率 152 倍 = EV +120%）"
+      "note": "两场比分都中才赢（校准命中 1.4% × 赔率 152 倍 = EV +120%）"
     },
     {
       "type": "比分3串1",
@@ -368,8 +368,8 @@
           "away": "索尔纳",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.381,
-          "cal_prob": 0.1204,
+          "prob": 0.379,
+          "cal_prob": 0.1202,
           "odds": 9.5
         },
         {
@@ -378,8 +378,8 @@
           "away": "兹沃勒",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.254,
-          "cal_prob": 0.1204,
+          "prob": 0.25,
+          "cal_prob": 0.1202,
           "odds": 10.0
         },
         {
@@ -388,8 +388,8 @@
           "away": "前进之鹰",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.205,
-          "cal_prob": 0.1204,
+          "prob": 0.207,
+          "cal_prob": 0.1202,
           "odds": 11.0
         }
       ],
@@ -411,8 +411,8 @@
           "away": "索尔纳",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.381,
-          "cal_prob": 0.1204,
+          "prob": 0.379,
+          "cal_prob": 0.1202,
           "odds": 9.5
         },
         {
@@ -421,8 +421,8 @@
           "away": "兹沃勒",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.254,
-          "cal_prob": 0.1204,
+          "prob": 0.25,
+          "cal_prob": 0.1202,
           "odds": 10.0
         },
         {
@@ -431,8 +431,8 @@
           "away": "前进之鹰",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.205,
-          "cal_prob": 0.1204,
+          "prob": 0.207,
+          "cal_prob": 0.1202,
           "odds": 11.0
         }
       ],
@@ -447,10 +447,10 @@
     }
   ],
   "parlay_calibration": {
-    "overall": 0.4568,
-    "n": 243,
+    "overall": 0.4612,
+    "n": 245,
     "table": {
-      "0.35": 0.4189,
+      "0.35": 0.4342,
       "0.4": 0.5156,
       "0.45": 0.5385,
       "0.5": 0.4211,
