@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T01:55:04.901119+00:00",
+  "generated_at": "2026-08-15T03:10:06.203124+00:00",
   "parlay": {
     "n_tickets": 17,
     "n_settled": 12,
@@ -28,7 +28,7 @@
     }
   },
   "score_parlay": {
-    "n_tickets": 84,
+    "n_tickets": 89,
     "n_settled": 84,
     "n_won": 0,
     "hit_rate": 0.0,
@@ -513,8 +513,8 @@
       {
         "date": "2026-08-15",
         "type": "2串1",
-        "stake": 6.76,
-        "potential": 33.16,
+        "stake": 6.42,
+        "potential": 31.5,
         "total_odds": 4.91,
         "odds_source": null,
         "note": "待赛",
@@ -549,9 +549,9 @@
       {
         "date": "2026-08-15",
         "type": "2串1",
-        "stake": 5.52,
-        "potential": 25.73,
-        "total_odds": 4.66,
+        "stake": 5.68,
+        "potential": 26.98,
+        "total_odds": 4.75,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -562,15 +562,6 @@
         ],
         "return": 0.0,
         "legs": [
-          {
-            "match": "2026-08-15_周六007",
-            "home": "柏林赫塔",
-            "away": "海登海姆",
-            "sel": "home",
-            "score": null,
-            "odds": 2.09,
-            "hit": null
-          },
           {
             "match": "2026-08-15_周六019",
             "home": "阿拉维斯",
@@ -579,15 +570,24 @@
             "score": null,
             "odds": 2.23,
             "hit": null
+          },
+          {
+            "match": "2026-08-15_周六004",
+            "home": "神户胜利",
+            "away": "东京FC",
+            "sel": "home",
+            "score": null,
+            "odds": 2.13,
+            "hit": null
           }
         ]
       },
       {
         "date": "2026-08-15",
         "type": "2串1",
-        "stake": 5.17,
-        "potential": 23.77,
-        "total_odds": 4.6,
+        "stake": 5.36,
+        "potential": 25.12,
+        "total_odds": 4.69,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -599,21 +599,21 @@
         "return": 0.0,
         "legs": [
           {
-            "match": "2026-08-15_周六007",
-            "home": "柏林赫塔",
-            "away": "海登海姆",
-            "sel": "home",
-            "score": null,
-            "odds": 2.09,
-            "hit": null
-          },
-          {
             "match": "2026-08-15_周六024",
             "home": "塞维利亚",
             "away": "巴列卡诺",
             "sel": "home",
             "score": null,
             "odds": 2.2,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六004",
+            "home": "神户胜利",
+            "away": "东京FC",
+            "sel": "home",
+            "score": null,
+            "odds": 2.13,
             "hit": null
           }
         ]
@@ -622,8 +622,8 @@
         "date": "2026-08-15",
         "type": "3串1",
         "stake": 3.7,
-        "potential": 37.94,
-        "total_odds": 10.25,
+        "potential": 38.66,
+        "total_odds": 10.45,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -635,15 +635,6 @@
         ],
         "return": 0.0,
         "legs": [
-          {
-            "match": "2026-08-15_周六007",
-            "home": "柏林赫塔",
-            "away": "海登海姆",
-            "sel": "home",
-            "score": null,
-            "odds": 2.09,
-            "hit": null
-          },
           {
             "match": "2026-08-15_周六024",
             "home": "塞维利亚",
@@ -660,6 +651,15 @@
             "sel": "home",
             "score": null,
             "odds": 2.23,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六004",
+            "home": "神户胜利",
+            "away": "东京FC",
+            "sel": "home",
+            "score": null,
+            "odds": 2.13,
             "hit": null
           }
         ]
@@ -667,9 +667,9 @@
       {
         "date": "2026-08-15",
         "type": "3串4",
-        "stake": 4.87,
-        "potential": 29.73,
-        "total_odds": 6.1,
+        "stake": 4.86,
+        "potential": 30.12,
+        "total_odds": 6.2,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -681,15 +681,6 @@
         ],
         "return": 0.0,
         "legs": [
-          {
-            "match": "2026-08-15_周六007",
-            "home": "柏林赫塔",
-            "away": "海登海姆",
-            "sel": "home",
-            "score": null,
-            "odds": 2.09,
-            "hit": null
-          },
           {
             "match": "2026-08-15_周六024",
             "home": "塞维利亚",
@@ -706,6 +697,15 @@
             "sel": "home",
             "score": null,
             "odds": 2.23,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六004",
+            "home": "神户胜利",
+            "away": "东京FC",
+            "sel": "home",
+            "score": null,
+            "odds": 2.13,
             "hit": null
           }
         ]
@@ -4053,6 +4053,206 @@
             "score": "1-0",
             "odds": 9.5,
             "hit": false
+          }
+        ]
+      },
+      {
+        "date": "2026-08-15",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 275.0,
+        "total_odds": 137.5,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-15_周六011",
+            "home": "奥斯KFUM",
+            "away": "利勒斯特伦",
+            "sel": null,
+            "score": "1-0",
+            "odds": 11.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六021",
+            "home": "利雅胜利",
+            "away": "穆拜征服",
+            "sel": null,
+            "score": "1-0",
+            "odds": 12.5,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-15",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 250.0,
+        "total_odds": 125.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-15_周六015",
+            "home": "布赖合作",
+            "away": "赛哈海湾",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六021",
+            "home": "利雅胜利",
+            "away": "穆拜征服",
+            "sel": null,
+            "score": "1-0",
+            "odds": 12.5,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-15",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 275.0,
+        "total_odds": 137.5,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-15_周六021",
+            "home": "利雅胜利",
+            "away": "穆拜征服",
+            "sel": null,
+            "score": "1-0",
+            "odds": 12.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六003",
+            "home": "浦和红钻",
+            "away": "广岛三箭",
+            "sel": null,
+            "score": "2-1",
+            "odds": 11.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-15",
+        "type": "比分3串1",
+        "stake": 2.0,
+        "potential": 2750.0,
+        "total_odds": 1375.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-15_周六011",
+            "home": "奥斯KFUM",
+            "away": "利勒斯特伦",
+            "sel": null,
+            "score": "1-0",
+            "odds": 11.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六015",
+            "home": "布赖合作",
+            "away": "赛哈海湾",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六021",
+            "home": "利雅胜利",
+            "away": "穆拜征服",
+            "sel": null,
+            "score": "1-0",
+            "odds": 12.5,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-15",
+        "type": "比分3串4(容错)",
+        "stake": 8.0,
+        "potential": 3495.0,
+        "total_odds": 1375.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-15_周六011",
+            "home": "奥斯KFUM",
+            "away": "利勒斯特伦",
+            "sel": null,
+            "score": "1-0",
+            "odds": 11.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六015",
+            "home": "布赖合作",
+            "away": "赛哈海湾",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-15_周六021",
+            "home": "利雅胜利",
+            "away": "穆拜征服",
+            "sel": null,
+            "score": "1-0",
+            "odds": 12.5,
+            "hit": null
           }
         ]
       }
@@ -8724,8 +8924,8 @@
           {
             "date": "2026-08-15",
             "type": "2串1",
-            "stake": 6.76,
-            "potential": 33.16,
+            "stake": 6.42,
+            "potential": 31.5,
             "total_odds": 4.91,
             "odds_source": null,
             "note": "待赛",
@@ -8760,9 +8960,9 @@
           {
             "date": "2026-08-15",
             "type": "2串1",
-            "stake": 5.52,
-            "potential": 25.73,
-            "total_odds": 4.66,
+            "stake": 5.68,
+            "potential": 26.98,
+            "total_odds": 4.75,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -8773,15 +8973,6 @@
             ],
             "return": 0.0,
             "legs": [
-              {
-                "match": "2026-08-15_周六007",
-                "home": "柏林赫塔",
-                "away": "海登海姆",
-                "sel": "home",
-                "score": null,
-                "odds": 2.09,
-                "hit": null
-              },
               {
                 "match": "2026-08-15_周六019",
                 "home": "阿拉维斯",
@@ -8790,15 +8981,24 @@
                 "score": null,
                 "odds": 2.23,
                 "hit": null
+              },
+              {
+                "match": "2026-08-15_周六004",
+                "home": "神户胜利",
+                "away": "东京FC",
+                "sel": "home",
+                "score": null,
+                "odds": 2.13,
+                "hit": null
               }
             ]
           },
           {
             "date": "2026-08-15",
             "type": "2串1",
-            "stake": 5.17,
-            "potential": 23.77,
-            "total_odds": 4.6,
+            "stake": 5.36,
+            "potential": 25.12,
+            "total_odds": 4.69,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -8810,21 +9010,21 @@
             "return": 0.0,
             "legs": [
               {
-                "match": "2026-08-15_周六007",
-                "home": "柏林赫塔",
-                "away": "海登海姆",
-                "sel": "home",
-                "score": null,
-                "odds": 2.09,
-                "hit": null
-              },
-              {
                 "match": "2026-08-15_周六024",
                 "home": "塞维利亚",
                 "away": "巴列卡诺",
                 "sel": "home",
                 "score": null,
                 "odds": 2.2,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六004",
+                "home": "神户胜利",
+                "away": "东京FC",
+                "sel": "home",
+                "score": null,
+                "odds": 2.13,
                 "hit": null
               }
             ]
@@ -8833,8 +9033,8 @@
             "date": "2026-08-15",
             "type": "3串1",
             "stake": 3.7,
-            "potential": 37.94,
-            "total_odds": 10.25,
+            "potential": 38.66,
+            "total_odds": 10.45,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -8846,15 +9046,6 @@
             ],
             "return": 0.0,
             "legs": [
-              {
-                "match": "2026-08-15_周六007",
-                "home": "柏林赫塔",
-                "away": "海登海姆",
-                "sel": "home",
-                "score": null,
-                "odds": 2.09,
-                "hit": null
-              },
               {
                 "match": "2026-08-15_周六024",
                 "home": "塞维利亚",
@@ -8871,6 +9062,15 @@
                 "sel": "home",
                 "score": null,
                 "odds": 2.23,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六004",
+                "home": "神户胜利",
+                "away": "东京FC",
+                "sel": "home",
+                "score": null,
+                "odds": 2.13,
                 "hit": null
               }
             ]
@@ -8878,9 +9078,9 @@
           {
             "date": "2026-08-15",
             "type": "3串4",
-            "stake": 4.87,
-            "potential": 29.73,
-            "total_odds": 6.1,
+            "stake": 4.86,
+            "potential": 30.12,
+            "total_odds": 6.2,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -8892,15 +9092,6 @@
             ],
             "return": 0.0,
             "legs": [
-              {
-                "match": "2026-08-15_周六007",
-                "home": "柏林赫塔",
-                "away": "海登海姆",
-                "sel": "home",
-                "score": null,
-                "odds": 2.09,
-                "hit": null
-              },
               {
                 "match": "2026-08-15_周六024",
                 "home": "塞维利亚",
@@ -8918,14 +9109,236 @@
                 "score": null,
                 "odds": 2.23,
                 "hit": null
+              },
+              {
+                "match": "2026-08-15_周六004",
+                "home": "神户胜利",
+                "away": "东京FC",
+                "sel": "home",
+                "score": null,
+                "odds": 2.13,
+                "hit": null
               }
             ]
           }
         ]
       },
       "score_parlay": {
-        "stats": null,
-        "tickets": []
+        "stats": {
+          "n_tickets": 5,
+          "n_settled": 0,
+          "n_won": 0,
+          "hit_rate": null,
+          "stake": 0,
+          "return": 0,
+          "roi": null,
+          "avg_odds": null,
+          "by_type": {},
+          "leg_hit_rate": null,
+          "n_legs_settled": 0
+        },
+        "tickets": [
+          {
+            "date": "2026-08-15",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 275.0,
+            "total_odds": 137.5,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-15_周六011",
+                "home": "奥斯KFUM",
+                "away": "利勒斯特伦",
+                "sel": null,
+                "score": "1-0",
+                "odds": 11.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六021",
+                "home": "利雅胜利",
+                "away": "穆拜征服",
+                "sel": null,
+                "score": "1-0",
+                "odds": 12.5,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-15",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 250.0,
+            "total_odds": 125.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-15_周六015",
+                "home": "布赖合作",
+                "away": "赛哈海湾",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六021",
+                "home": "利雅胜利",
+                "away": "穆拜征服",
+                "sel": null,
+                "score": "1-0",
+                "odds": 12.5,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-15",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 275.0,
+            "total_odds": 137.5,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-15_周六021",
+                "home": "利雅胜利",
+                "away": "穆拜征服",
+                "sel": null,
+                "score": "1-0",
+                "odds": 12.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六003",
+                "home": "浦和红钻",
+                "away": "广岛三箭",
+                "sel": null,
+                "score": "2-1",
+                "odds": 11.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-15",
+            "type": "比分3串1",
+            "stake": 2.0,
+            "potential": 2750.0,
+            "total_odds": 1375.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-15_周六011",
+                "home": "奥斯KFUM",
+                "away": "利勒斯特伦",
+                "sel": null,
+                "score": "1-0",
+                "odds": 11.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六015",
+                "home": "布赖合作",
+                "away": "赛哈海湾",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六021",
+                "home": "利雅胜利",
+                "away": "穆拜征服",
+                "sel": null,
+                "score": "1-0",
+                "odds": 12.5,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-15",
+            "type": "比分3串4(容错)",
+            "stake": 8.0,
+            "potential": 3495.0,
+            "total_odds": 1375.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-15_周六011",
+                "home": "奥斯KFUM",
+                "away": "利勒斯特伦",
+                "sel": null,
+                "score": "1-0",
+                "odds": 11.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六015",
+                "home": "布赖合作",
+                "away": "赛哈海湾",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-15_周六021",
+                "home": "利雅胜利",
+                "away": "穆拜征服",
+                "sel": null,
+                "score": "1-0",
+                "odds": 12.5,
+                "hit": null
+              }
+            ]
+          }
+        ]
       }
     }
   }
