@@ -4,7 +4,7 @@
   "lottery": [],
   "total_stake": 0,
   "expected_roi": 0.0,
-  "bankroll": 4336.390600000001,
+  "bankroll": 4286.390600000001,
   "breaker_multiplier": 1.0,
   "parlay": [
     {
@@ -30,7 +30,7 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.15,
-          "prob": 0.429,
+          "prob": 0.43,
           "cal_prob": 0.508,
           "market_prob": 0.412,
           "source": "fusion",
@@ -39,15 +39,15 @@
       ],
       "total_odds": 4.51,
       "model_ev": -0.25,
-      "cal_ev": 1.57,
+      "cal_ev": 1.55,
       "cal_roi": 0.2356,
       "market_ev": -0.43,
       "market_roi": -0.2164,
       "hit_prob_cal": 0.274,
       "recommended": true,
-      "stake": 6.67,
+      "stake": 6.59,
       "n_bets": 1,
-      "potential": 30.12,
+      "potential": 29.75,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -83,16 +83,16 @@
         }
       ],
       "total_odds": 4.41,
-      "model_ev": -0.24,
-      "cal_ev": 1.25,
+      "model_ev": -0.23,
+      "cal_ev": 1.23,
       "cal_roi": 0.2069,
       "market_ev": -0.43,
       "market_roi": -0.2164,
       "hit_prob_cal": 0.274,
       "recommended": true,
-      "stake": 6.04,
+      "stake": 5.97,
       "n_bets": 1,
-      "potential": 26.64,
+      "potential": 26.33,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -120,7 +120,7 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.15,
-          "prob": 0.429,
+          "prob": 0.43,
           "cal_prob": 0.508,
           "market_prob": 0.412,
           "source": "fusion",
@@ -129,15 +129,15 @@
       ],
       "total_odds": 4.51,
       "model_ev": -0.28,
-      "cal_ev": 0.78,
+      "cal_ev": 0.77,
       "cal_roi": 0.1661,
       "market_ev": -0.43,
       "market_roi": -0.2164,
       "hit_prob_cal": 0.258,
       "recommended": true,
-      "stake": 4.7,
+      "stake": 4.65,
       "n_bets": 1,
-      "potential": 21.22,
+      "potential": 20.99,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -178,7 +178,7 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.15,
-          "prob": 0.429,
+          "prob": 0.43,
           "cal_prob": 0.508,
           "market_prob": 0.412,
           "source": "fusion",
@@ -187,15 +187,15 @@
       ],
       "total_odds": 9.48,
       "model_ev": -0.37,
-      "cal_ev": 1.19,
+      "cal_ev": 1.18,
       "cal_roi": 0.3187,
       "market_ev": -0.61,
       "market_roi": -0.3064,
       "hit_prob_cal": 0.139,
       "recommended": true,
-      "stake": 3.74,
+      "stake": 3.69,
       "n_bets": 1,
-      "potential": 35.46,
+      "potential": 34.99,
       "worst_win": 0.0,
       "note": "三场全中才赢",
       "source": "calibrated"
@@ -236,7 +236,7 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.15,
-          "prob": 0.429,
+          "prob": 0.43,
           "cal_prob": 0.508,
           "market_prob": 0.412,
           "source": "fusion",
@@ -245,15 +245,15 @@
       ],
       "total_odds": 5.73,
       "model_ev": null,
-      "cal_ev": 1.13,
+      "cal_ev": 1.12,
       "cal_roi": 0.2318,
       "market_ev": -1.91,
       "market_roi": -0.2389,
       "hit_prob_cal": 0.139,
       "recommended": true,
-      "stake": 4.88,
+      "stake": 4.82,
       "n_bets": 4,
-      "potential": 27.96,
+      "potential": 27.62,
       "worst_win": 8.82,
       "note": "容错：错 1 场仍中 1 注 2串1（回 ¥9），全中 ¥46",
       "source": "calibrated"
@@ -269,8 +269,8 @@
           "away": "前进之鹰",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.207,
-          "cal_prob": 0.1212,
+          "prob": 0.205,
+          "cal_prob": 0.1211,
           "odds": 11.0
         },
         {
@@ -279,8 +279,8 @@
           "away": "哈马比",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.329,
-          "cal_prob": 0.1212,
+          "prob": 0.324,
+          "cal_prob": 0.1211,
           "odds": 16.0
         }
       ],
@@ -291,7 +291,7 @@
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.5% × 赔率 176 倍 = EV +159%）"
+      "note": "两场比分都中才赢（校准命中 1.5% × 赔率 176 倍 = EV +158%）"
     },
     {
       "type": "比分2串1",
@@ -302,8 +302,8 @@
           "away": "兹沃勒",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.25,
-          "cal_prob": 0.1212,
+          "prob": 0.253,
+          "cal_prob": 0.1211,
           "odds": 10.0
         },
         {
@@ -312,8 +312,8 @@
           "away": "哈马比",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.329,
-          "cal_prob": 0.1212,
+          "prob": 0.324,
+          "cal_prob": 0.1211,
           "odds": 16.0
         }
       ],
@@ -336,7 +336,7 @@
           "league": "瑞典超",
           "score": "1-0",
           "prob": 0.378,
-          "cal_prob": 0.1212,
+          "cal_prob": 0.1211,
           "odds": 9.5
         },
         {
@@ -345,8 +345,8 @@
           "away": "哈马比",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.329,
-          "cal_prob": 0.1212,
+          "prob": 0.324,
+          "cal_prob": 0.1211,
           "odds": 16.0
         }
       ],
@@ -369,7 +369,7 @@
           "league": "瑞典超",
           "score": "1-0",
           "prob": 0.378,
-          "cal_prob": 0.1212,
+          "cal_prob": 0.1211,
           "odds": 9.5
         },
         {
@@ -378,8 +378,8 @@
           "away": "兹沃勒",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.25,
-          "cal_prob": 0.1212,
+          "prob": 0.253,
+          "cal_prob": 0.1211,
           "odds": 10.0
         },
         {
@@ -388,8 +388,8 @@
           "away": "前进之鹰",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.207,
-          "cal_prob": 0.1212,
+          "prob": 0.205,
+          "cal_prob": 0.1211,
           "odds": 11.0
         }
       ],
@@ -412,7 +412,7 @@
           "league": "瑞典超",
           "score": "1-0",
           "prob": 0.378,
-          "cal_prob": 0.1212,
+          "cal_prob": 0.1211,
           "odds": 9.5
         },
         {
@@ -421,8 +421,8 @@
           "away": "兹沃勒",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.25,
-          "cal_prob": 0.1212,
+          "prob": 0.253,
+          "cal_prob": 0.1211,
           "odds": 10.0
         },
         {
@@ -431,8 +431,8 @@
           "away": "前进之鹰",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.207,
-          "cal_prob": 0.1212,
+          "prob": 0.205,
+          "cal_prob": 0.1211,
           "odds": 11.0
         }
       ],
@@ -447,8 +447,8 @@
     }
   ],
   "parlay_calibration": {
-    "overall": 0.4557,
-    "n": 237,
+    "overall": 0.4538,
+    "n": 238,
     "table": {
       "0.35": 0.4167,
       "0.4": 0.5082,
