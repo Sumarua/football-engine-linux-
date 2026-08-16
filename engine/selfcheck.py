@@ -22,9 +22,14 @@ import sys
 from datetime import date, timedelta
 from pathlib import Path
 
-from engine.beijing_time import beijing_today
-
+# 2026-08-16 修复：脚本方式运行（python engine/selfcheck.py）时 sys.path[0]
+# 是 engine/ 目录，import engine 包失败（Actions 里 ModuleNotFoundError）。
+# 加仓库根引导，脚本/模块两种方式都能跑。
 ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from engine.beijing_time import beijing_today
 STATE = ROOT / "data" / "state"
 DAILY = ROOT / "data" / "daily"
 
