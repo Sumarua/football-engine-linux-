@@ -1751,6 +1751,42 @@
             "hit": null
           }
         ]
+      },
+      {
+        "date": "2026-08-17",
+        "type": "2串1",
+        "stake": 15.61,
+        "potential": 198.72,
+        "total_odds": 12.73,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-17_周一006",
+            "home": "巴西国际",
+            "away": "雷莫",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.8,
+            "hit": null
+          },
+          {
+            "match": "2026-08-17_周一001",
+            "home": "赫尔辛基火花",
+            "away": "坦佩雷山猫",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.35,
+            "hit": null
+          }
+        ]
       }
     ],
     "score_parlay": [
@@ -12261,6 +12297,63 @@
             ]
           }
         ]
+      }
+    },
+    "2026-08-17": {
+      "parlay": {
+        "stats": {
+          "n_tickets": 1,
+          "n_settled": 0,
+          "n_won": 0,
+          "hit_rate": null,
+          "stake": 0,
+          "return": 0,
+          "roi": null,
+          "avg_odds": null,
+          "by_type": {}
+        },
+        "tickets": [
+          {
+            "date": "2026-08-17",
+            "type": "2串1",
+            "stake": 15.61,
+            "potential": 198.72,
+            "total_odds": 12.73,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-17_周一006",
+                "home": "巴西国际",
+                "away": "雷莫",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.8,
+                "hit": null
+              },
+              {
+                "match": "2026-08-17_周一001",
+                "home": "赫尔辛基火花",
+                "away": "坦佩雷山猫",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.35,
+                "hit": null
+              }
+            ]
+          }
+        ]
+      },
+      "score_parlay": {
+        "stats": null,
+        "tickets": []
       }
     }
   }
