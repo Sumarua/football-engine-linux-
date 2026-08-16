@@ -1,15 +1,15 @@
 {
-  "date": "2026-08-13",
+  "date": "2026-08-16",
   "steps": {
     "walk_forward": {
-      "total_matches": 197
+      "total_matches": 272
     },
     "fusion_optimizer": {
       "decision": "hold",
       "champion": {
-        "model": 0.26,
-        "market": 0.4,
-        "djyy": 0.34
+        "model": 0.1,
+        "market": 0.75,
+        "djyy": 0.15
       },
       "message": null
     },
@@ -64,18 +64,18 @@
       ]
     },
     "shrinkage_dc": {
-      "n_evaluated": 157,
+      "n_evaluated": 232,
       "skipped_dates": 5,
-      "shrinkage_dc_brier": 0.7328,
-      "final_brier": 0.651,
-      "model_raw_brier": 0.6894,
-      "market_brier": 0.6273,
+      "shrinkage_dc_brier": 0.7313,
+      "final_brier": 0.6452,
+      "model_raw_brier": 0.6874,
+      "market_brier": 0.6286,
       "verdict": "hold",
       "snapshot": {
-        "n_matches": 185,
-        "teams": 219,
+        "n_matches": 257,
+        "teams": 280,
         "rho": -0.2,
-        "fitted_at": "2026-08-12"
+        "fitted_at": "2026-08-16"
       }
     }
   }

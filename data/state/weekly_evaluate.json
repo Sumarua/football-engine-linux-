@@ -1,17 +1,17 @@
 {
-  "date": "2026-08-09",
+  "date": "2026-08-16",
   "source": "optimizer_log.jsonl",
-  "n_decisions": 132,
+  "n_decisions": 186,
   "action_counts": {
     "promote": 16,
     "cold_start": 8,
-    "hold": 101,
+    "hold": 155,
     "rollback": 7
   },
   "champion_now": {
-    "model": 0.26,
-    "market": 0.4,
-    "djyy": 0.34
+    "model": 0.1,
+    "market": 0.75,
+    "djyy": 0.15
   },
   "champion_initial": {
     "model": 0.5252,
@@ -810,6 +810,330 @@
       "model": 0.26,
       "market": 0.4,
       "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-09T19:51",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-09T21:49",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-09T23:48",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T02:35",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T16:27",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T16:33",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T17:37",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T18:34",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T19:42",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T20:24",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T21:26",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T22:21",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-10T23:19",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-11T00:07",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-11T16:39",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-11T17:41",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-11T18:37",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-11T19:46",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-11T21:05",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-12T00:00",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-12T17:44",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-12T18:09",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-12T21:29",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-13T00:46",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-13T19:02",
+      "model": 0.26,
+      "market": 0.4,
+      "djyy": 0.34
+    },
+    {
+      "timestamp": "2026-08-13T16:15",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-13T17:17",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-13T18:12",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-13T19:23",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-13T20:24",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-13T21:31",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-14T00:48",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-14T03:19",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-14T16:12",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-14T17:19",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-14T20:04",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-14T20:50",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-14T21:06",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-14T21:45",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T16:03",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T16:47",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T17:57",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T18:47",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T19:34",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T19:55",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T20:38",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T21:00",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T21:34",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-15T21:57",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-16T04:01",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-16T16:42",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-16T17:01",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-16T17:33",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
+    },
+    {
+      "timestamp": "2026-08-16T19:16",
+      "model": 0.1,
+      "market": 0.75,
+      "djyy": 0.15
     }
   ],
   "brier_series": [
@@ -1556,8 +1880,332 @@
       "champion_brier": 0.6001,
       "candidate_brier": 0.6009,
       "improvement": -0.0008
+    },
+    {
+      "timestamp": "2026-08-09",
+      "champion_brier": 0.5941,
+      "candidate_brier": 0.5947,
+      "improvement": -0.0006
+    },
+    {
+      "timestamp": "2026-08-09",
+      "champion_brier": 0.6213,
+      "candidate_brier": 0.6229,
+      "improvement": -0.0016
+    },
+    {
+      "timestamp": "2026-08-09",
+      "champion_brier": 0.6392,
+      "candidate_brier": 0.6407,
+      "improvement": -0.0015
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6353,
+      "candidate_brier": 0.6371,
+      "improvement": -0.0018
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6353,
+      "candidate_brier": 0.6371,
+      "improvement": -0.0018
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6353,
+      "candidate_brier": 0.6371,
+      "improvement": -0.0018
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6353,
+      "candidate_brier": 0.6371,
+      "improvement": -0.0018
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6353,
+      "candidate_brier": 0.6371,
+      "improvement": -0.0018
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6573,
+      "candidate_brier": 0.6596,
+      "improvement": -0.0023
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6573,
+      "candidate_brier": 0.6596,
+      "improvement": -0.0023
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6683,
+      "candidate_brier": 0.67,
+      "improvement": -0.0016
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6683,
+      "candidate_brier": 0.67,
+      "improvement": -0.0016
+    },
+    {
+      "timestamp": "2026-08-10",
+      "champion_brier": 0.6683,
+      "candidate_brier": 0.67,
+      "improvement": -0.0016
+    },
+    {
+      "timestamp": "2026-08-11",
+      "champion_brier": 0.6683,
+      "candidate_brier": 0.67,
+      "improvement": -0.0016
+    },
+    {
+      "timestamp": "2026-08-11",
+      "champion_brier": 0.6935,
+      "candidate_brier": 0.6953,
+      "improvement": -0.0018
+    },
+    {
+      "timestamp": "2026-08-11",
+      "champion_brier": 0.7135,
+      "candidate_brier": 0.7152,
+      "improvement": -0.0017
+    },
+    {
+      "timestamp": "2026-08-11",
+      "champion_brier": 0.7035,
+      "candidate_brier": 0.7048,
+      "improvement": -0.0013
+    },
+    {
+      "timestamp": "2026-08-11",
+      "champion_brier": 0.7228,
+      "candidate_brier": 0.7244,
+      "improvement": -0.0016
+    },
+    {
+      "timestamp": "2026-08-11",
+      "champion_brier": 0.6814,
+      "candidate_brier": 0.6844,
+      "improvement": -0.003
+    },
+    {
+      "timestamp": "2026-08-12",
+      "champion_brier": 0.6937,
+      "candidate_brier": 0.6958,
+      "improvement": -0.0021
+    },
+    {
+      "timestamp": "2026-08-12",
+      "champion_brier": 0.6937,
+      "candidate_brier": 0.6976,
+      "improvement": -0.0039
+    },
+    {
+      "timestamp": "2026-08-12",
+      "champion_brier": 0.7229,
+      "candidate_brier": 0.7255,
+      "improvement": -0.0026
+    },
+    {
+      "timestamp": "2026-08-12",
+      "champion_brier": 0.6925,
+      "candidate_brier": 0.6954,
+      "improvement": -0.0029
+    },
+    {
+      "timestamp": "2026-08-13",
+      "champion_brier": 0.7081,
+      "candidate_brier": 0.7107,
+      "improvement": -0.0026
+    },
+    {
+      "timestamp": "2026-08-13",
+      "champion_brier": 0.7081,
+      "candidate_brier": 0.7128,
+      "improvement": -0.0048
+    },
+    {
+      "timestamp": "2026-08-13",
+      "champion_brier": 0.6743,
+      "candidate_brier": 0.6856,
+      "improvement": -0.0112
+    },
+    {
+      "timestamp": "2026-08-13",
+      "champion_brier": 0.6743,
+      "candidate_brier": 0.6834,
+      "improvement": -0.009
+    },
+    {
+      "timestamp": "2026-08-13",
+      "champion_brier": 0.6309,
+      "candidate_brier": 0.6317,
+      "improvement": -0.0007
+    },
+    {
+      "timestamp": "2026-08-13",
+      "champion_brier": 0.6323,
+      "candidate_brier": 0.6331,
+      "improvement": -0.0008
+    },
+    {
+      "timestamp": "2026-08-13",
+      "champion_brier": 0.6222,
+      "candidate_brier": 0.6238,
+      "improvement": -0.0015
+    },
+    {
+      "timestamp": "2026-08-13",
+      "champion_brier": 0.631,
+      "candidate_brier": 0.631,
+      "improvement": -0.0
+    },
+    {
+      "timestamp": "2026-08-14",
+      "champion_brier": 0.6365,
+      "candidate_brier": 0.6368,
+      "improvement": -0.0003
+    },
+    {
+      "timestamp": "2026-08-14",
+      "champion_brier": 0.6318,
+      "candidate_brier": 0.6332,
+      "improvement": -0.0014
+    },
+    {
+      "timestamp": "2026-08-14",
+      "champion_brier": 0.6315,
+      "candidate_brier": 0.6315,
+      "improvement": 0.0
+    },
+    {
+      "timestamp": "2026-08-14",
+      "champion_brier": 0.6327,
+      "candidate_brier": 0.6323,
+      "improvement": 0.0004
+    },
+    {
+      "timestamp": "2026-08-14",
+      "champion_brier": 0.6298,
+      "candidate_brier": 0.6302,
+      "improvement": -0.0005
+    },
+    {
+      "timestamp": "2026-08-14",
+      "champion_brier": 0.6192,
+      "candidate_brier": 0.6197,
+      "improvement": -0.0005
+    },
+    {
+      "timestamp": "2026-08-14",
+      "champion_brier": 0.6248,
+      "candidate_brier": 0.6255,
+      "improvement": -0.0007
+    },
+    {
+      "timestamp": "2026-08-14",
+      "champion_brier": 0.6173,
+      "candidate_brier": 0.6181,
+      "improvement": -0.0008
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.6208,
+      "candidate_brier": 0.6224,
+      "improvement": -0.0016
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.6205,
+      "candidate_brier": 0.6221,
+      "improvement": -0.0016
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.6237,
+      "candidate_brier": 0.6253,
+      "improvement": -0.0016
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.6329,
+      "candidate_brier": 0.6343,
+      "improvement": -0.0014
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.6318,
+      "candidate_brier": 0.6336,
+      "improvement": -0.0019
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.6294,
+      "candidate_brier": 0.6316,
+      "improvement": -0.0023
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.636,
+      "candidate_brier": 0.6375,
+      "improvement": -0.0015
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.6364,
+      "candidate_brier": 0.6378,
+      "improvement": -0.0014
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.626,
+      "candidate_brier": 0.6284,
+      "improvement": -0.0023
+    },
+    {
+      "timestamp": "2026-08-15",
+      "champion_brier": 0.6257,
+      "candidate_brier": 0.6281,
+      "improvement": -0.0025
+    },
+    {
+      "timestamp": "2026-08-16",
+      "champion_brier": 0.6266,
+      "candidate_brier": 0.6292,
+      "improvement": -0.0026
+    },
+    {
+      "timestamp": "2026-08-16",
+      "champion_brier": 0.6397,
+      "candidate_brier": 0.6429,
+      "improvement": -0.0032
+    },
+    {
+      "timestamp": "2026-08-16",
+      "champion_brier": 0.6452,
+      "candidate_brier": 0.6488,
+      "improvement": -0.0037
+    },
+    {
+      "timestamp": "2026-08-16",
+      "champion_brier": 0.6412,
+      "candidate_brier": 0.6452,
+      "improvement": -0.004
+    },
+    {
+      "timestamp": "2026-08-16",
+      "champion_brier": 0.6412,
+      "candidate_brier": 0.6441,
+      "improvement": -0.0029
     }
   ],
-  "recent_avg_improvement": -0.0002,
-  "message": "132 次决策: {'promote': 16, 'cold_start': 8, 'hold': 101, 'rollback': 7}；近10次平均 Brier 改进 -0.0002（阈值 0.005，未达标保持 hold）"
+  "recent_avg_improvement": -0.0026,
+  "message": "186 次决策: {'promote': 16, 'cold_start': 8, 'hold': 155, 'rollback': 7}；近10次平均 Brier 改进 -0.0026（阈值 0.005，未达标保持 hold）"
 }
