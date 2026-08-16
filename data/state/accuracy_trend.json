@@ -1,15 +1,15 @@
 {
   "generated_at": "2026-08-16",
-  "total_matches": 275,
+  "total_matches": 276,
   "date_range": [
     "2026-07-19",
     "2026-08-16"
   ],
   "overall": {
-    "hit_rate": 0.4545,
-    "brier_final": 0.6467,
-    "brier_model": 0.6912,
-    "brier_market": 0.6263,
+    "hit_rate": 0.4529,
+    "brier_final": 0.6478,
+    "brier_model": 0.6925,
+    "brier_market": 0.6276,
     "brier_djyy": 0.646
   },
   "daily": [
@@ -351,21 +351,21 @@
     },
     {
       "date": "2026-08-16",
-      "n": 24,
+      "n": 25,
       "hits": 9,
-      "hit_rate": 0.375,
-      "cum_hit_rate": 0.4545,
-      "brier_final": 0.6339,
-      "brier_model": 0.7417,
-      "brier_market": 0.6486,
+      "hit_rate": 0.36,
+      "cum_hit_rate": 0.4529,
+      "brier_final": 0.6462,
+      "brier_model": 0.7535,
+      "brier_market": 0.6585,
       "brier_djyy": null,
       "pnl": 0.0
     }
   ],
   "rolling7": {
-    "n": 94,
-    "hit_rate": 0.4787,
-    "brier_final": 0.6669,
+    "n": 95,
+    "hit_rate": 0.4737,
+    "brier_final": 0.6687,
     "pnl": -550.0
   },
   "prev7": {
@@ -374,7 +374,7 @@
     "brier_final": 0.6194,
     "pnl": -163.6
   },
-  "verdict": "命中率提升 +3pt",
+  "verdict": "持平（±3pt 内）",
   "by_league": [
     {
       "layer": "挪超",
@@ -420,9 +420,9 @@
     },
     {
       "layer": "巴甲",
-      "n": 15,
-      "hit_rate": 0.3333,
-      "brier_final": 0.6892
+      "n": 16,
+      "hit_rate": 0.3125,
+      "brier_final": 0.7051
     },
     {
       "layer": "葡超",
@@ -566,9 +566,9 @@
     },
     {
       "layer": "3.0+",
-      "n": 23,
-      "hit_rate": 0.3043,
-      "brier_final": 0.6245
+      "n": 24,
+      "hit_rate": 0.2917,
+      "brier_final": 0.6378
     }
   ],
   "by_conf_tier": [
@@ -580,9 +580,9 @@
     },
     {
       "layer": "low",
-      "n": 86,
-      "hit_rate": 0.4186,
-      "brier_final": 0.6519
+      "n": 87,
+      "hit_rate": 0.4138,
+      "brier_final": 0.6552
     },
     {
       "layer": "high",
