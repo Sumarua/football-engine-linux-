@@ -7,10 +7,10 @@
     "draw_baseline": 0.12,
     "draw_predictions": 0,
     "draw_hits": 0,
-    "total_predictions": 9,
+    "total_predictions": 10,
     "total_hits": 4,
     "avg_overround": 0.0,
-    "last_updated": "2026-08-15"
+    "last_updated": "2026-08-16"
   },
   "欧冠": {
     "base_goals": 1.4,
@@ -46,10 +46,10 @@
     "draw_baseline": 0.33,
     "draw_predictions": 0,
     "draw_hits": 0,
-    "total_predictions": 2,
+    "total_predictions": 4,
     "total_hits": 2,
     "avg_overround": 0.0,
-    "last_updated": "2026-08-15"
+    "last_updated": "2026-08-16"
   },
   "芬超": {
     "base_goals": 1.35,
@@ -57,12 +57,12 @@
     "market_blend_weight": 0.28,
     "xg_calibration": 0.68,
     "draw_baseline": 0.14,
-    "draw_predictions": 2,
+    "draw_predictions": 3,
     "draw_hits": 0,
-    "total_predictions": 7,
+    "total_predictions": 8,
     "total_hits": 1,
     "avg_overround": 0.0,
-    "last_updated": "2026-08-15"
+    "last_updated": "2026-08-16"
   },
   "瑞典超": {
     "base_goals": 1.35,
@@ -72,10 +72,10 @@
     "draw_baseline": 0.43,
     "draw_predictions": 2,
     "draw_hits": 0,
-    "total_predictions": 2,
-    "total_hits": 1,
+    "total_predictions": 7,
+    "total_hits": 3,
     "avg_overround": 0.0,
-    "last_updated": "2026-08-15"
+    "last_updated": "2026-08-16"
   },
   "美职联": {
     "base_goals": 1.35,
@@ -150,10 +150,10 @@
     "draw_baseline": 0.25,
     "draw_predictions": 0,
     "draw_hits": 0,
-    "total_predictions": 14,
-    "total_hits": 9,
+    "total_predictions": 18,
+    "total_hits": 11,
     "avg_overround": 0.0,
-    "last_updated": "2026-08-15"
+    "last_updated": "2026-08-16"
   },
   "荷乙": {
     "base_goals": 1.35,
@@ -200,12 +200,12 @@
     "market_blend_weight": 0.28,
     "xg_calibration": 1.0,
     "draw_baseline": 0.25,
-    "draw_predictions": 1,
+    "draw_predictions": 2,
     "draw_hits": 0,
-    "total_predictions": 14,
+    "total_predictions": 15,
     "total_hits": 6,
     "avg_overround": 0.0,
-    "last_updated": "2026-08-15"
+    "last_updated": "2026-08-16"
   },
   "日乙": {
     "base_goals": 1.35,
@@ -215,10 +215,10 @@
     "draw_baseline": 0.25,
     "draw_predictions": 1,
     "draw_hits": 0,
-    "total_predictions": 3,
+    "total_predictions": 4,
     "total_hits": 2,
     "avg_overround": 0.0,
-    "last_updated": "2026-08-15"
+    "last_updated": "2026-08-16"
   },
   "韩职": {
     "base_goals": 1.35,
@@ -334,6 +334,19 @@
     "draw_hits": 0,
     "total_predictions": 1,
     "total_hits": 0,
+    "avg_overround": 0.0,
+    "last_updated": "2026-08-16"
+  },
+  "英社区盾": {
+    "base_goals": 1.35,
+    "home_adv_weight": 1.0,
+    "market_blend_weight": 0.28,
+    "xg_calibration": 1.0,
+    "draw_baseline": 0.25,
+    "draw_predictions": 0,
+    "draw_hits": 0,
+    "total_predictions": 1,
+    "total_hits": 1,
     "avg_overround": 0.0,
     "last_updated": "2026-08-16"
   }

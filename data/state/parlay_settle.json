@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-16T15:59:01.304805+00:00",
+  "generated_at": "2026-08-16T16:42:52.482458+00:00",
   "parlay": {
-    "n_tickets": 22,
-    "n_pending": 5,
+    "n_tickets": 27,
+    "n_pending": 10,
     "n_settled": 17,
     "n_won": 8,
     "hit_rate": 0.4706,
     "stake": 56.03,
-    "stake_committed": 81.75,
-    "stake_pending": 25.72,
+    "stake_committed": 107.47,
+    "stake_pending": 51.44,
     "return": 168.33,
     "roi": 2.0043,
     "avg_odds": 3.29,
@@ -912,6 +912,206 @@
             "sel": "draw",
             "score": null,
             "odds": 3.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-17",
+        "type": "2串1",
+        "stake": 7.91,
+        "potential": 64.93,
+        "total_odds": 8.21,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-17_周一004",
+            "home": "拉科",
+            "away": "埃尔切",
+            "sel": "home",
+            "score": null,
+            "odds": 2.16,
+            "hit": null
+          },
+          {
+            "match": "2026-08-17_周一006",
+            "home": "巴西国际",
+            "away": "雷莫",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.8,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-17",
+        "type": "2串1",
+        "stake": 5.92,
+        "potential": 55.12,
+        "total_odds": 9.31,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-17_周一005",
+            "home": "卡萨比亚",
+            "away": "本菲卡",
+            "sel": "away",
+            "score": null,
+            "odds": 2.45,
+            "hit": null
+          },
+          {
+            "match": "2026-08-17_周一006",
+            "home": "巴西国际",
+            "away": "雷莫",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.8,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-17",
+        "type": "2串1",
+        "stake": 3.57,
+        "potential": 18.89,
+        "total_odds": 5.29,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-17_周一004",
+            "home": "拉科",
+            "away": "埃尔切",
+            "sel": "home",
+            "score": null,
+            "odds": 2.16,
+            "hit": null
+          },
+          {
+            "match": "2026-08-17_周一005",
+            "home": "卡萨比亚",
+            "away": "本菲卡",
+            "sel": "away",
+            "score": null,
+            "odds": 2.45,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-17",
+        "type": "3串1",
+        "stake": 3.49,
+        "potential": 70.18,
+        "total_odds": 20.11,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-17_周一004",
+            "home": "拉科",
+            "away": "埃尔切",
+            "sel": "home",
+            "score": null,
+            "odds": 2.16,
+            "hit": null
+          },
+          {
+            "match": "2026-08-17_周一005",
+            "home": "卡萨比亚",
+            "away": "本菲卡",
+            "sel": "away",
+            "score": null,
+            "odds": 2.45,
+            "hit": null
+          },
+          {
+            "match": "2026-08-17_周一006",
+            "home": "巴西国际",
+            "away": "雷莫",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.8,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-17",
+        "type": "3串4",
+        "stake": 4.83,
+        "potential": 51.83,
+        "total_odds": 10.73,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-17_周一004",
+            "home": "拉科",
+            "away": "埃尔切",
+            "sel": "home",
+            "score": null,
+            "odds": 2.16,
+            "hit": null
+          },
+          {
+            "match": "2026-08-17_周一005",
+            "home": "卡萨比亚",
+            "away": "本菲卡",
+            "sel": "away",
+            "score": null,
+            "odds": 2.45,
+            "hit": null
+          },
+          {
+            "match": "2026-08-17_周一006",
+            "home": "巴西国际",
+            "away": "雷莫",
+            "sel": "draw",
+            "score": null,
+            "odds": 3.8,
             "hit": null
           }
         ]
@@ -9538,6 +9738,230 @@
                 "sel": "draw",
                 "score": null,
                 "odds": 3.0,
+                "hit": null
+              }
+            ]
+          }
+        ]
+      },
+      "score_parlay": {
+        "stats": null,
+        "tickets": []
+      }
+    },
+    "2026-08-17": {
+      "parlay": {
+        "stats": {
+          "n_tickets": 5,
+          "n_pending": 5,
+          "n_settled": 0,
+          "n_won": 0,
+          "hit_rate": null,
+          "stake": 0,
+          "stake_committed": 25.72,
+          "stake_pending": 25.72,
+          "return": 0,
+          "roi": null,
+          "avg_odds": null,
+          "by_type": {}
+        },
+        "tickets": [
+          {
+            "date": "2026-08-17",
+            "type": "2串1",
+            "stake": 7.91,
+            "potential": 64.93,
+            "total_odds": 8.21,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-17_周一004",
+                "home": "拉科",
+                "away": "埃尔切",
+                "sel": "home",
+                "score": null,
+                "odds": 2.16,
+                "hit": null
+              },
+              {
+                "match": "2026-08-17_周一006",
+                "home": "巴西国际",
+                "away": "雷莫",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.8,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-17",
+            "type": "2串1",
+            "stake": 5.92,
+            "potential": 55.12,
+            "total_odds": 9.31,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-17_周一005",
+                "home": "卡萨比亚",
+                "away": "本菲卡",
+                "sel": "away",
+                "score": null,
+                "odds": 2.45,
+                "hit": null
+              },
+              {
+                "match": "2026-08-17_周一006",
+                "home": "巴西国际",
+                "away": "雷莫",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.8,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-17",
+            "type": "2串1",
+            "stake": 3.57,
+            "potential": 18.89,
+            "total_odds": 5.29,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-17_周一004",
+                "home": "拉科",
+                "away": "埃尔切",
+                "sel": "home",
+                "score": null,
+                "odds": 2.16,
+                "hit": null
+              },
+              {
+                "match": "2026-08-17_周一005",
+                "home": "卡萨比亚",
+                "away": "本菲卡",
+                "sel": "away",
+                "score": null,
+                "odds": 2.45,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-17",
+            "type": "3串1",
+            "stake": 3.49,
+            "potential": 70.18,
+            "total_odds": 20.11,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-17_周一004",
+                "home": "拉科",
+                "away": "埃尔切",
+                "sel": "home",
+                "score": null,
+                "odds": 2.16,
+                "hit": null
+              },
+              {
+                "match": "2026-08-17_周一005",
+                "home": "卡萨比亚",
+                "away": "本菲卡",
+                "sel": "away",
+                "score": null,
+                "odds": 2.45,
+                "hit": null
+              },
+              {
+                "match": "2026-08-17_周一006",
+                "home": "巴西国际",
+                "away": "雷莫",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.8,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-17",
+            "type": "3串4",
+            "stake": 4.83,
+            "potential": 51.83,
+            "total_odds": 10.73,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-17_周一004",
+                "home": "拉科",
+                "away": "埃尔切",
+                "sel": "home",
+                "score": null,
+                "odds": 2.16,
+                "hit": null
+              },
+              {
+                "match": "2026-08-17_周一005",
+                "home": "卡萨比亚",
+                "away": "本菲卡",
+                "sel": "away",
+                "score": null,
+                "odds": 2.45,
+                "hit": null
+              },
+              {
+                "match": "2026-08-17_周一006",
+                "home": "巴西国际",
+                "away": "雷莫",
+                "sel": "draw",
+                "score": null,
+                "odds": 3.8,
                 "hit": null
               }
             ]
