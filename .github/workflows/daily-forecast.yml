@@ -121,12 +121,14 @@ jobs:
         # 2026-08-14 起：目标日关键字段全缺时用 --fail-on-critical 阻断（退出码 2），
         # 不再被 || true 吞掉；历史全量扫描仍保留为非阻塞报告。
         run: |
-          python engine/selfcheck.py --all || true
+          python -m engine.selfcheck --all || true
           DATE="${{ github.event.inputs.date || '' }}"
           if [ -z "$DATE" ]; then
             DATE=$(TZ=Asia/Shanghai date +%Y-%m-%d)
           fi
-          python engine/selfcheck.py --date "$DATE" --fail-on-critical
+          # 2026-08-16 修复：python -m 模块方式（sys.path[0]=仓库根），
+          # 直接 python engine/selfcheck.py 时 import engine 包失败（ModuleNotFoundError）
+          python -m engine.selfcheck --date "$DATE" --fail-on-critical
           # 若存在盘口全缺的严重告警，标记为 workflow annotation
           python - <<'EOF'
           import json
