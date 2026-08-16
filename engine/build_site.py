@@ -6,13 +6,15 @@ from __future__ import annotations
 """
 import json
 import sys
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 # 以脚本方式运行时 sys.path[0] 是 engine/ 目录，补上仓库根，保证 import engine.* 可用
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+
+from engine.beijing_time import beijing_now, beijing_today
 
 
 def build_site():
@@ -21,7 +23,7 @@ def build_site():
     web_dir.mkdir(parents=True, exist_ok=True)
 
     daily_root = ROOT / "data" / "daily"
-    today = date.today().isoformat()
+    today = beijing_today()
 
     # 收集所有有预测数据的日期
     all_dates = []
@@ -78,12 +80,8 @@ def build_site():
         # 未来/当天未结算的日期绝不 fallback，否则会拿历史赛果伪造"实际比分"
         # （2026-08-14 页面事故根因）。用北京时间判断"过去"。
         if not results and predictions:
-            from datetime import date as _d
-            from datetime import datetime as _dt
-            from datetime import timedelta as _td
             try:
-                _beijing_today = (_dt.utcnow() + _td(hours=8)).strftime("%Y-%m-%d")
-                if target_date < _beijing_today:
+                if target_date < beijing_today():
                     results = _match_results_to_predictions(predictions, all_results)
             except Exception:
                 pass
@@ -108,7 +106,7 @@ def build_site():
 
     status = {
         "date": all_dates[0] if all_dates else today,
-        "generated_at": datetime.now().isoformat(),
+        "generated_at": beijing_now().isoformat(),
         "prediction_count": len(_load_json(daily_root / all_dates[0] / "predictions.json", [])) if all_dates else 0,
         "available_dates": all_dates,
         "healthy": True,
@@ -162,10 +160,9 @@ def build_site():
     except Exception as e:
         print(f"[build_site] ⚠ 串关回测报告生成跳过: {e}")
     # 串关/波胆真实复盘（2026-08-10 新增：真实出票的结算，非回测）
-    parlay_settle = {}
     try:
         from engine.review.settle_parlays import build_settle_report
-        parlay_settle = build_settle_report(daily_root, ROOT / "data" / "state" / "parlay_settle.json")
+        build_settle_report(daily_root, ROOT / "data" / "state" / "parlay_settle.json")
     except Exception as e:
         print(f"[build_site] ⚠ 串关真实复盘生成跳过: {e}")
     # 准确率趋势报告（回答"是否每天在提升"）
@@ -285,7 +282,8 @@ def _render_track_record(state_dir: Path, web_dir: Path) -> str:
             <tr><th>指标</th><th>值</th></tr>
             <tr><td>出票 / 已结算</td><td>{s['n_tickets']} / {s.get('n_settled', s['n_tickets'])}</td></tr>
             <tr><td>命中</td><td>{s.get('n_won',0)} 张（命中率 {hr}）</td></tr>
-            <tr><td>投入 / 回报</td><td>¥{s.get('stake',0):.0f} / ¥{s.get('return',0):.2f}</td></tr>
+            <tr><td>已出票投入</td><td>¥{s.get('stake_committed', s.get('stake',0)):.2f}</td></tr>
+            <tr><td>已结算投入 / 回报</td><td>¥{s.get('stake',0):.2f} / ¥{s.get('return',0):.2f}</td></tr>
             <tr><td>ROI</td><td style="color:{roi_c};font-weight:700">{roi:+.1%}</td></tr>
             {extra_leg}
           </table>
@@ -300,9 +298,23 @@ def _render_track_record(state_dir: Path, web_dir: Path) -> str:
         if _cards:
             _verdict = ps.get("verdict", "")
             _verdict_html = f'<div class="note" style="margin-top:8px">{_verdict}</div>' if _verdict else ""
+            _note_parts = []
+            if _pl and _pl.get("n_tickets"):
+                _pl_roi = _pl.get("roi")
+                _pl_roi_txt = "—" if _pl_roi is None else f"{_pl_roi:+.0%}"
+                _note_parts.append(
+                    f"胜平负串 {_pl['n_tickets']}张/已结算{_pl.get('n_settled', 0)} · ROI {_pl_roi_txt}"
+                )
+            if _sp and _sp.get("n_tickets"):
+                _sp_roi = _sp.get("roi")
+                _sp_roi_txt = "—" if _sp_roi is None else f"{_sp_roi:+.0%}"
+                _note_parts.append(
+                    f"比分串 {_sp['n_tickets']}张/已结算{_sp.get('n_settled', 0)} · ROI {_sp_roi_txt}"
+                )
+            _settle_note = "历史真实出票（非回测）：" + "；".join(_note_parts) + "。2026-08-13 起比分串改为仅官方赔率正 EV 出票。"
             _parlay_html = f'''
   <div class="section-title">串关 / 波胆真实复盘（历史累计 · 非回测）</div>
-  <div style="padding:6px 2px 10px;font-size:0.68rem;color:var(--dim)">历史真实出票（非回测）：胜平负串 -63%、比分串 -100%（连续 84 张 0 中，旧选腿未校准）。2026-08-13 起比分串改为仅官方赔率正 EV 出票。</div>
+  <div style="padding:6px 2px 10px;font-size:0.68rem;color:var(--dim)">{_settle_note}</div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
     {_cards}
   </div>
@@ -310,8 +322,87 @@ def _render_track_record(state_dir: Path, web_dir: Path) -> str:
 
     # EV 价值区报告（全量已结算分层 ROI）——2026-08-13 从每日页面移入总览
     # （每日页面只留当日复盘，全量统计统一进 Track Record，避免每天重复展示同一份数据）
+    # 校准可靠性（2026-08-16 新增：把“说 70% 就真的 70%”可视化）
+    _rel_html = ""
+    try:
+        import numpy as np
+        from engine.prediction.reliability_curve import compute_outcome_reliability
+        _rel_recs = [r for r in ledger if r.get("final_prob") and r.get("actual_idx") is not None]
+        if _rel_recs:
+            _probs = np.array([r["final_prob"] for r in _rel_recs])
+            _actuals = np.array([r["actual_idx"] for r in _rel_recs], dtype=int)
+            _reports = compute_outcome_reliability(_probs, _actuals, n_bins=10)
+            _rel_rows = ""
+            for _label, _rep in _reports.items():
+                if not _rep.bins:
+                    continue
+                _rel_rows += (
+                    f"<tr><td>{_label}</td><td>{_rep.ece:.4f}</td><td>{_rep.mce:.4f}</td>"
+                    f"<td>{_rep.n_samples}</td><td>{_rep.well_calibrated_ratio:.0%}</td></tr>"
+                )
+            if _rel_rows:
+                _rel_html = f'''
+  <div class="section-title">校准可靠性（ECE / MCE，越低越好）</div>
+  <div class="card"><table>
+    <tr><th>结果类</th><th>ECE</th><th>MCE</th><th>样本</th><th>良好校准箱占比</th></tr>
+    {_rel_rows}
+  </table></div>'''
+    except Exception:
+        _rel_html = ""
+
+    # 数据覆盖率（全量预测关键字段，2026-08-16 新增）
+    _coverage_html = ""
+    try:
+        _daily_root = ROOT / "data" / "daily"
+        _fields = ("crs_odds", "ttg_odds", "hafu_odds", "handicap", "market_fair", "sina_odds")
+        _total = 0
+        _covered = {f: 0 for f in _fields}
+        for _pf in sorted(_daily_root.glob("*/predictions.json")):
+            try:
+                _preds = json.loads(_pf.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            if isinstance(_preds, dict):
+                _preds = _preds.get("predictions", [])
+            for _pred in _preds or []:
+                _total += 1
+                for _f in _fields:
+                    _v = _pred.get(_f)
+                    if _f == "handicap":
+                        _ok = _v is not None
+                    elif _f == "market_fair":
+                        _ok = _v not in (None, [])
+                    else:
+                        _ok = _v not in (None, {})
+                    if _ok:
+                        _covered[_f] += 1
+        if _total:
+            _labels = {
+                "crs_odds": "波胆赔率", "ttg_odds": "总进球赔率", "hafu_odds": "半全场赔率",
+                "handicap": "让球", "market_fair": "市场去水", "sina_odds": "新浪赔率",
+            }
+            _cov_rows = "".join(
+                f"<tr><td>{_labels[_f]}</td><td>{_covered[_f]}/{_total}</td>"
+                f"<td>{_covered[_f] / _total:.0%}</td></tr>"
+                for _f in _fields
+            )
+            _coverage_html = f'''
+  <div class="section-title">数据覆盖率（全量预测）</div>
+  <div class="card"><table>
+    <tr><th>字段</th><th>覆盖</th><th>覆盖率</th></tr>
+    {_cov_rows}
+  </table></div>'''
+    except Exception:
+        _coverage_html = ""
+
     _ev_report = _load_json(state_dir / "ev_report.json", {})
     _ev_html = _ev_section(_ev_report) if _ev_report else ""
+
+    _dr = at.get("date_range") or []
+    if isinstance(_dr, list) and len(_dr) >= 2:
+        _dr_text = f"{_dr[0]} ~ {_dr[-1]}"
+    else:
+        _dr_text = str(_dr or "")
 
     html = f'''<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
@@ -319,7 +410,7 @@ def _render_track_record(state_dir: Path, web_dir: Path) -> str:
 <title>Track Record · 竞彩分析引擎公开战绩</title>
 <style>
 :root {{
-  --bg:#0a0e13; --surface:#111820; --surface2:#1a2332; --border:#263344;
+  --bg:#0a0e13; --surface:#111820; --card:var(--surface); --surface2:#1a2332; --border:#263344;
   --text:#e8edf4; --text-secondary:#94a8c0; --dim:#6b8299;
   --blue:#3b82f6; --red:#ef4444; --green:#22c55e; --amber:#f59e0b; --cyan:#06b6d4;
   --radius:12px; --radius-sm:8px;
@@ -363,7 +454,7 @@ tr:last-child td {{ border-bottom:none; }}
   <div class="header">
     <div>
       <h1>竞彩分析引擎 · Track Record</h1>
-      <div class="sub">公开战绩 · 自动生成于 {at.get("generated_at", "")[:16]} · 数据截至 {at.get("date_range", "")}</div>
+      <div class="sub">公开战绩 · 自动生成于 {at.get("generated_at", "")[:16]} · 数据截至 {_dr_text}</div>
     </div>
     <div class="nav"><a href="index.html">← 返回今日分析</a> &nbsp;|&nbsp; <a href="https://github.com/wlrwx/football-engine">GitHub</a></div>
   </div>
@@ -384,6 +475,8 @@ tr:last-child td {{ border-bottom:none; }}
     <tr><td>模型原始</td>{_brier_cell(_ov_mdl)}</tr>
     <tr><td>shrinkage_dc（挑战者）</td>{_brier_cell(_sd_b)}</tr>
   </table></div>
+  {_rel_html}
+  {_coverage_html}
 
   <div class="section-title">每日命中率（近14天）</div>
   <div class="card"><table>
@@ -422,7 +515,7 @@ tr:last-child td {{ border-bottom:none; }}
 </div>
 </body></html>'''
     out = web_dir / "track-record.html"
-    out.write_text(html, encoding="utf-8")
+    out.write_text("\n".join(line.rstrip() for line in html.split("\n")), encoding="utf-8")
     return out.name
 
 
@@ -543,7 +636,6 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
         _ev_report = json.loads(_ev_path.read_text(encoding="utf-8")) if _ev_path.exists() else {}
     except Exception:
         _ev_report = {}
-    ev_html = _ev_section(_ev_report)
     # 三票方案中的场次 = 真正的价值投注
     value_matches = set()
     for it in ticket.get("stable", []) + ticket.get("value", []):
@@ -969,6 +1061,7 @@ def _render_html(today, predictions, bundle, ticket, breaker, health, results=No
 :root {{
   --bg: #0a0e13;
   --surface: #111820;
+  --card: var(--surface);
   --surface2: #1a2332;
   --surface3: #212d3d;
   --border: #263344;
@@ -1774,7 +1867,7 @@ body {{
     <div class="stat"><div class="label">场次</div><div class="value">{total}</div></div>
     <div class="stat"><div class="label">价值注</div><div class="value green">{len(value_bets)}</div></div>
     <div class="stat"><div class="label">平均置信</div><div class="value blue">{avg_conf:.0%}</div></div>
-    <div class="stat"><div class="label">总投入</div><div class="value amber">&yen;{total_stake:.0f}</div></div>
+    <div class="stat"><div class="label">三票投入</div><div class="value amber">&yen;{total_stake:.0f}</div></div>
     <div class="stat"><div class="label">预期回报</div><div class="value {'green' if exp_roi > 0 else 'red'}">{exp_roi*100:+.1f}%</div></div>
     <div class="stat"><div class="label">熔断器</div><div class="value {'green' if tier == 0 else 'red'}">T{tier} &middot; x{breaker_mult:.1f}</div></div>
   </div>
@@ -2029,7 +2122,6 @@ def _handicap_pick(p):
         return ""
     label = "主胜" if hhp >= hdp and hhp >= hap else ("平局" if hdp >= hhp and hdp >= hap else "客胜")
     prob = max(hhp, hdp, hap)
-    hh_odds = p.get("handicap_home_odds") or p.get("handicap_draw_odds") or p.get("handicap_away_odds")
     edge = p.get("handicap_kelly_edge")
     cls = "home" if hhp >= hdp and hhp >= hap else ("draw" if hdp >= hhp and hdp >= hap else "away")
     edge_html = f' <span class="pick-val {cls}" style="font-size:.85em">让球EV {edge:+.0%}</span>' if edge is not None else ""
@@ -2953,8 +3045,11 @@ def _parlay_section(ticket, predictions):
 
     cards = "".join(_ticket_html(t) for t in parlay)
     n_rec = sum(1 for t in parlay if t.get("recommended"))
+    _parlay_total = sum(t.get("stake", 0) for t in parlay)
+    _parlay_label = f"· {n_rec} 张推荐" if n_rec else ""
+    _parlay_label += f" · 投入¥{_parlay_total:.2f}"
     return f"""
-  <div class="section-title">串关方案（过关玩法）{'· ' + str(n_rec) + ' 张推荐' if n_rec else ''}</div>
+  <div class="section-title">串关方案（过关玩法）{_parlay_label}</div>
   <div class="ticket-grid">{cards}</div>
   {cal_html}"""
 
@@ -3061,7 +3156,8 @@ def _parlay_settle_section(settle: dict | None, target_date: str = "") -> str:
         rows = f"""
         <tr><td>出票/已结算</td><td>{s['n_tickets']} / {s['n_settled']}</td></tr>
         <tr><td>命中</td><td>{s['n_won']} 张（命中率 {hr}）</td></tr>
-        <tr><td>投入</td><td>¥{s['stake']:.0f}</td></tr>
+        <tr><td>已出票投入</td><td>¥{s.get('stake_committed', s['stake']):.2f}</td></tr>
+        <tr><td>已结算投入</td><td>¥{s['stake']:.2f}</td></tr>
         <tr><td>回报</td><td>¥{s['return']:.2f}</td></tr>
         <tr><td>ROI</td><td><b class="{'ts-pos' if (s.get('roi') or 0) > 0 else 'ts-neg'}">{_fmt_roi(s.get('roi'))}</b></td></tr>"""
         if extra:
@@ -3106,7 +3202,13 @@ def _parlay_settle_section(settle: dict | None, target_date: str = "") -> str:
         roi = s.get("roi")
         roi_html = ("—" if roi is None else
                     f'<b style="color:{"var(--green)" if roi > 0 else "var(--red)"}">{roi:+.0%}</b>')
-        parts = [f"出票{s['n_tickets']}/{s['n_settled']}结算", f"中{s['n_won']}张({hr})", f"投入¥{s['stake']:.0f}",
+        _stake_committed = s.get("stake_committed", s["stake"])
+        _stake_settled = s["stake"]
+        if _stake_committed != _stake_settled:
+            _stake_text = f"已出票¥{_stake_committed:.2f} / 已结算¥{_stake_settled:.2f}"
+        else:
+            _stake_text = f"投入¥{_stake_settled:.2f}"
+        parts = [f"出票{s['n_tickets']}/{s['n_settled']}结算", f"中{s['n_won']}张({hr})", _stake_text,
                  f"回报¥{s['return']:.2f}", f"ROI {roi_html}"]
         if extra:
             parts.append(extra)
@@ -3125,12 +3227,6 @@ def _parlay_settle_section(settle: dict | None, target_date: str = "") -> str:
     sp_tickets = (day.get("score_parlay") or {}).get("tickets") or []
     if not p_tickets and not sp_tickets:
         return ""
-
-    sp_extra = ""
-    if sp and sp.get("leg_hit_rate") is not None:
-        sp_extra = (
-            f"<tr><td>单腿命中率</td><td>{sp['leg_hit_rate']:.1%}（{sp['n_legs_settled']} 腿）</td></tr>"
-        )
 
     verdict = ""
     if (p and p.get("n_settled")) or (sp and sp.get("n_settled")):
@@ -3441,7 +3537,6 @@ def _system_panel(breaker, bundle, tier, mult, tier_reason=""):
     wr = wins / max(1, wins + losses)
     daily_pnl = breaker.get("daily_pnl", 0)
     weekly_pnl = breaker.get("weekly_pnl", 0)
-    halted = breaker.get("halted", False)
     sha = bundle.get("bundle_sha256", "暂无")
     created = bundle.get("created_at", "")
 
@@ -3463,6 +3558,16 @@ def _system_panel(breaker, bundle, tier, mult, tier_reason=""):
 
     tier_cls = "safe" if tier <= 1 else "caution" if tier <= 2 else "danger"
     tier_label = f"T{tier}" + (" · " + tier_reason if tier_reason else "")
+
+    # Shadow 模式：熔断器只展示不实际扣减注额，明确标注避免误解
+    _activation = "shadow"
+    try:
+        _strat = json.loads((ROOT / "config" / "strategy.json").read_text(encoding="utf-8"))
+        _activation = _strat.get("activation_mode", "shadow")
+    except Exception:
+        pass
+    if _activation != "real":
+        tier_label = f"T{tier} · Shadow" + (" · " + tier_reason if tier_reason else "")
 
     return f"""
   <div class="section-title">系统状态</div>
@@ -3532,7 +3637,7 @@ def _build_daily_brief(
     """生成每日简报 markdown（投注决策一目了然）"""
     lines = [
         f"# 竞彩投注简报 {target_date}\n",
-        f"> 生成时间：{datetime.now().strftime('%Y-%m-%d %H:%M')}（北京时间）\n",
+        f"> 生成时间：{beijing_now().strftime('%Y-%m-%d %H:%M')}（北京时间）\n",
     ]
 
     # 投注方案

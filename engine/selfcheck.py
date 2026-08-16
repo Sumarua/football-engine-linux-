@@ -22,6 +22,8 @@ import sys
 from datetime import date, timedelta
 from pathlib import Path
 
+from engine.beijing_time import beijing_today
+
 ROOT = Path(__file__).resolve().parent.parent
 STATE = ROOT / "data" / "state"
 DAILY = ROOT / "data" / "daily"
@@ -125,8 +127,9 @@ def main() -> int:
         days = sorted(d.name for d in DAILY.iterdir() if d.is_dir())
     else:
         days = []
+        _today = date.fromisoformat(beijing_today())
         for i in range(3):
-            d = (date.today() - timedelta(days=i)).isoformat()
+            d = (_today - timedelta(days=i)).isoformat()
             if (DAILY / d).exists():
                 days.append(d)
         if not days:
@@ -139,7 +142,7 @@ def main() -> int:
 
     out = STATE / "selfcheck_report.json"
     out.write_text(json.dumps({
-        "generated_at": date.today().isoformat(),
+        "generated_at": beijing_today(),
         "checked_days": days,
         "n_alerts": len(all_alerts),
         "alerts": all_alerts,

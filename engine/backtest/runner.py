@@ -63,8 +63,8 @@ class BacktestReport:
             f"  Brier:  {self.avg_brier:.4f} (越低越好, <0.22=优秀)",
             f"  ROI:    {self.roi:+.2%}",
             f"  总投入: {self.total_staked:.0f}元, 盈亏: {self.total_pnl:+.1f}元",
-            f"",
-            f"  分联赛:",
+            "",
+            "  分联赛:",
         ]
         for lg, stats in sorted(self.by_league.items(), key=lambda x: -x[1]["n"]):
             lines.append(

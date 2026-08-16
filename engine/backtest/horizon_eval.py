@@ -16,10 +16,12 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 import numpy as np
+
+BEIJING_TZ = timezone(timedelta(hours=8))
 
 from .ts_split import brier_score, ranked_probability_score, log_loss
 
@@ -40,13 +42,16 @@ HORIZON_ORDER = [HORIZON_T24H, HORIZON_T6H, HORIZON_T90M, HORIZON_CLOSING]
 
 
 def _parse_ts(value: str) -> datetime:
-    """解析 ISO 时间戳（容忍 Z 后缀与无时区）。"""
+    """解析 ISO 时间戳（容忍 Z 后缀与无时区）。
+
+    竞彩开球/预测时间均为北京时间；无时区字符串按北京时间处理，
+    避免 aware 与 naive datetime 直接相减报错。
+    """
     v = value.replace("Z", "+00:00")
-    try:
-        return datetime.fromisoformat(v)
-    except ValueError:
-        # 无时区的裸时间按当天 00:00 处理（竞彩业务日期）
-        return datetime.fromisoformat(v)
+    dt = datetime.fromisoformat(v)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=BEIJING_TZ)
+    return dt
 
 
 def infer_horizon(as_of: str, kickoff: str) -> str:

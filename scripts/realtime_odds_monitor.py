@@ -17,7 +17,7 @@ import json
 import hashlib
 import subprocess
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 # 项目根目录

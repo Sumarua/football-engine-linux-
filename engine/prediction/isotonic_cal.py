@@ -8,7 +8,6 @@ from __future__ import annotations
   - 校准曲线持久化，每周重训
   - 参数外部化到 config/prediction.json["calibration"]
 """
-import json
 import pickle
 from dataclasses import dataclass
 from pathlib import Path

@@ -151,10 +151,6 @@ class RecommendationEngine:
             sel_indices = [labels.index(s) for s in selections]
             max_sel_prob = max(probs_for_check[i] for i in sel_indices)
             if max_sel_prob >= cfg.single_recommendation_threshold:
-                best_sel = selections[sel_indices.index(
-                    sel_indices[0] if probs_for_check[sel_indices[0]] >= probs_for_check[sel_indices[1]]
-                    else sel_indices[1]
-                )]
                 # 找概率最高的那个
                 if probs_for_check[sel_indices[0]] >= probs_for_check[sel_indices[1]]:
                     selections = [selections[0]]

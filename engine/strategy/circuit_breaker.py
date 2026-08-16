@@ -14,8 +14,10 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 from pathlib import Path
+
+from engine.beijing_time import beijing_today
 
 
 @dataclass
@@ -96,11 +98,11 @@ class CircuitBreaker:
     def get_multiplier(self, bankroll: float) -> float:
         """返回当前注额乘数 [0.0, 1.0]"""
         s = self.state
-        today = date.today().isoformat()
+        today = beijing_today()
 
         # 检查自动重置
         if s.halted and s.halt_date:
-            days_halted = (date.today() - date.fromisoformat(s.halt_date)).days
+            days_halted = (date.fromisoformat(today) - date.fromisoformat(s.halt_date)).days
             if days_halted >= self.cfg.auto_reset_days:
                 self._reset()
                 return 1.0
@@ -179,7 +181,7 @@ class CircuitBreaker:
     ) -> None:
         """记录一场比赛结果并更新状态"""
         s = self.state
-        today = date.today().isoformat()
+        today = beijing_today()
 
         # 日PnL
         if s.daily_date != today:
@@ -252,7 +254,7 @@ class CircuitBreaker:
     def _check_loss_limits(self, bankroll: float) -> None:
         """检查日/周止损并设置 halted 标志"""
         s = self.state
-        today = date.today().isoformat()
+        today = beijing_today()
         if s.daily_date == today and s.daily_pnl < 0:
             if abs(s.daily_pnl) >= bankroll * self.cfg.max_daily_loss_ratio:
                 s.halted = True
@@ -279,7 +281,7 @@ class CircuitBreaker:
     @staticmethod
     def _week_start() -> str:
         """本周一日期"""
-        today = date.today()
+        today = date.fromisoformat(beijing_today())
         monday = today - timedelta(days=today.weekday())
         return monday.isoformat()
 

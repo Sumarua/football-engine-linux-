@@ -12,7 +12,7 @@ import json
 import sqlite3
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List
 
 
 class SystemMemory:
@@ -63,7 +63,6 @@ class SystemMemory:
         cur = conn.cursor()
         
         where_clauses = ["score_home IS NOT NULL"]
-        params = []
         
         if days:
             cutoff = (date.today() - timedelta(days=days)).isoformat()
@@ -294,7 +293,6 @@ class SystemMemory:
         
         # 总体表现
         overall = self.get_hit_rate()
-        recent_10 = self.get_hit_rate(n=10)
         
         lines.append("📊 总体表现")
         lines.append(f"  累计预测: {overall['total']} 场已结算")

@@ -8,13 +8,12 @@ API: mix.lottery.sina.com.cn/gateway/index/entry
 优势: 无WAF，海外IP(GitHub Actions)直接访问。
 用途: 体彩webapi被EdgeOne拦截时的自动降级源。
 """
-import json
 from datetime import date, datetime
 from typing import Optional
 
 import requests
 
-from .base import DataSource, Fixture, MatchResult, OddsSnapshot
+from .base import DataSource, Fixture, MatchResult
 
 
 API_URL = "https://mix.lottery.sina.com.cn/gateway/index/entry"

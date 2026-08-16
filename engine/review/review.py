@@ -20,6 +20,7 @@ import json
 from datetime import date
 from pathlib import Path
 
+from engine.beijing_time import beijing_today
 from engine.review.reconciler import MatchReconciler
 from engine.review.officer import ReviewOfficer
 
@@ -137,7 +138,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.date == "today":
-        target = date.today()
+        target = date.fromisoformat(beijing_today())
     else:
         target = date.fromisoformat(args.date)
 

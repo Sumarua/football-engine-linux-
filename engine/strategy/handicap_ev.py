@@ -240,7 +240,5 @@ def build_handicap_report(
 
 
 if __name__ == "__main__":
-    import sys
-    from engine.main import load_config
     r = build_handicap_report()
     print(f"让球玩法回测: {r['n_matches']} 场, 命中率 {r['hit_rate']*100:.1f}%, ROI {r['roi']*100:+.1f}%")

@@ -11,7 +11,6 @@
 """
 import json
 import sys
-import time
 import urllib.request
 import urllib.parse
 from datetime import datetime, timedelta
@@ -224,7 +223,7 @@ def main():
         print(f"  → fetching {date_str}...")
         matches = fetch_match_list(date_str)
         if not matches:
-            print(f"    ⚠ 无比赛")
+            print("    ⚠ 无比赛")
             continue
 
         print(f"    {len(matches)} matches found, filtering to competitive leagues...")

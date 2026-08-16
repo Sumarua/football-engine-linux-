@@ -1,10 +1,8 @@
 from __future__ import annotations
 """参数自动优化器 - 多阶段搜索（借鉴 lottery-football）"""
 import itertools
-import json
 import random
 from dataclasses import dataclass
-from pathlib import Path
 
 
 @dataclass

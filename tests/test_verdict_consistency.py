@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import json
 
-import pytest
 
 from engine.review.ev_report import MIN_VERDICT_SAMPLES, build_report
 from engine.review.parlay_report import build_parlay_report

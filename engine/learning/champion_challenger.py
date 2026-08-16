@@ -169,7 +169,6 @@ class ChampionChallenger:
         if not champion or not prev:
             return False
 
-        c_brier = champion.get("metrics", {}).get("brier_score", 0)
         p_brier = prev.get("metrics", {}).get("brier_score", 0)
 
         # 如果冠军比前任差 2% 以上，回滚

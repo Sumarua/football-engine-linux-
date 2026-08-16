@@ -22,6 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
+from engine.beijing_time import BEIJING_TZ, beijing_now, beijing_today
 from engine.sources.manager import SourceManager
 from engine.odds_series import series_features
 from engine.sources.base import MatchResult
@@ -29,9 +30,7 @@ from engine.sources.same_odds import SameOddsAnalyzer
 from engine.prediction.ensemble import EnsembleModel
 from engine.prediction.dixon_coles import DixonColesConfig
 from engine.prediction.monte_carlo import MonteCarloConfig
-from engine.prediction.base import TeamRating
 from engine.prediction.calibration import (
-    devig_shin,
     select_devig_method,
     multi_market_calibration,
     MarketOdds,
@@ -58,9 +57,8 @@ from engine.prediction.lgbm_model import LGBMModel, LGBMConfig, build_features
 from engine.prediction.isotonic_cal import IsotonicCalibrator, CalibrationConfig
 from engine.prediction.temperature_scaling import TemperatureScaler
 from engine.prediction.rho_fitter import RhoFitter
-from engine.prediction.time_decay import time_decay_weights
 from engine.learning.league_params import LeagueParamsManager
-from engine.learning.fusion_optimizer import FusionOptimizer, FusionWeights
+from engine.learning.fusion_optimizer import FusionOptimizer
 from engine.storage.match_db import MatchDB
 from engine.prediction.htft_model import htft_probabilities, top_htft
 from engine.prediction.enhanced import total_goals_from_xg
@@ -124,13 +122,17 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
         print(f"  ⏭ 跨日场次过滤: 丢弃 {_dropped} 场非 {target_date} 比赛日的场次")
 
     # 再过滤：开球时间已过的场次（防止把已开赛/已结束的比赛当未来场次预测）
-    _now = datetime.now()
+    # 竞彩开球时间是北京时间，runner 的 datetime.now() 是 UTC，必须统一到北京时间再比较。
+    _now = beijing_now()
     _still = []
     for f in fixtures:
         _ko = (f.kickoff or "").strip()
         if _ko:
             try:
-                if datetime.fromisoformat(_ko.replace(" ", "T")) <= _now:
+                _ko_dt = datetime.fromisoformat(_ko.replace(" ", "T"))
+                if _ko_dt.tzinfo is None:
+                    _ko_dt = _ko_dt.replace(tzinfo=BEIJING_TZ)
+                if _ko_dt <= _now:
                     print(f"  ⏭ 已开赛场次跳过: {f.match_id} ({_ko})")
                     continue
             except ValueError:
@@ -149,7 +151,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
         if djyy_enrichment:
             print(f"  ✓ DJYY增强: {len(djyy_enrichment)}/{len(fixtures)} 场匹配")
         else:
-            print(f"  - DJYY无匹配（不影响主流程）")
+            print("  - DJYY无匹配（不影响主流程）")
     except Exception as e:
         djyy_enrichment = {}
         print(f"  - DJYY增强跳过: {e}")
@@ -195,9 +197,9 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
                              if k in LGBMConfig.__dataclass_fields__})
     lgbm_model = LGBMModel(ROOT / "data" / "models" / "lgbm_model.txt", config=lgbm_cfg)
     if lgbm_model.is_available:
-        print(f"  ✓ LightGBM 已加载")
+        print("  ✓ LightGBM 已加载")
     else:
-        print(f"  - LightGBM 未训练/未安装（跳过第三层）")
+        print("  - LightGBM 未训练/未安装（跳过第三层）")
 
     # Isotonic 校准层
     cal_cfg = CalibrationConfig(**{k: v for k, v in pred_cfg.get("calibration", {}).items()
@@ -208,14 +210,14 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
     if calibrator.is_fitted:
         print(f"  ✓ Isotonic 校准已加载 (method={calibrator.method_used})")
     else:
-        print(f"  - Isotonic 未拟合（原样输出）")
+        print("  - Isotonic 未拟合（原样输出）")
 
     # Temperature Scaling 校准层（在 Isotonic 之后应用）
     temp_scaler = TemperatureScaler(ROOT / "data" / "models" / "temperature.json")
     if temp_scaler.is_fitted:
         print(f"  ✓ Temperature Scaling 已加载 (T={temp_scaler.temperature_value:.3f})")
     else:
-        print(f"  - Temperature Scaling 未拟合（跳过）")
+        print("  - Temperature Scaling 未拟合（跳过）")
 
     # 联赛独立参数
     league_mgr = LeagueParamsManager(ROOT / "data" / "state" / "league_params.json")
@@ -274,7 +276,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
     if _sina_n:
         print(f"  ✓ 新浪赔率: {_sina_n} 场 (编号匹配: {len(sina_odds_by_no)})")
     else:
-        print(f"  - 新浪赔率: 无（缺失或解析失败，走其他源）")
+        print("  - 新浪赔率: 无（缺失或解析失败，走其他源）")
 
     # 自我革新: 读取优化器冠军权重覆盖静态默认
     from engine.learning.fusion_optimizer import FusionOptimizer
@@ -555,6 +557,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
                 xg_home=getattr(fixture, "_xg_home", None),
                 xg_away=getattr(fixture, "_xg_away", None),
                 djyy_probs=djyy_probs,
+                include_market_odds=lgbm_cfg.use_odds_features,
             )
             lgbm_pred = lgbm_model.predict_single(feature_dict)
             if lgbm_pred:
@@ -604,7 +607,6 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
         # --- 赔率变动信号修正 ---
         # 新浪赔率变化方向作为信号：赔率下降=资金涌入=庄家看好
         if _sina_data and _sina_data.get("movement"):
-            mv = _sina_data["movement"]
             comp = _sina_data.get("compression", {})
             # 压缩比 = 初盘/即时盘（见 fetch_sina_odds.py）：
             #   >1.05 = 赔率下降（资金涌入，市场看好该方）→ 加仓
@@ -665,7 +667,6 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
         if calibrated_probs:
             market_h, market_d, market_a = calibrated_probs
             max_market = max(market_h, market_d, market_a)
-            max_model = max(final_h, final_d, final_a)
             # R1: 高平联赛且市场平局概率处于低估区间（回测 +2.9pp，切半稳健）
             if _canon_league(fixture.competition) in HIGH_DRAW_LEAGUES and 0.20 <= market_d < 0.30:
                 draw_alert = "league_draw"  # 联赛平局（数据驱动 R1）
@@ -871,6 +872,8 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             "draw_alert": draw_alert,
             # 开赛时间（新浪有就用新浪的完整时间，否则用体彩 matchDate+matchTime）
             "kickoff": (_sina_data.get("match_time") if _sina_data else "") or fixture.kickoff,
+            # 预测截点（时点分桶用，2026-08-16 起记录）
+            "as_of": beijing_now().isoformat(timespec="seconds"),
             # 竞彩编号（如"周六001"），与新浪/赛果匹配的稳定键
             "match_no": fixture.match_id.split("_", 1)[-1] if "_" in fixture.match_id else "",
             # 新浪赔率数据（初始+即时+变化方向+压缩比+亚盘+大小球）
@@ -1169,7 +1172,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             _pl_desc = "、".join(f"{t.parlay_type}{'⭐' if t.recommended else '⚠'}" for t in parlay_plan)
             print(f"  ✓ 串关方案: {len(parlay_plan)} 张票（推荐{_n_rec}张）: {_pl_desc}")
             if _n_rec == 0:
-                print(f"  ⚠ 校准后全部负 EV：串关吃双重抽水，模型概率高估——不推荐出串（数据纪律）")
+                print("  ⚠ 校准后全部负 EV：串关吃双重抽水，模型概率高估——不推荐出串（数据纪律）")
         else:
             print(f"  ⚠ 串关方案: 无正 EV 串关（校准概率×赔率<{parlay_builder.cfg.value_edge}，"
                   f"1.2-1.5 大热全被价值门槛淘汰），空仓")
@@ -1189,8 +1192,8 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
             _sp_desc = "、".join(t.parlay_type for t in score_plan)
             print(f"  ✓ 比分串方案（正EV）: {len(score_plan)} 张票: {_sp_desc}")
         else:
-            print(f"  ⚠ 比分串方案: 无官方赔率或全负 EV（校准后），空仓——"
-                  f"无真实赔率不出比分串（2026-08-13 纪律）")
+            print("  ⚠ 比分串方案: 无官方赔率或全负 EV（校准后），空仓——"
+                  "无真实赔率不出比分串（2026-08-13 纪律）")
     except Exception as _e:
         score_plan = []
         print(f"  ⚠ 比分串方案生成跳过: {_e}")
@@ -1268,9 +1271,9 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
                 plan_hash=plan_hash,
                 bundle_hash=bundle["bundle_sha256"],
             )
-            print(f"  ✓ 计划已锁定")
+            print("  ✓ 计划已锁定")
         else:
-            print(f"  ⚠ 计划已存在锁定，跳过")
+            print("  ⚠ 计划已存在锁定，跳过")
 
     # 保存预测结果
     print("\n[8/8] 保存结果...")
@@ -1293,7 +1296,7 @@ def run_daily_pipeline(target_date: date, predict_only: bool = False):
     )
 
     print(f"\n{'='*60}")
-    print(f"  流水线完成 ✓")
+    print("  流水线完成 ✓")
     print(f"  预测: {len(predictions)} 场")
     if freshness_active:
         print(f"  ⚠ 新鲜度护栏触发: {freshness_active} 场（概率向均势收缩）")
@@ -2018,7 +2021,7 @@ def run_settlement(target_date: date):
                 "odds_band": _odds_band(pred.get(f"{best_sel[0]}_odds", 2.0)),
             }
             combo_miner.record(features, won=won)
-        print(f"  ✓ 组合统计已更新")
+        print("  ✓ 组合统计已更新")
 
         # 将赛果写回 predictions.json（自愈: 写回预测所在目录）
         # 遍历 norm（全部赛果）而非 new_items：已结算场次也能补写 actual_result
@@ -2148,7 +2151,7 @@ def run_settlement(target_date: date):
         for bias in review_report.get("biases", []):
             print(f"    ⚠ 偏差: {bias['dimension']}:{bias['key']} {bias['outcome']} gap={bias['gap']:+.3f}")
     else:
-        print(f"  - 无可复盘数据")
+        print("  - 无可复盘数据")
 
     # 10.5) 高置信反向样本库（2026-08-06，借鉴 MBS 8/2 AIK 案例）
     # 高置信 + 市场同向 + 结果反向 → 独立归档，不归因于模型-市场分歧
@@ -2169,7 +2172,7 @@ def run_settlement(target_date: date):
     if not new_items:
         print("\n  ⏭ 无新增赛果，跳过校准/优化步骤（快速退出）")
         print(f"\n{'='*60}")
-        print(f"  结算完成 ✓ (无新增)")
+        print("  结算完成 ✓ (无新增)")
         print(f"{'='*60}")
         return
 
@@ -2288,7 +2291,7 @@ def main():
         return
 
     if args.date == "today":
-        target = date.today()
+        target = date.fromisoformat(beijing_today())
     else:
         target = date.fromisoformat(args.date)
 

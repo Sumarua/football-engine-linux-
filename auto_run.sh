@@ -24,7 +24,7 @@ log "使用解释器: $PY"
 
 # Step 1: 运行预测
 log "Step 1/3: 运行预测..."
-"$PY" -m engine.main --date today 2>&1 | tee -a "$LOG_FILE"
+"$PY" -m engine.main --date "$(TZ=Asia/Shanghai date +%Y-%m-%d)" 2>&1 | tee -a "$LOG_FILE"
 if [ ${PIPESTATUS[0]} -ne 0 ]; then
     log "❌ 预测执行失败"
     exit 1

@@ -1,7 +1,6 @@
 from __future__ import annotations
 """计划锁定 - 防止已锁定的决策被重写"""
 import fcntl
-import hashlib
 import json
 import os
 import time

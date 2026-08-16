@@ -8,8 +8,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
-import sys
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, asdict
 from datetime import datetime
 from pathlib import Path
 import re
@@ -96,6 +95,9 @@ class MatchReview:
     goal_framework_hit: bool | None = None   # 进球框架：预测大小球方向(≥3/≤2) vs 实际总进球
     prob_band: str = ""                      # 概率分段：<40% / 40-50% / 50-60% / 60%+
     freshness_risk: str = ""                 # 新鲜度风险：ok / watch / alert
+    # 预测时点（2026-08-16 起记录，供时点分桶评估）
+    as_of: str = ""                          # 预测生成时间（ISO，北京时间）
+    kickoff: str = ""                        # 开赛时间（ISO，北京时间）
 
 
 @dataclass
@@ -458,6 +460,8 @@ class PostMatchReviewer:
                 goal_framework_hit=_goal_framework_hit(pred, hs + as_),
                 prob_band=_prob_band(max(final_prob) if final_prob else 0),
                 freshness_risk=(pred.get("freshness") or {}).get("risk", ""),
+                as_of=pred.get("as_of", ""),
+                kickoff=pred.get("kickoff", ""),
             )
             reviews.append(review)
 

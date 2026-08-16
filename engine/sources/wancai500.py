@@ -253,10 +253,6 @@ class Wancai500Source(DataSource):
 
         return fixtures
 
-    def fetch_results(self, target_date: date) -> list[MatchResult]:
-        """500万不提供独立赛果接口，返回空（依赖竞彩或DJYY）"""
-        return []
-
     def fetch_odds_snapshot(self, target_date: date) -> list[OddsSnapshot]:
         """获取当前机构赔率快照（Bet365 + Pinnacle 双源）"""
         fixtures = self.fetch_fixtures(target_date)

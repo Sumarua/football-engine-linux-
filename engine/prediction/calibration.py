@@ -17,7 +17,6 @@ def devig_shin(odds: list[float]) -> list[float]:
     考虑内幕交易者对赔率的影响，求解参数 z。
     比简单 1/odds 归一化更准确地还原真实概率。
     """
-    n = len(odds)
     implied = [1.0 / o for o in odds]
     overround = sum(implied)
 

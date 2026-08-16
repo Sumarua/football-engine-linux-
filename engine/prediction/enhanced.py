@@ -3,7 +3,6 @@ from __future__ import annotations
 import csv
 import math
 import unicodedata
-from dataclasses import dataclass, field
 from pathlib import Path
 
 import numpy as np

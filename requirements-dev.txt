@@ -1,2 +1,3 @@
 # 开发/测试依赖（CI 测试 job 用；生产 requirements.txt 不动）
 pytest>=8.0
+ruff>=0.6

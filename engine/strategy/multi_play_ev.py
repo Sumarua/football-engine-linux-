@@ -331,7 +331,7 @@ def _actual_for_play(play: str, ah: int, aa: int) -> str | tuple:
     if play == "crs":
         return (min(ah, 9), min(aa, 9)) if False else (ah, aa)
     if play == "hafu":
-        hh, ha = 0, 0  # 半场比分在 predictions 里没有，跳过 hafu 回测
+        # 半场比分在 predictions 里没有，跳过 hafu 回测
         return None
     return None
 

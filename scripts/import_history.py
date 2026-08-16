@@ -1,6 +1,5 @@
 """导入 lottery-football 历史数据作为冷启动"""
 import csv
-import json
 import sys
 from pathlib import Path
 

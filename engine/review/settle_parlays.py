@@ -172,18 +172,24 @@ def build_settle_report(
 
     def _stats(rows: list[dict]) -> dict:
         settled = [r for r in rows if not r["pending"]]
+        pending = [r for r in rows if r["pending"]]
         won = [r for r in settled if r["won"]]
         stake = sum(r["stake"] for r in settled)
+        stake_committed = sum(r["stake"] for r in rows)
+        stake_pending = sum(r["stake"] for r in pending)
         ret = sum(r["return"] for r in settled)
         by_type = defaultdict(list)
         for r in settled:
             by_type[r["type"]].append(r)
         return {
             "n_tickets": len(rows),
+            "n_pending": len(pending),
             "n_settled": len(settled),
             "n_won": len(won),
             "hit_rate": round(len(won) / len(settled), 4) if settled else None,
             "stake": round(stake, 2),
+            "stake_committed": round(stake_committed, 2),
+            "stake_pending": round(stake_pending, 2),
             "return": round(ret, 2),
             "roi": round((ret - stake) / stake, 4) if stake else None,
             "avg_odds": round(sum(r["total_odds"] for r in settled) / len(settled), 2) if settled else None,

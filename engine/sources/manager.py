@@ -4,7 +4,6 @@ import hashlib
 import json
 from datetime import date, datetime
 from pathlib import Path
-from typing import Optional
 
 from .base import DataSource, Fixture, MatchResult, ImportManifest
 from .sporttery import SportterySource

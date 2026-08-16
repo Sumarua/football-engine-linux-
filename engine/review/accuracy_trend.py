@@ -8,7 +8,6 @@
   - verdict: 最近7天 vs 前7天 → 提升/持平/下降（诚实回答"是否在提升"）
 """
 import json
-from collections import defaultdict
 from datetime import date
 from pathlib import Path
 

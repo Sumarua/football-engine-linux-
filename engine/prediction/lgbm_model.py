@@ -8,8 +8,7 @@ from __future__ import annotations
   - 每周 GitHub Actions 自动重训（rolling window）
   - 冷启动: 样本不足时返回 None，不干扰 ensemble
 """
-import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
@@ -39,7 +38,7 @@ class LGBMConfig:
     train_window_days: int = 730  # 2年滚动窗口
     min_train_samples: int = 500  # 低于此数不训练，返回None
     # 特征开关
-    use_odds_features: bool = True
+    use_odds_features: bool = False  # 市场隔离：默认不使用竞彩目标市场赔率作特征
     use_xg_features: bool = True
     use_league_features: bool = True
     use_djyy_features: bool = True
@@ -237,6 +236,7 @@ def build_features(
     is_knockout: bool = False,
     rank_home: Optional[int] = None,
     rank_away: Optional[int] = None,
+    include_market_odds: bool = False,
 ) -> dict:
     """从原始数据构造标准特征字典
 
@@ -250,7 +250,9 @@ def build_features(
     features["elo_diff"] = elo_home - elo_away
 
     # 赔率隐含概率
-    if odds and all(o and o > 0 for o in odds):
+    # 市场隔离（P0）：目标市场（竞彩）赔率不应进入模型特征，否则等于用庄家价格预测庄家价格。
+    # 只有显式传入参考市场（如 Pinnacle）赔率时才允许开启。
+    if include_market_odds and odds and all(o and o > 0 for o in odds):
         raw_probs = [1.0 / o for o in odds]
         overround = sum(raw_probs)
         features["odds_home_impl"] = raw_probs[0] / overround
