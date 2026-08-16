@@ -2,6 +2,7 @@ from __future__ import annotations
 """数据源管理器 - fallback 链调度 + DJYY增强"""
 import hashlib
 import json
+import time
 from datetime import date, datetime
 from pathlib import Path
 
@@ -12,6 +13,10 @@ from .wancai500 import Wancai500Source
 from .djyy import DJYYSource
 from .espn import EspnSource
 from .team_match import match_pair
+
+
+# DJYY 增强是可选信号，不能因为第三方接口慢而拖垮整个预测流水线。
+DJYY_ENRICH_TIME_BUDGET = 60.0  # 秒
 
 
 class SourceManager:
@@ -342,6 +347,7 @@ class SourceManager:
         返回: {match_id: {model_probs, pinnacle_odds, xg, opening_odds}}
         """
         enrichment: dict[str, dict] = {}
+        deadline = time.monotonic() + DJYY_ENRICH_TIME_BUDGET
 
         try:
             djyy_fixtures = self._djyy.fetch_fixtures(target_date)
@@ -362,6 +368,9 @@ class SourceManager:
 
         # 逐场匹配并获取 comparison
         for fixture in fixtures:
+            if time.monotonic() > deadline:
+                break
+
             key = f"{fixture.home_team}_vs_{fixture.away_team}"
             djyy_id = djyy_map.get(key)
 
@@ -380,6 +389,8 @@ class SourceManager:
                 continue
 
             try:
+                if time.monotonic() > deadline:
+                    break
                 comparison = self._djyy.fetch_match_comparison(djyy_id)
                 if not comparison:
                     continue
@@ -390,65 +401,67 @@ class SourceManager:
                 # team_form: 提取近期真实xG均值 + 赛程密度
                 form_xg = None
                 rest_days = None
-                try:
-                    form = self._djyy.fetch_team_form(djyy_id, limit=5)
-                    if form and form.get("available"):
-                        home_fixtures = form.get("home", {}).get("fixtures", [])
-                        away_fixtures = form.get("away", {}).get("fixtures", [])
-                        home_xgs = [fx.get("xg") for fx in home_fixtures if fx.get("xg")]
-                        away_xgs = [fx.get("xg") for fx in away_fixtures if fx.get("xg")]
-                        if home_xgs or away_xgs:
-                            form_xg = {
-                                "home_avg": round(sum(home_xgs) / len(home_xgs), 3) if home_xgs else None,
-                                "away_avg": round(sum(away_xgs) / len(away_xgs), 3) if away_xgs else None,
-                                "home_n": len(home_xgs),
-                                "away_n": len(away_xgs),
-                            }
-                        # 赛程密度: 最近一场比赛距今天数
-                        rest_days = {}
-                        for side, fxs in [("home", home_fixtures), ("away", away_fixtures)]:
-                            dates = [fx.get("date") or fx.get("played_at", "")[:10]
-                                     for fx in fxs if fx.get("date") or fx.get("played_at")]
-                            if dates:
-                                last = max(dates)
-                                try:
-                                    last_dt = datetime.strptime(last, "%Y-%m-%d").date()
-                                    rest_days[side] = (target_date - last_dt).days
-                                except (ValueError, TypeError):
-                                    pass
-                        if not rest_days:
-                            rest_days = None
-                except Exception:
-                    pass
+                if time.monotonic() <= deadline:
+                    try:
+                        form = self._djyy.fetch_team_form(djyy_id, limit=5)
+                        if form and form.get("available"):
+                            home_fixtures = form.get("home", {}).get("fixtures", [])
+                            away_fixtures = form.get("away", {}).get("fixtures", [])
+                            home_xgs = [fx.get("xg") for fx in home_fixtures if fx.get("xg")]
+                            away_xgs = [fx.get("xg") for fx in away_fixtures if fx.get("xg")]
+                            if home_xgs or away_xgs:
+                                form_xg = {
+                                    "home_avg": round(sum(home_xgs) / len(home_xgs), 3) if home_xgs else None,
+                                    "away_avg": round(sum(away_xgs) / len(away_xgs), 3) if away_xgs else None,
+                                    "home_n": len(home_xgs),
+                                    "away_n": len(away_xgs),
+                                }
+                            # 赛程密度: 最近一场比赛距今天数
+                            rest_days = {}
+                            for side, fxs in [("home", home_fixtures), ("away", away_fixtures)]:
+                                dates = [fx.get("date") or fx.get("played_at", "")[:10]
+                                         for fx in fxs if fx.get("date") or fx.get("played_at")]
+                                if dates:
+                                    last = max(dates)
+                                    try:
+                                        last_dt = datetime.strptime(last, "%Y-%m-%d").date()
+                                        rest_days[side] = (target_date - last_dt).days
+                                    except (ValueError, TypeError):
+                                        pass
+                            if not rest_days:
+                                rest_days = None
+                    except Exception:
+                        pass
 
                 # 伤停: 提取缺阵球员 (影响攻击力评估)
                 injuries = None
-                try:
-                    info = self._djyy.fetch_match_info(djyy_id)
-                    if info and info.get("available"):
-                        inj_data = info.get("injuries") or {}
-                        home_inj = inj_data.get("home", [])
-                        away_inj = inj_data.get("away", [])
-                        if home_inj or away_inj:
-                            injuries = {
-                                "home_count": len(home_inj),
-                                "away_count": len(away_inj),
-                                # 前锋/中场缺阵影响更大
-                                "home_attackers": sum(
-                                    1 for p in home_inj
-                                    if p.get("position", "") in ("F", "M", "Forward", "Midfielder")
-                                    or "前锋" in p.get("position_zh", "")
-                                    or "中场" in p.get("position_zh", "")
-                                ),
-                                "away_attackers": sum(
-                                    1 for p in away_inj
-                                    if p.get("position", "") in ("F", "M", "Forward", "Midfielder")
-                                    or "前锋" in p.get("position_zh", "")
-                                    or "中场" in p.get("position_zh", "")
-                                ),
-                            }
-                except Exception:
-                    pass
+                if time.monotonic() <= deadline:
+                    try:
+                        info = self._djyy.fetch_match_info(djyy_id)
+                        if info and info.get("available"):
+                            inj_data = info.get("injuries") or {}
+                            home_inj = inj_data.get("home", [])
+                            away_inj = inj_data.get("away", [])
+                            if home_inj or away_inj:
+                                injuries = {
+                                    "home_count": len(home_inj),
+                                    "away_count": len(away_inj),
+                                    # 前锋/中场缺阵影响更大
+                                    "home_attackers": sum(
+                                        1 for p in home_inj
+                                        if p.get("position", "") in ("F", "M", "Forward", "Midfielder")
+                                        or "前锋" in p.get("position_zh", "")
+                                        or "中场" in p.get("position_zh", "")
+                                    ),
+                                    "away_attackers": sum(
+                                        1 for p in away_inj
+                                        if p.get("position", "") in ("F", "M", "Forward", "Midfielder")
+                                        or "前锋" in p.get("position_zh", "")
+                                        or "中场" in p.get("position_zh", "")
+                                    ),
+                                }
+                    except Exception:
+                        pass
 
                 enrichment[fixture.match_id] = {
                     "djyy_id": djyy_id,

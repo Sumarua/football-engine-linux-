@@ -62,7 +62,7 @@ class DJYYSource(DataSource):
         url = f"{DJYY_BASE}{path}"
         for attempt in range(retries):
             try:
-                resp = requests.get(url, params=params, headers=HEADERS, timeout=15)
+                resp = requests.get(url, params=params, headers=HEADERS, timeout=(3.05, 8))
                 resp.raise_for_status()
                 return resp.json()
             except (requests.RequestException, json.JSONDecodeError):
