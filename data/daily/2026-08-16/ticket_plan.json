@@ -269,7 +269,7 @@
           "away": "前进之鹰",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.21,
+          "prob": 0.207,
           "cal_prob": 0.1195,
           "odds": 11.0
         },
@@ -279,7 +279,7 @@
           "away": "哈马比",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.322,
+          "prob": 0.327,
           "cal_prob": 0.1195,
           "odds": 16.0
         }
@@ -302,7 +302,7 @@
           "away": "兹沃勒",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.252,
+          "prob": 0.25,
           "cal_prob": 0.1195,
           "odds": 10.0
         },
@@ -312,7 +312,7 @@
           "away": "哈马比",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.322,
+          "prob": 0.327,
           "cal_prob": 0.1195,
           "odds": 16.0
         }
@@ -335,9 +335,9 @@
           "away": "索尔纳",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.38,
+          "prob": 0.377,
           "cal_prob": 0.1195,
-          "odds": 9.5
+          "odds": 9.75
         },
         {
           "match": "2026-08-16_周日014",
@@ -345,19 +345,19 @@
           "away": "哈马比",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.322,
+          "prob": 0.327,
           "cal_prob": 0.1195,
           "odds": 16.0
         }
       ],
-      "total_odds": 152.0,
+      "total_odds": 156.0,
       "hit_prob": 0.0143,
       "stake": 2.0,
-      "potential": 304.0,
+      "potential": 312.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.4% × 赔率 152 倍 = EV +117%）"
+      "note": "两场比分都中才赢（校准命中 1.4% × 赔率 156 倍 = EV +123%）"
     },
     {
       "type": "比分3串1",
@@ -368,9 +368,9 @@
           "away": "索尔纳",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.38,
+          "prob": 0.377,
           "cal_prob": 0.1195,
-          "odds": 9.5
+          "odds": 9.75
         },
         {
           "match": "2026-08-16_周日008",
@@ -378,7 +378,7 @@
           "away": "兹沃勒",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.252,
+          "prob": 0.25,
           "cal_prob": 0.1195,
           "odds": 10.0
         },
@@ -388,19 +388,19 @@
           "away": "前进之鹰",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.21,
+          "prob": 0.207,
           "cal_prob": 0.1195,
           "odds": 11.0
         }
       ],
-      "total_odds": 1045.0,
+      "total_odds": 1072.5,
       "hit_prob": 0.0017,
       "stake": 2.0,
-      "potential": 2090.0,
+      "potential": 2145.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "三场比分全中才赢（赔率 1045 倍，校准命中 0.17%）"
+      "note": "三场比分全中才赢（赔率 1072 倍，校准命中 0.17%）"
     },
     {
       "type": "比分3串4(容错)",
@@ -411,9 +411,9 @@
           "away": "索尔纳",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.38,
+          "prob": 0.377,
           "cal_prob": 0.1195,
-          "odds": 9.5
+          "odds": 9.75
         },
         {
           "match": "2026-08-16_周日008",
@@ -421,7 +421,7 @@
           "away": "兹沃勒",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.252,
+          "prob": 0.25,
           "cal_prob": 0.1195,
           "odds": 10.0
         },
@@ -431,19 +431,19 @@
           "away": "前进之鹰",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.21,
+          "prob": 0.207,
           "cal_prob": 0.1195,
           "odds": 11.0
         }
       ],
-      "total_odds": 1045.0,
+      "total_odds": 1072.5,
       "hit_prob": 0.0017,
       "stake": 8.0,
-      "potential": 2709.0,
+      "potential": 2774.5,
       "worst_win": 220.0,
       "n_bets": 4,
       "odds_source": "official",
-      "note": "3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥220，全中≈¥2709"
+      "note": "3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥220，全中≈¥2774"
     }
   ],
   "parlay_calibration": {
