@@ -1,13 +1,13 @@
 {
   "date": "2026-08-16",
-  "n_matches": 25,
-  "hit_rate": 0.36,
+  "n_matches": 26,
+  "hit_rate": 0.3462,
   "hits": 9,
   "source_brier": {
-    "model": 0.7535,
-    "market": 0.6585,
+    "model": 0.7614,
+    "market": 0.6738,
     "djyy": null,
-    "final": 0.6462
+    "final": 0.6589
   },
   "by_league": {
     "日乙": {
@@ -53,10 +53,10 @@
       "avg_brier": 0.5346
     },
     "葡超": {
-      "n": 2,
+      "n": 3,
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
-      "avg_brier": 0.5404
+      "avg_brier": 0.6856
     },
     "英冠": {
       "n": 1,
@@ -85,10 +85,10 @@
       "avg_brier": 0.7333
     },
     "mid": {
-      "n": 17,
-      "hit_rate": 0.4118,
-      "wilson_lower": 0.2161,
-      "avg_brier": 0.636
+      "n": 18,
+      "hit_rate": 0.3889,
+      "wilson_lower": 0.203,
+      "avg_brier": 0.6548
     },
     "high": {
       "n": 1,
@@ -117,10 +117,10 @@
       "avg_brier": 0.6267
     },
     "3.0+": {
-      "n": 4,
+      "n": 5,
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
-      "avg_brier": 0.6396
+      "avg_brier": 0.7068
     }
   },
   "score_stats": {
@@ -148,19 +148,19 @@
     }
   },
   "market_signal_stats": {
-    "n": 25,
+    "n": 26,
     "hits": 8
   },
   "layered": {
-    "log_loss_final": 1.074,
+    "log_loss_final": 1.0955,
     "goal_framework": {
-      "n": 25,
+      "n": 26,
       "hits": 11
     },
     "prob_bands": {
       "40-50%": {
-        "n": 16,
-        "hit_rate": 0.4375
+        "n": 17,
+        "hit_rate": 0.4118
       },
       "50-60%": {
         "n": 1,
@@ -177,8 +177,8 @@
     },
     "freshness_groups": {
       "ok": {
-        "n": 18,
-        "hit_rate": 0.3889
+        "n": 19,
+        "hit_rate": 0.3684
       },
       "watch": {
         "n": 7,
@@ -199,7 +199,7 @@
       "suggested_action": "increase home_adv_weight"
     }
   ],
-  "total_pnl": 0.0,
-  "generated_at": "2026-08-16T20:58:33.921731",
-  "sha256": "de9736e48d700eea1588fa6d764e4e6d"
+  "total_pnl": -50.0,
+  "generated_at": "2026-08-16T21:34:56.772117",
+  "sha256": "2235bcd7c10249e9a029c0014650352a"
 }
