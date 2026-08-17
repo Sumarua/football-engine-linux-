@@ -1403,9 +1403,8 @@ def _backfill_sina_results(
                      ("away", p.get("away_win_prob", 0))],
                     key=lambda x: x[1],
                 )
-                if p.get("draw_alert") == "league_draw":
-                    best_sel = ("draw", p.get("draw_prob", 0))
-                # balanced/cold 改判已停用（2026-08-13 实盘证伪，见 _pick_direction）
+                # R1 league_draw 改判已停用（2026-08-17 实盘证伪：8/13 起 8 场 R1 改判 0 中，
+                # 5 场把正确 argmax 改错。见 _pick_direction。draw_alert 仅作展示标记）
                 p["direction"] = best_sel[0]
                 p["direction_correct"] = best_sel[0] == actual
                 print(f"  ✓ 补结算回写 {back_date}: {r.home_team} {hs}-{as_} {r.away_team} "
@@ -1912,21 +1911,14 @@ def run_settlement(target_date: date):
             actual = "draw"
         else:
             actual = "away"
-        # 检查是否命中（基于最大概率选项 + 平局改判，与 direction 口径一致）
+        # 检查是否命中（纯 argmax；R1 league_draw 改判 2026-08-17 停用，
+        # 实盘证伪：8/13 起 8 场 0 中，5 场把正确 argmax 改错，见 _pick_direction）
         best_sel = max(
             [("home", pred["home_win_prob"]),
              ("draw", pred["draw_prob"]),
              ("away", pred["away_win_prob"])],
             key=lambda x: x[1],
         )
-        if pred.get("draw_alert") == "league_draw":
-            best_sel = ("draw", pred.get("draw_prob", 0))
-        elif pred.get("draw_alert") and best_sel[0] != "draw":
-            _best_p = best_sel[1]
-            _draw_p = pred.get("draw_prob", 0)
-            if _best_p - _draw_p < 0.08 and _draw_p >= 0.26:
-                best_sel = ("draw", _draw_p)
-        won = best_sel[0] == actual
         # 联赛参数记录：方向命中反馈（用本循环已算出的 won，避免 direction 未回写时误判）
         lg_name = _canon_league(pred.get("competition") or r.competition or "未知")
         try:
@@ -2041,11 +2033,10 @@ def run_settlement(target_date: date):
                  ("away", pred["away_win_prob"])],
                 key=lambda x: x[1],
             )
-            # 平局盲点修复：R1(2026-08-12) league_draw（高平联赛+市场P∈[0.20,0.30)）
-            # 无脑改判，预测/结算同口径。balanced/cold 已停用（2026-08-13 实盘证伪：
-            # 13 场改判仅 3 场改对，纯 argmax 命中率 44.2% > 改判后 42.6%）
-            if pred.get("draw_alert") == "league_draw":
-                best_sel = ("draw", pred.get("draw_prob", 0))
+            # 平局盲点修复已全部停用（2026-08-17，实盘证伪同模式）：
+            # balanced/cold（8/13 停用：13 场改判仅 3 场改对）+ R1 league_draw
+            # （8/17 停用：8/13 起 8 场 0 中，5 场把正确 argmax 改错）。
+            # 统一纯 argmax，draw_alert 仅作展示标记，见 _pick_direction。
             if r.home_score > r.away_score:
                 actual = "home"
             elif r.home_score == r.away_score:

@@ -34,7 +34,7 @@ def _canon_league(lg: str | None) -> str:
 
 
 def _pick_direction(h: float, d: float, a: float, draw_alert=None) -> str:
-    """从最终概率选方向（argmax），R1 触发时改判平局。
+    """从最终概率选方向（argmax）。
 
     2026-08-05 已验证：市场平局改判（market_d≥0.30 且 d≥0.22）回测 112 场
     命中率 43.8%→42.9% 不升反降 → 维持原逻辑，勿再盲目调参（walk_forward 二次验证）。
@@ -49,9 +49,14 @@ def _pick_direction(h: float, d: float, a: float, draw_alert=None) -> str:
     无信息增益。纯 argmax 命中率 44.2% > 改判后 42.6%（+1.5pp）。
     只保留 R1（league_draw，有独立回测支撑），balanced/cold 仅作
     展示标记不再触发方向改判。
+
+    2026-08-17 停用 R1 league_draw 改判（实盘证伪，与 balanced/cold 同模式）：
+    8/13 起实盘 8 场 R1 改判 0 中（0%），其中 5 场模型原始 argmax 方向
+    正确、被改判改错；8/16 单日 5 场 R1 全错（3.0+ 高赔率段全灭），
+    命中率 33.3%（vs 8/15 无 R1 触发时 59.3%）。回测 +2.9pp 在实盘
+    连续翻车——回测切半稳健 ≠ 实盘有效（样本 137 场太小 + 联赛结构
+    漂移）。draw_alert 仅保留作页面展示标记，不再影响方向。
     """
-    if draw_alert == "league_draw":
-        return "draw"
     return max(("home", h), ("draw", d), ("away", a), key=lambda x: x[1])[0]
 
 

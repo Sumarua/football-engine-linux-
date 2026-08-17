@@ -3410,9 +3410,9 @@ def _results_section(results, predictions, review_ledger=None, target_date=""):
             predicted = "draw"
         else:
             predicted = "away"
-        # draw_alert 平局改判（与 _pick_direction 同规则：2026-08-13 起仅 R1）
-        if _alert == "league_draw":
-            predicted = "draw"  # R1: 高平联赛 + 市场平局P∈[0.20,0.30) 无脑改判
+        # draw_alert 平局改判已全部停用（2026-08-17，实盘证伪：
+        # balanced/cold 8/13 停用、R1 league_draw 8/17 停用——8/13 起 8 场
+        # 0 中，5 场把正确 argmax 改错）。统一纯 argmax 展示。
         pred_label = {"home": "主胜", "draw": "平局", "away": "客胜"}[predicted]
 
         hit = predicted == actual

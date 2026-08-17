@@ -399,11 +399,10 @@ class PostMatchReviewer:
             # （2026-08-12 修复：此前账本用纯 argmax，未同步 draw_alert 平局改判，
             #  导致 9 条账本 hit 与 predictions.direction_correct 分裂；R1 场次
             #  结算时账本会记错 hit——平衡盘口触发时必爆）
-            # （2026-08-13 再修：balanced/cold 改判实盘证伪已停用，只保留 R1）
+            # （2026-08-17 三修：R1 league_draw 改判实盘证伪已停用（8/13 起 8 场
+            #  0 中，5 场把正确 argmax 改错）。全部平局改判停用，统一纯 argmax，
+            #  与 _pick_direction / 结算主循环口径一致。draw_alert 仅作展示标记）
             best_sel = final_prob.index(max(final_prob))
-            _alert = pred.get("draw_alert")
-            if _alert == "league_draw":
-                best_sel = 1  # R1: 高平联赛 + 市场平局P∈[0.20,0.30) 无脑改判平局
             _sel_odds_key = ("home_odds", "draw_odds", "away_odds")[best_sel]
             sel_odds = pred.get(_sel_odds_key) or 2.0
             band = self._odds_band(sel_odds)
