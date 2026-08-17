@@ -1,13 +1,13 @@
 {
   "date": "2026-08-16",
-  "n_matches": 26,
-  "hit_rate": 0.3462,
+  "n_matches": 27,
+  "hit_rate": 0.3333,
   "hits": 9,
   "source_brier": {
-    "model": 0.7614,
-    "market": 0.6738,
+    "model": 0.7669,
+    "market": 0.6709,
     "djyy": null,
-    "final": 0.6589
+    "final": 0.6572
   },
   "by_league": {
     "日乙": {
@@ -75,14 +75,20 @@
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
       "avg_brier": 0.9429
+    },
+    "美职": {
+      "n": 1,
+      "hit_rate": 0.0,
+      "wilson_lower": 0.0,
+      "avg_brier": 0.612
     }
   },
   "by_confidence_tier": {
     "low": {
-      "n": 7,
-      "hit_rate": 0.1429,
-      "wilson_lower": 0.0257,
-      "avg_brier": 0.7333
+      "n": 8,
+      "hit_rate": 0.125,
+      "wilson_lower": 0.0224,
+      "avg_brier": 0.7181
     },
     "mid": {
       "n": 18,
@@ -99,10 +105,10 @@
   },
   "by_odds_band": {
     "2.0-3.0": {
-      "n": 8,
-      "hit_rate": 0.25,
-      "wilson_lower": 0.0715,
-      "avg_brier": 0.7174
+      "n": 9,
+      "hit_rate": 0.2222,
+      "wilson_lower": 0.0632,
+      "avg_brier": 0.7057
     },
     "1.5-2.0": {
       "n": 8,
@@ -148,14 +154,14 @@
     }
   },
   "market_signal_stats": {
-    "n": 26,
-    "hits": 8
+    "n": 27,
+    "hits": 9
   },
   "layered": {
-    "log_loss_final": 1.0955,
+    "log_loss_final": 1.0924,
     "goal_framework": {
-      "n": 26,
-      "hits": 11
+      "n": 27,
+      "hits": 12
     },
     "prob_bands": {
       "40-50%": {
@@ -171,8 +177,8 @@
         "hit_rate": 1.0
       },
       "<40%": {
-        "n": 7,
-        "hit_rate": 0.1429
+        "n": 8,
+        "hit_rate": 0.125
       }
     },
     "freshness_groups": {
@@ -181,8 +187,8 @@
         "hit_rate": 0.3684
       },
       "watch": {
-        "n": 7,
-        "hit_rate": 0.2857
+        "n": 8,
+        "hit_rate": 0.25
       }
     }
   },
@@ -200,6 +206,6 @@
     }
   ],
   "total_pnl": -50.0,
-  "generated_at": "2026-08-16T23:57:08.310446",
-  "sha256": "6463501fcecfa661d60e5a7b3390bdf2"
+  "generated_at": "2026-08-17T01:11:52.375792",
+  "sha256": "df38320787c53dcb77c20b5287139c27"
 }

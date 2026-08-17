@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-16",
-  "total_matches": 277,
+  "generated_at": "2026-08-17",
+  "total_matches": 278,
   "date_range": [
     "2026-07-19",
     "2026-08-16"
   ],
   "overall": {
-    "hit_rate": 0.4513,
-    "brier_final": 0.649,
-    "brier_model": 0.6935,
-    "brier_market": 0.6295,
+    "hit_rate": 0.4496,
+    "brier_final": 0.6488,
+    "brier_model": 0.6943,
+    "brier_market": 0.6294,
     "brier_djyy": 0.646
   },
   "daily": [
@@ -351,21 +351,21 @@
     },
     {
       "date": "2026-08-16",
-      "n": 26,
+      "n": 27,
       "hits": 9,
-      "hit_rate": 0.3462,
-      "cum_hit_rate": 0.4513,
-      "brier_final": 0.6589,
-      "brier_model": 0.7614,
-      "brier_market": 0.6738,
+      "hit_rate": 0.3333,
+      "cum_hit_rate": 0.4496,
+      "brier_final": 0.6572,
+      "brier_model": 0.7669,
+      "brier_market": 0.6709,
       "brier_djyy": null,
       "pnl": -50.0
     }
   ],
   "rolling7": {
-    "n": 96,
-    "hit_rate": 0.4688,
-    "brier_final": 0.6705,
+    "n": 97,
+    "hit_rate": 0.4639,
+    "brier_final": 0.6702,
     "pnl": -600.0
   },
   "prev7": {
@@ -515,6 +515,12 @@
       "brier_final": 0.7053
     },
     {
+      "layer": "美职",
+      "n": 2,
+      "hit_rate": 0.0,
+      "brier_final": 0.6804
+    },
+    {
       "layer": "亚冠精英",
       "n": 1,
       "hit_rate": 0.0,
@@ -533,12 +539,6 @@
       "brier_final": 0.5183
     },
     {
-      "layer": "美职",
-      "n": 1,
-      "hit_rate": 0.0,
-      "brier_final": 0.7487
-    },
-    {
       "layer": "英社区盾",
       "n": 1,
       "hit_rate": 1.0,
@@ -554,9 +554,9 @@
     },
     {
       "layer": "2.0-3.0",
-      "n": 87,
-      "hit_rate": 0.4138,
-      "brier_final": 0.6578
+      "n": 88,
+      "hit_rate": 0.4091,
+      "brier_final": 0.6573
     },
     {
       "layer": "1.0-1.5",
@@ -580,9 +580,9 @@
     },
     {
       "layer": "low",
-      "n": 87,
-      "hit_rate": 0.4138,
-      "brier_final": 0.6552
+      "n": 88,
+      "hit_rate": 0.4091,
+      "brier_final": 0.6547
     },
     {
       "layer": "high",
