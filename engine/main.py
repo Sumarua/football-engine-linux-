@@ -1919,6 +1919,7 @@ def run_settlement(target_date: date):
              ("away", pred["away_win_prob"])],
             key=lambda x: x[1],
         )
+        won = best_sel[0] == actual
         # 联赛参数记录：方向命中反馈（用本循环已算出的 won，避免 direction 未回写时误判）
         lg_name = _canon_league(pred.get("competition") or r.competition or "未知")
         try:
