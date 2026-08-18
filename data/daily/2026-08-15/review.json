@@ -122,17 +122,11 @@
       "wilson_lower": 0.4343,
       "avg_brier": 0.5781
     },
-    "3.0+": {
-      "n": 1,
-      "hit_rate": 0.0,
-      "wilson_lower": 0.0,
-      "avg_brier": 0.7347
-    },
     "1.0-1.5": {
-      "n": 3,
-      "hit_rate": 0.6667,
-      "wilson_lower": 0.2077,
-      "avg_brier": 0.6202
+      "n": 4,
+      "hit_rate": 0.5,
+      "wilson_lower": 0.15,
+      "avg_brier": 0.6488
     }
   },
   "score_stats": {
@@ -193,6 +187,6 @@
   },
   "biases": [],
   "total_pnl": -50.0,
-  "generated_at": "2026-08-17T15:39:57.393497",
-  "sha256": "2df3a2789bb4d52f4490fd69f91c175a"
+  "generated_at": "2026-08-18T02:11:49.818066",
+  "sha256": "a0750deca518d9ce43b0ade119bfd8fb"
 }

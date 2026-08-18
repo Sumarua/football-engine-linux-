@@ -1,8 +1,8 @@
 {
   "date": "2026-08-16",
   "n_matches": 27,
-  "hit_rate": 0.3333,
-  "hits": 9,
+  "hit_rate": 0.4444,
+  "hits": 12,
   "source_brier": {
     "model": 0.7669,
     "market": 0.6709,
@@ -48,14 +48,14 @@
     },
     "芬超": {
       "n": 1,
-      "hit_rate": 0.0,
-      "wilson_lower": 0.0,
+      "hit_rate": 1.0,
+      "wilson_lower": 0.2065,
       "avg_brier": 0.5346
     },
     "葡超": {
       "n": 3,
-      "hit_rate": 0.0,
-      "wilson_lower": 0.0,
+      "hit_rate": 0.6667,
+      "wilson_lower": 0.2077,
       "avg_brier": 0.6856
     },
     "英冠": {
@@ -86,14 +86,14 @@
   "by_confidence_tier": {
     "low": {
       "n": 8,
-      "hit_rate": 0.125,
-      "wilson_lower": 0.0224,
+      "hit_rate": 0.25,
+      "wilson_lower": 0.0715,
       "avg_brier": 0.7181
     },
     "mid": {
       "n": 18,
-      "hit_rate": 0.3889,
-      "wilson_lower": 0.203,
+      "hit_rate": 0.5,
+      "wilson_lower": 0.2903,
       "avg_brier": 0.6548
     },
     "high": {
@@ -105,16 +105,16 @@
   },
   "by_odds_band": {
     "2.0-3.0": {
-      "n": 9,
-      "hit_rate": 0.2222,
-      "wilson_lower": 0.0632,
-      "avg_brier": 0.7057
+      "n": 11,
+      "hit_rate": 0.3636,
+      "wilson_lower": 0.1517,
+      "avg_brier": 0.6783
     },
     "1.5-2.0": {
-      "n": 8,
-      "hit_rate": 0.625,
-      "wilson_lower": 0.3057,
-      "avg_brier": 0.5906
+      "n": 10,
+      "hit_rate": 0.6,
+      "wilson_lower": 0.3127,
+      "avg_brier": 0.6206
     },
     "1.0-1.5": {
       "n": 5,
@@ -123,10 +123,10 @@
       "avg_brier": 0.6267
     },
     "3.0+": {
-      "n": 5,
+      "n": 1,
       "hit_rate": 0.0,
       "wilson_lower": 0.0,
-      "avg_brier": 0.7068
+      "avg_brier": 0.9429
     }
   },
   "score_stats": {
@@ -166,7 +166,7 @@
     "prob_bands": {
       "40-50%": {
         "n": 17,
-        "hit_rate": 0.4118
+        "hit_rate": 0.5294
       },
       "50-60%": {
         "n": 1,
@@ -178,17 +178,17 @@
       },
       "<40%": {
         "n": 8,
-        "hit_rate": 0.125
+        "hit_rate": 0.25
       }
     },
     "freshness_groups": {
       "ok": {
         "n": 19,
-        "hit_rate": 0.3684
+        "hit_rate": 0.4211
       },
       "watch": {
         "n": 8,
-        "hit_rate": 0.25
+        "hit_rate": 0.5
       }
     }
   },
@@ -206,6 +206,6 @@
     }
   ],
   "total_pnl": -50.0,
-  "generated_at": "2026-08-17T15:39:51.030354",
-  "sha256": "5b7b38c3acb48c8d21652d790ea44ded"
+  "generated_at": "2026-08-18T02:11:43.332657",
+  "sha256": "ad52c438a867b0f87f4a5153d7d9284d"
 }

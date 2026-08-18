@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-17",
-  "total_matches": 278,
+  "generated_at": "2026-08-18",
+  "total_matches": 284,
   "date_range": [
     "2026-07-19",
-    "2026-08-16"
+    "2026-08-17"
   ],
   "overall": {
-    "hit_rate": 0.4496,
-    "brier_final": 0.6488,
-    "brier_model": 0.6943,
-    "brier_market": 0.6294,
+    "hit_rate": 0.4472,
+    "brier_final": 0.6487,
+    "brier_model": 0.6922,
+    "brier_market": 0.63,
     "brier_djyy": 0.646
   },
   "daily": [
@@ -360,21 +360,33 @@
       "brier_market": 0.6709,
       "brier_djyy": null,
       "pnl": -50.0
+    },
+    {
+      "date": "2026-08-17",
+      "n": 6,
+      "hits": 2,
+      "hit_rate": 0.3333,
+      "cum_hit_rate": 0.4472,
+      "brier_final": 0.645,
+      "brier_model": 0.5978,
+      "brier_market": 0.6564,
+      "brier_djyy": null,
+      "pnl": 0.0
     }
   ],
   "rolling7": {
-    "n": 97,
-    "hit_rate": 0.4639,
-    "brier_final": 0.6702,
-    "pnl": -600.0
+    "n": 100,
+    "hit_rate": 0.47,
+    "brier_final": 0.644,
+    "pnl": -450.0
   },
   "prev7": {
-    "n": 76,
-    "hit_rate": 0.4474,
-    "brier_final": 0.6194,
-    "pnl": -163.6
+    "n": 75,
+    "hit_rate": 0.4133,
+    "brier_final": 0.6666,
+    "pnl": -313.6
   },
-  "verdict": "持平（±3pt 内）",
+  "verdict": "命中率提升 +6pt",
   "by_league": [
     {
       "layer": "挪超",
@@ -384,9 +396,15 @@
     },
     {
       "layer": "芬超",
+      "n": 23,
+      "hit_rate": 0.3043,
+      "brier_final": 0.723
+    },
+    {
+      "layer": "瑞典超",
       "n": 22,
       "hit_rate": 0.3182,
-      "brier_final": 0.7224
+      "brier_final": 0.7441
     },
     {
       "layer": "K1联赛",
@@ -399,12 +417,6 @@
       "n": 22,
       "hit_rate": 0.5,
       "brier_final": 0.6127
-    },
-    {
-      "layer": "瑞典超",
-      "n": 21,
-      "hit_rate": 0.2857,
-      "brier_final": 0.7606
     },
     {
       "layer": "欧罗巴",
@@ -420,15 +432,15 @@
     },
     {
       "layer": "巴甲",
-      "n": 16,
-      "hit_rate": 0.3125,
-      "brier_final": 0.7051
+      "n": 17,
+      "hit_rate": 0.2941,
+      "brier_final": 0.7002
     },
     {
       "layer": "葡超",
-      "n": 16,
-      "hit_rate": 0.375,
-      "brier_final": 0.6487
+      "n": 17,
+      "hit_rate": 0.4118,
+      "brier_final": 0.6436
     },
     {
       "layer": "美职联",
@@ -473,16 +485,22 @@
       "brier_final": 0.6257
     },
     {
+      "layer": "英冠",
+      "n": 6,
+      "hit_rate": 0.1667,
+      "brier_final": 0.7459
+    },
+    {
       "layer": "解放者杯",
       "n": 5,
       "hit_rate": 0.0,
       "brier_final": 0.7397
     },
     {
-      "layer": "英冠",
+      "layer": "西甲",
       "n": 5,
-      "hit_rate": 0.2,
-      "brier_final": 0.7335
+      "hit_rate": 0.6,
+      "brier_final": 0.5804
     },
     {
       "layer": "荷乙",
@@ -501,12 +519,6 @@
       "n": 4,
       "hit_rate": 0.75,
       "brier_final": 0.6154
-    },
-    {
-      "layer": "西甲",
-      "n": 4,
-      "hit_rate": 0.75,
-      "brier_final": 0.5398
     },
     {
       "layer": "韩职",
@@ -548,21 +560,21 @@
   "by_odds_band": [
     {
       "layer": "1.5-2.0",
-      "n": 96,
-      "hit_rate": 0.4375,
-      "brier_final": 0.6698
+      "n": 97,
+      "hit_rate": 0.433,
+      "brier_final": 0.6705
     },
     {
       "layer": "2.0-3.0",
-      "n": 88,
-      "hit_rate": 0.4091,
-      "brier_final": 0.6573
+      "n": 91,
+      "hit_rate": 0.4066,
+      "brier_final": 0.6588
     },
     {
       "layer": "1.0-1.5",
-      "n": 69,
-      "hit_rate": 0.5797,
-      "brier_final": 0.608
+      "n": 71,
+      "hit_rate": 0.5775,
+      "brier_final": 0.6052
     },
     {
       "layer": "3.0+",
@@ -574,15 +586,15 @@
   "by_conf_tier": [
     {
       "layer": "mid",
-      "n": 145,
-      "hit_rate": 0.4828,
-      "brier_final": 0.6272
+      "n": 148,
+      "hit_rate": 0.4797,
+      "brier_final": 0.6264
     },
     {
       "layer": "low",
-      "n": 88,
-      "hit_rate": 0.4091,
-      "brier_final": 0.6547
+      "n": 91,
+      "hit_rate": 0.4066,
+      "brier_final": 0.6563
     },
     {
       "layer": "high",
