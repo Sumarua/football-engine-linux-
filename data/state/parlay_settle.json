@@ -5641,6 +5641,206 @@
             "hit": null
           }
         ]
+      },
+      {
+        "date": "2026-08-18",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 144.5,
+        "total_odds": 72.25,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-18_周二002",
+            "home": "索列夫",
+            "away": "雅典AEK",
+            "sel": null,
+            "score": "1-0",
+            "odds": 8.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-18_周二004",
+            "home": "费内巴切",
+            "away": "里昂",
+            "sel": null,
+            "score": "1-0",
+            "odds": 8.5,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-18",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 238.0,
+        "total_odds": 119.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-18_周二002",
+            "home": "索列夫",
+            "away": "雅典AEK",
+            "sel": null,
+            "score": "1-0",
+            "odds": 8.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-18_周二003",
+            "home": "萨迪纳摩",
+            "away": "维京",
+            "sel": null,
+            "score": "0-1",
+            "odds": 14.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-18",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 238.0,
+        "total_odds": 119.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-18_周二004",
+            "home": "费内巴切",
+            "away": "里昂",
+            "sel": null,
+            "score": "1-0",
+            "odds": 8.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-18_周二003",
+            "home": "萨迪纳摩",
+            "away": "维京",
+            "sel": null,
+            "score": "0-1",
+            "odds": 14.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-18",
+        "type": "比分3串1",
+        "stake": 2.0,
+        "potential": 2023.0,
+        "total_odds": 1011.5,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-18_周二002",
+            "home": "索列夫",
+            "away": "雅典AEK",
+            "sel": null,
+            "score": "1-0",
+            "odds": 8.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-18_周二004",
+            "home": "费内巴切",
+            "away": "里昂",
+            "sel": null,
+            "score": "1-0",
+            "odds": 8.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-18_周二003",
+            "home": "萨迪纳摩",
+            "away": "维京",
+            "sel": null,
+            "score": "0-1",
+            "odds": 14.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-18",
+        "type": "比分3串4(容错)",
+        "stake": 8.0,
+        "potential": 2643.5,
+        "total_odds": 1011.5,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-18_周二002",
+            "home": "索列夫",
+            "away": "雅典AEK",
+            "sel": null,
+            "score": "1-0",
+            "odds": 8.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-18_周二004",
+            "home": "费内巴切",
+            "away": "里昂",
+            "sel": null,
+            "score": "1-0",
+            "odds": 8.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-18_周二003",
+            "home": "萨迪纳摩",
+            "away": "维京",
+            "sel": null,
+            "score": "0-1",
+            "odds": 14.0,
+            "hit": null
+          }
+        ]
       }
     ]
   },
@@ -12354,6 +12554,229 @@
       "score_parlay": {
         "stats": null,
         "tickets": []
+      }
+    },
+    "2026-08-18": {
+      "parlay": {
+        "stats": null,
+        "tickets": []
+      },
+      "score_parlay": {
+        "stats": {
+          "n_tickets": 5,
+          "n_settled": 0,
+          "n_won": 0,
+          "hit_rate": null,
+          "stake": 0,
+          "return": 0,
+          "roi": null,
+          "avg_odds": null,
+          "by_type": {},
+          "leg_hit_rate": null,
+          "n_legs_settled": 0
+        },
+        "tickets": [
+          {
+            "date": "2026-08-18",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 144.5,
+            "total_odds": 72.25,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-18_周二002",
+                "home": "索列夫",
+                "away": "雅典AEK",
+                "sel": null,
+                "score": "1-0",
+                "odds": 8.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-18_周二004",
+                "home": "费内巴切",
+                "away": "里昂",
+                "sel": null,
+                "score": "1-0",
+                "odds": 8.5,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-18",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 238.0,
+            "total_odds": 119.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-18_周二002",
+                "home": "索列夫",
+                "away": "雅典AEK",
+                "sel": null,
+                "score": "1-0",
+                "odds": 8.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-18_周二003",
+                "home": "萨迪纳摩",
+                "away": "维京",
+                "sel": null,
+                "score": "0-1",
+                "odds": 14.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-18",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 238.0,
+            "total_odds": 119.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-18_周二004",
+                "home": "费内巴切",
+                "away": "里昂",
+                "sel": null,
+                "score": "1-0",
+                "odds": 8.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-18_周二003",
+                "home": "萨迪纳摩",
+                "away": "维京",
+                "sel": null,
+                "score": "0-1",
+                "odds": 14.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-18",
+            "type": "比分3串1",
+            "stake": 2.0,
+            "potential": 2023.0,
+            "total_odds": 1011.5,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-18_周二002",
+                "home": "索列夫",
+                "away": "雅典AEK",
+                "sel": null,
+                "score": "1-0",
+                "odds": 8.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-18_周二004",
+                "home": "费内巴切",
+                "away": "里昂",
+                "sel": null,
+                "score": "1-0",
+                "odds": 8.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-18_周二003",
+                "home": "萨迪纳摩",
+                "away": "维京",
+                "sel": null,
+                "score": "0-1",
+                "odds": 14.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-18",
+            "type": "比分3串4(容错)",
+            "stake": 8.0,
+            "potential": 2643.5,
+            "total_odds": 1011.5,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-18_周二002",
+                "home": "索列夫",
+                "away": "雅典AEK",
+                "sel": null,
+                "score": "1-0",
+                "odds": 8.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-18_周二004",
+                "home": "费内巴切",
+                "away": "里昂",
+                "sel": null,
+                "score": "1-0",
+                "odds": 8.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-18_周二003",
+                "home": "萨迪纳摩",
+                "away": "维京",
+                "sel": null,
+                "score": "0-1",
+                "odds": 14.0,
+                "hit": null
+              }
+            ]
+          }
+        ]
       }
     }
   }
