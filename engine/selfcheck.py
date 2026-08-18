@@ -166,9 +166,16 @@ def main() -> int:
         print(f"::error::关键字段全缺 {len(_critical)} 条，数据流断裂，中止（no-bet）")
         return 2
 
+    # 2026-08-18 修复：普通告警只留痕，不阻断 workflow。
+    # 此前 `if all_alerts: return 1` 让任何告警（含"当天 predictions.json
+    # 不存在"——凌晨数据未出属正常）都以退出码 1 失败，bash -e 直接中止
+    # step，导致 8/17 22:43 起 workflow 连续失败（每 30 分钟红一次）。
+    # 真正的数据流断裂由上方 --fail-on-critical 的 return 2 负责，
+    # 普通告警（历史留痕 + 当天数据未出）一律返回 0。
     if all_alerts:
-        return 1
-    print(f"数据完整性自检通过（{len(days)} 天无异常）")
+        print(f"数据完整性自检完成（{len(days)} 天，{len(all_alerts)} 条告警，非致命）")
+    else:
+        print(f"数据完整性自检通过（{len(days)} 天无异常）")
     return 0
 
 
