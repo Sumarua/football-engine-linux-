@@ -6,7 +6,53 @@
   "expected_roi": 0.0,
   "bankroll": 4236.390600000001,
   "breaker_multiplier": 1.0,
-  "parlay": [],
+  "parlay": [
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-19_周三001",
+          "home": "安养FC",
+          "away": "济州SK",
+          "league": "韩国杯",
+          "sel": "away",
+          "odds": 2.24,
+          "prob": 0.403,
+          "cal_prob": 0.486,
+          "market_prob": 0.395,
+          "source": "fusion",
+          "hit_prob": 0.486
+        },
+        {
+          "match": "2026-08-19_周三007",
+          "home": "奈梅亨",
+          "away": "博德闪耀",
+          "league": "欧冠",
+          "sel": "away",
+          "odds": 2.2,
+          "prob": 0.403,
+          "cal_prob": 0.486,
+          "market_prob": 0.403,
+          "source": "fusion",
+          "hit_prob": 0.486
+        }
+      ],
+      "total_odds": 4.93,
+      "model_ev": -0.4,
+      "cal_ev": 2.54,
+      "cal_roi": 0.1664,
+      "market_ev": -0.43,
+      "market_roi": -0.2156,
+      "hit_prob_cal": 0.237,
+      "recommended": true,
+      "stake": 15.25,
+      "n_bets": 1,
+      "potential": 75.15,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    }
+  ],
   "score_parlay": [],
   "parlay_calibration": {
     "overall": 0.441,
