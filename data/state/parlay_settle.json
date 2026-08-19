@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-19T09:49:38.631123+00:00",
+  "generated_at": "2026-08-19T10:46:40.541835+00:00",
   "parlay": {
-    "n_tickets": 24,
-    "n_pending": 1,
+    "n_tickets": 23,
+    "n_pending": 0,
     "n_settled": 23,
     "n_won": 8,
     "hit_rate": 0.3478,
     "stake": 97.0,
-    "stake_committed": 112.25,
-    "stake_pending": 15.25,
+    "stake_committed": 97.0,
+    "stake_pending": 0,
     "return": 168.33,
     "roi": 0.7354,
     "avg_odds": 5.11,
@@ -949,42 +949,6 @@
             "score": null,
             "odds": 3.95,
             "hit": true
-          }
-        ]
-      },
-      {
-        "date": "2026-08-19",
-        "type": "2串1",
-        "stake": 15.25,
-        "potential": 76.83,
-        "total_odds": 5.04,
-        "odds_source": null,
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-19_周三001",
-            "home": "安养FC",
-            "away": "济州SK",
-            "sel": "away",
-            "score": null,
-            "odds": 2.29,
-            "hit": null
-          },
-          {
-            "match": "2026-08-19_周三007",
-            "home": "奈梅亨",
-            "away": "博德闪耀",
-            "sel": "away",
-            "score": null,
-            "odds": 2.2,
-            "hit": null
           }
         ]
       }
@@ -9693,66 +9657,6 @@
                 "score": null,
                 "odds": 3.95,
                 "hit": true
-              }
-            ]
-          }
-        ]
-      },
-      "score_parlay": {
-        "stats": null,
-        "tickets": []
-      }
-    },
-    "2026-08-19": {
-      "parlay": {
-        "stats": {
-          "n_tickets": 1,
-          "n_pending": 1,
-          "n_settled": 0,
-          "n_won": 0,
-          "hit_rate": null,
-          "stake": 0,
-          "stake_committed": 15.25,
-          "stake_pending": 15.25,
-          "return": 0,
-          "roi": null,
-          "avg_odds": null,
-          "by_type": {}
-        },
-        "tickets": [
-          {
-            "date": "2026-08-19",
-            "type": "2串1",
-            "stake": 15.25,
-            "potential": 76.83,
-            "total_odds": 5.04,
-            "odds_source": null,
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-19_周三001",
-                "home": "安养FC",
-                "away": "济州SK",
-                "sel": "away",
-                "score": null,
-                "odds": 2.29,
-                "hit": null
-              },
-              {
-                "match": "2026-08-19_周三007",
-                "home": "奈梅亨",
-                "away": "博德闪耀",
-                "sel": "away",
-                "score": null,
-                "odds": 2.2,
-                "hit": null
               }
             ]
           }
