@@ -1,8 +1,8 @@
 {
   "n_leagues": 28,
-  "n_matches": 328,
+  "n_matches": 330,
   "external_added": 29,
-  "generated_at": "2026-08-20T19:46:10.317392",
+  "generated_at": "2026-08-20T20:11:27.298351",
   "leagues": [
     {
       "league": "挪超",
@@ -73,6 +73,23 @@
       "recent10_roi": -0.4
     },
     {
+      "league": "欧罗巴",
+      "n": 25,
+      "hit_rate": 0.36,
+      "avg_odds": 1.878,
+      "roi": -0.442,
+      "avg_confidence": 0.179,
+      "verdict": "谨慎",
+      "recent_n": 5,
+      "recent_hits": 4,
+      "recent_hit_rate": 0.8,
+      "recent_roi": 0.328,
+      "recent10_n": 10,
+      "recent10_hits": 4,
+      "recent10_hit_rate": 0.4,
+      "recent10_roi": -0.336
+    },
+    {
       "league": "K1联赛",
       "n": 24,
       "hit_rate": 0.5417,
@@ -88,23 +105,6 @@
       "recent10_hits": 6,
       "recent10_hit_rate": 0.6,
       "recent10_roi": 0.151
-    },
-    {
-      "league": "欧罗巴",
-      "n": 24,
-      "hit_rate": 0.3333,
-      "avg_odds": 1.889,
-      "roi": -0.4858,
-      "avg_confidence": 0.1827,
-      "verdict": "谨慎",
-      "recent_n": 5,
-      "recent_hits": 3,
-      "recent_hit_rate": 0.6,
-      "recent_roi": 0.006,
-      "recent10_n": 10,
-      "recent10_hits": 4,
-      "recent10_hit_rate": 0.4,
-      "recent10_roi": -0.364
     },
     {
       "league": "巴甲",
@@ -175,6 +175,23 @@
       "recent10_roi": -0.297
     },
     {
+      "league": "沙职",
+      "n": 9,
+      "hit_rate": 0.7778,
+      "avg_odds": 1.866,
+      "roi": 0.51,
+      "avg_confidence": 0.1361,
+      "verdict": "观望",
+      "recent_n": 5,
+      "recent_hits": 3,
+      "recent_hit_rate": 0.6,
+      "recent_roi": 0.216,
+      "recent10_n": 9,
+      "recent10_hits": 7,
+      "recent10_hit_rate": 0.7778,
+      "recent10_roi": 0.51
+    },
+    {
       "league": "日职",
       "n": 9,
       "hit_rate": 0.6667,
@@ -207,23 +224,6 @@
       "recent10_hits": 5,
       "recent10_hit_rate": 0.5556,
       "recent10_roi": -0.1233
-    },
-    {
-      "league": "沙职",
-      "n": 8,
-      "hit_rate": 0.75,
-      "avg_odds": 1.955,
-      "roi": 0.555,
-      "avg_confidence": 0.131,
-      "verdict": "观望",
-      "recent_n": 5,
-      "recent_hits": 3,
-      "recent_hit_rate": 0.6,
-      "recent_roi": 0.366,
-      "recent10_n": 8,
-      "recent10_hits": 6,
-      "recent10_hit_rate": 0.75,
-      "recent10_roi": 0.555
     },
     {
       "league": "巴西杯",
