@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T20:47:02.711626+00:00",
+  "generated_at": "2026-08-20T21:44:25.680093+00:00",
   "parlay": {
     "n_tickets": 28,
     "n_pending": 5,
@@ -32,35 +32,35 @@
   },
   "score_parlay": {
     "n_tickets": 95,
-    "n_pending": 9,
-    "n_settled": 86,
+    "n_pending": 5,
+    "n_settled": 90,
     "n_won": 0,
     "hit_rate": 0.0,
-    "stake": 268.0,
+    "stake": 282.0,
     "stake_committed": 298.0,
-    "stake_pending": 30.0,
+    "stake_pending": 16.0,
     "return": 0.0,
     "roi": -1.0,
-    "avg_odds": 208.15,
+    "avg_odds": 258.52,
     "by_type": {
       "比分2串1": {
-        "n": 54,
+        "n": 56,
         "won": 0,
         "roi": -1.0
       },
       "比分3串1": {
-        "n": 16,
+        "n": 17,
         "won": 0,
         "roi": -1.0
       },
       "比分3串4(容错)": {
-        "n": 16,
+        "n": 17,
         "won": 0,
         "roi": -1.0
       }
     },
-    "leg_hit_rate": 0.1429,
-    "n_legs_settled": 210
+    "leg_hit_rate": 0.1402,
+    "n_legs_settled": 214
   },
   "tickets": {
     "parlay": [
@@ -4541,11 +4541,11 @@
         "potential": 336.0,
         "total_odds": 168.0,
         "odds_source": "official",
-        "note": "待赛",
+        "note": "两场比分都中才赢（校准命中 0.8% × 赔率 168 倍 = EV +41%）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
-          null,
+          false,
           true
         ],
         "return": 0.0,
@@ -4557,7 +4557,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 10.5,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-20_周四006",
@@ -4577,11 +4577,11 @@
         "potential": 315.0,
         "total_odds": 157.5,
         "odds_source": "official",
-        "note": "待赛",
+        "note": "两场比分都中才赢（校准命中 0.8% × 赔率 158 倍 = EV +32%）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
-          null,
+          false,
           false
         ],
         "return": 0.0,
@@ -4593,7 +4593,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 10.5,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-20_周四008",
@@ -4649,11 +4649,11 @@
         "potential": 5040.0,
         "total_odds": 2520.0,
         "odds_source": "official",
-        "note": "待赛",
+        "note": "三场比分全中才赢（赔率 2520 倍，校准命中 0.06%）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
-          null,
+          false,
           true,
           false
         ],
@@ -4666,7 +4666,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 10.5,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-20_周四006",
@@ -4695,11 +4695,11 @@
         "potential": 6171.0,
         "total_odds": 2520.0,
         "odds_source": "official",
-        "note": "待赛",
+        "note": "0/4注中（命中1场）",
         "won": false,
-        "pending": true,
+        "pending": false,
         "leg_results": [
-          null,
+          false,
           true,
           false
         ],
@@ -4712,7 +4712,7 @@
             "sel": null,
             "score": "1-0",
             "odds": 10.5,
-            "hit": null
+            "hit": false
           },
           {
             "match": "2026-08-20_周四006",
@@ -10275,25 +10275,35 @@
       "score_parlay": {
         "stats": {
           "n_tickets": 5,
-          "n_pending": 4,
-          "n_settled": 1,
+          "n_pending": 0,
+          "n_settled": 5,
           "n_won": 0,
           "hit_rate": 0.0,
-          "stake": 2.0,
+          "stake": 16.0,
           "stake_committed": 16.0,
-          "stake_pending": 14.0,
+          "stake_pending": 0,
           "return": 0.0,
           "roi": -1.0,
-          "avg_odds": 240.0,
+          "avg_odds": 1121.1,
           "by_type": {
             "比分2串1": {
+              "n": 3,
+              "won": 0,
+              "roi": -1.0
+            },
+            "比分3串1": {
+              "n": 1,
+              "won": 0,
+              "roi": -1.0
+            },
+            "比分3串4(容错)": {
               "n": 1,
               "won": 0,
               "roi": -1.0
             }
           },
-          "leg_hit_rate": 0.5,
-          "n_legs_settled": 8
+          "leg_hit_rate": 0.3333,
+          "n_legs_settled": 12
         },
         "tickets": [
           {
@@ -10303,11 +10313,11 @@
             "potential": 336.0,
             "total_odds": 168.0,
             "odds_source": "official",
-            "note": "待赛",
+            "note": "两场比分都中才赢（校准命中 0.8% × 赔率 168 倍 = EV +41%）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
-              null,
+              false,
               true
             ],
             "return": 0.0,
@@ -10319,7 +10329,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 10.5,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-20_周四006",
@@ -10339,11 +10349,11 @@
             "potential": 315.0,
             "total_odds": 157.5,
             "odds_source": "official",
-            "note": "待赛",
+            "note": "两场比分都中才赢（校准命中 0.8% × 赔率 158 倍 = EV +32%）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
-              null,
+              false,
               false
             ],
             "return": 0.0,
@@ -10355,7 +10365,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 10.5,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-20_周四008",
@@ -10411,11 +10421,11 @@
             "potential": 5040.0,
             "total_odds": 2520.0,
             "odds_source": "official",
-            "note": "待赛",
+            "note": "三场比分全中才赢（赔率 2520 倍，校准命中 0.06%）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
-              null,
+              false,
               true,
               false
             ],
@@ -10428,7 +10438,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 10.5,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-20_周四006",
@@ -10457,11 +10467,11 @@
             "potential": 6171.0,
             "total_odds": 2520.0,
             "odds_source": "official",
-            "note": "待赛",
+            "note": "0/4注中（命中1场）",
             "won": false,
-            "pending": true,
+            "pending": false,
             "leg_results": [
-              null,
+              false,
               true,
               false
             ],
@@ -10474,7 +10484,7 @@
                 "sel": null,
                 "score": "1-0",
                 "odds": 10.5,
-                "hit": null
+                "hit": false
               },
               {
                 "match": "2026-08-20_周四006",

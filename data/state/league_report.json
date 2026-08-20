@@ -1,8 +1,8 @@
 {
   "n_leagues": 28,
-  "n_matches": 330,
+  "n_matches": 332,
   "external_added": 29,
-  "generated_at": "2026-08-20T20:47:02.675345",
+  "generated_at": "2026-08-20T21:44:25.641720",
   "leagues": [
     {
       "league": "挪超",
@@ -74,20 +74,20 @@
     },
     {
       "league": "欧罗巴",
-      "n": 25,
-      "hit_rate": 0.36,
-      "avg_odds": 1.878,
-      "roi": -0.442,
-      "avg_confidence": 0.179,
+      "n": 26,
+      "hit_rate": 0.3846,
+      "avg_odds": 1.88,
+      "roi": -0.3896,
+      "avg_confidence": 0.1822,
       "verdict": "谨慎",
       "recent_n": 5,
       "recent_hits": 4,
       "recent_hit_rate": 0.8,
-      "recent_roi": 0.328,
+      "recent_roi": 0.292,
       "recent10_n": 10,
-      "recent10_hits": 4,
-      "recent10_hit_rate": 0.4,
-      "recent10_roi": -0.336
+      "recent10_hits": 5,
+      "recent10_hit_rate": 0.5,
+      "recent10_roi": -0.144
     },
     {
       "league": "K1联赛",
@@ -226,6 +226,23 @@
       "recent10_roi": -0.1233
     },
     {
+      "league": "西甲",
+      "n": 7,
+      "hit_rate": 0.5714,
+      "avg_odds": 1.944,
+      "roi": 0.0943,
+      "avg_confidence": 0.1662,
+      "verdict": "观望",
+      "recent_n": 5,
+      "recent_hits": 2,
+      "recent_hit_rate": 0.4,
+      "recent_roi": -0.362,
+      "recent10_n": 7,
+      "recent10_hits": 4,
+      "recent10_hit_rate": 0.5714,
+      "recent10_roi": 0.0943
+    },
+    {
       "league": "巴西杯",
       "n": 7,
       "hit_rate": 0.2857,
@@ -258,23 +275,6 @@
       "recent10_hits": 1,
       "recent10_hit_rate": 0.1429,
       "recent10_roi": -0.7629
-    },
-    {
-      "league": "西甲",
-      "n": 6,
-      "hit_rate": 0.6667,
-      "avg_odds": 1.923,
-      "roi": 0.2767,
-      "avg_confidence": 0.1736,
-      "verdict": "观望",
-      "recent_n": 5,
-      "recent_hits": 3,
-      "recent_hit_rate": 0.6,
-      "recent_roi": 0.084,
-      "recent10_n": 6,
-      "recent10_hits": 4,
-      "recent10_hit_rate": 0.6667,
-      "recent10_roi": 0.2767
     },
     {
       "league": "法乙",
