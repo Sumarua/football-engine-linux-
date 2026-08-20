@@ -7,12 +7,46 @@
   "bankroll": 4236.390600000001,
   "breaker_multiplier": 1.0,
   "parlay": [],
-  "score_parlay": [],
+  "score_parlay": [
+    {
+      "type": "比分2串1",
+      "legs": [
+        {
+          "match": "2026-08-20_周四009",
+          "home": "本菲卡",
+          "away": "奥胡斯",
+          "league": "欧罗巴",
+          "score": "1-0",
+          "prob": 0.312,
+          "cal_prob": 0.1133,
+          "odds": 10.0
+        },
+        {
+          "match": "2026-08-20_周四006",
+          "home": "特拉布宗",
+          "away": "费伦茨",
+          "league": "欧罗巴",
+          "score": "0-1",
+          "prob": 0.255,
+          "cal_prob": 0.0735,
+          "odds": 14.5
+        }
+      ],
+      "total_odds": 145.0,
+      "hit_prob": 0.0083,
+      "stake": 2.0,
+      "potential": 290.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "official",
+      "note": "两场比分都中才赢（校准命中 0.8% × 赔率 145 倍 = EV +21%）"
+    }
+  ],
   "parlay_calibration": {
-    "overall": 0.4456,
-    "n": 294,
+    "overall": 0.4475,
+    "n": 295,
     "table": {
-      "0.35": 0.3978,
+      "0.35": 0.4043,
       "0.4": 0.4935,
       "0.45": 0.5273,
       "0.5": 0.4,
