@@ -1,8 +1,8 @@
 {
   "n_leagues": 28,
-  "n_matches": 323,
+  "n_matches": 324,
   "external_added": 29,
-  "generated_at": "2026-08-20T03:11:02.801298",
+  "generated_at": "2026-08-20T03:59:11.601947",
   "leagues": [
     {
       "league": "挪超",
@@ -379,6 +379,23 @@
       "recent10_roi": -0.265
     },
     {
+      "league": "美职",
+      "n": 4,
+      "hit_rate": 0.25,
+      "avg_odds": 2.157,
+      "roi": -0.4575,
+      "avg_confidence": 0.1401,
+      "verdict": "谨慎",
+      "recent_n": 4,
+      "recent_hits": 1,
+      "recent_hit_rate": 0.25,
+      "recent_roi": -0.4575,
+      "recent10_n": 4,
+      "recent10_hits": 1,
+      "recent10_hit_rate": 0.25,
+      "recent10_roi": -0.4575
+    },
+    {
       "league": "韩职",
       "n": 3,
       "hit_rate": 0.3333,
@@ -394,23 +411,6 @@
       "recent10_hits": 1,
       "recent10_hit_rate": 0.3333,
       "recent10_roi": -0.2633
-    },
-    {
-      "league": "美职",
-      "n": 3,
-      "hit_rate": 0.3333,
-      "avg_odds": 2.067,
-      "roi": -0.2767,
-      "avg_confidence": 0.1476,
-      "verdict": "谨慎",
-      "recent_n": 3,
-      "recent_hits": 1,
-      "recent_hit_rate": 0.3333,
-      "recent_roi": -0.2767,
-      "recent10_n": 3,
-      "recent10_hits": 1,
-      "recent10_hit_rate": 0.3333,
-      "recent10_roi": -0.2767
     },
     {
       "league": "英社区盾",
