@@ -17,7 +17,7 @@
           "away": "奥胡斯",
           "league": "欧罗巴",
           "score": "1-0",
-          "prob": 0.314,
+          "prob": 0.311,
           "cal_prob": 0.1142,
           "odds": 10.5
         },
@@ -27,7 +27,7 @@
           "away": "费伦茨",
           "league": "欧罗巴",
           "score": "0-1",
-          "prob": 0.258,
+          "prob": 0.262,
           "cal_prob": 0.0734,
           "odds": 16.0
         }
@@ -40,6 +40,158 @@
       "n_bets": 1,
       "odds_source": "official",
       "note": "两场比分都中才赢（校准命中 0.8% × 赔率 168 倍 = EV +41%）"
+    },
+    {
+      "type": "比分2串1",
+      "legs": [
+        {
+          "match": "2026-08-20_周四009",
+          "home": "本菲卡",
+          "away": "奥胡斯",
+          "league": "欧罗巴",
+          "score": "1-0",
+          "prob": 0.311,
+          "cal_prob": 0.1142,
+          "odds": 10.5
+        },
+        {
+          "match": "2026-08-20_周四008",
+          "home": "贝红星",
+          "away": "比尔森",
+          "league": "欧罗巴",
+          "score": "0-1",
+          "prob": 0.203,
+          "cal_prob": 0.0734,
+          "odds": 15.0
+        }
+      ],
+      "total_odds": 157.5,
+      "hit_prob": 0.0084,
+      "stake": 2.0,
+      "potential": 315.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "official",
+      "note": "两场比分都中才赢（校准命中 0.8% × 赔率 158 倍 = EV +32%）"
+    },
+    {
+      "type": "比分2串1",
+      "legs": [
+        {
+          "match": "2026-08-20_周四006",
+          "home": "特拉布宗",
+          "away": "费伦茨",
+          "league": "欧罗巴",
+          "score": "0-1",
+          "prob": 0.262,
+          "cal_prob": 0.0734,
+          "odds": 16.0
+        },
+        {
+          "match": "2026-08-20_周四008",
+          "home": "贝红星",
+          "away": "比尔森",
+          "league": "欧罗巴",
+          "score": "0-1",
+          "prob": 0.203,
+          "cal_prob": 0.0734,
+          "odds": 15.0
+        }
+      ],
+      "total_odds": 240.0,
+      "hit_prob": 0.0054,
+      "stake": 2.0,
+      "potential": 480.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "official",
+      "note": "两场比分都中才赢（校准命中 0.5% × 赔率 240 倍 = EV +29%）"
+    },
+    {
+      "type": "比分3串1",
+      "legs": [
+        {
+          "match": "2026-08-20_周四009",
+          "home": "本菲卡",
+          "away": "奥胡斯",
+          "league": "欧罗巴",
+          "score": "1-0",
+          "prob": 0.311,
+          "cal_prob": 0.1142,
+          "odds": 10.5
+        },
+        {
+          "match": "2026-08-20_周四006",
+          "home": "特拉布宗",
+          "away": "费伦茨",
+          "league": "欧罗巴",
+          "score": "0-1",
+          "prob": 0.262,
+          "cal_prob": 0.0734,
+          "odds": 16.0
+        },
+        {
+          "match": "2026-08-20_周四008",
+          "home": "贝红星",
+          "away": "比尔森",
+          "league": "欧罗巴",
+          "score": "0-1",
+          "prob": 0.203,
+          "cal_prob": 0.0734,
+          "odds": 15.0
+        }
+      ],
+      "total_odds": 2520.0,
+      "hit_prob": 0.0006,
+      "stake": 2.0,
+      "potential": 5040.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "official",
+      "note": "三场比分全中才赢（赔率 2520 倍，校准命中 0.06%）"
+    },
+    {
+      "type": "比分3串4(容错)",
+      "legs": [
+        {
+          "match": "2026-08-20_周四009",
+          "home": "本菲卡",
+          "away": "奥胡斯",
+          "league": "欧罗巴",
+          "score": "1-0",
+          "prob": 0.311,
+          "cal_prob": 0.1142,
+          "odds": 10.5
+        },
+        {
+          "match": "2026-08-20_周四006",
+          "home": "特拉布宗",
+          "away": "费伦茨",
+          "league": "欧罗巴",
+          "score": "0-1",
+          "prob": 0.262,
+          "cal_prob": 0.0734,
+          "odds": 16.0
+        },
+        {
+          "match": "2026-08-20_周四008",
+          "home": "贝红星",
+          "away": "比尔森",
+          "league": "欧罗巴",
+          "score": "0-1",
+          "prob": 0.203,
+          "cal_prob": 0.0734,
+          "odds": 15.0
+        }
+      ],
+      "total_odds": 2520.0,
+      "hit_prob": 0.0006,
+      "stake": 8.0,
+      "potential": 6171.0,
+      "worst_win": 480.0,
+      "n_bets": 4,
+      "odds_source": "official",
+      "note": "3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥480，全中≈¥6171"
     }
   ],
   "parlay_calibration": {
