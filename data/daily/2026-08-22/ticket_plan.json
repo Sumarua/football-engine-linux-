@@ -5,13 +5,27 @@
       "match": "2026-08-22_周六024",
       "sel": "home",
       "odds": 2.28,
-      "stake": 150.0,
-      "prob": 0.448
+      "stake": 106.29,
+      "prob": 0.452
+    },
+    {
+      "match": "2026-08-22_周六004",
+      "sel": "home",
+      "odds": 2.23,
+      "stake": 43.18,
+      "prob": 0.454
+    },
+    {
+      "match": "2026-08-22_周六021",
+      "sel": "home",
+      "odds": 2.35,
+      "stake": 0.54,
+      "prob": 0.426
     }
   ],
   "lottery": [],
-  "total_stake": 150.0,
-  "expected_roi": 0.0221,
+  "total_stake": 150.01,
+  "expected_roi": 0.0247,
   "bankroll": 4236.390600000001,
   "breaker_multiplier": 1.0,
   "parlay": [
@@ -19,107 +33,17 @@
       "type": "2串1",
       "legs": [
         {
-          "match": "2026-08-22_周六010",
-          "home": "埃弗顿",
-          "away": "水晶宫",
-          "league": "英超",
-          "sel": "home",
-          "odds": 2.06,
-          "prob": 0.462,
-          "cal_prob": 0.534,
-          "market_prob": 0.43,
-          "source": "fusion",
-          "hit_prob": 0.534
-        },
-        {
-          "match": "2026-08-22_周六011",
-          "home": "诺丁汉",
-          "away": "利兹联",
-          "league": "英超",
-          "sel": "home",
-          "odds": 2.09,
-          "prob": 0.462,
-          "cal_prob": 0.534,
-          "market_prob": 0.424,
-          "source": "fusion",
-          "hit_prob": 0.534
-        }
-      ],
-      "total_odds": 4.31,
-      "model_ev": -0.17,
-      "cal_ev": 1.38,
-      "cal_roi": 0.23,
-      "market_ev": -0.43,
-      "market_roi": -0.2153,
-      "hit_prob_cal": 0.286,
-      "recommended": true,
-      "stake": 6.0,
-      "n_bets": 1,
-      "potential": 25.83,
-      "worst_win": 0.0,
-      "note": "两场全中才赢",
-      "source": "calibrated"
-    },
-    {
-      "type": "2串1",
-      "legs": [
-        {
           "match": "2026-08-22_周六005",
           "home": "全北现代",
           "away": "蔚山现代",
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.03,
-          "prob": 0.468,
-          "cal_prob": 0.534,
+          "prob": 0.475,
+          "cal_prob": 0.55,
           "market_prob": 0.436,
           "source": "fusion",
-          "hit_prob": 0.534
-        },
-        {
-          "match": "2026-08-22_周六011",
-          "home": "诺丁汉",
-          "away": "利兹联",
-          "league": "英超",
-          "sel": "home",
-          "odds": 2.09,
-          "prob": 0.462,
-          "cal_prob": 0.534,
-          "market_prob": 0.424,
-          "source": "fusion",
-          "hit_prob": 0.534
-        }
-      ],
-      "total_odds": 4.24,
-      "model_ev": -0.17,
-      "cal_ev": 1.2,
-      "cal_roi": 0.2121,
-      "market_ev": -0.43,
-      "market_roi": -0.2156,
-      "hit_prob_cal": 0.286,
-      "recommended": true,
-      "stake": 5.64,
-      "n_bets": 1,
-      "potential": 23.93,
-      "worst_win": 0.0,
-      "note": "两场全中才赢",
-      "source": "calibrated"
-    },
-    {
-      "type": "2串1",
-      "legs": [
-        {
-          "match": "2026-08-22_周六005",
-          "home": "全北现代",
-          "away": "蔚山现代",
-          "league": "K1联赛",
-          "sel": "home",
-          "odds": 2.03,
-          "prob": 0.468,
-          "cal_prob": 0.534,
-          "market_prob": 0.436,
-          "source": "fusion",
-          "hit_prob": 0.534
+          "hit_prob": 0.55
         },
         {
           "match": "2026-08-22_周六010",
@@ -128,24 +52,114 @@
           "league": "英超",
           "sel": "home",
           "odds": 2.06,
-          "prob": 0.462,
-          "cal_prob": 0.534,
+          "prob": 0.468,
+          "cal_prob": 0.55,
           "market_prob": 0.43,
           "source": "fusion",
-          "hit_prob": 0.534
+          "hit_prob": 0.55
         }
       ],
       "total_odds": 4.18,
-      "model_ev": -0.19,
-      "cal_ev": 1.03,
-      "cal_roi": 0.1947,
+      "model_ev": -0.14,
+      "cal_ev": 1.7,
+      "cal_roi": 0.265,
       "market_ev": -0.43,
       "market_roi": -0.2151,
-      "hit_prob_cal": 0.286,
+      "hit_prob_cal": 0.303,
       "recommended": true,
-      "stake": 5.27,
+      "stake": 6.42,
       "n_bets": 1,
-      "potential": 22.04,
+      "potential": 26.85,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-22_周六025",
+          "home": "尼斯",
+          "away": "洛里昂",
+          "league": "法甲",
+          "sel": "home",
+          "odds": 1.94,
+          "prob": 0.481,
+          "cal_prob": 0.55,
+          "market_prob": 0.457,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
+          "match": "2026-08-22_周六010",
+          "home": "埃弗顿",
+          "away": "水晶宫",
+          "league": "英超",
+          "sel": "home",
+          "odds": 2.06,
+          "prob": 0.468,
+          "cal_prob": 0.55,
+          "market_prob": 0.43,
+          "source": "fusion",
+          "hit_prob": 0.55
+        }
+      ],
+      "total_odds": 4.0,
+      "model_ev": -0.2,
+      "cal_ev": 1.12,
+      "cal_roi": 0.2089,
+      "market_ev": -0.43,
+      "market_roi": -0.2151,
+      "hit_prob_cal": 0.303,
+      "recommended": true,
+      "stake": 5.37,
+      "n_bets": 1,
+      "potential": 21.46,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-22_周六025",
+          "home": "尼斯",
+          "away": "洛里昂",
+          "league": "法甲",
+          "sel": "home",
+          "odds": 1.94,
+          "prob": 0.481,
+          "cal_prob": 0.55,
+          "market_prob": 0.457,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
+          "match": "2026-08-22_周六005",
+          "home": "全北现代",
+          "away": "蔚山现代",
+          "league": "K1联赛",
+          "sel": "home",
+          "odds": 2.03,
+          "prob": 0.475,
+          "cal_prob": 0.55,
+          "market_prob": 0.436,
+          "source": "fusion",
+          "hit_prob": 0.55
+        }
+      ],
+      "total_odds": 3.94,
+      "model_ev": -0.2,
+      "cal_ev": 0.96,
+      "cal_roi": 0.1913,
+      "market_ev": -0.43,
+      "market_roi": -0.2154,
+      "hit_prob_cal": 0.303,
+      "recommended": true,
+      "stake": 5.02,
+      "n_bets": 1,
+      "potential": 19.77,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -154,17 +168,30 @@
       "type": "3串1",
       "legs": [
         {
+          "match": "2026-08-22_周六025",
+          "home": "尼斯",
+          "away": "洛里昂",
+          "league": "法甲",
+          "sel": "home",
+          "odds": 1.94,
+          "prob": 0.481,
+          "cal_prob": 0.55,
+          "market_prob": 0.457,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
           "match": "2026-08-22_周六005",
           "home": "全北现代",
           "away": "蔚山现代",
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.03,
-          "prob": 0.468,
-          "cal_prob": 0.534,
+          "prob": 0.475,
+          "cal_prob": 0.55,
           "market_prob": 0.436,
           "source": "fusion",
-          "hit_prob": 0.534
+          "hit_prob": 0.55
         },
         {
           "match": "2026-08-22_周六010",
@@ -173,37 +200,24 @@
           "league": "英超",
           "sel": "home",
           "odds": 2.06,
-          "prob": 0.462,
-          "cal_prob": 0.534,
+          "prob": 0.468,
+          "cal_prob": 0.55,
           "market_prob": 0.43,
           "source": "fusion",
-          "hit_prob": 0.534
-        },
-        {
-          "match": "2026-08-22_周六011",
-          "home": "诺丁汉",
-          "away": "利兹联",
-          "league": "英超",
-          "sel": "home",
-          "odds": 2.09,
-          "prob": 0.462,
-          "cal_prob": 0.534,
-          "market_prob": 0.424,
-          "source": "fusion",
-          "hit_prob": 0.534
+          "hit_prob": 0.55
         }
       ],
-      "total_odds": 8.74,
-      "model_ev": -0.26,
-      "cal_ev": 1.24,
-      "cal_roi": 0.3346,
+      "total_odds": 8.11,
+      "model_ev": -0.27,
+      "cal_ev": 1.33,
+      "cal_roi": 0.3497,
       "market_ev": -0.61,
-      "market_roi": -0.305,
-      "hit_prob_cal": 0.153,
+      "market_roi": -0.3048,
+      "hit_prob_cal": 0.166,
       "recommended": true,
-      "stake": 3.72,
+      "stake": 3.79,
       "n_bets": 1,
-      "potential": 32.51,
+      "potential": 30.75,
       "worst_win": 0.0,
       "note": "三场全中才赢",
       "source": "calibrated"
@@ -212,17 +226,30 @@
       "type": "3串4",
       "legs": [
         {
+          "match": "2026-08-22_周六025",
+          "home": "尼斯",
+          "away": "洛里昂",
+          "league": "法甲",
+          "sel": "home",
+          "odds": 1.94,
+          "prob": 0.481,
+          "cal_prob": 0.55,
+          "market_prob": 0.457,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
           "match": "2026-08-22_周六005",
           "home": "全北现代",
           "away": "蔚山现代",
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.03,
-          "prob": 0.468,
-          "cal_prob": 0.534,
+          "prob": 0.475,
+          "cal_prob": 0.55,
           "market_prob": 0.436,
           "source": "fusion",
-          "hit_prob": 0.534
+          "hit_prob": 0.55
         },
         {
           "match": "2026-08-22_周六010",
@@ -231,39 +258,26 @@
           "league": "英超",
           "sel": "home",
           "odds": 2.06,
-          "prob": 0.462,
-          "cal_prob": 0.534,
+          "prob": 0.468,
+          "cal_prob": 0.55,
           "market_prob": 0.43,
           "source": "fusion",
-          "hit_prob": 0.534
-        },
-        {
-          "match": "2026-08-22_周六011",
-          "home": "诺丁汉",
-          "away": "利兹联",
-          "league": "英超",
-          "sel": "home",
-          "odds": 2.09,
-          "prob": 0.462,
-          "cal_prob": 0.534,
-          "market_prob": 0.424,
-          "source": "fusion",
-          "hit_prob": 0.534
+          "hit_prob": 0.55
         }
       ],
-      "total_odds": 5.37,
+      "total_odds": 5.06,
       "model_ev": null,
-      "cal_ev": 1.16,
-      "cal_roi": 0.2429,
+      "cal_ev": 1.22,
+      "cal_roi": 0.2537,
       "market_ev": -1.9,
-      "market_roi": -0.2378,
-      "hit_prob_cal": 0.153,
+      "market_roi": -0.2376,
+      "hit_prob_cal": 0.166,
       "recommended": true,
-      "stake": 4.79,
+      "stake": 4.82,
       "n_bets": 4,
-      "potential": 25.71,
-      "worst_win": 8.36,
-      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥8），全中 ¥43",
+      "potential": 24.38,
+      "worst_win": 7.88,
+      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥8），全中 ¥40",
       "source": "calibrated"
     }
   ],
@@ -277,8 +291,8 @@
           "away": "阿尔克马",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.172,
-          "cal_prob": 0.1139,
+          "prob": 0.17,
+          "cal_prob": 0.1136,
           "odds": 19.0
         },
         {
@@ -287,19 +301,19 @@
           "away": "拜仁",
           "league": "德超杯",
           "score": "1-0",
-          "prob": 0.186,
-          "cal_prob": 0.1139,
+          "prob": 0.188,
+          "cal_prob": 0.1136,
           "odds": 26.0
         }
       ],
       "total_odds": 494.0,
-      "hit_prob": 0.013,
+      "hit_prob": 0.0129,
       "stake": 2.0,
       "potential": 988.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 494 倍 = EV +541%）"
+      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 494 倍 = EV +537%）"
     },
     {
       "type": "比分2串1",
@@ -310,8 +324,8 @@
           "away": "首尔FC",
           "league": "K1联赛",
           "score": "1-0",
-          "prob": 0.305,
-          "cal_prob": 0.1139,
+          "prob": 0.306,
+          "cal_prob": 0.1136,
           "odds": 13.0
         },
         {
@@ -320,19 +334,19 @@
           "away": "拜仁",
           "league": "德超杯",
           "score": "1-0",
-          "prob": 0.186,
-          "cal_prob": 0.1139,
+          "prob": 0.188,
+          "cal_prob": 0.1136,
           "odds": 26.0
         }
       ],
       "total_odds": 338.0,
-      "hit_prob": 0.013,
+      "hit_prob": 0.0129,
       "stake": 2.0,
       "potential": 676.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 338 倍 = EV +339%）"
+      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 338 倍 = EV +336%）"
     },
     {
       "type": "比分2串1",
@@ -343,8 +357,8 @@
           "away": "首尔FC",
           "league": "K1联赛",
           "score": "1-0",
-          "prob": 0.305,
-          "cal_prob": 0.1139,
+          "prob": 0.306,
+          "cal_prob": 0.1136,
           "odds": 13.0
         },
         {
@@ -353,19 +367,19 @@
           "away": "阿尔克马",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.172,
-          "cal_prob": 0.1139,
+          "prob": 0.17,
+          "cal_prob": 0.1136,
           "odds": 19.0
         }
       ],
       "total_odds": 247.0,
-      "hit_prob": 0.013,
+      "hit_prob": 0.0129,
       "stake": 2.0,
       "potential": 494.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 247 倍 = EV +221%）"
+      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 247 倍 = EV +219%）"
     },
     {
       "type": "比分3串1",
@@ -376,8 +390,8 @@
           "away": "首尔FC",
           "league": "K1联赛",
           "score": "1-0",
-          "prob": 0.305,
-          "cal_prob": 0.1139,
+          "prob": 0.306,
+          "cal_prob": 0.1136,
           "odds": 13.0
         },
         {
@@ -386,8 +400,8 @@
           "away": "阿尔克马",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.172,
-          "cal_prob": 0.1139,
+          "prob": 0.17,
+          "cal_prob": 0.1136,
           "odds": 19.0
         },
         {
@@ -396,8 +410,8 @@
           "away": "拜仁",
           "league": "德超杯",
           "score": "1-0",
-          "prob": 0.186,
-          "cal_prob": 0.1139,
+          "prob": 0.188,
+          "cal_prob": 0.1136,
           "odds": 26.0
         }
       ],
@@ -419,8 +433,8 @@
           "away": "首尔FC",
           "league": "K1联赛",
           "score": "1-0",
-          "prob": 0.305,
-          "cal_prob": 0.1139,
+          "prob": 0.306,
+          "cal_prob": 0.1136,
           "odds": 13.0
         },
         {
@@ -429,8 +443,8 @@
           "away": "阿尔克马",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.172,
-          "cal_prob": 0.1139,
+          "prob": 0.17,
+          "cal_prob": 0.1136,
           "odds": 19.0
         },
         {
@@ -439,8 +453,8 @@
           "away": "拜仁",
           "league": "德超杯",
           "score": "1-0",
-          "prob": 0.186,
-          "cal_prob": 0.1139,
+          "prob": 0.188,
+          "cal_prob": 0.1136,
           "odds": 26.0
         }
       ],
@@ -455,12 +469,12 @@
     }
   ],
   "parlay_calibration": {
-    "overall": 0.4557,
-    "n": 305,
+    "overall": 0.4593,
+    "n": 307,
     "table": {
       "0.35": 0.4,
       "0.4": 0.5122,
-      "0.45": 0.5345,
+      "0.45": 0.55,
       "0.5": 0.4286,
       "0.55": 0.3,
       "0.6": 0.5,
