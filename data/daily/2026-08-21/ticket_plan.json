@@ -9,58 +9,20 @@
       "prob": 0.468
     }
   ],
-  "lottery": [],
-  "total_stake": 150.0,
-  "expected_roi": 0.0617,
-  "bankroll": 4236.390600000001,
-  "breaker_multiplier": 1.0,
-  "parlay": [
+  "lottery": [
     {
-      "type": "2串1",
-      "legs": [
-        {
-          "match": "2026-08-21_周五007",
-          "home": "敦刻尔克",
-          "away": "蒙彼利埃",
-          "league": "法乙",
-          "sel": "home",
-          "odds": 2.27,
-          "prob": 0.468,
-          "cal_prob": 0.534,
-          "market_prob": 0.391,
-          "source": "fusion",
-          "hit_prob": 0.534
-        },
-        {
-          "match": "2026-08-21_周五004",
-          "home": "塞那乔其",
-          "away": "拉赫蒂",
-          "league": "芬超",
-          "sel": "home",
-          "odds": 2.4,
-          "prob": 0.41,
-          "cal_prob": 0.512,
-          "market_prob": 0.369,
-          "source": "fusion",
-          "hit_prob": 0.512
-        }
-      ],
-      "total_odds": 5.45,
-      "model_ev": 0.09,
-      "cal_ev": 7.5,
-      "cal_roi": 0.4915,
-      "market_ev": -0.43,
-      "market_roi": -0.215,
-      "hit_prob_cal": 0.274,
-      "recommended": true,
-      "stake": 15.25,
-      "n_bets": 1,
-      "potential": 83.08,
-      "worst_win": 0.0,
-      "note": "两场全中才赢",
-      "source": "calibrated"
+      "match": "2026-08-21_周五007#ttg",
+      "sel": "ttg_1",
+      "odds": 5.3,
+      "stake": 50.0,
+      "prob": 0.205
     }
   ],
+  "total_stake": 200.0,
+  "expected_roi": 0.0681,
+  "bankroll": 4236.390600000001,
+  "breaker_multiplier": 1.0,
+  "parlay": [],
   "score_parlay": [
     {
       "type": "比分2串1",
@@ -71,7 +33,7 @@
           "away": "赫根",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.406,
+          "prob": 0.403,
           "cal_prob": 0.1139,
           "odds": 13.0
         },
@@ -81,7 +43,7 @@
           "away": "埃因FC",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.182,
+          "prob": 0.176,
           "cal_prob": 0.1139,
           "odds": 12.0
         }
@@ -104,7 +66,7 @@
           "away": "赫根",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.406,
+          "prob": 0.403,
           "cal_prob": 0.1139,
           "odds": 13.0
         },
@@ -114,7 +76,7 @@
           "away": "吉达联合",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.238,
+          "prob": 0.237,
           "cal_prob": 0.1139,
           "odds": 11.0
         }
@@ -137,7 +99,7 @@
           "away": "吉达联合",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.238,
+          "prob": 0.237,
           "cal_prob": 0.1139,
           "odds": 11.0
         },
@@ -147,7 +109,7 @@
           "away": "埃因FC",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.182,
+          "prob": 0.176,
           "cal_prob": 0.1139,
           "odds": 12.0
         }
@@ -170,7 +132,7 @@
           "away": "拉赫蒂",
           "league": "芬超",
           "score": "1-0",
-          "prob": 0.304,
+          "prob": 0.297,
           "cal_prob": 0.1139,
           "odds": 10.0
         },
@@ -180,7 +142,7 @@
           "away": "赫根",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.406,
+          "prob": 0.403,
           "cal_prob": 0.1139,
           "odds": 13.0
         },
@@ -190,7 +152,7 @@
           "away": "吉达联合",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.238,
+          "prob": 0.237,
           "cal_prob": 0.1139,
           "odds": 11.0
         }
@@ -213,7 +175,7 @@
           "away": "拉赫蒂",
           "league": "芬超",
           "score": "1-0",
-          "prob": 0.304,
+          "prob": 0.297,
           "cal_prob": 0.1139,
           "odds": 10.0
         },
@@ -223,7 +185,7 @@
           "away": "赫根",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.406,
+          "prob": 0.403,
           "cal_prob": 0.1139,
           "odds": 13.0
         },
@@ -233,7 +195,7 @@
           "away": "吉达联合",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.238,
+          "prob": 0.237,
           "cal_prob": 0.1139,
           "odds": 11.0
         }
