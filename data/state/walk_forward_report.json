@@ -1,46 +1,46 @@
 {
-  "total_matches": 310,
+  "total_matches": 312,
   "date_range": [
     "2026-07-19",
     "2026-08-21"
   ],
   "metrics": {
-    "brier": 0.6422,
-    "weighted_brier": 0.6418,
-    "rps": 0.216,
-    "weighted_rps": 0.2159,
-    "log_loss": 1.0629,
-    "hit_rate": 0.471,
-    "ece": 0.1722
+    "brier": 0.643,
+    "weighted_brier": 0.6426,
+    "rps": 0.2168,
+    "weighted_rps": 0.2167,
+    "log_loss": 1.0642,
+    "hit_rate": 0.4712,
+    "ece": 0.164
   },
   "draw_analysis": {
     "actual_draws": 90,
-    "actual_draw_rate": 0.2903,
+    "actual_draw_rate": 0.2885,
     "predicted_draws": 14,
-    "predicted_draw_rate": 0.0452,
+    "predicted_draw_rate": 0.0449,
     "max_draw_prob": 0.4592,
-    "avg_draw_prob": 0.2812,
-    "avg_market_draw": 0.2475,
-    "market_high_draw_n": 61,
+    "avg_draw_prob": 0.2813,
+    "avg_market_draw": 0.2478,
+    "market_high_draw_n": 62,
     "market_high_draw_actual": 23,
-    "market_high_draw_rate": 0.377
+    "market_high_draw_rate": 0.371
   },
   "strategy_comparison": {
     "model": {
-      "hit_rate": 0.4613,
-      "n": 310
+      "hit_rate": 0.4615,
+      "n": 312
     },
     "market": {
-      "hit_rate": 0.508,
-      "n": 250
+      "hit_rate": 0.5079,
+      "n": 252
     },
     "hybrid_v2": {
-      "hit_rate": 0.468,
-      "n": 250
+      "hit_rate": 0.4683,
+      "n": 252
     },
     "market_d28": {
-      "hit_rate": 0.448,
-      "n": 250
+      "hit_rate": 0.4484,
+      "n": 252
     }
   },
   "by_league": {
@@ -134,6 +134,12 @@
       "brier": 0.6825,
       "rps": 0.2273
     },
+    "法乙": {
+      "n": 7,
+      "hit_rate": 0.4286,
+      "brier": 0.6686,
+      "rps": 0.2339
+    },
     "西甲": {
       "n": 7,
       "hit_rate": 0.5714,
@@ -146,12 +152,6 @@
       "brier": 0.692,
       "rps": 0.2331
     },
-    "法乙": {
-      "n": 6,
-      "hit_rate": 0.5,
-      "brier": 0.6257,
-      "rps": 0.2038
-    },
     "英冠": {
       "n": 6,
       "hit_rate": 0.1667,
@@ -159,10 +159,10 @@
       "rps": 0.1865
     },
     "荷乙": {
-      "n": 4,
-      "hit_rate": 0.5,
-      "brier": 0.5951,
-      "rps": 0.2064
+      "n": 5,
+      "hit_rate": 0.6,
+      "brier": 0.5978,
+      "rps": 0.2187
     },
     "英联赛杯": {
       "n": 4,
