@@ -22,53 +22,7 @@
   "expected_roi": 0.0564,
   "bankroll": 4236.390600000001,
   "breaker_multiplier": 1.0,
-  "parlay": [
-    {
-      "type": "2串1",
-      "legs": [
-        {
-          "match": "2026-08-21_周五007",
-          "home": "敦刻尔克",
-          "away": "蒙彼利埃",
-          "league": "法乙",
-          "sel": "home",
-          "odds": 2.2,
-          "prob": 0.468,
-          "cal_prob": 0.534,
-          "market_prob": 0.402,
-          "source": "fusion",
-          "hit_prob": 0.534
-        },
-        {
-          "match": "2026-08-21_周五008",
-          "home": "登博思",
-          "away": "埃因FC",
-          "league": "荷乙",
-          "sel": "home",
-          "odds": 2.05,
-          "prob": 0.407,
-          "cal_prob": 0.512,
-          "market_prob": 0.432,
-          "source": "fusion",
-          "hit_prob": 0.512
-        }
-      ],
-      "total_odds": 4.51,
-      "model_ev": -0.28,
-      "cal_ev": 3.58,
-      "cal_roi": 0.2347,
-      "market_ev": -0.43,
-      "market_roi": -0.2164,
-      "hit_prob_cal": 0.274,
-      "recommended": true,
-      "stake": 15.25,
-      "n_bets": 1,
-      "potential": 68.78,
-      "worst_win": 0.0,
-      "note": "两场全中才赢",
-      "source": "calibrated"
-    }
-  ],
+  "parlay": [],
   "score_parlay": [
     {
       "type": "比分2串1",
@@ -79,7 +33,7 @@
           "away": "吉达联合",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.243,
+          "prob": 0.246,
           "cal_prob": 0.1139,
           "odds": 14.0
         },
@@ -89,19 +43,19 @@
           "away": "埃因FC",
           "league": "荷乙",
           "score": "1-0",
-          "prob": 0.175,
+          "prob": 0.18,
           "cal_prob": 0.1139,
-          "odds": 13.5
+          "odds": 15.0
         }
       ],
-      "total_odds": 189.0,
+      "total_odds": 210.0,
       "hit_prob": 0.013,
       "stake": 2.0,
-      "potential": 378.0,
+      "potential": 420.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 189 倍 = EV +145%）"
+      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 210 倍 = EV +172%）"
     },
     {
       "type": "比分2串1",
@@ -112,7 +66,40 @@
           "away": "赫根",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.403,
+          "prob": 0.401,
+          "cal_prob": 0.1139,
+          "odds": 13.0
+        },
+        {
+          "match": "2026-08-21_周五008",
+          "home": "登博思",
+          "away": "埃因FC",
+          "league": "荷乙",
+          "score": "1-0",
+          "prob": 0.18,
+          "cal_prob": 0.1139,
+          "odds": 15.0
+        }
+      ],
+      "total_odds": 195.0,
+      "hit_prob": 0.013,
+      "stake": 2.0,
+      "potential": 390.0,
+      "worst_win": 0.0,
+      "n_bets": 1,
+      "odds_source": "official",
+      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 195 倍 = EV +153%）"
+    },
+    {
+      "type": "比分2串1",
+      "legs": [
+        {
+          "match": "2026-08-21_周五005",
+          "home": "天狼星",
+          "away": "赫根",
+          "league": "瑞典超",
+          "score": "1-0",
+          "prob": 0.401,
           "cal_prob": 0.1139,
           "odds": 13.0
         },
@@ -122,7 +109,7 @@
           "away": "吉达联合",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.243,
+          "prob": 0.246,
           "cal_prob": 0.1139,
           "odds": 14.0
         }
@@ -137,39 +124,6 @@
       "note": "两场比分都中才赢（校准命中 1.3% × 赔率 182 倍 = EV +136%）"
     },
     {
-      "type": "比分2串1",
-      "legs": [
-        {
-          "match": "2026-08-21_周五005",
-          "home": "天狼星",
-          "away": "赫根",
-          "league": "瑞典超",
-          "score": "1-0",
-          "prob": 0.403,
-          "cal_prob": 0.1139,
-          "odds": 13.0
-        },
-        {
-          "match": "2026-08-21_周五008",
-          "home": "登博思",
-          "away": "埃因FC",
-          "league": "荷乙",
-          "score": "1-0",
-          "prob": 0.175,
-          "cal_prob": 0.1139,
-          "odds": 13.5
-        }
-      ],
-      "total_odds": 175.5,
-      "hit_prob": 0.013,
-      "stake": 2.0,
-      "potential": 351.0,
-      "worst_win": 0.0,
-      "n_bets": 1,
-      "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 176 倍 = EV +128%）"
-    },
-    {
       "type": "比分3串1",
       "legs": [
         {
@@ -178,7 +132,7 @@
           "away": "拉赫蒂",
           "league": "芬超",
           "score": "1-0",
-          "prob": 0.298,
+          "prob": 0.295,
           "cal_prob": 0.1139,
           "odds": 12.0
         },
@@ -188,7 +142,7 @@
           "away": "赫根",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.403,
+          "prob": 0.401,
           "cal_prob": 0.1139,
           "odds": 13.0
         },
@@ -198,7 +152,7 @@
           "away": "吉达联合",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.243,
+          "prob": 0.246,
           "cal_prob": 0.1139,
           "odds": 14.0
         }
@@ -221,7 +175,7 @@
           "away": "拉赫蒂",
           "league": "芬超",
           "score": "1-0",
-          "prob": 0.298,
+          "prob": 0.295,
           "cal_prob": 0.1139,
           "odds": 12.0
         },
@@ -231,7 +185,7 @@
           "away": "赫根",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.403,
+          "prob": 0.401,
           "cal_prob": 0.1139,
           "odds": 13.0
         },
@@ -241,7 +195,7 @@
           "away": "吉达联合",
           "league": "沙职",
           "score": "1-0",
-          "prob": 0.243,
+          "prob": 0.246,
           "cal_prob": 0.1139,
           "odds": 14.0
         }
