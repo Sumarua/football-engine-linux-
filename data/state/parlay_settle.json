@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T14:02:24.017606+00:00",
+  "generated_at": "2026-08-22T14:38:54.124819+00:00",
   "parlay": {
     "n_tickets": 28,
     "n_pending": 5,
@@ -31,14 +31,14 @@
     }
   },
   "score_parlay": {
-    "n_tickets": 100,
-    "n_pending": 5,
+    "n_tickets": 96,
+    "n_pending": 1,
     "n_settled": 95,
     "n_won": 0,
     "hit_rate": 0.0,
     "stake": 298.0,
-    "stake_committed": 314.0,
-    "stake_pending": 16.0,
+    "stake_committed": 300.0,
+    "stake_pending": 2.0,
     "return": 0.0,
     "roi": -1.0,
     "avg_odds": 297.07,
@@ -1005,21 +1005,21 @@
         "return": 0.0,
         "legs": [
           {
-            "match": "2026-08-22_周六026",
-            "home": "图卢兹",
-            "away": "里昂",
-            "sel": "home",
-            "score": null,
-            "odds": 2.23,
-            "hit": null
-          },
-          {
             "match": "2026-08-22_周六025",
             "home": "尼斯",
             "away": "洛里昂",
             "sel": "home",
             "score": null,
             "odds": 1.95,
+            "hit": null
+          },
+          {
+            "match": "2026-08-22_周六026",
+            "home": "图卢兹",
+            "away": "里昂",
+            "sel": "home",
+            "score": null,
+            "odds": 2.23,
             "hit": null
           }
         ]
@@ -1078,21 +1078,21 @@
         "return": 0.0,
         "legs": [
           {
-            "match": "2026-08-22_周六026",
-            "home": "图卢兹",
-            "away": "里昂",
-            "sel": "home",
-            "score": null,
-            "odds": 2.23,
-            "hit": null
-          },
-          {
             "match": "2026-08-22_周六025",
             "home": "尼斯",
             "away": "洛里昂",
             "sel": "home",
             "score": null,
             "odds": 1.95,
+            "hit": null
+          },
+          {
+            "match": "2026-08-22_周六026",
+            "home": "图卢兹",
+            "away": "里昂",
+            "sel": "home",
+            "score": null,
+            "odds": 2.23,
             "hit": null
           },
           {
@@ -1124,21 +1124,21 @@
         "return": 0.0,
         "legs": [
           {
-            "match": "2026-08-22_周六026",
-            "home": "图卢兹",
-            "away": "里昂",
-            "sel": "home",
-            "score": null,
-            "odds": 2.23,
-            "hit": null
-          },
-          {
             "match": "2026-08-22_周六025",
             "home": "尼斯",
             "away": "洛里昂",
             "sel": "home",
             "score": null,
             "odds": 1.95,
+            "hit": null
+          },
+          {
+            "match": "2026-08-22_周六026",
+            "home": "图卢兹",
+            "away": "里昂",
+            "sel": "home",
+            "score": null,
+            "odds": 2.23,
             "hit": null
           },
           {
@@ -4938,42 +4938,6 @@
         "date": "2026-08-22",
         "type": "比分2串1",
         "stake": 2.0,
-        "potential": 1014.0,
-        "total_odds": 507.0,
-        "odds_source": "official",
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-22_周六014",
-            "home": "福图纳",
-            "away": "阿尔克马",
-            "sel": null,
-            "score": "1-0",
-            "odds": 19.5,
-            "hit": null
-          },
-          {
-            "match": "2026-08-22_周六022",
-            "home": "多特蒙德",
-            "away": "拜仁",
-            "sel": null,
-            "score": "1-0",
-            "odds": 26.0,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-22",
-        "type": "比分2串1",
-        "stake": 2.0,
         "potential": 494.0,
         "total_odds": 247.0,
         "odds_source": "official",
@@ -4986,134 +4950,6 @@
         ],
         "return": 0.0,
         "legs": [
-          {
-            "match": "2026-08-22_周六022",
-            "home": "多特蒙德",
-            "away": "拜仁",
-            "sel": null,
-            "score": "1-0",
-            "odds": 26.0,
-            "hit": null
-          },
-          {
-            "match": "2026-08-22_周六028",
-            "home": "温哥华白浪",
-            "away": "达拉斯FC",
-            "sel": null,
-            "score": "1-0",
-            "odds": 9.5,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-22",
-        "type": "比分2串1",
-        "stake": 2.0,
-        "potential": 370.5,
-        "total_odds": 185.25,
-        "odds_source": "official",
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-22_周六014",
-            "home": "福图纳",
-            "away": "阿尔克马",
-            "sel": null,
-            "score": "1-0",
-            "odds": 19.5,
-            "hit": null
-          },
-          {
-            "match": "2026-08-22_周六028",
-            "home": "温哥华白浪",
-            "away": "达拉斯FC",
-            "sel": null,
-            "score": "1-0",
-            "odds": 9.5,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-22",
-        "type": "比分3串1",
-        "stake": 2.0,
-        "potential": 9633.0,
-        "total_odds": 4816.5,
-        "odds_source": "official",
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-22_周六014",
-            "home": "福图纳",
-            "away": "阿尔克马",
-            "sel": null,
-            "score": "1-0",
-            "odds": 19.5,
-            "hit": null
-          },
-          {
-            "match": "2026-08-22_周六022",
-            "home": "多特蒙德",
-            "away": "拜仁",
-            "sel": null,
-            "score": "1-0",
-            "odds": 26.0,
-            "hit": null
-          },
-          {
-            "match": "2026-08-22_周六028",
-            "home": "温哥华白浪",
-            "away": "达拉斯FC",
-            "sel": null,
-            "score": "1-0",
-            "odds": 9.5,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-22",
-        "type": "比分3串4(容错)",
-        "stake": 8.0,
-        "potential": 11511.5,
-        "total_odds": 4816.5,
-        "odds_source": "official",
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-22_周六014",
-            "home": "福图纳",
-            "away": "阿尔克马",
-            "sel": null,
-            "score": "1-0",
-            "odds": 19.5,
-            "hit": null
-          },
           {
             "match": "2026-08-22_周六022",
             "home": "多特蒙德",
@@ -11021,21 +10857,21 @@
             "return": 0.0,
             "legs": [
               {
-                "match": "2026-08-22_周六026",
-                "home": "图卢兹",
-                "away": "里昂",
-                "sel": "home",
-                "score": null,
-                "odds": 2.23,
-                "hit": null
-              },
-              {
                 "match": "2026-08-22_周六025",
                 "home": "尼斯",
                 "away": "洛里昂",
                 "sel": "home",
                 "score": null,
                 "odds": 1.95,
+                "hit": null
+              },
+              {
+                "match": "2026-08-22_周六026",
+                "home": "图卢兹",
+                "away": "里昂",
+                "sel": "home",
+                "score": null,
+                "odds": 2.23,
                 "hit": null
               }
             ]
@@ -11094,21 +10930,21 @@
             "return": 0.0,
             "legs": [
               {
-                "match": "2026-08-22_周六026",
-                "home": "图卢兹",
-                "away": "里昂",
-                "sel": "home",
-                "score": null,
-                "odds": 2.23,
-                "hit": null
-              },
-              {
                 "match": "2026-08-22_周六025",
                 "home": "尼斯",
                 "away": "洛里昂",
                 "sel": "home",
                 "score": null,
                 "odds": 1.95,
+                "hit": null
+              },
+              {
+                "match": "2026-08-22_周六026",
+                "home": "图卢兹",
+                "away": "里昂",
+                "sel": "home",
+                "score": null,
+                "odds": 2.23,
                 "hit": null
               },
               {
@@ -11140,21 +10976,21 @@
             "return": 0.0,
             "legs": [
               {
-                "match": "2026-08-22_周六026",
-                "home": "图卢兹",
-                "away": "里昂",
-                "sel": "home",
-                "score": null,
-                "odds": 2.23,
-                "hit": null
-              },
-              {
                 "match": "2026-08-22_周六025",
                 "home": "尼斯",
                 "away": "洛里昂",
                 "sel": "home",
                 "score": null,
                 "odds": 1.95,
+                "hit": null
+              },
+              {
+                "match": "2026-08-22_周六026",
+                "home": "图卢兹",
+                "away": "里昂",
+                "sel": "home",
+                "score": null,
+                "odds": 2.23,
                 "hit": null
               },
               {
@@ -11172,14 +11008,14 @@
       },
       "score_parlay": {
         "stats": {
-          "n_tickets": 5,
-          "n_pending": 5,
+          "n_tickets": 1,
+          "n_pending": 1,
           "n_settled": 0,
           "n_won": 0,
           "hit_rate": null,
           "stake": 0,
-          "stake_committed": 16.0,
-          "stake_pending": 16.0,
+          "stake_committed": 2.0,
+          "stake_pending": 2.0,
           "return": 0,
           "roi": null,
           "avg_odds": null,
@@ -11188,42 +11024,6 @@
           "n_legs_settled": 0
         },
         "tickets": [
-          {
-            "date": "2026-08-22",
-            "type": "比分2串1",
-            "stake": 2.0,
-            "potential": 1014.0,
-            "total_odds": 507.0,
-            "odds_source": "official",
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-22_周六014",
-                "home": "福图纳",
-                "away": "阿尔克马",
-                "sel": null,
-                "score": "1-0",
-                "odds": 19.5,
-                "hit": null
-              },
-              {
-                "match": "2026-08-22_周六022",
-                "home": "多特蒙德",
-                "away": "拜仁",
-                "sel": null,
-                "score": "1-0",
-                "odds": 26.0,
-                "hit": null
-              }
-            ]
-          },
           {
             "date": "2026-08-22",
             "type": "比分2串1",
@@ -11240,134 +11040,6 @@
             ],
             "return": 0.0,
             "legs": [
-              {
-                "match": "2026-08-22_周六022",
-                "home": "多特蒙德",
-                "away": "拜仁",
-                "sel": null,
-                "score": "1-0",
-                "odds": 26.0,
-                "hit": null
-              },
-              {
-                "match": "2026-08-22_周六028",
-                "home": "温哥华白浪",
-                "away": "达拉斯FC",
-                "sel": null,
-                "score": "1-0",
-                "odds": 9.5,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-22",
-            "type": "比分2串1",
-            "stake": 2.0,
-            "potential": 370.5,
-            "total_odds": 185.25,
-            "odds_source": "official",
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-22_周六014",
-                "home": "福图纳",
-                "away": "阿尔克马",
-                "sel": null,
-                "score": "1-0",
-                "odds": 19.5,
-                "hit": null
-              },
-              {
-                "match": "2026-08-22_周六028",
-                "home": "温哥华白浪",
-                "away": "达拉斯FC",
-                "sel": null,
-                "score": "1-0",
-                "odds": 9.5,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-22",
-            "type": "比分3串1",
-            "stake": 2.0,
-            "potential": 9633.0,
-            "total_odds": 4816.5,
-            "odds_source": "official",
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-22_周六014",
-                "home": "福图纳",
-                "away": "阿尔克马",
-                "sel": null,
-                "score": "1-0",
-                "odds": 19.5,
-                "hit": null
-              },
-              {
-                "match": "2026-08-22_周六022",
-                "home": "多特蒙德",
-                "away": "拜仁",
-                "sel": null,
-                "score": "1-0",
-                "odds": 26.0,
-                "hit": null
-              },
-              {
-                "match": "2026-08-22_周六028",
-                "home": "温哥华白浪",
-                "away": "达拉斯FC",
-                "sel": null,
-                "score": "1-0",
-                "odds": 9.5,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-22",
-            "type": "比分3串4(容错)",
-            "stake": 8.0,
-            "potential": 11511.5,
-            "total_odds": 4816.5,
-            "odds_source": "official",
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-22_周六014",
-                "home": "福图纳",
-                "away": "阿尔克马",
-                "sel": null,
-                "score": "1-0",
-                "odds": 19.5,
-                "hit": null
-              },
               {
                 "match": "2026-08-22_周六022",
                 "home": "多特蒙德",
