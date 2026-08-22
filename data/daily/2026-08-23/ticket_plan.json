@@ -5,22 +5,22 @@
       "match": "2026-08-23_周日003",
       "sel": "home",
       "odds": 2.45,
-      "stake": 78.33,
-      "prob": 0.478
+      "stake": 76.56,
+      "prob": 0.474
     },
     {
       "match": "2026-08-23_周日020",
       "sel": "home",
       "odds": 2.48,
-      "stake": 54.26,
-      "prob": 0.452
+      "stake": 51.8,
+      "prob": 0.448
     },
     {
       "match": "2026-08-23_周日006",
       "sel": "away",
       "odds": 2.34,
-      "stake": 17.4,
-      "prob": 0.442
+      "stake": 21.64,
+      "prob": 0.445
     }
   ],
   "lottery": [
@@ -29,12 +29,12 @@
       "sel": "crs_1_0",
       "odds": 5.7,
       "stake": 50.0,
-      "prob": 0.213
+      "prob": 0.212
     }
   ],
-  "total_stake": 199.99,
-  "expected_roi": 0.1565,
-  "bankroll": 4232.5106000000005,
+  "total_stake": 200.0,
+  "expected_roi": 0.1476,
+  "bankroll": 4186.930600000001,
   "breaker_multiplier": 1.0,
   "parlay": [
     {
@@ -47,11 +47,11 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.45,
-          "prob": 0.478,
-          "cal_prob": 0.533,
+          "prob": 0.474,
+          "cal_prob": 0.519,
           "market_prob": 0.361,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.519
         },
         {
           "match": "2026-08-23_周日020",
@@ -60,24 +60,24 @@
           "league": "葡超",
           "sel": "home",
           "odds": 2.48,
-          "prob": 0.452,
-          "cal_prob": 0.533,
+          "prob": 0.448,
+          "cal_prob": 0.528,
           "market_prob": 0.357,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.528
         }
       ],
       "total_odds": 6.08,
-      "model_ev": 0.62,
-      "cal_ev": 4.9,
-      "cal_roi": 0.7281,
+      "model_ev": 0.58,
+      "cal_ev": 4.62,
+      "cal_roi": 0.6669,
       "market_ev": -0.43,
       "market_roi": -0.216,
-      "hit_prob_cal": 0.284,
+      "hit_prob_cal": 0.274,
       "recommended": true,
-      "stake": 6.73,
+      "stake": 6.93,
       "n_bets": 1,
-      "potential": 40.89,
+      "potential": 42.11,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -92,11 +92,11 @@
           "league": "美职",
           "sel": "home",
           "odds": 2.06,
-          "prob": 0.494,
-          "cal_prob": 0.533,
+          "prob": 0.488,
+          "cal_prob": 0.519,
           "market_prob": 0.43,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.519
         },
         {
           "match": "2026-08-23_周日020",
@@ -105,24 +105,24 @@
           "league": "葡超",
           "sel": "home",
           "odds": 2.48,
-          "prob": 0.452,
-          "cal_prob": 0.533,
+          "prob": 0.448,
+          "cal_prob": 0.528,
           "market_prob": 0.357,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.528
         }
       ],
       "total_odds": 5.11,
-      "model_ev": 0.28,
-      "cal_ev": 2.35,
-      "cal_roi": 0.453,
+      "model_ev": 0.23,
+      "cal_ev": 2.07,
+      "cal_roi": 0.4016,
       "market_ev": -0.43,
       "market_roi": -0.2166,
-      "hit_prob_cal": 0.284,
+      "hit_prob_cal": 0.274,
       "recommended": true,
-      "stake": 5.18,
+      "stake": 5.16,
       "n_bets": 1,
-      "potential": 26.46,
+      "potential": 26.36,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -137,11 +137,11 @@
           "league": "美职",
           "sel": "home",
           "odds": 2.06,
-          "prob": 0.494,
-          "cal_prob": 0.533,
+          "prob": 0.488,
+          "cal_prob": 0.519,
           "market_prob": 0.43,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.519
         },
         {
           "match": "2026-08-23_周日003",
@@ -150,24 +150,24 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.45,
-          "prob": 0.478,
-          "cal_prob": 0.533,
+          "prob": 0.474,
+          "cal_prob": 0.519,
           "market_prob": 0.361,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.519
         }
       ],
       "total_odds": 5.05,
-      "model_ev": 0.38,
-      "cal_ev": 2.2,
-      "cal_roi": 0.4354,
+      "model_ev": 0.33,
+      "cal_ev": 1.71,
+      "cal_roi": 0.3621,
       "market_ev": -0.43,
       "market_roi": -0.2162,
-      "hit_prob_cal": 0.284,
+      "hit_prob_cal": 0.27,
       "recommended": true,
-      "stake": 5.05,
+      "stake": 4.72,
       "n_bets": 1,
-      "potential": 25.49,
+      "potential": 23.82,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -182,11 +182,11 @@
           "league": "美职",
           "sel": "home",
           "odds": 2.06,
-          "prob": 0.494,
-          "cal_prob": 0.533,
+          "prob": 0.488,
+          "cal_prob": 0.519,
           "market_prob": 0.43,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.519
         },
         {
           "match": "2026-08-23_周日003",
@@ -195,11 +195,11 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.45,
-          "prob": 0.478,
-          "cal_prob": 0.533,
+          "prob": 0.474,
+          "cal_prob": 0.519,
           "market_prob": 0.361,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.519
         },
         {
           "match": "2026-08-23_周日020",
@@ -208,24 +208,24 @@
           "league": "葡超",
           "sel": "home",
           "odds": 2.48,
-          "prob": 0.452,
-          "cal_prob": 0.533,
+          "prob": 0.448,
+          "cal_prob": 0.528,
           "market_prob": 0.357,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.528
         }
       ],
       "total_odds": 12.52,
-      "model_ev": 0.67,
-      "cal_ev": 3.29,
-      "cal_roi": 0.8985,
+      "model_ev": 0.59,
+      "cal_ev": 2.81,
+      "cal_roi": 0.7839,
       "market_ev": -0.61,
       "market_roi": -0.3062,
-      "hit_prob_cal": 0.152,
+      "hit_prob_cal": 0.143,
       "recommended": true,
-      "stake": 3.66,
+      "stake": 3.59,
       "n_bets": 1,
-      "potential": 45.81,
+      "potential": 44.93,
       "worst_win": 0.0,
       "note": "三场全中才赢",
       "source": "calibrated"
@@ -240,11 +240,11 @@
           "league": "美职",
           "sel": "home",
           "odds": 2.06,
-          "prob": 0.494,
-          "cal_prob": 0.533,
+          "prob": 0.488,
+          "cal_prob": 0.519,
           "market_prob": 0.43,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.519
         },
         {
           "match": "2026-08-23_周日003",
@@ -253,11 +253,11 @@
           "league": "K1联赛",
           "sel": "home",
           "odds": 2.45,
-          "prob": 0.478,
-          "cal_prob": 0.533,
+          "prob": 0.474,
+          "cal_prob": 0.519,
           "market_prob": 0.361,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.519
         },
         {
           "match": "2026-08-23_周日020",
@@ -266,24 +266,24 @@
           "league": "葡超",
           "sel": "home",
           "odds": 2.48,
-          "prob": 0.452,
-          "cal_prob": 0.533,
+          "prob": 0.448,
+          "cal_prob": 0.528,
           "market_prob": 0.357,
           "source": "fusion",
-          "hit_prob": 0.533
+          "hit_prob": 0.528
         }
       ],
       "total_odds": 7.19,
       "model_ev": null,
-      "cal_ev": 3.0,
-      "cal_roi": 0.6287,
+      "cal_ev": 2.61,
+      "cal_roi": 0.5536,
       "market_ev": -1.91,
       "market_roi": -0.2387,
-      "hit_prob_cal": 0.152,
+      "hit_prob_cal": 0.143,
       "recommended": true,
-      "stake": 4.77,
+      "stake": 4.72,
       "n_bets": 4,
-      "potential": 34.28,
+      "potential": 33.92,
       "worst_win": 10.09,
       "note": "容错：错 1 场仍中 1 注 2串1（回 ¥10），全中 ¥57",
       "source": "calibrated"
@@ -299,8 +299,8 @@
           "away": "赫尔辛基火花",
           "league": "芬超",
           "score": "0-1",
-          "prob": 0.324,
-          "cal_prob": 0.0767,
+          "prob": 0.323,
+          "cal_prob": 0.0765,
           "odds": 20.0
         },
         {
@@ -309,19 +309,19 @@
           "away": "伯恩茅斯",
           "league": "英超",
           "score": "0-1",
-          "prob": 0.165,
-          "cal_prob": 0.0767,
+          "prob": 0.168,
+          "cal_prob": 0.0765,
           "odds": 25.0
         }
       ],
       "total_odds": 500.0,
-      "hit_prob": 0.0059,
+      "hit_prob": 0.0058,
       "stake": 2.0,
       "potential": 1000.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 0.6% × 赔率 500 倍 = EV +194%）"
+      "note": "两场比分都中才赢（校准命中 0.6% × 赔率 500 倍 = EV +192%）"
     },
     {
       "type": "比分2串1",
@@ -332,8 +332,8 @@
           "away": "格罗宁根",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.214,
-          "cal_prob": 0.1126,
+          "prob": 0.216,
+          "cal_prob": 0.1123,
           "odds": 13.0
         },
         {
@@ -342,8 +342,8 @@
           "away": "伯恩茅斯",
           "league": "英超",
           "score": "0-1",
-          "prob": 0.165,
-          "cal_prob": 0.0767,
+          "prob": 0.168,
+          "cal_prob": 0.0765,
           "odds": 25.0
         }
       ],
@@ -354,7 +354,7 @@
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 0.9% × 赔率 325 倍 = EV +181%）"
+      "note": "两场比分都中才赢（校准命中 0.9% × 赔率 325 倍 = EV +179%）"
     },
     {
       "type": "比分2串1",
@@ -365,8 +365,8 @@
           "away": "格罗宁根",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.214,
-          "cal_prob": 0.1126,
+          "prob": 0.216,
+          "cal_prob": 0.1123,
           "odds": 13.0
         },
         {
@@ -375,8 +375,8 @@
           "away": "赫尔辛基火花",
           "league": "芬超",
           "score": "0-1",
-          "prob": 0.324,
-          "cal_prob": 0.0767,
+          "prob": 0.323,
+          "cal_prob": 0.0765,
           "odds": 20.0
         }
       ],
@@ -387,7 +387,7 @@
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 0.9% × 赔率 260 倍 = EV +125%）"
+      "note": "两场比分都中才赢（校准命中 0.9% × 赔率 260 倍 = EV +123%）"
     },
     {
       "type": "比分3串1",
@@ -398,8 +398,8 @@
           "away": "格罗宁根",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.214,
-          "cal_prob": 0.1126,
+          "prob": 0.216,
+          "cal_prob": 0.1123,
           "odds": 13.0
         },
         {
@@ -409,7 +409,7 @@
           "league": "美职",
           "score": "1-0",
           "prob": 0.265,
-          "cal_prob": 0.1126,
+          "cal_prob": 0.1123,
           "odds": 10.0
         },
         {
@@ -418,8 +418,8 @@
           "away": "赫尔辛基火花",
           "league": "芬超",
           "score": "0-1",
-          "prob": 0.324,
-          "cal_prob": 0.0767,
+          "prob": 0.323,
+          "cal_prob": 0.0765,
           "odds": 20.0
         }
       ],
@@ -441,8 +441,8 @@
           "away": "格罗宁根",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.214,
-          "cal_prob": 0.1126,
+          "prob": 0.216,
+          "cal_prob": 0.1123,
           "odds": 13.0
         },
         {
@@ -452,7 +452,7 @@
           "league": "美职",
           "score": "1-0",
           "prob": 0.265,
-          "cal_prob": 0.1126,
+          "cal_prob": 0.1123,
           "odds": 10.0
         },
         {
@@ -461,8 +461,8 @@
           "away": "赫尔辛基火花",
           "league": "芬超",
           "score": "0-1",
-          "prob": 0.324,
-          "cal_prob": 0.0767,
+          "prob": 0.323,
+          "cal_prob": 0.0765,
           "odds": 20.0
         }
       ],
@@ -477,12 +477,12 @@
     }
   ],
   "parlay_calibration": {
-    "overall": 0.4718,
-    "n": 337,
+    "overall": 0.4706,
+    "n": 340,
     "table": {
       "0.35": 0.4141,
-      "0.4": 0.5227,
-      "0.45": 0.5333,
+      "0.4": 0.5281,
+      "0.45": 0.5195,
       "0.5": 0.48,
       "0.55": 0.3,
       "0.6": 0.5385,
