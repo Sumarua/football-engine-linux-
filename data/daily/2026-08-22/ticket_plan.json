@@ -291,7 +291,7 @@
           "away": "阿尔克马",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.172,
+          "prob": 0.17,
           "cal_prob": 0.1135,
           "odds": 19.0
         },
@@ -301,7 +301,7 @@
           "away": "拜仁",
           "league": "德超杯",
           "score": "1-0",
-          "prob": 0.188,
+          "prob": 0.187,
           "cal_prob": 0.1135,
           "odds": 26.0
         }
@@ -319,14 +319,14 @@
       "type": "比分2串1",
       "legs": [
         {
-          "match": "2026-08-22_周六006",
-          "home": "安养FC",
-          "away": "首尔FC",
-          "league": "K1联赛",
+          "match": "2026-08-22_周六009",
+          "home": "奥尔格里特",
+          "away": "哈尔姆斯塔德",
+          "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.302,
+          "prob": 0.323,
           "cal_prob": 0.1135,
-          "odds": 13.0
+          "odds": 9.5
         },
         {
           "match": "2026-08-22_周六022",
@@ -334,42 +334,42 @@
           "away": "拜仁",
           "league": "德超杯",
           "score": "1-0",
-          "prob": 0.188,
+          "prob": 0.187,
           "cal_prob": 0.1135,
           "odds": 26.0
         }
       ],
-      "total_odds": 338.0,
+      "total_odds": 247.0,
       "hit_prob": 0.0129,
       "stake": 2.0,
-      "potential": 676.0,
+      "potential": 494.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 338 倍 = EV +336%）"
+      "note": "两场比分都中才赢（校准命中 1.3% × 赔率 247 倍 = EV +218%）"
     },
     {
       "type": "比分2串1",
       "legs": [
         {
-          "match": "2026-08-22_周六006",
-          "home": "安养FC",
-          "away": "首尔FC",
-          "league": "K1联赛",
+          "match": "2026-08-22_周六022",
+          "home": "多特蒙德",
+          "away": "拜仁",
+          "league": "德超杯",
           "score": "1-0",
-          "prob": 0.302,
+          "prob": 0.187,
           "cal_prob": 0.1135,
-          "odds": 13.0
+          "odds": 26.0
         },
         {
-          "match": "2026-08-22_周六014",
-          "home": "福图纳",
-          "away": "阿尔克马",
-          "league": "荷甲",
+          "match": "2026-08-22_周六028",
+          "home": "温哥华白浪",
+          "away": "达拉斯FC",
+          "league": "美职",
           "score": "1-0",
-          "prob": 0.172,
+          "prob": 0.202,
           "cal_prob": 0.1135,
-          "odds": 19.0
+          "odds": 9.5
         }
       ],
       "total_odds": 247.0,
@@ -385,22 +385,12 @@
       "type": "比分3串1",
       "legs": [
         {
-          "match": "2026-08-22_周六006",
-          "home": "安养FC",
-          "away": "首尔FC",
-          "league": "K1联赛",
-          "score": "1-0",
-          "prob": 0.302,
-          "cal_prob": 0.1135,
-          "odds": 13.0
-        },
-        {
           "match": "2026-08-22_周六009",
           "home": "奥尔格里特",
           "away": "哈尔姆斯塔德",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.32,
+          "prob": 0.323,
           "cal_prob": 0.1135,
           "odds": 9.5
         },
@@ -410,40 +400,40 @@
           "away": "阿尔克马",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.172,
+          "prob": 0.17,
           "cal_prob": 0.1135,
           "odds": 19.0
+        },
+        {
+          "match": "2026-08-22_周六022",
+          "home": "多特蒙德",
+          "away": "拜仁",
+          "league": "德超杯",
+          "score": "1-0",
+          "prob": 0.187,
+          "cal_prob": 0.1135,
+          "odds": 26.0
         }
       ],
-      "total_odds": 2346.5,
+      "total_odds": 4693.0,
       "hit_prob": 0.0015,
       "stake": 2.0,
-      "potential": 4693.0,
+      "potential": 9386.0,
       "worst_win": 0.0,
       "n_bets": 1,
       "odds_source": "official",
-      "note": "三场比分全中才赢（赔率 2346 倍，校准命中 0.15%）"
+      "note": "三场比分全中才赢（赔率 4693 倍，校准命中 0.15%）"
     },
     {
       "type": "比分3串4(容错)",
       "legs": [
         {
-          "match": "2026-08-22_周六006",
-          "home": "安养FC",
-          "away": "首尔FC",
-          "league": "K1联赛",
-          "score": "1-0",
-          "prob": 0.302,
-          "cal_prob": 0.1135,
-          "odds": 13.0
-        },
-        {
           "match": "2026-08-22_周六009",
           "home": "奥尔格里特",
           "away": "哈尔姆斯塔德",
           "league": "瑞典超",
           "score": "1-0",
-          "prob": 0.32,
+          "prob": 0.323,
           "cal_prob": 0.1135,
           "odds": 9.5
         },
@@ -453,19 +443,29 @@
           "away": "阿尔克马",
           "league": "荷甲",
           "score": "1-0",
-          "prob": 0.172,
+          "prob": 0.17,
           "cal_prob": 0.1135,
           "odds": 19.0
+        },
+        {
+          "match": "2026-08-22_周六022",
+          "home": "多特蒙德",
+          "away": "拜仁",
+          "league": "德超杯",
+          "score": "1-0",
+          "prob": 0.187,
+          "cal_prob": 0.1135,
+          "odds": 26.0
         }
       ],
-      "total_odds": 2346.5,
+      "total_odds": 4693.0,
       "hit_prob": 0.0015,
       "stake": 8.0,
-      "potential": 5795.0,
-      "worst_win": 494.0,
+      "potential": 11229.0,
+      "worst_win": 988.0,
       "n_bets": 4,
       "odds_source": "official",
-      "note": "3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥494，全中≈¥5795"
+      "note": "3场出4注（3×2串1+1×3串1）错1场仍中1注2串1≈¥988，全中≈¥11229"
     }
   ],
   "parlay_calibration": {
