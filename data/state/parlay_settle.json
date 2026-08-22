@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T21:00:58.151631+00:00",
+  "generated_at": "2026-08-22T21:35:44.053912+00:00",
   "parlay": {
     "n_tickets": 33,
     "n_pending": 5,
@@ -7,8 +7,8 @@
     "n_won": 8,
     "hit_rate": 0.2857,
     "stake": 122.88,
-    "stake_committed": 148.0,
-    "stake_pending": 25.12,
+    "stake_committed": 147.86,
+    "stake_pending": 24.98,
     "return": 168.33,
     "roi": 0.3699,
     "avg_odds": 5.18,
@@ -1155,9 +1155,9 @@
       {
         "date": "2026-08-23",
         "type": "2串1",
-        "stake": 6.93,
-        "potential": 42.11,
-        "total_odds": 6.08,
+        "stake": 6.85,
+        "potential": 39.27,
+        "total_odds": 5.73,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -1178,12 +1178,12 @@
             "hit": null
           },
           {
-            "match": "2026-08-23_周日020",
-            "home": "圣克拉拉",
-            "away": "法马利康",
-            "sel": "home",
+            "match": "2026-08-23_周日006",
+            "home": "哥德堡",
+            "away": "埃尔夫斯堡",
+            "sel": "away",
             "score": null,
-            "odds": 2.48,
+            "odds": 2.34,
             "hit": null
           }
         ]
@@ -1191,44 +1191,8 @@
       {
         "date": "2026-08-23",
         "type": "2串1",
-        "stake": 5.16,
-        "potential": 26.36,
-        "total_odds": 5.11,
-        "odds_source": null,
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-23_周日026",
-            "home": "新英格兰",
-            "away": "纽约城",
-            "sel": "home",
-            "score": null,
-            "odds": 2.06,
-            "hit": null
-          },
-          {
-            "match": "2026-08-23_周日020",
-            "home": "圣克拉拉",
-            "away": "法马利康",
-            "sel": "home",
-            "score": null,
-            "odds": 2.48,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-23",
-        "type": "2串1",
-        "stake": 4.72,
-        "potential": 23.82,
+        "stake": 5.08,
+        "potential": 25.64,
         "total_odds": 5.05,
         "odds_source": null,
         "note": "待赛",
@@ -1262,10 +1226,46 @@
       },
       {
         "date": "2026-08-23",
+        "type": "2串1",
+        "stake": 4.77,
+        "potential": 22.99,
+        "total_odds": 4.82,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-23_周日026",
+            "home": "新英格兰",
+            "away": "纽约城",
+            "sel": "home",
+            "score": null,
+            "odds": 2.06,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日006",
+            "home": "哥德堡",
+            "away": "埃尔夫斯堡",
+            "sel": "away",
+            "score": null,
+            "odds": 2.34,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-23",
         "type": "3串1",
-        "stake": 3.59,
-        "potential": 44.93,
-        "total_odds": 12.52,
+        "stake": 3.58,
+        "potential": 42.28,
+        "total_odds": 11.81,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -1296,12 +1296,12 @@
             "hit": null
           },
           {
-            "match": "2026-08-23_周日020",
-            "home": "圣克拉拉",
-            "away": "法马利康",
-            "sel": "home",
+            "match": "2026-08-23_周日006",
+            "home": "哥德堡",
+            "away": "埃尔夫斯堡",
+            "sel": "away",
             "score": null,
-            "odds": 2.48,
+            "odds": 2.34,
             "hit": null
           }
         ]
@@ -1309,9 +1309,9 @@
       {
         "date": "2026-08-23",
         "type": "3串4",
-        "stake": 4.72,
-        "potential": 33.92,
-        "total_odds": 7.19,
+        "stake": 4.7,
+        "potential": 32.21,
+        "total_odds": 6.85,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -1342,12 +1342,12 @@
             "hit": null
           },
           {
-            "match": "2026-08-23_周日020",
-            "home": "圣克拉拉",
-            "away": "法马利康",
-            "sel": "home",
+            "match": "2026-08-23_周日006",
+            "home": "哥德堡",
+            "away": "埃尔夫斯堡",
+            "sel": "away",
             "score": null,
-            "odds": 2.48,
+            "odds": 2.34,
             "hit": null
           }
         ]
@@ -11488,8 +11488,8 @@
           "n_won": 0,
           "hit_rate": null,
           "stake": 0,
-          "stake_committed": 25.12,
-          "stake_pending": 25.12,
+          "stake_committed": 24.98,
+          "stake_pending": 24.98,
           "return": 0,
           "roi": null,
           "avg_odds": null,
@@ -11499,9 +11499,9 @@
           {
             "date": "2026-08-23",
             "type": "2串1",
-            "stake": 6.93,
-            "potential": 42.11,
-            "total_odds": 6.08,
+            "stake": 6.85,
+            "potential": 39.27,
+            "total_odds": 5.73,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -11522,12 +11522,12 @@
                 "hit": null
               },
               {
-                "match": "2026-08-23_周日020",
-                "home": "圣克拉拉",
-                "away": "法马利康",
-                "sel": "home",
+                "match": "2026-08-23_周日006",
+                "home": "哥德堡",
+                "away": "埃尔夫斯堡",
+                "sel": "away",
                 "score": null,
-                "odds": 2.48,
+                "odds": 2.34,
                 "hit": null
               }
             ]
@@ -11535,44 +11535,8 @@
           {
             "date": "2026-08-23",
             "type": "2串1",
-            "stake": 5.16,
-            "potential": 26.36,
-            "total_odds": 5.11,
-            "odds_source": null,
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-23_周日026",
-                "home": "新英格兰",
-                "away": "纽约城",
-                "sel": "home",
-                "score": null,
-                "odds": 2.06,
-                "hit": null
-              },
-              {
-                "match": "2026-08-23_周日020",
-                "home": "圣克拉拉",
-                "away": "法马利康",
-                "sel": "home",
-                "score": null,
-                "odds": 2.48,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-23",
-            "type": "2串1",
-            "stake": 4.72,
-            "potential": 23.82,
+            "stake": 5.08,
+            "potential": 25.64,
             "total_odds": 5.05,
             "odds_source": null,
             "note": "待赛",
@@ -11606,10 +11570,46 @@
           },
           {
             "date": "2026-08-23",
+            "type": "2串1",
+            "stake": 4.77,
+            "potential": 22.99,
+            "total_odds": 4.82,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-23_周日026",
+                "home": "新英格兰",
+                "away": "纽约城",
+                "sel": "home",
+                "score": null,
+                "odds": 2.06,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日006",
+                "home": "哥德堡",
+                "away": "埃尔夫斯堡",
+                "sel": "away",
+                "score": null,
+                "odds": 2.34,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-23",
             "type": "3串1",
-            "stake": 3.59,
-            "potential": 44.93,
-            "total_odds": 12.52,
+            "stake": 3.58,
+            "potential": 42.28,
+            "total_odds": 11.81,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -11640,12 +11640,12 @@
                 "hit": null
               },
               {
-                "match": "2026-08-23_周日020",
-                "home": "圣克拉拉",
-                "away": "法马利康",
-                "sel": "home",
+                "match": "2026-08-23_周日006",
+                "home": "哥德堡",
+                "away": "埃尔夫斯堡",
+                "sel": "away",
                 "score": null,
-                "odds": 2.48,
+                "odds": 2.34,
                 "hit": null
               }
             ]
@@ -11653,9 +11653,9 @@
           {
             "date": "2026-08-23",
             "type": "3串4",
-            "stake": 4.72,
-            "potential": 33.92,
-            "total_odds": 7.19,
+            "stake": 4.7,
+            "potential": 32.21,
+            "total_odds": 6.85,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -11686,12 +11686,12 @@
                 "hit": null
               },
               {
-                "match": "2026-08-23_周日020",
-                "home": "圣克拉拉",
-                "away": "法马利康",
-                "sel": "home",
+                "match": "2026-08-23_周日006",
+                "home": "哥德堡",
+                "away": "埃尔夫斯堡",
+                "sel": "away",
                 "score": null,
-                "odds": 2.48,
+                "odds": 2.34,
                 "hit": null
               }
             ]
