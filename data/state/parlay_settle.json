@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T04:52:57.004802+00:00",
+  "generated_at": "2026-08-23T05:45:35.877175+00:00",
   "parlay": {
     "n_tickets": 33,
     "n_pending": 5,
@@ -5174,6 +5174,78 @@
         "date": "2026-08-23",
         "type": "比分2串1",
         "stake": 2.0,
+        "potential": 1000.0,
+        "total_odds": 500.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-23_周日007",
+            "home": "赫尔辛基",
+            "away": "赫尔辛基火花",
+            "sel": null,
+            "score": "0-1",
+            "odds": 20.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日009",
+            "home": "曼城",
+            "away": "伯恩茅斯",
+            "sel": null,
+            "score": "0-1",
+            "odds": 25.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-23",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 650.0,
+        "total_odds": 325.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-23_周日008",
+            "home": "埃因霍温",
+            "away": "格罗宁根",
+            "sel": null,
+            "score": "1-0",
+            "odds": 13.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日009",
+            "home": "曼城",
+            "away": "伯恩茅斯",
+            "sel": null,
+            "score": "0-1",
+            "odds": 25.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-23",
+        "type": "比分2串1",
+        "stake": 2.0,
         "potential": 520.0,
         "total_odds": 260.0,
         "odds_source": "official",
@@ -5208,27 +5280,37 @@
       },
       {
         "date": "2026-08-23",
-        "type": "比分2串1",
+        "type": "比分3串1",
         "stake": 2.0,
-        "potential": 440.0,
-        "total_odds": 220.0,
+        "potential": 5200.0,
+        "total_odds": 2600.0,
         "odds_source": "official",
         "note": "待赛",
         "won": false,
         "pending": true,
         "leg_results": [
           null,
+          null,
           null
         ],
         "return": 0.0,
         "legs": [
           {
-            "match": "2026-08-23_周日009",
-            "home": "曼城",
-            "away": "伯恩茅斯",
+            "match": "2026-08-23_周日008",
+            "home": "埃因霍温",
+            "away": "格罗宁根",
             "sel": null,
             "score": "1-0",
-            "odds": 11.0,
+            "odds": 13.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日026",
+            "home": "新英格兰",
+            "away": "纽约城",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.0,
             "hit": null
           },
           {
@@ -5244,92 +5326,10 @@
       },
       {
         "date": "2026-08-23",
-        "type": "比分2串1",
-        "stake": 2.0,
-        "potential": 286.0,
-        "total_odds": 143.0,
-        "odds_source": "official",
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-23_周日008",
-            "home": "埃因霍温",
-            "away": "格罗宁根",
-            "sel": null,
-            "score": "1-0",
-            "odds": 13.0,
-            "hit": null
-          },
-          {
-            "match": "2026-08-23_周日009",
-            "home": "曼城",
-            "away": "伯恩茅斯",
-            "sel": null,
-            "score": "1-0",
-            "odds": 11.0,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-23",
-        "type": "比分3串1",
-        "stake": 2.0,
-        "potential": 2860.0,
-        "total_odds": 1430.0,
-        "odds_source": "official",
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-23_周日008",
-            "home": "埃因霍温",
-            "away": "格罗宁根",
-            "sel": null,
-            "score": "1-0",
-            "odds": 13.0,
-            "hit": null
-          },
-          {
-            "match": "2026-08-23_周日009",
-            "home": "曼城",
-            "away": "伯恩茅斯",
-            "sel": null,
-            "score": "1-0",
-            "odds": 11.0,
-            "hit": null
-          },
-          {
-            "match": "2026-08-23_周日026",
-            "home": "新英格兰",
-            "away": "纽约城",
-            "sel": null,
-            "score": "1-0",
-            "odds": 10.0,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-23",
         "type": "比分3串4(容错)",
         "stake": 8.0,
-        "potential": 3626.0,
-        "total_odds": 1430.0,
+        "potential": 6380.0,
+        "total_odds": 2600.0,
         "odds_source": "official",
         "note": "待赛",
         "won": false,
@@ -5351,21 +5351,21 @@
             "hit": null
           },
           {
-            "match": "2026-08-23_周日009",
-            "home": "曼城",
-            "away": "伯恩茅斯",
-            "sel": null,
-            "score": "1-0",
-            "odds": 11.0,
-            "hit": null
-          },
-          {
             "match": "2026-08-23_周日026",
             "home": "新英格兰",
             "away": "纽约城",
             "sel": null,
             "score": "1-0",
             "odds": 10.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日007",
+            "home": "赫尔辛基",
+            "away": "赫尔辛基火花",
+            "sel": null,
+            "score": "0-1",
+            "odds": 20.0,
             "hit": null
           }
         ]
@@ -11726,6 +11726,78 @@
             "date": "2026-08-23",
             "type": "比分2串1",
             "stake": 2.0,
+            "potential": 1000.0,
+            "total_odds": 500.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-23_周日007",
+                "home": "赫尔辛基",
+                "away": "赫尔辛基火花",
+                "sel": null,
+                "score": "0-1",
+                "odds": 20.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日009",
+                "home": "曼城",
+                "away": "伯恩茅斯",
+                "sel": null,
+                "score": "0-1",
+                "odds": 25.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-23",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 650.0,
+            "total_odds": 325.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-23_周日008",
+                "home": "埃因霍温",
+                "away": "格罗宁根",
+                "sel": null,
+                "score": "1-0",
+                "odds": 13.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日009",
+                "home": "曼城",
+                "away": "伯恩茅斯",
+                "sel": null,
+                "score": "0-1",
+                "odds": 25.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-23",
+            "type": "比分2串1",
+            "stake": 2.0,
             "potential": 520.0,
             "total_odds": 260.0,
             "odds_source": "official",
@@ -11760,27 +11832,37 @@
           },
           {
             "date": "2026-08-23",
-            "type": "比分2串1",
+            "type": "比分3串1",
             "stake": 2.0,
-            "potential": 440.0,
-            "total_odds": 220.0,
+            "potential": 5200.0,
+            "total_odds": 2600.0,
             "odds_source": "official",
             "note": "待赛",
             "won": false,
             "pending": true,
             "leg_results": [
               null,
+              null,
               null
             ],
             "return": 0.0,
             "legs": [
               {
-                "match": "2026-08-23_周日009",
-                "home": "曼城",
-                "away": "伯恩茅斯",
+                "match": "2026-08-23_周日008",
+                "home": "埃因霍温",
+                "away": "格罗宁根",
                 "sel": null,
                 "score": "1-0",
-                "odds": 11.0,
+                "odds": 13.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日026",
+                "home": "新英格兰",
+                "away": "纽约城",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.0,
                 "hit": null
               },
               {
@@ -11796,92 +11878,10 @@
           },
           {
             "date": "2026-08-23",
-            "type": "比分2串1",
-            "stake": 2.0,
-            "potential": 286.0,
-            "total_odds": 143.0,
-            "odds_source": "official",
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-23_周日008",
-                "home": "埃因霍温",
-                "away": "格罗宁根",
-                "sel": null,
-                "score": "1-0",
-                "odds": 13.0,
-                "hit": null
-              },
-              {
-                "match": "2026-08-23_周日009",
-                "home": "曼城",
-                "away": "伯恩茅斯",
-                "sel": null,
-                "score": "1-0",
-                "odds": 11.0,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-23",
-            "type": "比分3串1",
-            "stake": 2.0,
-            "potential": 2860.0,
-            "total_odds": 1430.0,
-            "odds_source": "official",
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-23_周日008",
-                "home": "埃因霍温",
-                "away": "格罗宁根",
-                "sel": null,
-                "score": "1-0",
-                "odds": 13.0,
-                "hit": null
-              },
-              {
-                "match": "2026-08-23_周日009",
-                "home": "曼城",
-                "away": "伯恩茅斯",
-                "sel": null,
-                "score": "1-0",
-                "odds": 11.0,
-                "hit": null
-              },
-              {
-                "match": "2026-08-23_周日026",
-                "home": "新英格兰",
-                "away": "纽约城",
-                "sel": null,
-                "score": "1-0",
-                "odds": 10.0,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-23",
             "type": "比分3串4(容错)",
             "stake": 8.0,
-            "potential": 3626.0,
-            "total_odds": 1430.0,
+            "potential": 6380.0,
+            "total_odds": 2600.0,
             "odds_source": "official",
             "note": "待赛",
             "won": false,
@@ -11903,21 +11903,21 @@
                 "hit": null
               },
               {
-                "match": "2026-08-23_周日009",
-                "home": "曼城",
-                "away": "伯恩茅斯",
-                "sel": null,
-                "score": "1-0",
-                "odds": 11.0,
-                "hit": null
-              },
-              {
                 "match": "2026-08-23_周日026",
                 "home": "新英格兰",
                 "away": "纽约城",
                 "sel": null,
                 "score": "1-0",
                 "odds": 10.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日007",
+                "home": "赫尔辛基",
+                "away": "赫尔辛基火花",
+                "sel": null,
+                "score": "0-1",
+                "odds": 20.0,
                 "hit": null
               }
             ]
