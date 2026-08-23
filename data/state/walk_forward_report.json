@@ -1,46 +1,46 @@
 {
-  "total_matches": 363,
+  "total_matches": 365,
   "date_range": [
     "2026-07-19",
     "2026-08-23"
   ],
   "metrics": {
-    "brier": 0.6324,
-    "weighted_brier": 0.6315,
-    "rps": 0.2152,
-    "weighted_rps": 0.215,
-    "log_loss": 1.0501,
-    "hit_rate": 0.4959,
-    "ece": 0.1529
+    "brier": 0.6315,
+    "weighted_brier": 0.6306,
+    "rps": 0.215,
+    "weighted_rps": 0.2148,
+    "log_loss": 1.0488,
+    "hit_rate": 0.4986,
+    "ece": 0.1581
   },
   "draw_analysis": {
     "actual_draws": 99,
-    "actual_draw_rate": 0.2727,
+    "actual_draw_rate": 0.2712,
     "predicted_draws": 14,
-    "predicted_draw_rate": 0.0386,
+    "predicted_draw_rate": 0.0384,
     "max_draw_prob": 0.4592,
-    "avg_draw_prob": 0.2819,
-    "avg_market_draw": 0.2483,
-    "market_high_draw_n": 76,
+    "avg_draw_prob": 0.2822,
+    "avg_market_draw": 0.2488,
+    "market_high_draw_n": 78,
     "market_high_draw_actual": 26,
-    "market_high_draw_rate": 0.3421
+    "market_high_draw_rate": 0.3333
   },
   "strategy_comparison": {
     "model": {
-      "hit_rate": 0.4876,
-      "n": 363
+      "hit_rate": 0.4904,
+      "n": 365
     },
     "market": {
-      "hit_rate": 0.5282,
-      "n": 301
+      "hit_rate": 0.5314,
+      "n": 303
     },
     "hybrid_v2": {
-      "hit_rate": 0.4718,
-      "n": 301
+      "hit_rate": 0.4686,
+      "n": 303
     },
     "market_d28": {
-      "hit_rate": 0.4651,
-      "n": 301
+      "hit_rate": 0.462,
+      "n": 303
     }
   },
   "by_league": {
@@ -87,10 +87,10 @@
       "rps": 0.1986
     },
     "葡超": {
-      "n": 19,
-      "hit_rate": 0.4211,
-      "brier": 0.635,
-      "rps": 0.193
+      "n": 20,
+      "hit_rate": 0.45,
+      "brier": 0.6303,
+      "rps": 0.1933
     },
     "巴甲": {
       "n": 17,
@@ -105,10 +105,10 @@
       "rps": 0.1954
     },
     "西甲": {
-      "n": 12,
-      "hit_rate": 0.5,
-      "brier": 0.6091,
-      "rps": 0.1744
+      "n": 13,
+      "hit_rate": 0.5385,
+      "brier": 0.5925,
+      "rps": 0.1729
     },
     "美职联": {
       "n": 11,
