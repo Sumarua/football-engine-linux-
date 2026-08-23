@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T13:46:19.600945+00:00",
+  "generated_at": "2026-08-23T14:04:02.998743+00:00",
   "parlay": {
     "n_tickets": 33,
     "n_pending": 5,
@@ -31,14 +31,14 @@
     }
   },
   "score_parlay": {
-    "n_tickets": 97,
-    "n_pending": 1,
+    "n_tickets": 101,
+    "n_pending": 5,
     "n_settled": 96,
     "n_won": 0,
     "hit_rate": 0.0,
     "stake": 300.0,
-    "stake_committed": 302.0,
-    "stake_pending": 2.0,
+    "stake_committed": 316.0,
+    "stake_pending": 16.0,
     "return": 0.0,
     "roi": -1.0,
     "avg_odds": 296.55,
@@ -5174,6 +5174,78 @@
         "date": "2026-08-23",
         "type": "比分2串1",
         "stake": 2.0,
+        "potential": 210.0,
+        "total_odds": 105.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-23_周日013",
+            "home": "哈马比",
+            "away": "盖斯",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日026",
+            "home": "新英格兰",
+            "away": "纽约城",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-23",
+        "type": "比分2串1",
+        "stake": 2.0,
+        "potential": 294.0,
+        "total_odds": 147.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-23_周日013",
+            "home": "哈马比",
+            "away": "盖斯",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日012",
+            "home": "吉马良斯",
+            "away": "马德拉国民",
+            "sel": null,
+            "score": "0-1",
+            "odds": 14.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-23",
+        "type": "比分2串1",
+        "stake": 2.0,
         "potential": 280.0,
         "total_odds": 140.0,
         "odds_source": "official",
@@ -5186,6 +5258,98 @@
         ],
         "return": 0.0,
         "legs": [
+          {
+            "match": "2026-08-23_周日026",
+            "home": "新英格兰",
+            "away": "纽约城",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日012",
+            "home": "吉马良斯",
+            "away": "马德拉国民",
+            "sel": null,
+            "score": "0-1",
+            "odds": 14.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-23",
+        "type": "比分3串1",
+        "stake": 2.0,
+        "potential": 2940.0,
+        "total_odds": 1470.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-23_周日013",
+            "home": "哈马比",
+            "away": "盖斯",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.5,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日026",
+            "home": "新英格兰",
+            "away": "纽约城",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.0,
+            "hit": null
+          },
+          {
+            "match": "2026-08-23_周日012",
+            "home": "吉马良斯",
+            "away": "马德拉国民",
+            "sel": null,
+            "score": "0-1",
+            "odds": 14.0,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-23",
+        "type": "比分3串4(容错)",
+        "stake": 8.0,
+        "potential": 3724.0,
+        "total_odds": 1470.0,
+        "odds_source": "official",
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-23_周日013",
+            "home": "哈马比",
+            "away": "盖斯",
+            "sel": null,
+            "score": "1-0",
+            "odds": 10.5,
+            "hit": null
+          },
           {
             "match": "2026-08-23_周日026",
             "home": "新英格兰",
@@ -11542,14 +11706,14 @@
       },
       "score_parlay": {
         "stats": {
-          "n_tickets": 1,
-          "n_pending": 1,
+          "n_tickets": 5,
+          "n_pending": 5,
           "n_settled": 0,
           "n_won": 0,
           "hit_rate": null,
           "stake": 0,
-          "stake_committed": 2.0,
-          "stake_pending": 2.0,
+          "stake_committed": 16.0,
+          "stake_pending": 16.0,
           "return": 0,
           "roi": null,
           "avg_odds": null,
@@ -11558,6 +11722,78 @@
           "n_legs_settled": 0
         },
         "tickets": [
+          {
+            "date": "2026-08-23",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 210.0,
+            "total_odds": 105.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-23_周日013",
+                "home": "哈马比",
+                "away": "盖斯",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日026",
+                "home": "新英格兰",
+                "away": "纽约城",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-23",
+            "type": "比分2串1",
+            "stake": 2.0,
+            "potential": 294.0,
+            "total_odds": 147.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-23_周日013",
+                "home": "哈马比",
+                "away": "盖斯",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日012",
+                "home": "吉马良斯",
+                "away": "马德拉国民",
+                "sel": null,
+                "score": "0-1",
+                "odds": 14.0,
+                "hit": null
+              }
+            ]
+          },
           {
             "date": "2026-08-23",
             "type": "比分2串1",
@@ -11574,6 +11810,98 @@
             ],
             "return": 0.0,
             "legs": [
+              {
+                "match": "2026-08-23_周日026",
+                "home": "新英格兰",
+                "away": "纽约城",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日012",
+                "home": "吉马良斯",
+                "away": "马德拉国民",
+                "sel": null,
+                "score": "0-1",
+                "odds": 14.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-23",
+            "type": "比分3串1",
+            "stake": 2.0,
+            "potential": 2940.0,
+            "total_odds": 1470.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-23_周日013",
+                "home": "哈马比",
+                "away": "盖斯",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.5,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日026",
+                "home": "新英格兰",
+                "away": "纽约城",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.0,
+                "hit": null
+              },
+              {
+                "match": "2026-08-23_周日012",
+                "home": "吉马良斯",
+                "away": "马德拉国民",
+                "sel": null,
+                "score": "0-1",
+                "odds": 14.0,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-23",
+            "type": "比分3串4(容错)",
+            "stake": 8.0,
+            "potential": 3724.0,
+            "total_odds": 1470.0,
+            "odds_source": "official",
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-23_周日013",
+                "home": "哈马比",
+                "away": "盖斯",
+                "sel": null,
+                "score": "1-0",
+                "odds": 10.5,
+                "hit": null
+              },
               {
                 "match": "2026-08-23_周日026",
                 "home": "新英格兰",
