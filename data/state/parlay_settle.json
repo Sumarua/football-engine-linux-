@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-23T15:58:53.147843+00:00",
+  "generated_at": "2026-08-23T16:43:37.984465+00:00",
   "parlay": {
-    "n_tickets": 33,
-    "n_pending": 5,
+    "n_tickets": 38,
+    "n_pending": 10,
     "n_settled": 28,
     "n_won": 8,
     "hit_rate": 0.2857,
     "stake": 122.88,
-    "stake_committed": 147.86,
-    "stake_pending": 24.98,
+    "stake_committed": 172.85,
+    "stake_pending": 49.97,
     "return": 168.33,
     "roi": 0.3699,
     "avg_odds": 5.18,
@@ -1348,6 +1348,206 @@
             "sel": "home",
             "score": null,
             "odds": 2.59,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-24",
+        "type": "2串1",
+        "stake": 6.31,
+        "potential": 30.58,
+        "total_odds": 4.85,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-24_周一010",
+            "home": "马拉加",
+            "away": "拉科",
+            "sel": "home",
+            "score": null,
+            "odds": 2.33,
+            "hit": null
+          },
+          {
+            "match": "2026-08-24_周一001",
+            "home": "博洛尼亚",
+            "away": "拉齐奥",
+            "sel": "home",
+            "score": null,
+            "odds": 2.08,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-24",
+        "type": "2串1",
+        "stake": 6.23,
+        "potential": 30.05,
+        "total_odds": 4.82,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-24_周一010",
+            "home": "马拉加",
+            "away": "拉科",
+            "sel": "home",
+            "score": null,
+            "odds": 2.33,
+            "hit": null
+          },
+          {
+            "match": "2026-08-24_周一003",
+            "home": "马尔默",
+            "away": "佐加顿斯",
+            "sel": "away",
+            "score": null,
+            "odds": 2.07,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-24",
+        "type": "2串1",
+        "stake": 4.11,
+        "potential": 17.7,
+        "total_odds": 4.31,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-24_周一001",
+            "home": "博洛尼亚",
+            "away": "拉齐奥",
+            "sel": "home",
+            "score": null,
+            "odds": 2.08,
+            "hit": null
+          },
+          {
+            "match": "2026-08-24_周一003",
+            "home": "马尔默",
+            "away": "佐加顿斯",
+            "sel": "away",
+            "score": null,
+            "odds": 2.07,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-24",
+        "type": "3串1",
+        "stake": 3.62,
+        "potential": 36.32,
+        "total_odds": 10.03,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-24_周一010",
+            "home": "马拉加",
+            "away": "拉科",
+            "sel": "home",
+            "score": null,
+            "odds": 2.33,
+            "hit": null
+          },
+          {
+            "match": "2026-08-24_周一001",
+            "home": "博洛尼亚",
+            "away": "拉齐奥",
+            "sel": "home",
+            "score": null,
+            "odds": 2.08,
+            "hit": null
+          },
+          {
+            "match": "2026-08-24_周一003",
+            "home": "马尔默",
+            "away": "佐加顿斯",
+            "sel": "away",
+            "score": null,
+            "odds": 2.07,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-24",
+        "type": "3串4",
+        "stake": 4.72,
+        "potential": 28.33,
+        "total_odds": 6.0,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-24_周一010",
+            "home": "马拉加",
+            "away": "拉科",
+            "sel": "home",
+            "score": null,
+            "odds": 2.33,
+            "hit": null
+          },
+          {
+            "match": "2026-08-24_周一001",
+            "home": "博洛尼亚",
+            "away": "拉齐奥",
+            "sel": "home",
+            "score": null,
+            "odds": 2.08,
+            "hit": null
+          },
+          {
+            "match": "2026-08-24_周一003",
+            "home": "马尔默",
+            "away": "佐加顿斯",
+            "sel": "away",
+            "score": null,
+            "odds": 2.07,
             "hit": null
           }
         ]
@@ -11498,6 +11698,230 @@
                 "sel": "home",
                 "score": null,
                 "odds": 2.59,
+                "hit": null
+              }
+            ]
+          }
+        ]
+      },
+      "score_parlay": {
+        "stats": null,
+        "tickets": []
+      }
+    },
+    "2026-08-24": {
+      "parlay": {
+        "stats": {
+          "n_tickets": 5,
+          "n_pending": 5,
+          "n_settled": 0,
+          "n_won": 0,
+          "hit_rate": null,
+          "stake": 0,
+          "stake_committed": 24.99,
+          "stake_pending": 24.99,
+          "return": 0,
+          "roi": null,
+          "avg_odds": null,
+          "by_type": {}
+        },
+        "tickets": [
+          {
+            "date": "2026-08-24",
+            "type": "2串1",
+            "stake": 6.31,
+            "potential": 30.58,
+            "total_odds": 4.85,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-24_周一010",
+                "home": "马拉加",
+                "away": "拉科",
+                "sel": "home",
+                "score": null,
+                "odds": 2.33,
+                "hit": null
+              },
+              {
+                "match": "2026-08-24_周一001",
+                "home": "博洛尼亚",
+                "away": "拉齐奥",
+                "sel": "home",
+                "score": null,
+                "odds": 2.08,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-24",
+            "type": "2串1",
+            "stake": 6.23,
+            "potential": 30.05,
+            "total_odds": 4.82,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-24_周一010",
+                "home": "马拉加",
+                "away": "拉科",
+                "sel": "home",
+                "score": null,
+                "odds": 2.33,
+                "hit": null
+              },
+              {
+                "match": "2026-08-24_周一003",
+                "home": "马尔默",
+                "away": "佐加顿斯",
+                "sel": "away",
+                "score": null,
+                "odds": 2.07,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-24",
+            "type": "2串1",
+            "stake": 4.11,
+            "potential": 17.7,
+            "total_odds": 4.31,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-24_周一001",
+                "home": "博洛尼亚",
+                "away": "拉齐奥",
+                "sel": "home",
+                "score": null,
+                "odds": 2.08,
+                "hit": null
+              },
+              {
+                "match": "2026-08-24_周一003",
+                "home": "马尔默",
+                "away": "佐加顿斯",
+                "sel": "away",
+                "score": null,
+                "odds": 2.07,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-24",
+            "type": "3串1",
+            "stake": 3.62,
+            "potential": 36.32,
+            "total_odds": 10.03,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-24_周一010",
+                "home": "马拉加",
+                "away": "拉科",
+                "sel": "home",
+                "score": null,
+                "odds": 2.33,
+                "hit": null
+              },
+              {
+                "match": "2026-08-24_周一001",
+                "home": "博洛尼亚",
+                "away": "拉齐奥",
+                "sel": "home",
+                "score": null,
+                "odds": 2.08,
+                "hit": null
+              },
+              {
+                "match": "2026-08-24_周一003",
+                "home": "马尔默",
+                "away": "佐加顿斯",
+                "sel": "away",
+                "score": null,
+                "odds": 2.07,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-24",
+            "type": "3串4",
+            "stake": 4.72,
+            "potential": 28.33,
+            "total_odds": 6.0,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-24_周一010",
+                "home": "马拉加",
+                "away": "拉科",
+                "sel": "home",
+                "score": null,
+                "odds": 2.33,
+                "hit": null
+              },
+              {
+                "match": "2026-08-24_周一001",
+                "home": "博洛尼亚",
+                "away": "拉齐奥",
+                "sel": "home",
+                "score": null,
+                "odds": 2.08,
+                "hit": null
+              },
+              {
+                "match": "2026-08-24_周一003",
+                "home": "马尔默",
+                "away": "佐加顿斯",
+                "sel": "away",
+                "score": null,
+                "odds": 2.07,
                 "hit": null
               }
             ]
