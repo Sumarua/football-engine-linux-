@@ -1,13 +1,13 @@
 {
   "date": "2026-08-22",
-  "n_matches": 27,
-  "hit_rate": 0.5556,
-  "hits": 15,
+  "n_matches": 28,
+  "hit_rate": 0.5714,
+  "hits": 16,
   "source_brier": {
-    "model": 0.6612,
-    "market": 0.5995,
+    "model": 0.6543,
+    "market": 0.5846,
     "djyy": null,
-    "final": 0.6179
+    "final": 0.6084
   },
   "by_league": {
     "日职": {
@@ -81,14 +81,20 @@
       "hit_rate": 1.0,
       "wilson_lower": 0.2065,
       "avg_brier": 0.4852
+    },
+    "美职": {
+      "n": 1,
+      "hit_rate": 1.0,
+      "wilson_lower": 0.2065,
+      "avg_brier": 0.3529
     }
   },
   "by_confidence_tier": {
     "mid": {
-      "n": 24,
-      "hit_rate": 0.5417,
-      "wilson_lower": 0.3507,
-      "avg_brier": 0.6274
+      "n": 25,
+      "hit_rate": 0.56,
+      "wilson_lower": 0.3707,
+      "avg_brier": 0.6165
     },
     "low": {
       "n": 2,
@@ -117,10 +123,10 @@
       "avg_brier": 0.6511
     },
     "1.0-1.5": {
-      "n": 5,
-      "hit_rate": 0.8,
-      "wilson_lower": 0.3755,
-      "avg_brier": 0.5639
+      "n": 6,
+      "hit_rate": 0.8333,
+      "wilson_lower": 0.4365,
+      "avg_brier": 0.5288
     }
   },
   "score_stats": {
@@ -150,13 +156,13 @@
     }
   },
   "market_signal_stats": {
-    "n": 27,
-    "hits": 10
+    "n": 28,
+    "hits": 11
   },
   "layered": {
-    "log_loss_final": 1.0366,
+    "log_loss_final": 1.023,
     "goal_framework": {
-      "n": 27,
+      "n": 28,
       "hits": 14
     },
     "prob_bands": {
@@ -165,8 +171,8 @@
         "hit_rate": 0.5455
       },
       "50-60%": {
-        "n": 2,
-        "hit_rate": 0.5
+        "n": 3,
+        "hit_rate": 0.6667
       },
       "60%+": {
         "n": 1,
@@ -179,8 +185,8 @@
     },
     "freshness_groups": {
       "ok": {
-        "n": 6,
-        "hit_rate": 0.5
+        "n": 7,
+        "hit_rate": 0.5714
       },
       "watch": {
         "n": 21,
@@ -202,6 +208,6 @@
     }
   ],
   "total_pnl": -150.01,
-  "generated_at": "2026-08-23T03:15:24.652140",
-  "sha256": "0a5f81db1785b1f3e1eaaba09a4f078a"
+  "generated_at": "2026-08-23T04:04:49.984233",
+  "sha256": "fc827d152bec53690b25ddac74ae17bc"
 }
