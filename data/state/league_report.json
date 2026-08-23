@@ -1,8 +1,8 @@
 {
   "n_leagues": 33,
-  "n_matches": 389,
+  "n_matches": 391,
   "external_added": 29,
-  "generated_at": "2026-08-23T17:57:16.989682",
+  "generated_at": "2026-08-23T18:48:34.436568",
   "leagues": [
     {
       "league": "挪超",
@@ -362,6 +362,23 @@
       "recent10_roi": 0.07
     },
     {
+      "league": "意甲",
+      "n": 6,
+      "hit_rate": 0.5,
+      "avg_odds": 1.747,
+      "roi": -0.225,
+      "avg_confidence": 0.2213,
+      "verdict": "谨慎",
+      "recent_n": 5,
+      "recent_hits": 3,
+      "recent_hit_rate": 0.6,
+      "recent_roi": -0.07,
+      "recent10_n": 6,
+      "recent10_hits": 3,
+      "recent10_hit_rate": 0.5,
+      "recent10_roi": -0.225
+    },
+    {
       "league": "德乙",
       "n": 6,
       "hit_rate": 0.3333,
@@ -428,23 +445,6 @@
       "recent10_hits": 3,
       "recent10_hit_rate": 0.75,
       "recent10_roi": 0.2275
-    },
-    {
-      "league": "意甲",
-      "n": 4,
-      "hit_rate": 0.5,
-      "avg_odds": 1.817,
-      "roi": -0.16,
-      "avg_confidence": 0.2339,
-      "verdict": "谨慎",
-      "recent_n": 4,
-      "recent_hits": 2,
-      "recent_hit_rate": 0.5,
-      "recent_roi": -0.16,
-      "recent10_n": 4,
-      "recent10_hits": 2,
-      "recent10_hit_rate": 0.5,
-      "recent10_roi": -0.16
     },
     {
       "league": "韩职",
