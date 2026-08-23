@@ -1,8 +1,8 @@
 {
   "n_leagues": 33,
-  "n_matches": 395,
+  "n_matches": 397,
   "external_added": 29,
-  "generated_at": "2026-08-23T20:59:34.231344",
+  "generated_at": "2026-08-23T21:35:53.877316",
   "leagues": [
     {
       "league": "挪超",
@@ -124,6 +124,23 @@
       "recent10_roi": 0.153
     },
     {
+      "league": "葡超",
+      "n": 21,
+      "hit_rate": 0.4762,
+      "avg_odds": 1.963,
+      "roi": -0.169,
+      "avg_confidence": 0.1962,
+      "verdict": "谨慎",
+      "recent_n": 5,
+      "recent_hits": 4,
+      "recent_hit_rate": 0.8,
+      "recent_roi": 0.542,
+      "recent10_n": 10,
+      "recent10_hits": 6,
+      "recent10_hit_rate": 0.6,
+      "recent10_roi": 0.124
+    },
+    {
       "league": "巴甲",
       "n": 21,
       "hit_rate": 0.3333,
@@ -139,23 +156,6 @@
       "recent10_hits": 1,
       "recent10_hit_rate": 0.1,
       "recent10_roi": -0.7
-    },
-    {
-      "league": "葡超",
-      "n": 20,
-      "hit_rate": 0.45,
-      "avg_odds": 2.004,
-      "roi": -0.185,
-      "avg_confidence": 0.1967,
-      "verdict": "谨慎",
-      "recent_n": 5,
-      "recent_hits": 3,
-      "recent_hit_rate": 0.6,
-      "recent_roi": 0.312,
-      "recent10_n": 10,
-      "recent10_hits": 5,
-      "recent10_hit_rate": 0.5,
-      "recent10_roi": 0.009
     },
     {
       "league": "日职",
@@ -176,20 +176,20 @@
     },
     {
       "league": "西甲",
-      "n": 13,
-      "hit_rate": 0.5385,
-      "avg_odds": 1.883,
-      "roi": -0.0108,
-      "avg_confidence": 0.157,
-      "verdict": "谨慎",
+      "n": 14,
+      "hit_rate": 0.5714,
+      "avg_odds": 1.834,
+      "roi": 0.0043,
+      "avg_confidence": 0.154,
+      "verdict": "观望",
       "recent_n": 5,
-      "recent_hits": 2,
-      "recent_hit_rate": 0.4,
-      "recent_roi": -0.334,
+      "recent_hits": 3,
+      "recent_hit_rate": 0.6,
+      "recent_roi": -0.094,
       "recent10_n": 10,
       "recent10_hits": 5,
       "recent10_hit_rate": 0.5,
-      "recent10_roi": -0.161
+      "recent10_roi": -0.238
     },
     {
       "league": "美职联",
