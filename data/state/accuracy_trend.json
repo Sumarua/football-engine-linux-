@@ -1,15 +1,15 @@
 {
   "generated_at": "2026-08-25",
-  "total_matches": 390,
+  "total_matches": 391,
   "date_range": [
     "2026-07-19",
     "2026-08-25"
   ],
   "overall": {
-    "hit_rate": 0.4974,
-    "brier_final": 0.6268,
-    "brier_model": 0.658,
-    "brier_market": 0.5962,
+    "hit_rate": 0.4987,
+    "brier_final": 0.6261,
+    "brier_model": 0.6589,
+    "brier_market": 0.5956,
     "brier_djyy": 0.646
   },
   "daily": [
@@ -459,21 +459,21 @@
     },
     {
       "date": "2026-08-25",
-      "n": 8,
-      "hits": 4,
-      "hit_rate": 0.5,
-      "cum_hit_rate": 0.4974,
-      "brier_final": 0.6024,
-      "brier_model": 0.546,
-      "brier_market": 0.5319,
+      "n": 9,
+      "hits": 5,
+      "hit_rate": 0.5556,
+      "cum_hit_rate": 0.4987,
+      "brier_final": 0.5767,
+      "brier_model": 0.5965,
+      "brier_market": 0.5168,
       "brier_djyy": null,
       "pnl": 201.0
     }
   ],
   "rolling7": {
-    "n": 102,
-    "hit_rate": 0.6569,
-    "brier_final": 0.5655,
+    "n": 103,
+    "hit_rate": 0.6602,
+    "brier_final": 0.5618,
     "pnl": -114.6
   },
   "prev7": {
@@ -485,16 +485,16 @@
   "verdict": "命中率提升 +22pt",
   "by_league": [
     {
+      "layer": "欧冠",
+      "n": 30,
+      "hit_rate": 0.5,
+      "brier_final": 0.5995
+    },
+    {
       "layer": "挪超",
       "n": 30,
       "hit_rate": 0.5333,
       "brier_final": 0.5658
-    },
-    {
-      "layer": "欧冠",
-      "n": 29,
-      "hit_rate": 0.4828,
-      "brier_final": 0.6074
     },
     {
       "layer": "瑞典超",
@@ -692,9 +692,9 @@
   "by_odds_band": [
     {
       "layer": "1.5-2.0",
-      "n": 137,
-      "hit_rate": 0.4964,
-      "brier_final": 0.637
+      "n": 138,
+      "hit_rate": 0.5,
+      "brier_final": 0.6351
     },
     {
       "layer": "2.0-3.0",
@@ -718,9 +718,9 @@
   "by_conf_tier": [
     {
       "layer": "mid",
-      "n": 241,
-      "hit_rate": 0.5353,
-      "brier_final": 0.6082
+      "n": 242,
+      "hit_rate": 0.5372,
+      "brier_final": 0.6073
     },
     {
       "layer": "low",

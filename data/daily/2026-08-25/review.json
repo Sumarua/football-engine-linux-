@@ -1,13 +1,13 @@
 {
   "date": "2026-08-25",
-  "n_matches": 8,
-  "hit_rate": 0.5,
-  "hits": 4,
+  "n_matches": 9,
+  "hit_rate": 0.5556,
+  "hits": 5,
   "source_brier": {
-    "model": 0.546,
-    "market": 0.5319,
+    "model": 0.5965,
+    "market": 0.5168,
     "djyy": null,
-    "final": 0.6024
+    "final": 0.5767
   },
   "by_league": {
     "K1联赛": {
@@ -29,10 +29,10 @@
       "avg_brier": 0.7162
     },
     "欧冠": {
-      "n": 1,
+      "n": 2,
       "hit_rate": 1.0,
-      "wilson_lower": 0.2065,
-      "avg_brier": 0.2694
+      "wilson_lower": 0.3424,
+      "avg_brier": 0.3202
     },
     "西甲": {
       "n": 1,
@@ -43,10 +43,10 @@
   },
   "by_confidence_tier": {
     "mid": {
-      "n": 6,
-      "hit_rate": 0.3333,
-      "wilson_lower": 0.0968,
-      "avg_brier": 0.7455
+      "n": 7,
+      "hit_rate": 0.4286,
+      "wilson_lower": 0.1582,
+      "avg_brier": 0.692
     },
     "high": {
       "n": 2,
@@ -69,10 +69,10 @@
       "avg_brier": 0.1732
     },
     "1.5-2.0": {
-      "n": 1,
+      "n": 2,
       "hit_rate": 1.0,
-      "wilson_lower": 0.2065,
-      "avg_brier": 0.3787
+      "wilson_lower": 0.3424,
+      "avg_brier": 0.3748
     }
   },
   "score_stats": {
@@ -100,14 +100,14 @@
     }
   },
   "market_signal_stats": {
-    "n": 8,
+    "n": 9,
     "hits": 4
   },
   "layered": {
-    "log_loss_final": 1.0207,
+    "log_loss_final": 0.9834,
     "goal_framework": {
-      "n": 8,
-      "hits": 5
+      "n": 9,
+      "hits": 6
     },
     "prob_bands": {
       "40-50%": {
@@ -115,8 +115,8 @@
         "hit_rate": 0.5
       },
       "50-60%": {
-        "n": 3,
-        "hit_rate": 0.3333
+        "n": 4,
+        "hit_rate": 0.5
       },
       "60%+": {
         "n": 1,
@@ -129,13 +129,13 @@
         "hit_rate": 0.5
       },
       "watch": {
-        "n": 4,
-        "hit_rate": 0.5
+        "n": 5,
+        "hit_rate": 0.6
       }
     }
   },
   "biases": [],
   "total_pnl": 201.0,
-  "generated_at": "2026-08-25T21:11:29.941893",
-  "sha256": "0c14d4abebfd33ecdf14585322231a7d"
+  "generated_at": "2026-08-25T21:44:24.140268",
+  "sha256": "799818b5ad5ea5f75e7ccd35cb77e77f"
 }
