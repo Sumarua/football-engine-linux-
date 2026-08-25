@@ -5,16 +5,113 @@
       "match": "2026-08-25_周二004",
       "sel": "away",
       "odds": 2.22,
-      "stake": 150.0,
+      "stake": 95.69,
       "prob": 0.488
+    },
+    {
+      "match": "2026-08-25_周二009",
+      "sel": "away",
+      "odds": 2.34,
+      "stake": 54.31,
+      "prob": 0.45
     }
   ],
   "lottery": [],
   "total_stake": 150.0,
-  "expected_roi": 0.0831,
+  "expected_roi": 0.0718,
   "bankroll": 3920.7891,
   "breaker_multiplier": 1.0,
   "parlay": [
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-25_周二004",
+          "home": "斯托克城",
+          "away": "赫尔城",
+          "league": "英联赛杯",
+          "sel": "away",
+          "odds": 2.22,
+          "prob": 0.488,
+          "cal_prob": 0.542,
+          "market_prob": 0.399,
+          "source": "fusion",
+          "hit_prob": 0.542
+        },
+        {
+          "match": "2026-08-25_周二009",
+          "home": "巴伦西亚",
+          "away": "贝蒂斯",
+          "league": "西甲",
+          "sel": "away",
+          "odds": 2.34,
+          "prob": 0.45,
+          "cal_prob": 0.55,
+          "market_prob": 0.378,
+          "source": "fusion",
+          "hit_prob": 0.55
+        }
+      ],
+      "total_odds": 5.19,
+      "model_ev": 0.28,
+      "cal_ev": 3.43,
+      "cal_roi": 0.5477,
+      "market_ev": -0.43,
+      "market_roi": -0.2159,
+      "hit_prob_cal": 0.298,
+      "recommended": true,
+      "stake": 6.26,
+      "n_bets": 1,
+      "potential": 32.52,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-25_周二007",
+          "home": "诺丁汉",
+          "away": "利兹联",
+          "league": "英联赛杯",
+          "sel": "home",
+          "odds": 2.0,
+          "prob": 0.494,
+          "cal_prob": 0.542,
+          "market_prob": 0.443,
+          "source": "fusion",
+          "hit_prob": 0.542
+        },
+        {
+          "match": "2026-08-25_周二009",
+          "home": "巴伦西亚",
+          "away": "贝蒂斯",
+          "league": "西甲",
+          "sel": "away",
+          "odds": 2.34,
+          "prob": 0.45,
+          "cal_prob": 0.55,
+          "market_prob": 0.378,
+          "source": "fusion",
+          "hit_prob": 0.55
+        }
+      ],
+      "total_odds": 4.68,
+      "model_ev": 0.08,
+      "cal_ev": 2.03,
+      "cal_roi": 0.3943,
+      "market_ev": -0.43,
+      "market_roi": -0.216,
+      "hit_prob_cal": 0.298,
+      "recommended": true,
+      "stake": 5.14,
+      "n_bets": 1,
+      "potential": 24.06,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
     {
       "type": "2串1",
       "legs": [
@@ -47,105 +144,15 @@
       ],
       "total_odds": 4.44,
       "model_ev": 0.14,
-      "cal_ev": 1.75,
+      "cal_ev": 1.28,
       "cal_roi": 0.3029,
       "market_ev": -0.43,
       "market_roi": -0.2154,
       "hit_prob_cal": 0.293,
       "recommended": true,
-      "stake": 5.77,
+      "stake": 4.22,
       "n_bets": 1,
-      "potential": 25.62,
-      "worst_win": 0.0,
-      "note": "两场全中才赢",
-      "source": "calibrated"
-    },
-    {
-      "type": "2串1",
-      "legs": [
-        {
-          "match": "2026-08-25_周二005",
-          "home": "LASK林茨",
-          "away": "凯尔特人",
-          "league": "欧冠",
-          "sel": "home",
-          "odds": 1.82,
-          "prob": 0.504,
-          "cal_prob": 0.583,
-          "market_prob": 0.487,
-          "source": "fusion",
-          "hit_prob": 0.583
-        },
-        {
-          "match": "2026-08-25_周二004",
-          "home": "斯托克城",
-          "away": "赫尔城",
-          "league": "英联赛杯",
-          "sel": "away",
-          "odds": 2.22,
-          "prob": 0.488,
-          "cal_prob": 0.542,
-          "market_prob": 0.399,
-          "source": "fusion",
-          "hit_prob": 0.542
-        }
-      ],
-      "total_odds": 4.04,
-      "model_ev": -0.01,
-      "cal_ev": 1.65,
-      "cal_roi": 0.2767,
-      "market_ev": -0.43,
-      "market_roi": -0.2154,
-      "hit_prob_cal": 0.316,
-      "recommended": true,
-      "stake": 5.97,
-      "n_bets": 1,
-      "potential": 24.12,
-      "worst_win": 0.0,
-      "note": "两场全中才赢",
-      "source": "calibrated"
-    },
-    {
-      "type": "2串1",
-      "legs": [
-        {
-          "match": "2026-08-25_周二005",
-          "home": "LASK林茨",
-          "away": "凯尔特人",
-          "league": "欧冠",
-          "sel": "home",
-          "odds": 1.82,
-          "prob": 0.504,
-          "cal_prob": 0.583,
-          "market_prob": 0.487,
-          "source": "fusion",
-          "hit_prob": 0.583
-        },
-        {
-          "match": "2026-08-25_周二007",
-          "home": "诺丁汉",
-          "away": "利兹联",
-          "league": "英联赛杯",
-          "sel": "home",
-          "odds": 2.0,
-          "prob": 0.494,
-          "cal_prob": 0.542,
-          "market_prob": 0.443,
-          "source": "fusion",
-          "hit_prob": 0.542
-        }
-      ],
-      "total_odds": 3.64,
-      "model_ev": -0.19,
-      "cal_ev": 0.56,
-      "cal_roi": 0.1501,
-      "market_ev": -0.43,
-      "market_roi": -0.2155,
-      "hit_prob_cal": 0.316,
-      "recommended": true,
-      "stake": 3.73,
-      "n_bets": 1,
-      "potential": 13.58,
+      "potential": 18.74,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
@@ -154,19 +161,6 @@
       "type": "3串1",
       "legs": [
         {
-          "match": "2026-08-25_周二005",
-          "home": "LASK林茨",
-          "away": "凯尔特人",
-          "league": "欧冠",
-          "sel": "home",
-          "odds": 1.82,
-          "prob": 0.504,
-          "cal_prob": 0.583,
-          "market_prob": 0.487,
-          "source": "fusion",
-          "hit_prob": 0.583
-        },
-        {
           "match": "2026-08-25_周二007",
           "home": "诺丁汉",
           "away": "利兹联",
@@ -191,19 +185,32 @@
           "market_prob": 0.399,
           "source": "fusion",
           "hit_prob": 0.542
+        },
+        {
+          "match": "2026-08-25_周二009",
+          "home": "巴伦西亚",
+          "away": "贝蒂斯",
+          "league": "西甲",
+          "sel": "away",
+          "odds": 2.34,
+          "prob": 0.45,
+          "cal_prob": 0.55,
+          "market_prob": 0.378,
+          "source": "fusion",
+          "hit_prob": 0.55
         }
       ],
-      "total_odds": 8.08,
-      "model_ev": -0.04,
-      "cal_ev": 1.36,
-      "cal_roi": 0.3831,
+      "total_odds": 10.39,
+      "model_ev": 0.25,
+      "cal_ev": 2.34,
+      "cal_roi": 0.6768,
       "market_ev": -0.61,
-      "market_roi": -0.3051,
-      "hit_prob_cal": 0.171,
+      "market_roi": -0.3055,
+      "hit_prob_cal": 0.161,
       "recommended": true,
-      "stake": 3.55,
+      "stake": 3.46,
       "n_bets": 1,
-      "potential": 28.69,
+      "potential": 35.95,
       "worst_win": 0.0,
       "note": "三场全中才赢",
       "source": "calibrated"
@@ -212,19 +219,6 @@
       "type": "3串4",
       "legs": [
         {
-          "match": "2026-08-25_周二005",
-          "home": "LASK林茨",
-          "away": "凯尔特人",
-          "league": "欧冠",
-          "sel": "home",
-          "odds": 1.82,
-          "prob": 0.504,
-          "cal_prob": 0.583,
-          "market_prob": 0.487,
-          "source": "fusion",
-          "hit_prob": 0.583
-        },
-        {
           "match": "2026-08-25_周二007",
           "home": "诺丁汉",
           "away": "利兹联",
@@ -249,21 +243,34 @@
           "market_prob": 0.399,
           "source": "fusion",
           "hit_prob": 0.542
+        },
+        {
+          "match": "2026-08-25_周二009",
+          "home": "巴伦西亚",
+          "away": "贝蒂斯",
+          "league": "西甲",
+          "sel": "away",
+          "odds": 2.34,
+          "prob": 0.45,
+          "cal_prob": 0.55,
+          "market_prob": 0.378,
+          "source": "fusion",
+          "hit_prob": 0.55
         }
       ],
-      "total_odds": 5.05,
+      "total_odds": 6.18,
       "model_ev": null,
-      "cal_ev": 1.25,
-      "cal_roi": 0.2782,
-      "market_ev": -1.9,
-      "market_roi": -0.2379,
-      "hit_prob_cal": 0.171,
+      "cal_ev": 2.14,
+      "cal_roi": 0.4804,
+      "market_ev": -1.91,
+      "market_roi": -0.2382,
+      "hit_prob_cal": 0.161,
       "recommended": true,
-      "stake": 4.5,
+      "stake": 4.45,
       "n_bets": 4,
-      "potential": 22.73,
-      "worst_win": 7.28,
-      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥7），全中 ¥40",
+      "potential": 27.48,
+      "worst_win": 8.88,
+      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥9），全中 ¥49",
       "source": "calibrated"
     }
   ],
@@ -277,7 +284,7 @@
           "away": "奈梅亨",
           "league": "欧冠",
           "score": "1-0",
-          "prob": 0.285,
+          "prob": 0.281,
           "cal_prob": 0.1128,
           "odds": 15.0
         },
@@ -287,7 +294,7 @@
           "away": "布伦特",
           "league": "英联赛杯",
           "score": "1-0",
-          "prob": 0.205,
+          "prob": 0.207,
           "cal_prob": 0.1128,
           "odds": 15.0
         }
@@ -310,7 +317,7 @@
           "away": "奈梅亨",
           "league": "欧冠",
           "score": "1-0",
-          "prob": 0.285,
+          "prob": 0.281,
           "cal_prob": 0.1128,
           "odds": 15.0
         },
@@ -320,7 +327,7 @@
           "away": "凯尔特人",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.22,
+          "prob": 0.223,
           "cal_prob": 0.078,
           "odds": 14.0
         }
@@ -343,7 +350,7 @@
           "away": "布伦特",
           "league": "英联赛杯",
           "score": "1-0",
-          "prob": 0.205,
+          "prob": 0.207,
           "cal_prob": 0.1128,
           "odds": 15.0
         },
@@ -353,7 +360,7 @@
           "away": "凯尔特人",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.22,
+          "prob": 0.223,
           "cal_prob": 0.078,
           "odds": 14.0
         }
@@ -376,7 +383,7 @@
           "away": "奈梅亨",
           "league": "欧冠",
           "score": "1-0",
-          "prob": 0.285,
+          "prob": 0.281,
           "cal_prob": 0.1128,
           "odds": 15.0
         },
@@ -386,7 +393,7 @@
           "away": "布伦特",
           "league": "英联赛杯",
           "score": "1-0",
-          "prob": 0.205,
+          "prob": 0.207,
           "cal_prob": 0.1128,
           "odds": 15.0
         },
@@ -396,7 +403,7 @@
           "away": "凯尔特人",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.22,
+          "prob": 0.223,
           "cal_prob": 0.078,
           "odds": 14.0
         }
@@ -419,7 +426,7 @@
           "away": "奈梅亨",
           "league": "欧冠",
           "score": "1-0",
-          "prob": 0.285,
+          "prob": 0.281,
           "cal_prob": 0.1128,
           "odds": 15.0
         },
@@ -429,7 +436,7 @@
           "away": "布伦特",
           "league": "英联赛杯",
           "score": "1-0",
-          "prob": 0.205,
+          "prob": 0.207,
           "cal_prob": 0.1128,
           "odds": 15.0
         },
@@ -439,7 +446,7 @@
           "away": "凯尔特人",
           "league": "欧冠",
           "score": "0-1",
-          "prob": 0.22,
+          "prob": 0.223,
           "cal_prob": 0.078,
           "odds": 14.0
         }
