@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T15:05:54.779872+00:00",
+  "generated_at": "2026-08-25T16:00:34.276514+00:00",
   "parlay": {
     "n_tickets": 43,
     "n_pending": 5,
@@ -7,8 +7,8 @@
     "n_won": 10,
     "hit_rate": 0.2632,
     "stake": 172.15,
-    "stake_committed": 195.68,
-    "stake_pending": 23.53,
+    "stake_committed": 195.67,
+    "stake_pending": 23.52,
     "return": 208.68,
     "roi": 0.2122,
     "avg_odds": 5.49,
@@ -1555,44 +1555,8 @@
       {
         "date": "2026-08-25",
         "type": "2串1",
-        "stake": 6.33,
-        "potential": 34.07,
-        "total_odds": 5.38,
-        "odds_source": null,
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-25_周二009",
-            "home": "巴伦西亚",
-            "away": "贝蒂斯",
-            "sel": "away",
-            "score": null,
-            "odds": 2.34,
-            "hit": null
-          },
-          {
-            "match": "2026-08-25_周二004",
-            "home": "斯托克城",
-            "away": "赫尔城",
-            "sel": "away",
-            "score": null,
-            "odds": 2.3,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-25",
-        "type": "2串1",
-        "stake": 4.74,
-        "potential": 22.18,
+        "stake": 5.92,
+        "potential": 27.71,
         "total_odds": 4.68,
         "odds_source": null,
         "note": "待赛",
@@ -1627,9 +1591,9 @@
       {
         "date": "2026-08-25",
         "type": "2串1",
-        "stake": 4.55,
-        "potential": 20.93,
-        "total_odds": 4.6,
+        "stake": 6.19,
+        "potential": 26.36,
+        "total_odds": 4.26,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -1641,21 +1605,57 @@
         "return": 0.0,
         "legs": [
           {
+            "match": "2026-08-25_周二005",
+            "home": "LASK林茨",
+            "away": "凯尔特人",
+            "sel": "home",
+            "score": null,
+            "odds": 1.82,
+            "hit": null
+          },
+          {
+            "match": "2026-08-25_周二009",
+            "home": "巴伦西亚",
+            "away": "贝蒂斯",
+            "sel": "away",
+            "score": null,
+            "odds": 2.34,
+            "hit": null
+          }
+        ]
+      },
+      {
+        "date": "2026-08-25",
+        "type": "2串1",
+        "stake": 3.32,
+        "potential": 12.08,
+        "total_odds": 3.64,
+        "odds_source": null,
+        "note": "待赛",
+        "won": false,
+        "pending": true,
+        "leg_results": [
+          null,
+          null
+        ],
+        "return": 0.0,
+        "legs": [
+          {
+            "match": "2026-08-25_周二005",
+            "home": "LASK林茨",
+            "away": "凯尔特人",
+            "sel": "home",
+            "score": null,
+            "odds": 1.82,
+            "hit": null
+          },
+          {
             "match": "2026-08-25_周二007",
             "home": "诺丁汉",
             "away": "利兹联",
             "sel": "home",
             "score": null,
             "odds": 2.0,
-            "hit": null
-          },
-          {
-            "match": "2026-08-25_周二004",
-            "home": "斯托克城",
-            "away": "赫尔城",
-            "sel": "away",
-            "score": null,
-            "odds": 2.3,
             "hit": null
           }
         ]
@@ -1663,9 +1663,9 @@
       {
         "date": "2026-08-25",
         "type": "3串1",
-        "stake": 3.46,
-        "potential": 37.24,
-        "total_odds": 10.76,
+        "stake": 3.56,
+        "potential": 30.32,
+        "total_odds": 8.52,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -1677,6 +1677,15 @@
         ],
         "return": 0.0,
         "legs": [
+          {
+            "match": "2026-08-25_周二005",
+            "home": "LASK林茨",
+            "away": "凯尔特人",
+            "sel": "home",
+            "score": null,
+            "odds": 1.82,
+            "hit": null
+          },
           {
             "match": "2026-08-25_周二007",
             "home": "诺丁汉",
@@ -1693,15 +1702,6 @@
             "sel": "away",
             "score": null,
             "odds": 2.34,
-            "hit": null
-          },
-          {
-            "match": "2026-08-25_周二004",
-            "home": "斯托克城",
-            "away": "赫尔城",
-            "sel": "away",
-            "score": null,
-            "odds": 2.3,
             "hit": null
           }
         ]
@@ -1709,9 +1709,9 @@
       {
         "date": "2026-08-25",
         "type": "3串4",
-        "stake": 4.45,
-        "potential": 28.29,
-        "total_odds": 6.36,
+        "stake": 4.53,
+        "potential": 23.89,
+        "total_odds": 5.27,
         "odds_source": null,
         "note": "待赛",
         "won": false,
@@ -1723,6 +1723,15 @@
         ],
         "return": 0.0,
         "legs": [
+          {
+            "match": "2026-08-25_周二005",
+            "home": "LASK林茨",
+            "away": "凯尔特人",
+            "sel": "home",
+            "score": null,
+            "odds": 1.82,
+            "hit": null
+          },
           {
             "match": "2026-08-25_周二007",
             "home": "诺丁汉",
@@ -1739,15 +1748,6 @@
             "sel": "away",
             "score": null,
             "odds": 2.34,
-            "hit": null
-          },
-          {
-            "match": "2026-08-25_周二004",
-            "home": "斯托克城",
-            "away": "赫尔城",
-            "sel": "away",
-            "score": null,
-            "odds": 2.3,
             "hit": null
           }
         ]
@@ -12210,8 +12210,8 @@
           "n_won": 0,
           "hit_rate": null,
           "stake": 0,
-          "stake_committed": 23.53,
-          "stake_pending": 23.53,
+          "stake_committed": 23.52,
+          "stake_pending": 23.52,
           "return": 0,
           "roi": null,
           "avg_odds": null,
@@ -12221,44 +12221,8 @@
           {
             "date": "2026-08-25",
             "type": "2串1",
-            "stake": 6.33,
-            "potential": 34.07,
-            "total_odds": 5.38,
-            "odds_source": null,
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-25_周二009",
-                "home": "巴伦西亚",
-                "away": "贝蒂斯",
-                "sel": "away",
-                "score": null,
-                "odds": 2.34,
-                "hit": null
-              },
-              {
-                "match": "2026-08-25_周二004",
-                "home": "斯托克城",
-                "away": "赫尔城",
-                "sel": "away",
-                "score": null,
-                "odds": 2.3,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-25",
-            "type": "2串1",
-            "stake": 4.74,
-            "potential": 22.18,
+            "stake": 5.92,
+            "potential": 27.71,
             "total_odds": 4.68,
             "odds_source": null,
             "note": "待赛",
@@ -12293,9 +12257,9 @@
           {
             "date": "2026-08-25",
             "type": "2串1",
-            "stake": 4.55,
-            "potential": 20.93,
-            "total_odds": 4.6,
+            "stake": 6.19,
+            "potential": 26.36,
+            "total_odds": 4.26,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -12307,21 +12271,57 @@
             "return": 0.0,
             "legs": [
               {
+                "match": "2026-08-25_周二005",
+                "home": "LASK林茨",
+                "away": "凯尔特人",
+                "sel": "home",
+                "score": null,
+                "odds": 1.82,
+                "hit": null
+              },
+              {
+                "match": "2026-08-25_周二009",
+                "home": "巴伦西亚",
+                "away": "贝蒂斯",
+                "sel": "away",
+                "score": null,
+                "odds": 2.34,
+                "hit": null
+              }
+            ]
+          },
+          {
+            "date": "2026-08-25",
+            "type": "2串1",
+            "stake": 3.32,
+            "potential": 12.08,
+            "total_odds": 3.64,
+            "odds_source": null,
+            "note": "待赛",
+            "won": false,
+            "pending": true,
+            "leg_results": [
+              null,
+              null
+            ],
+            "return": 0.0,
+            "legs": [
+              {
+                "match": "2026-08-25_周二005",
+                "home": "LASK林茨",
+                "away": "凯尔特人",
+                "sel": "home",
+                "score": null,
+                "odds": 1.82,
+                "hit": null
+              },
+              {
                 "match": "2026-08-25_周二007",
                 "home": "诺丁汉",
                 "away": "利兹联",
                 "sel": "home",
                 "score": null,
                 "odds": 2.0,
-                "hit": null
-              },
-              {
-                "match": "2026-08-25_周二004",
-                "home": "斯托克城",
-                "away": "赫尔城",
-                "sel": "away",
-                "score": null,
-                "odds": 2.3,
                 "hit": null
               }
             ]
@@ -12329,9 +12329,9 @@
           {
             "date": "2026-08-25",
             "type": "3串1",
-            "stake": 3.46,
-            "potential": 37.24,
-            "total_odds": 10.76,
+            "stake": 3.56,
+            "potential": 30.32,
+            "total_odds": 8.52,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -12343,6 +12343,15 @@
             ],
             "return": 0.0,
             "legs": [
+              {
+                "match": "2026-08-25_周二005",
+                "home": "LASK林茨",
+                "away": "凯尔特人",
+                "sel": "home",
+                "score": null,
+                "odds": 1.82,
+                "hit": null
+              },
               {
                 "match": "2026-08-25_周二007",
                 "home": "诺丁汉",
@@ -12359,15 +12368,6 @@
                 "sel": "away",
                 "score": null,
                 "odds": 2.34,
-                "hit": null
-              },
-              {
-                "match": "2026-08-25_周二004",
-                "home": "斯托克城",
-                "away": "赫尔城",
-                "sel": "away",
-                "score": null,
-                "odds": 2.3,
                 "hit": null
               }
             ]
@@ -12375,9 +12375,9 @@
           {
             "date": "2026-08-25",
             "type": "3串4",
-            "stake": 4.45,
-            "potential": 28.29,
-            "total_odds": 6.36,
+            "stake": 4.53,
+            "potential": 23.89,
+            "total_odds": 5.27,
             "odds_source": null,
             "note": "待赛",
             "won": false,
@@ -12389,6 +12389,15 @@
             ],
             "return": 0.0,
             "legs": [
+              {
+                "match": "2026-08-25_周二005",
+                "home": "LASK林茨",
+                "away": "凯尔特人",
+                "sel": "home",
+                "score": null,
+                "odds": 1.82,
+                "hit": null
+              },
               {
                 "match": "2026-08-25_周二007",
                 "home": "诺丁汉",
@@ -12405,15 +12414,6 @@
                 "sel": "away",
                 "score": null,
                 "odds": 2.34,
-                "hit": null
-              },
-              {
-                "match": "2026-08-25_周二004",
-                "home": "斯托克城",
-                "away": "赫尔城",
-                "sel": "away",
-                "score": null,
-                "odds": 2.3,
                 "hit": null
               }
             ]

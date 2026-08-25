@@ -1,46 +1,46 @@
 {
-  "total_matches": 382,
+  "total_matches": 384,
   "date_range": [
     "2026-07-19",
-    "2026-08-24"
+    "2026-08-25"
   ],
   "metrics": {
-    "brier": 0.6273,
-    "weighted_brier": 0.6262,
-    "rps": 0.2133,
-    "weighted_rps": 0.2131,
-    "log_loss": 1.0425,
-    "hit_rate": 0.5052,
-    "ece": 0.1604
+    "brier": 0.6289,
+    "weighted_brier": 0.6279,
+    "rps": 0.2138,
+    "weighted_rps": 0.2136,
+    "log_loss": 1.0449,
+    "hit_rate": 0.5026,
+    "ece": 0.1596
   },
   "draw_analysis": {
-    "actual_draws": 103,
-    "actual_draw_rate": 0.2696,
+    "actual_draws": 104,
+    "actual_draw_rate": 0.2708,
     "predicted_draws": 15,
-    "predicted_draw_rate": 0.0393,
+    "predicted_draw_rate": 0.0391,
     "max_draw_prob": 0.4592,
-    "avg_draw_prob": 0.283,
-    "avg_market_draw": 0.2486,
-    "market_high_draw_n": 81,
+    "avg_draw_prob": 0.2829,
+    "avg_market_draw": 0.2489,
+    "market_high_draw_n": 82,
     "market_high_draw_actual": 27,
-    "market_high_draw_rate": 0.3333
+    "market_high_draw_rate": 0.3293
   },
   "strategy_comparison": {
     "model": {
-      "hit_rate": 0.4974,
-      "n": 382
+      "hit_rate": 0.4948,
+      "n": 384
     },
     "market": {
-      "hit_rate": 0.5375,
-      "n": 320
+      "hit_rate": 0.5342,
+      "n": 322
     },
     "hybrid_v2": {
-      "hit_rate": 0.4781,
-      "n": 320
+      "hit_rate": 0.4752,
+      "n": 322
     },
     "market_d28": {
-      "hit_rate": 0.475,
-      "n": 320
+      "hit_rate": 0.472,
+      "n": 322
     }
   },
   "by_league": {
@@ -62,6 +62,12 @@
       "brier": 0.7267,
       "rps": 0.2476
     },
+    "K1联赛": {
+      "n": 27,
+      "hit_rate": 0.5926,
+      "brier": 0.6171,
+      "rps": 0.2009
+    },
     "欧罗巴": {
       "n": 26,
       "hit_rate": 0.3846,
@@ -73,12 +79,6 @@
       "hit_rate": 0.32,
       "brier": 0.7249,
       "rps": 0.2793
-    },
-    "K1联赛": {
-      "n": 25,
-      "hit_rate": 0.64,
-      "brier": 0.5914,
-      "rps": 0.1924
     },
     "荷甲": {
       "n": 22,
