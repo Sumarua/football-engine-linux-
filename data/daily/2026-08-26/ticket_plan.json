@@ -1,0 +1,285 @@
+{
+  "stable": [],
+  "value": [],
+  "lottery": [
+    {
+      "match": "2026-08-26_周三002#ttg",
+      "sel": "ttg_1",
+      "odds": 4.5,
+      "stake": 50.0,
+      "prob": 0.235
+    }
+  ],
+  "total_stake": 50.0,
+  "expected_roi": 0.0586,
+  "bankroll": 3920.7891,
+  "breaker_multiplier": 1.0,
+  "parlay": [
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-26_周三002",
+          "home": "安养FC",
+          "away": "仁川联",
+          "league": "K1联赛",
+          "sel": "away",
+          "odds": 2.16,
+          "prob": 0.427,
+          "cal_prob": 0.55,
+          "market_prob": 0.41,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
+          "match": "2026-08-26_周三006",
+          "home": "采列",
+          "away": "布拉迪斯拉发",
+          "league": "欧冠",
+          "sel": "home",
+          "odds": 2.2,
+          "prob": 0.405,
+          "cal_prob": 0.55,
+          "market_prob": 0.403,
+          "source": "fusion",
+          "hit_prob": 0.55
+        }
+      ],
+      "total_odds": 4.75,
+      "model_ev": -0.35,
+      "cal_ev": 2.42,
+      "cal_roi": 0.4375,
+      "market_ev": -0.43,
+      "market_roi": -0.2152,
+      "hit_prob_cal": 0.303,
+      "recommended": true,
+      "stake": 5.53,
+      "n_bets": 1,
+      "potential": 26.28,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-26_周三001",
+          "home": "大田市民",
+          "away": "蔚山现代",
+          "league": "K1联赛",
+          "sel": "home",
+          "odds": 2.09,
+          "prob": 0.416,
+          "cal_prob": 0.55,
+          "market_prob": 0.424,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
+          "match": "2026-08-26_周三006",
+          "home": "采列",
+          "away": "布拉迪斯拉发",
+          "league": "欧冠",
+          "sel": "home",
+          "odds": 2.2,
+          "prob": 0.405,
+          "cal_prob": 0.55,
+          "market_prob": 0.403,
+          "source": "fusion",
+          "hit_prob": 0.55
+        }
+      ],
+      "total_odds": 4.6,
+      "model_ev": -0.45,
+      "cal_ev": 2.02,
+      "cal_roi": 0.3909,
+      "market_ev": -0.43,
+      "market_roi": -0.2146,
+      "hit_prob_cal": 0.303,
+      "recommended": true,
+      "stake": 5.16,
+      "n_bets": 1,
+      "potential": 23.73,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "2串1",
+      "legs": [
+        {
+          "match": "2026-08-26_周三002",
+          "home": "安养FC",
+          "away": "仁川联",
+          "league": "K1联赛",
+          "sel": "away",
+          "odds": 2.16,
+          "prob": 0.427,
+          "cal_prob": 0.55,
+          "market_prob": 0.41,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
+          "match": "2026-08-26_周三001",
+          "home": "大田市民",
+          "away": "蔚山现代",
+          "league": "K1联赛",
+          "sel": "home",
+          "odds": 2.09,
+          "prob": 0.416,
+          "cal_prob": 0.55,
+          "market_prob": 0.424,
+          "source": "fusion",
+          "hit_prob": 0.55
+        }
+      ],
+      "total_odds": 4.51,
+      "model_ev": -0.39,
+      "cal_ev": 1.81,
+      "cal_roi": 0.3656,
+      "market_ev": -0.43,
+      "market_roi": -0.2157,
+      "hit_prob_cal": 0.303,
+      "recommended": true,
+      "stake": 4.94,
+      "n_bets": 1,
+      "potential": 22.3,
+      "worst_win": 0.0,
+      "note": "两场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "3串1",
+      "legs": [
+        {
+          "match": "2026-08-26_周三002",
+          "home": "安养FC",
+          "away": "仁川联",
+          "league": "K1联赛",
+          "sel": "away",
+          "odds": 2.16,
+          "prob": 0.427,
+          "cal_prob": 0.55,
+          "market_prob": 0.41,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
+          "match": "2026-08-26_周三001",
+          "home": "大田市民",
+          "away": "蔚山现代",
+          "league": "K1联赛",
+          "sel": "home",
+          "odds": 2.09,
+          "prob": 0.416,
+          "cal_prob": 0.55,
+          "market_prob": 0.424,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
+          "match": "2026-08-26_周三006",
+          "home": "采列",
+          "away": "布拉迪斯拉发",
+          "league": "欧冠",
+          "sel": "home",
+          "odds": 2.2,
+          "prob": 0.405,
+          "cal_prob": 0.55,
+          "market_prob": 0.403,
+          "source": "fusion",
+          "hit_prob": 0.55
+        }
+      ],
+      "total_odds": 9.93,
+      "model_ev": -0.57,
+      "cal_ev": 2.26,
+      "cal_roi": 0.6524,
+      "market_ev": -0.61,
+      "market_roi": -0.3047,
+      "hit_prob_cal": 0.166,
+      "recommended": true,
+      "stake": 3.47,
+      "n_bets": 1,
+      "potential": 34.46,
+      "worst_win": 0.0,
+      "note": "三场全中才赢",
+      "source": "calibrated"
+    },
+    {
+      "type": "3串4",
+      "legs": [
+        {
+          "match": "2026-08-26_周三002",
+          "home": "安养FC",
+          "away": "仁川联",
+          "league": "K1联赛",
+          "sel": "away",
+          "odds": 2.16,
+          "prob": 0.427,
+          "cal_prob": 0.55,
+          "market_prob": 0.41,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
+          "match": "2026-08-26_周三001",
+          "home": "大田市民",
+          "away": "蔚山现代",
+          "league": "K1联赛",
+          "sel": "home",
+          "odds": 2.09,
+          "prob": 0.416,
+          "cal_prob": 0.55,
+          "market_prob": 0.424,
+          "source": "fusion",
+          "hit_prob": 0.55
+        },
+        {
+          "match": "2026-08-26_周三006",
+          "home": "采列",
+          "away": "布拉迪斯拉发",
+          "league": "欧冠",
+          "sel": "home",
+          "odds": 2.2,
+          "prob": 0.405,
+          "cal_prob": 0.55,
+          "market_prob": 0.403,
+          "source": "fusion",
+          "hit_prob": 0.55
+        }
+      ],
+      "total_odds": 5.95,
+      "model_ev": null,
+      "cal_ev": 2.04,
+      "cal_roi": 0.4616,
+      "market_ev": -1.9,
+      "market_roi": -0.2376,
+      "hit_prob_cal": 0.166,
+      "recommended": true,
+      "stake": 4.43,
+      "n_bets": 4,
+      "potential": 26.35,
+      "worst_win": 9.03,
+      "note": "容错：错 1 场仍中 1 注 2串1（回 ¥9），全中 ¥48",
+      "source": "calibrated"
+    }
+  ],
+  "score_parlay": [],
+  "parlay_calibration": {
+    "overall": 0.4974,
+    "n": 382,
+    "table": {
+      "0.35": 0.4141,
+      "0.4": 0.55,
+      "0.45": 0.5417,
+      "0.5": 0.5833,
+      "0.55": 0.3,
+      "0.6": 0.5385,
+      "0.7": 0.5455
+    },
+    "note": "串关 EV 用账本校准命中率（模型概率高估，0.55-0.60 段仅 31.6% 命中）；推荐=校准EV>0"
+  }
+}
