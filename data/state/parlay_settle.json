@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-26T09:58:00.875338+00:00",
+  "generated_at": "2026-08-26T10:52:21.628478+00:00",
   "parlay": {
-    "n_tickets": 48,
-    "n_pending": 5,
+    "n_tickets": 44,
+    "n_pending": 1,
     "n_settled": 43,
     "n_won": 12,
     "hit_rate": 0.2791,
     "stake": 195.67,
-    "stake_committed": 220.41,
-    "stake_pending": 24.74,
+    "stake_committed": 210.51,
+    "stake_pending": 14.84,
     "return": 239.86,
     "roi": 0.2258,
     "avg_odds": 5.47,
@@ -1755,8 +1755,8 @@
       {
         "date": "2026-08-26",
         "type": "2串1",
-        "stake": 5.73,
-        "potential": 28.11,
+        "stake": 14.84,
+        "potential": 72.81,
         "total_odds": 4.91,
         "odds_source": null,
         "note": "待赛",
@@ -1768,170 +1768,6 @@
         ],
         "return": 0.0,
         "legs": [
-          {
-            "match": "2026-08-26_周三006",
-            "home": "采列",
-            "away": "布拉迪斯拉发",
-            "sel": "home",
-            "score": null,
-            "odds": 2.2,
-            "hit": null
-          },
-          {
-            "match": "2026-08-26_周三007",
-            "home": "维京",
-            "away": "萨迪纳摩",
-            "sel": "home",
-            "score": null,
-            "odds": 2.23,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-26",
-        "type": "2串1",
-        "stake": 5.42,
-        "potential": 24.54,
-        "total_odds": 4.53,
-        "odds_source": null,
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-26_周三002",
-            "home": "安养FC",
-            "away": "仁川联",
-            "sel": "away",
-            "score": null,
-            "odds": 2.03,
-            "hit": null
-          },
-          {
-            "match": "2026-08-26_周三007",
-            "home": "维京",
-            "away": "萨迪纳摩",
-            "sel": "home",
-            "score": null,
-            "odds": 2.23,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-26",
-        "type": "2串1",
-        "stake": 5.28,
-        "potential": 23.58,
-        "total_odds": 4.47,
-        "odds_source": null,
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-26_周三002",
-            "home": "安养FC",
-            "away": "仁川联",
-            "sel": "away",
-            "score": null,
-            "odds": 2.03,
-            "hit": null
-          },
-          {
-            "match": "2026-08-26_周三006",
-            "home": "采列",
-            "away": "布拉迪斯拉发",
-            "sel": "home",
-            "score": null,
-            "odds": 2.2,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-26",
-        "type": "3串1",
-        "stake": 3.65,
-        "potential": 36.35,
-        "total_odds": 9.96,
-        "odds_source": null,
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-26_周三002",
-            "home": "安养FC",
-            "away": "仁川联",
-            "sel": "away",
-            "score": null,
-            "odds": 2.03,
-            "hit": null
-          },
-          {
-            "match": "2026-08-26_周三006",
-            "home": "采列",
-            "away": "布拉迪斯拉发",
-            "sel": "home",
-            "score": null,
-            "odds": 2.2,
-            "hit": null
-          },
-          {
-            "match": "2026-08-26_周三007",
-            "home": "维京",
-            "away": "萨迪纳摩",
-            "sel": "home",
-            "score": null,
-            "odds": 2.23,
-            "hit": null
-          }
-        ]
-      },
-      {
-        "date": "2026-08-26",
-        "type": "3串4",
-        "stake": 4.66,
-        "potential": 27.79,
-        "total_odds": 5.96,
-        "odds_source": null,
-        "note": "待赛",
-        "won": false,
-        "pending": true,
-        "leg_results": [
-          null,
-          null,
-          null
-        ],
-        "return": 0.0,
-        "legs": [
-          {
-            "match": "2026-08-26_周三002",
-            "home": "安养FC",
-            "away": "仁川联",
-            "sel": "away",
-            "score": null,
-            "odds": 2.03,
-            "hit": null
-          },
           {
             "match": "2026-08-26_周三006",
             "home": "采列",
@@ -12702,14 +12538,14 @@
     "2026-08-26": {
       "parlay": {
         "stats": {
-          "n_tickets": 5,
-          "n_pending": 5,
+          "n_tickets": 1,
+          "n_pending": 1,
           "n_settled": 0,
           "n_won": 0,
           "hit_rate": null,
           "stake": 0,
-          "stake_committed": 24.74,
-          "stake_pending": 24.74,
+          "stake_committed": 14.84,
+          "stake_pending": 14.84,
           "return": 0,
           "roi": null,
           "avg_odds": null,
@@ -12719,8 +12555,8 @@
           {
             "date": "2026-08-26",
             "type": "2串1",
-            "stake": 5.73,
-            "potential": 28.11,
+            "stake": 14.84,
+            "potential": 72.81,
             "total_odds": 4.91,
             "odds_source": null,
             "note": "待赛",
@@ -12732,170 +12568,6 @@
             ],
             "return": 0.0,
             "legs": [
-              {
-                "match": "2026-08-26_周三006",
-                "home": "采列",
-                "away": "布拉迪斯拉发",
-                "sel": "home",
-                "score": null,
-                "odds": 2.2,
-                "hit": null
-              },
-              {
-                "match": "2026-08-26_周三007",
-                "home": "维京",
-                "away": "萨迪纳摩",
-                "sel": "home",
-                "score": null,
-                "odds": 2.23,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-26",
-            "type": "2串1",
-            "stake": 5.42,
-            "potential": 24.54,
-            "total_odds": 4.53,
-            "odds_source": null,
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-26_周三002",
-                "home": "安养FC",
-                "away": "仁川联",
-                "sel": "away",
-                "score": null,
-                "odds": 2.03,
-                "hit": null
-              },
-              {
-                "match": "2026-08-26_周三007",
-                "home": "维京",
-                "away": "萨迪纳摩",
-                "sel": "home",
-                "score": null,
-                "odds": 2.23,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-26",
-            "type": "2串1",
-            "stake": 5.28,
-            "potential": 23.58,
-            "total_odds": 4.47,
-            "odds_source": null,
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-26_周三002",
-                "home": "安养FC",
-                "away": "仁川联",
-                "sel": "away",
-                "score": null,
-                "odds": 2.03,
-                "hit": null
-              },
-              {
-                "match": "2026-08-26_周三006",
-                "home": "采列",
-                "away": "布拉迪斯拉发",
-                "sel": "home",
-                "score": null,
-                "odds": 2.2,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-26",
-            "type": "3串1",
-            "stake": 3.65,
-            "potential": 36.35,
-            "total_odds": 9.96,
-            "odds_source": null,
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-26_周三002",
-                "home": "安养FC",
-                "away": "仁川联",
-                "sel": "away",
-                "score": null,
-                "odds": 2.03,
-                "hit": null
-              },
-              {
-                "match": "2026-08-26_周三006",
-                "home": "采列",
-                "away": "布拉迪斯拉发",
-                "sel": "home",
-                "score": null,
-                "odds": 2.2,
-                "hit": null
-              },
-              {
-                "match": "2026-08-26_周三007",
-                "home": "维京",
-                "away": "萨迪纳摩",
-                "sel": "home",
-                "score": null,
-                "odds": 2.23,
-                "hit": null
-              }
-            ]
-          },
-          {
-            "date": "2026-08-26",
-            "type": "3串4",
-            "stake": 4.66,
-            "potential": 27.79,
-            "total_odds": 5.96,
-            "odds_source": null,
-            "note": "待赛",
-            "won": false,
-            "pending": true,
-            "leg_results": [
-              null,
-              null,
-              null
-            ],
-            "return": 0.0,
-            "legs": [
-              {
-                "match": "2026-08-26_周三002",
-                "home": "安养FC",
-                "away": "仁川联",
-                "sel": "away",
-                "score": null,
-                "odds": 2.03,
-                "hit": null
-              },
               {
                 "match": "2026-08-26_周三006",
                 "home": "采列",
