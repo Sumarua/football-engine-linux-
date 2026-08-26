@@ -1,9 +1,17 @@
 {
   "stable": [],
-  "value": [],
+  "value": [
+    {
+      "match": "2026-08-26_周三006",
+      "sel": "home",
+      "odds": 2.25,
+      "stake": 150.0,
+      "prob": 0.452
+    }
+  ],
   "lottery": [],
-  "total_stake": 0,
-  "expected_roi": 0.0,
+  "total_stake": 150.0,
+  "expected_roi": 0.0161,
   "bankroll": 4121.7891,
   "breaker_multiplier": 1.0,
   "parlay": [
@@ -16,10 +24,10 @@
           "away": "布拉迪斯拉发",
           "league": "欧冠",
           "sel": "home",
-          "odds": 2.2,
+          "odds": 2.25,
           "prob": 0.452,
           "cal_prob": 0.545,
-          "market_prob": 0.403,
+          "market_prob": 0.394,
           "source": "fusion",
           "hit_prob": 0.545
         },
@@ -30,24 +38,24 @@
           "league": "欧冠",
           "sel": "home",
           "odds": 2.23,
-          "prob": 0.434,
+          "prob": 0.432,
           "cal_prob": 0.545,
           "market_prob": 0.397,
           "source": "fusion",
           "hit_prob": 0.545
         }
       ],
-      "total_odds": 4.91,
-      "model_ev": -0.08,
-      "cal_ev": 6.79,
-      "cal_roi": 0.4575,
+      "total_odds": 5.02,
+      "model_ev": -0.04,
+      "cal_ev": 7.28,
+      "cal_roi": 0.4906,
       "market_ev": -0.43,
       "market_roi": -0.2147,
       "hit_prob_cal": 0.297,
       "recommended": true,
       "stake": 14.84,
       "n_bets": 1,
-      "potential": 72.81,
+      "potential": 74.46,
       "worst_win": 0.0,
       "note": "两场全中才赢",
       "source": "calibrated"
