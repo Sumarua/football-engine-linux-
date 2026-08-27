@@ -1,8 +1,8 @@
 {
-  "date": "2026-08-23",
+  "date": "2026-08-27",
   "steps": {
     "walk_forward": {
-      "total_matches": 363
+      "total_matches": 401
     },
     "fusion_optimizer": {
       "decision": "hold",
@@ -14,7 +14,7 @@
       "message": null
     },
     "horizon_eval": {
-      "best_horizon": "closing",
+      "best_horizon": "t90m",
       "best_metric": "brier",
       "buckets": [
         {
@@ -31,51 +31,51 @@
         {
           "horizon": "t6h",
           "label": "开赛前6小时",
-          "n": 8,
-          "brier": 0.5575,
-          "rps": 0.1942,
-          "log_loss": 0.9326,
-          "hit_rate": 0.5,
-          "avg_ev": 0.0,
-          "total_ev": 0.0
+          "n": 11,
+          "brier": 0.6103,
+          "rps": 0.1946,
+          "log_loss": 1.0068,
+          "hit_rate": 0.3636,
+          "avg_ev": -19.1482,
+          "total_ev": -210.63
         },
         {
           "horizon": "t90m",
           "label": "开赛前90分钟",
-          "n": 40,
-          "brier": 0.6241,
-          "rps": 0.2149,
-          "log_loss": 1.0418,
-          "hit_rate": 0.525,
-          "avg_ev": -3.0628,
-          "total_ev": -122.51
+          "n": 69,
+          "brier": 0.5539,
+          "rps": 0.1922,
+          "log_loss": 0.9409,
+          "hit_rate": 0.6377,
+          "avg_ev": -0.7822,
+          "total_ev": -53.97
         },
         {
           "horizon": "closing",
           "label": "收盘市场",
-          "n": 43,
-          "brier": 0.5501,
-          "rps": 0.204,
-          "log_loss": 0.9397,
-          "hit_rate": 0.6977,
-          "avg_ev": 0.0,
-          "total_ev": 0.0
+          "n": 49,
+          "brier": 0.5788,
+          "rps": 0.2177,
+          "log_loss": 0.9813,
+          "hit_rate": 0.6531,
+          "avg_ev": -1.0204,
+          "total_ev": -50.0
         }
       ]
     },
     "shrinkage_dc": {
-      "n_evaluated": 323,
+      "n_evaluated": 361,
       "skipped_dates": 5,
-      "shrinkage_dc_brier": 0.7126,
-      "final_brier": 0.6277,
-      "model_raw_brier": 0.6582,
-      "market_brier": 0.6037,
+      "shrinkage_dc_brier": 0.714,
+      "final_brier": 0.6176,
+      "model_raw_brier": 0.6488,
+      "market_brier": 0.5871,
       "verdict": "hold",
       "snapshot": {
-        "n_matches": 348,
-        "teams": 357,
+        "n_matches": 386,
+        "teams": 373,
         "rho": -0.2,
-        "fitted_at": "2026-08-23"
+        "fitted_at": "2026-08-26"
       }
     }
   }
