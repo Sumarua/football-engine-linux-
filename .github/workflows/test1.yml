@@ -1,0 +1,16 @@
+name: Test
+
+on:
+  workflow_dispatch:  # 手动触发
+  push:               # 推送时自动触发
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 运行脚本
+        run: |
+          echo "Hello World"
+          ls -la
+          python --version || node --version
