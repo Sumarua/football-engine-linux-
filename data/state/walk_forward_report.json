@@ -1,46 +1,46 @@
 {
-  "total_matches": 405,
+  "total_matches": 406,
   "date_range": [
     "2026-07-19",
     "2026-08-27"
   ],
   "metrics": {
-    "brier": 0.6215,
-    "weighted_brier": 0.6201,
-    "rps": 0.2125,
-    "weighted_rps": 0.2122,
-    "log_loss": 1.0351,
-    "hit_rate": 0.5136,
-    "ece": 0.1537
+    "brier": 0.6221,
+    "weighted_brier": 0.6207,
+    "rps": 0.2124,
+    "weighted_rps": 0.2121,
+    "log_loss": 1.0358,
+    "hit_rate": 0.5123,
+    "ece": 0.1533
   },
   "draw_analysis": {
-    "actual_draws": 106,
-    "actual_draw_rate": 0.2617,
+    "actual_draws": 107,
+    "actual_draw_rate": 0.2635,
     "predicted_draws": 15,
-    "predicted_draw_rate": 0.037,
+    "predicted_draw_rate": 0.0369,
     "max_draw_prob": 0.4592,
-    "avg_draw_prob": 0.2808,
-    "avg_market_draw": 0.2477,
-    "market_high_draw_n": 88,
-    "market_high_draw_actual": 29,
-    "market_high_draw_rate": 0.3295
+    "avg_draw_prob": 0.2807,
+    "avg_market_draw": 0.2478,
+    "market_high_draw_n": 89,
+    "market_high_draw_actual": 30,
+    "market_high_draw_rate": 0.3371
   },
   "strategy_comparison": {
     "model": {
-      "hit_rate": 0.5062,
-      "n": 405
+      "hit_rate": 0.5049,
+      "n": 406
     },
     "market": {
-      "hit_rate": 0.5452,
-      "n": 343
+      "hit_rate": 0.5436,
+      "n": 344
     },
     "hybrid_v2": {
-      "hit_rate": 0.4869,
-      "n": 343
+      "hit_rate": 0.4884,
+      "n": 344
     },
     "market_d28": {
-      "hit_rate": 0.4898,
-      "n": 343
+      "hit_rate": 0.4913,
+      "n": 344
     }
   },
   "by_league": {
@@ -122,6 +122,12 @@
       "brier": 0.689,
       "rps": 0.1721
     },
+    "巴西杯": {
+      "n": 10,
+      "hit_rate": 0.4,
+      "brier": 0.6204,
+      "rps": 0.1952
+    },
     "英联赛杯": {
       "n": 10,
       "hit_rate": 0.7,
@@ -133,12 +139,6 @@
       "hit_rate": 0.6,
       "brier": 0.5869,
       "rps": 0.2341
-    },
-    "巴西杯": {
-      "n": 9,
-      "hit_rate": 0.4444,
-      "brier": 0.5922,
-      "rps": 0.1986
     },
     "瑞超": {
       "n": 9,
