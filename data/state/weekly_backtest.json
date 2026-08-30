@@ -1,8 +1,8 @@
 {
-  "date": "2026-08-27",
+  "date": "2026-08-30",
   "steps": {
     "walk_forward": {
-      "total_matches": 401
+      "total_matches": 406
     },
     "fusion_optimizer": {
       "decision": "hold",
@@ -20,23 +20,23 @@
         {
           "horizon": "t24h",
           "label": "开赛前24小时",
-          "n": 0,
-          "brier": 0.0,
-          "rps": 0.0,
-          "log_loss": 0.0,
-          "hit_rate": 0.0,
+          "n": 3,
+          "brier": 0.7452,
+          "rps": 0.2572,
+          "log_loss": 1.2392,
+          "hit_rate": 0.3333,
           "avg_ev": 0.0,
           "total_ev": 0.0
         },
         {
           "horizon": "t6h",
           "label": "开赛前6小时",
-          "n": 11,
-          "brier": 0.6103,
-          "rps": 0.1946,
-          "log_loss": 1.0068,
-          "hit_rate": 0.3636,
-          "avg_ev": -19.1482,
+          "n": 13,
+          "brier": 0.5589,
+          "rps": 0.1797,
+          "log_loss": 0.936,
+          "hit_rate": 0.4615,
+          "avg_ev": -16.2023,
           "total_ev": -210.63
         },
         {
@@ -64,18 +64,18 @@
       ]
     },
     "shrinkage_dc": {
-      "n_evaluated": 361,
+      "n_evaluated": 366,
       "skipped_dates": 5,
-      "shrinkage_dc_brier": 0.714,
-      "final_brier": 0.6176,
-      "model_raw_brier": 0.6488,
-      "market_brier": 0.5871,
+      "shrinkage_dc_brier": 0.7156,
+      "final_brier": 0.6168,
+      "model_raw_brier": 0.646,
+      "market_brier": 0.5853,
       "verdict": "hold",
       "snapshot": {
-        "n_matches": 386,
-        "teams": 373,
-        "rho": -0.2,
-        "fitted_at": "2026-08-26"
+        "n_matches": 389,
+        "teams": 374,
+        "rho": -0.1999,
+        "fitted_at": "2026-08-27"
       }
     }
   }
