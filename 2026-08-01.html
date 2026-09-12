@@ -816,7 +816,7 @@ body {
     <div class="stat"><div class="label">平均置信</div><div class="value blue">22%</div></div>
     <div class="stat"><div class="label">三票投入</div><div class="value amber">&yen;64232</div></div>
     <div class="stat"><div class="label">预期回报</div><div class="value green">+29.5%</div></div>
-    <div class="stat"><div class="label">熔断器</div><div class="value green">T0 &middot; x1.0</div></div>
+    <div class="stat"><div class="label">熔断器</div><div class="value red">T1 &middot; x1.0</div></div>
   </div>
 
   <!-- ===== TAB NAV (2026-08-14 吸顶重构：联赛矩阵移入复盘页，今日决策页更聚焦) ===== -->
@@ -1031,7 +1031,7 @@ body {
         <div class="prob-seg a" style="width:10.9%">A 11%</div>
       </div>
       <div class="pred-pick"><span class="pick-label">预测</span> <span class="pick-val home">主胜 72%</span> <span class="pick-label" title="模型预测的最可能比分（非赛果）">预测比分</span> <span class="pred-score">2-0 / 1-0 / 3-0 / 0-0 / 4-0</span></div>
-      <div class="actual-result"><span class="ar-label">实际</span> <span class="ar-score">0-0</span> <span class="ar-outcome draw">平局</span> <span class="ar-hit miss">✗</span> <span class="ar-hit hit" title="比分命中候选第4位">🎯4</span> <span class="pred-score" style="font-size:0.66rem;color:var(--dim)">预测 2-0 / 1-0 / 3-0 / 0-0 / 4-0</span></div>
+      <div class="actual-result"><span class="ar-label">实际</span> <span class="ar-score">1-2</span> <span class="ar-outcome away">客胜</span> <span class="ar-hit miss">✗</span> <span class="ar-hit miss" title="比分未进候选列表">比分✗</span> <span class="pred-score" style="font-size:0.66rem;color:var(--dim)">预测 2-0 / 1-0 / 3-0 / 0-0 / 4-0</span></div>
       
       <div class="match-info-row">
         <span class="conf-meter"><span class="conf-dot low"></span><b>33%</b></span>
@@ -3710,7 +3710,7 @@ body {
   <div class="section-title">赛果复盘</div>
   <div class="results-summary">
     <div class="ts-chip"><div class="ts-label">命中率</div><div class="ts-val" style="color:var(--red)">33% (6/18)</div></div>
-    <div class="ts-chip"><div class="ts-label">平均Brier</div><div class="ts-val" style="color:var(--amber)">0.766</div></div>
+    <div class="ts-chip"><div class="ts-label">平均Brier</div><div class="ts-val" style="color:var(--amber)">0.773</div></div>
     <div class="ts-chip"><div class="ts-label">总盈亏</div><div class="ts-val" style="color:var(--green)">&yen;+0</div></div>
   </div>
   <div class="results-summary" style="margin-top:6px;"><div class="ts-chip"><div class="ts-label">LogLoss(final)</div><div class="ts-val" style="color:var(--amber)">1.234</div></div><div class="ts-chip"><div class="ts-label">进球框架</div><div class="ts-val" style="color:var(--green)">62% (10/16)</div></div><div class="ts-chip"><div class="ts-label">概率分段</div><div class="ts-val" style="font-size:0.68rem;">40-50%:50% · 50-60%:40% · 60%+:0%</div></div></div>
@@ -3730,12 +3730,12 @@ body {
         </tr>
         <tr class="miss">
           <td>全北现代 vs 首尔FC</td>
-          <td style="font-weight:800;text-align:center;">0-0</td>
-          <td>平局</td>
+          <td style="font-weight:800;text-align:center;">1-2</td>
+          <td>客胜</td>
           <td style="font-size:0.75rem;color:var(--dim);"> </td>
           <td>主胜 (72%)</td>
           <td style="text-align:center;"><span class="result-icon miss">✗</span></td>
-          <td style="font-family:monospace;font-size:0.68rem;">1.221</td>
+          <td style="font-family:monospace;font-size:0.68rem;">1.344</td>
           <td style="color:var(--dim);font-weight:600;">0</td>
         </tr>
         <tr class="hit">
@@ -4051,9 +4051,9 @@ body {
   <div class="sys-grid">
     <div class="sys-card">
       <h4>熔断器</h4>
-      <div class="sys-row"><span class="k">状态</span><span class="tier-indicator safe">T0 · Shadow &middot; x1.00</span></div>
-      <div class="sys-row"><span class="k">连续</span><span class="v" style="color:var(--red)">-1</span></div>
-      <div class="sys-row"><span class="k">胜率</span><span class="v">50.9% (408胜 / 393负)</span></div>
+      <div class="sys-row"><span class="k">状态</span><span class="tier-indicator safe">T1 · Shadow &middot; x1.00</span></div>
+      <div class="sys-row"><span class="k">连续</span><span class="v" style="color:var(--red)">-3</span></div>
+      <div class="sys-row"><span class="k">胜率</span><span class="v">50.8% (408胜 / 395负)</span></div>
       <div class="sys-row"><span class="k">日盈亏</span><span class="v" style="color:var(--green)">&yen;+0</span></div>
       <div class="sys-row"><span class="k">周盈亏</span><span class="v" style="color:var(--green)">&yen;+0</span></div>
     </div>
