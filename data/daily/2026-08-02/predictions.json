@@ -1567,17 +1567,22 @@
       "match_time": "2026-08-03 06:30:00"
     },
     "kelly_edge": 0.1092,
-    "actual_result": "2-0",
+    "actual_result": "2-1",
     "actual_home_score": 2,
-    "actual_away_score": 0,
+    "actual_away_score": 1,
     "direction": "draw",
     "direction_correct": false,
     "predicted_score": "0-0",
     "score_correct": false,
-    "score_rank": 8,
+    "score_rank": 0,
     "score_top3_hit": false,
     "score_top5_hit": false,
-    "score_top8_hit": true
+    "score_top8_hit": false,
+    "pnl": 0.0,
+    "djyy_score_rank": 0,
+    "mc_score_rank": 0,
+    "market_signal_dir": null,
+    "market_signal_hit": null
   },
   {
     "match_id": "2026-08-02_周日001",
