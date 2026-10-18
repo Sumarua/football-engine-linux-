@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-18",
   "steps": {
     "walk_forward": {
       "total_matches": 406
@@ -66,14 +66,14 @@
     "shrinkage_dc": {
       "n_evaluated": 366,
       "skipped_dates": 5,
-      "shrinkage_dc_brier": 0.716,
+      "shrinkage_dc_brier": 0.7178,
       "final_brier": 0.6168,
       "model_raw_brier": 0.646,
       "market_brier": 0.5853,
       "verdict": "hold",
       "snapshot": {
         "n_matches": 389,
-        "teams": 374,
+        "teams": 375,
         "rho": -0.2,
         "fitted_at": "2026-08-27"
       }
